@@ -1,0 +1,145 @@
+<Graph Description="" Group="HUD" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="4" Class="Game:WeaponSensor" pos="-100,-120,0" flags="0" InHideMask="15" OutHideMask="8388607">
+   <Inputs entityId="0"/>
+  </Node>
+  <Node Id="5" Name="End_this_action_on_level_unload" Class="_commentbox" pos="-720,-469.36371,0" flags="0">
+   <Inputs TextSize="1" Color="0.552011,0.520996,0.366253" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="540" Height="120"/>
+   <NodeSize Width="540" Height="166.25301"/>
+  </Node>
+  <Node Id="6" Class="Actor:LocalPlayer" pos="-400,80,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="8" Class="Logic:Any" pos="260,-100,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="10" Class="Actor:Sensor" pos="-100,220,0" flags="0" InHideMask="15" OutHideMask="4194303">
+   <Inputs entityId="0"/>
+  </Node>
+  <Node Id="11" Class="UI:Functions:HUD3D:SetAmmo" pos="520,60,0" flags="0">
+   <Inputs instanceID="-1" Ammo="0" LowAmmo="@hud_low_ammo" OutOfAmmo="@hud_out_of_ammo"/>
+  </Node>
+  <Node Id="12" Class="UI:Functions:HUD3D:SetWeapon" pos="520,-120,0" flags="0">
+   <Inputs instanceID="-1" WeaponName="" AmmoTypeName="" IsMelee="0" PoolAmmo="0" MaxAmmo="0" LowAmmo="@hud_low_ammo" OutOfAmmo="@hud_out_of_ammo"/>
+  </Node>
+  <Node Id="13" Class="UI:Functions:HUD3D:SetHealth" pos="520,240,0" flags="0">
+   <Inputs instanceID="-1" Health="0"/>
+  </Node>
+  <Node Id="279" Class="UI:Action:Start" pos="-680,80,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="281" Name="Update_3D_Hud" Class="_commentbox" pos="-720,-212.3416,0" flags="0">
+   <Inputs TextSize="1" Color="0.278894,0.679543,0.64448" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1640" Height="830"/>
+   <NodeSize Width="1640" Height="876.25299"/>
+  </Node>
+  <Node Id="282" Class="UI:Action:End" pos="-360,-400,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="286" Class="UI:Events:System:OnGameplayEnded" pos="-680,-400,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="288" Class="UI:Display:Display" pos="-100,420,0" flags="0">
+   <Inputs uiElements_Element="HUD3D" instanceID="-1"/>
+  </Node>
+  <Node Id="292" Class="Math:Div" pos="210,240,0" flags="0">
+   <Inputs A="0" B="0"/>
+  </Node>
+  <Node Id="293" Class="Math:Mul" pos="340,240,0" flags="0">
+   <Inputs A="0" B="100"/>
+  </Node>
+  <Node Id="297" Name="Divide_Current_health_by_Max_health_and_convert_result_to_percentage_(rather_than_raw_value)_to_work_with_HUD" Class="_comment" pos="140,210,0" flags="0"/>
+  <Node Id="299" Class="AI:AlertnessState" pos="0,-420,0" flags="0">
+   <Inputs FilterAI="0" Faction="" Enabled="1"/>
+  </Node>
+  <Node Id="303" Class="UI:Functions:HUD3D:SetThreatLevel" pos="640,-400,0" flags="0">
+   <Inputs instanceID="-1" threatLevel="0"/>
+  </Node>
+  <Node Id="306" Class="Math:SetNumber" pos="280,-440,0" flags="0">
+   <Inputs in="0"/>
+  </Node>
+  <Node Id="307" Class="Math:SetNumber" pos="280,-380,0" flags="0">
+   <Inputs in="50"/>
+  </Node>
+  <Node Id="308" Class="Math:SetNumber" pos="280,-320,0" flags="0">
+   <Inputs in="100"/>
+  </Node>
+  <Node Id="310" Class="Logic:Any" pos="480,-400,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="313" Class="UI:Functions:HUD3D:SetStamina" pos="520,340,0" flags="0">
+   <Inputs instanceID="-1" Stamina="0"/>
+  </Node>
+  <Node Id="314" Name="AI_threat_bar" Class="_commentbox" pos="-40,-509.38519,0" flags="0">
+   <Inputs TextSize="1" Color="0.658375,0.361307,0.291771" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="960" Height="220"/>
+   <NodeSize Width="960" Height="266.25299"/>
+  </Node>
+  <Node Id="316" Class="Audio:Rtpc" pos="460,770,0" flags="0">
+   <Inputs entityId="0" audioRTPC_Name="character_stamina" value="0"/>
+  </Node>
+  <Node Id="322" Name="sending_to_global_game_parameter_in_Wwise" Class="_comment" pos="460,740,0" flags="0"/>
+  <Node Id="324" Class="Math:Less" pos="460,900,0" flags="0">
+   <Inputs A="0" B="0.35"/>
+  </Node>
+  <Node Id="326" Class="Audio:Trigger" pos="610,870,0" flags="0">
+   <Inputs entityId="0" audioTrigger_PlayTrigger="Play_c_player_fbk_effect_health_low" audioTrigger_StopTrigger="Stop_c_player_fbk_effect_health_low"/>
+  </Node>
+  <Node Id="329" Name="ATL_commands_for_character_health_sounds" Class="_commentbox" pos="440,671.38757,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="590" Height="460"/>
+   <NodeSize Width="671.24744" Height="506.25299"/>
+  </Node>
+  <Node Id="331" Class="Math:Equal" pos="460,1040,0" flags="0">
+   <Inputs A="0" B="0"/>
+  </Node>
+  <Node Id="337" Class="Audio:Trigger" pos="610,1010,0" flags="0">
+   <Inputs entityId="0" audioTrigger_PlayTrigger="Play_m_global_feedback_player_death" audioTrigger_StopTrigger=""/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="8" nodeOut="4" portIn="in3" portOut="OnAmmoPoolChanged" enabled="1"/>
+  <Edge nodeIn="8" nodeOut="4" portIn="in2" portOut="OnFiremodeChange" enabled="1"/>
+  <Edge nodeIn="8" nodeOut="4" portIn="in1" portOut="OnWeaponChange" enabled="1"/>
+  <Edge nodeIn="11" nodeOut="4" portIn="Ammo" portOut="AmmoCount" enabled="1"/>
+  <Edge nodeIn="11" nodeOut="4" portIn="Call" portOut="AmmoCount" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="4" portIn="AmmoTypeName" portOut="AmmoName" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="4" portIn="PoolAmmo" portOut="AmmoPool" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="4" portIn="MaxAmmo" portOut="ClipSize" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="4" portIn="IsMelee" portOut="IsMelee" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="4" portIn="WeaponName" portOut="WeaponName" enabled="1"/>
+  <Edge nodeIn="4" nodeOut="6" portIn="Enable" portOut="entityId" enabled="1"/>
+  <Edge nodeIn="4" nodeOut="6" portIn="Get" portOut="entityId" enabled="1"/>
+  <Edge nodeIn="4" nodeOut="6" portIn="entityId" portOut="entityId" enabled="1"/>
+  <Edge nodeIn="10" nodeOut="6" portIn="Enable" portOut="entityId" enabled="1"/>
+  <Edge nodeIn="10" nodeOut="6" portIn="Get" portOut="entityId" enabled="1"/>
+  <Edge nodeIn="10" nodeOut="6" portIn="entityId" portOut="entityId" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="8" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="292" nodeOut="10" portIn="B" portOut="MaxHealth" enabled="1"/>
+  <Edge nodeIn="292" nodeOut="10" portIn="A" portOut="OnHealthChange" enabled="1"/>
+  <Edge nodeIn="313" nodeOut="10" portIn="Call" portOut="OnSprintStaminaChange" enabled="1"/>
+  <Edge nodeIn="313" nodeOut="10" portIn="Stamina" portOut="OnSprintStaminaChange" enabled="1"/>
+  <Edge nodeIn="316" nodeOut="10" portIn="value" portOut="OnSprintStaminaChange" enabled="1"/>
+  <Edge nodeIn="6" nodeOut="279" portIn="update" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="288" nodeOut="279" portIn="show" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="282" nodeOut="286" portIn="EndAction" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="293" nodeOut="292" portIn="A" portOut="out" enabled="1"/>
+  <Edge nodeIn="324" nodeOut="292" portIn="A" portOut="out" enabled="1"/>
+  <Edge nodeIn="331" nodeOut="292" portIn="A" portOut="out" enabled="1"/>
+  <Edge nodeIn="13" nodeOut="293" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="13" nodeOut="293" portIn="Health" portOut="out" enabled="1"/>
+  <Edge nodeIn="306" nodeOut="299" portIn="set" portOut="green" enabled="1"/>
+  <Edge nodeIn="307" nodeOut="299" portIn="set" portOut="orange" enabled="1"/>
+  <Edge nodeIn="308" nodeOut="299" portIn="set" portOut="red" enabled="1"/>
+  <Edge nodeIn="310" nodeOut="306" portIn="in1" portOut="out" enabled="1"/>
+  <Edge nodeIn="310" nodeOut="307" portIn="in2" portOut="out" enabled="1"/>
+  <Edge nodeIn="310" nodeOut="308" portIn="in3" portOut="out" enabled="1"/>
+  <Edge nodeIn="303" nodeOut="310" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="303" nodeOut="310" portIn="threatLevel" portOut="out" enabled="1"/>
+  <Edge nodeIn="326" nodeOut="324" portIn="Stop" portOut="false" enabled="1"/>
+  <Edge nodeIn="326" nodeOut="324" portIn="Play" portOut="true" enabled="1"/>
+  <Edge nodeIn="337" nodeOut="331" portIn="Play" portOut="true" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

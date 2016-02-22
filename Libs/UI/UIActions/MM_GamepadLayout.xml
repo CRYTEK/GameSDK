@@ -1,0 +1,175 @@
+<Graph Description="" Group="MM_PagesShared" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="-1360,1700,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="-1040,1200,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_ControlsSettingsTitle" ShowLine="1" MaxButtons="2" ButtonXPos="-500" ButtonYPos="-150" ButtonOffset="40"/>
+  </Node>
+  <Node Id="6" Class="UI:Functions:MainMenu:AddBackButton" pos="940,1680,0" flags="0">
+   <Inputs instanceID="-1" id="MM_Main"/>
+  </Node>
+  <Node Id="9" Class="UI:Functions:MainMenu:AddSwitch" pos="-60,1260,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_ControllerType" tooltip="@ui_ControllerTypeTT" value="PC_" id="SW_CTRL"/>
+  </Node>
+  <Node Id="29" Name="Setup_page" Class="_commentbox" pos="-1440,1129.7498,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="3230" Height="730"/>
+   <NodeSize Width="3230" Height="757.64063"/>
+  </Node>
+  <Node Id="39" Name="Handle_events" Class="_commentbox" pos="3200,1108.8807,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="2060" Height="460"/>
+   <NodeSize Width="2060" Height="487.64063"/>
+  </Node>
+  <Node Id="83" Class="UI:Functions:MainMenu:AddSwitchOption" pos="-60,1420,0" flags="0">
+   <Inputs instanceID="-1" id="SW_CTRL" caption="@ui_Controller" value="Xbox_"/>
+  </Node>
+  <Node Id="91" Class="UI:Action:End" pos="3900,1440,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="93" Class="UI:Action:Start" pos="3240,1440,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="94" Name="Use_default_event_state_as_well" Class="_comment" pos="3240,1410,0" flags="0"/>
+  <Node Id="95" Class="UI:Action:Control" pos="3540,1440,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args=""/>
+  </Node>
+  <Node Id="97" Class="UI:Functions:MainMenu:AddSwitchOption" pos="-60,1540,0" flags="0">
+   <Inputs instanceID="-1" id="SW_CTRL" caption="@ui_KeyBoard" value="PC_"/>
+  </Node>
+  <Node Id="98" Class="UI:Functions:MainMenu:AddSwitch" pos="470,1260,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_InVehicle" tooltip="@ui_InVehicleTT" value="OnFoot" id="SW_IN_VEHICLE"/>
+  </Node>
+  <Node Id="100" Class="UI:Functions:MainMenu:AddSwitchOption" pos="470,1540,0" flags="0">
+   <Inputs instanceID="-1" id="SW_IN_VEHICLE" caption="@ui_No" value="OnFoot"/>
+  </Node>
+  <Node Id="102" Class="UI:Functions:MainMenu:AddSwitchOption" pos="470,1420,0" flags="0">
+   <Inputs instanceID="-1" id="SW_IN_VEHICLE" caption="@ui_Yes" value="Vehicle"/>
+  </Node>
+  <Node Id="103" Class="UI:Functions:MainMenu:AddImage" pos="1920,1200,0" flags="0">
+   <Inputs instanceID="-1" path="Libs/UI/Textures/PC_Vehicle.dds" id="PC_Vehicle" x="540" y="260" w="720" h="360" visible="0"/>
+  </Node>
+  <Node Id="108" Class="UI:Events:MainMenu:OnControlChanged" pos="3240,1200,0" flags="0">
+   <Inputs instanceID="-1" Port="-1" Idx=""/>
+  </Node>
+  <Node Id="117" Class="UI:Functions:MainMenu:AddImage" pos="1920,1380,0" flags="1">
+   <Inputs instanceID="-1" path="Libs/UI/Textures/PC_OnFoot.dds" id="PC_OnFoot" x="540" y="260" w="720" h="360" visible="0"/>
+  </Node>
+  <Node Id="119" Class="UI:Functions:MainMenu:AddImage" pos="2320,1200,0" flags="0">
+   <Inputs instanceID="-1" path="Libs/UI/Textures/PS4_Vehicle.dds" id="PS4_Vehicle" x="490" y="310" w="720" h="360" visible="0"/>
+  </Node>
+  <Node Id="120" Class="UI:Functions:MainMenu:AddImage" pos="2320,1380,0" flags="0">
+   <Inputs instanceID="-1" path="Libs/UI/Textures/PS4_OnFoot.dds" id="PS4_OnFoot" x="490" y="310" w="720" h="360" visible="0"/>
+  </Node>
+  <Node Id="121" Class="UI:Functions:MainMenu:AddImage" pos="2720,1200,0" flags="0">
+   <Inputs instanceID="-1" path="Libs/UI/Textures/Xbox_Vehicle.dds" id="Xbox_Vehicle" x="540" y="235" w="720" h="360" visible="0"/>
+  </Node>
+  <Node Id="122" Class="UI:Functions:MainMenu:AddImage" pos="2720,1380,0" flags="0">
+   <Inputs instanceID="-1" path="Libs/UI/Textures/Xbox_OnFoot.dds" id="Xbox_OnFoot" x="540" y="235" w="720" h="360" visible="0"/>
+  </Node>
+  <Node Id="129" Class="UI:Functions:MainMenu:GetControlVal" pos="4240,1160,0" flags="0">
+   <Inputs instanceID="-1" id="SW_CTRL"/>
+  </Node>
+  <Node Id="156" Class="UI:Functions:MainMenu:ShowImage" pos="4980,1180,0" flags="0">
+   <Inputs instanceID="-1" id="Xbox_OnFoot" fadeTime="0.25"/>
+  </Node>
+  <Node Id="159" Class="UI:Functions:MainMenu:GetControlVal" pos="4240,1380,0" flags="0">
+   <Inputs instanceID="-1" id="SW_IN_VEHICLE"/>
+  </Node>
+  <Node Id="167" Class="UI:Functions:MainMenu:HideImage" pos="3700,1200,0" flags="0">
+   <Inputs instanceID="-1" id="" fadeTime="0.25"/>
+  </Node>
+  <Node Id="183" Name="Load_images" Class="_commentbox" pos="1880,1128.8809,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1240" Height="440"/>
+   <NodeSize Width="1240" Height="467.64063"/>
+  </Node>
+  <Node Id="187" Class="String:Concat" pos="4770,1190,0" flags="0">
+   <Inputs String1="" String2=""/>
+  </Node>
+  <Node Id="193" Class="UI:Util:Platform" pos="-360,1540,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="199" Class="Logic:Any" pos="3560,1200,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="200" Class="Logic:Any" pos="310,1540,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="201" Class="UI:Util:Platform" pos="4020,1200,0" flags="0" InHideMask="1" OutHideMask="31">
+   <Inputs />
+  </Node>
+  <Node Id="202" Class="Logic:Any" pos="4580,1220,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="203" Class="String:SetString" pos="4240,1260,0" flags="0">
+   <Inputs In="Xbox_"/>
+  </Node>
+  <Node Id="204" Class="String:SetString" pos="4240,1320,0" flags="0">
+   <Inputs In="PS4_"/>
+  </Node>
+  <Node Id="205" Class="UI:Util:Platform" pos="1280,1680,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="206" Class="UI:Functions:MainMenu:AddActionButton" pos="1480,1660,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_XSelect"/>
+  </Node>
+  <Node Id="207" Class="UI:Functions:MainMenu:AddActionButton" pos="1480,1760,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_PSSelect"/>
+  </Node>
+  <Node Id="209" Class="UI:Functions:MainMenu:AddSeparator" pos="-680,1540,0" flags="0">
+   <Inputs instanceID="-1" Caption="" ID="" Tooltip=""/>
+  </Node>
+  <Node Id="210" Name="PC" Class="_comment" pos="1920,1170,0" flags="0"/>
+  <Node Id="211" Name="PS4" Class="_comment" pos="2320,1170,0" flags="0"/>
+  <Node Id="212" Name="360" Class="_comment" pos="2720,1170,0" flags="0"/>
+  <Node Id="213" Name="Controller_Type" Class="_comment" pos="-60,1230,0" flags="0"/>
+  <Node Id="214" Name="In_Vehicle" Class="_comment" pos="470,1230,0" flags="0"/>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="6" nodeOut="1" portIn="id" portOut="Args" enabled="1"/>
+  <Edge nodeIn="103" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="209" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="205" nodeOut="6" portIn="get" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="9" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="97" nodeOut="83" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="93" portIn="Args" portOut="Args" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="93" portIn="Start" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="95" portIn="EndAction" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="200" nodeOut="97" portIn="in1" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="102" nodeOut="98" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="6" nodeOut="100" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="100" nodeOut="102" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="117" nodeOut="103" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="199" nodeOut="108" portIn="in1" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="119" nodeOut="117" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="120" nodeOut="119" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="121" nodeOut="120" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="122" nodeOut="121" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="199" nodeOut="122" portIn="in10" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="202" nodeOut="129" portIn="in1" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="187" nodeOut="159" portIn="String2" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="159" nodeOut="167" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="201" nodeOut="167" portIn="get" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="156" nodeOut="187" portIn="Call" portOut="Out" enabled="1"/>
+  <Edge nodeIn="156" nodeOut="187" portIn="id" portOut="Out" enabled="1"/>
+  <Edge nodeIn="167" nodeOut="187" portIn="id" portOut="Out" enabled="1"/>
+  <Edge nodeIn="9" nodeOut="193" portIn="Call" portOut="IsPc" enabled="1"/>
+  <Edge nodeIn="200" nodeOut="193" portIn="in6" portOut="IsConsole" enabled="1"/>
+  <Edge nodeIn="167" nodeOut="199" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="98" nodeOut="200" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="129" nodeOut="201" portIn="Call" portOut="IsPc" enabled="1"/>
+  <Edge nodeIn="203" nodeOut="201" portIn="Set" portOut="IsXBoxOne" enabled="1"/>
+  <Edge nodeIn="204" nodeOut="201" portIn="Set" portOut="IsPS4" enabled="1"/>
+  <Edge nodeIn="187" nodeOut="202" portIn="Set" portOut="out" enabled="1"/>
+  <Edge nodeIn="187" nodeOut="202" portIn="String1" portOut="out" enabled="1"/>
+  <Edge nodeIn="202" nodeOut="203" portIn="in2" portOut="Out" enabled="1"/>
+  <Edge nodeIn="202" nodeOut="204" portIn="in3" portOut="Out" enabled="1"/>
+  <Edge nodeIn="206" nodeOut="205" portIn="Call" portOut="IsXBoxOne" enabled="1"/>
+  <Edge nodeIn="207" nodeOut="205" portIn="Call" portOut="IsPS4" enabled="1"/>
+  <Edge nodeIn="193" nodeOut="209" portIn="get" portOut="OnCall" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

@@ -1,0 +1,217 @@
+<Graph Description="" Group="MM_PagesIngame" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="-1600,1160,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="2" Class="UI:Action:End" pos="-400,1960,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="-1350,1160,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_GameTitle" ShowLine="1" MaxButtons="10" ButtonXPos="-500" ButtonYPos="0" ButtonOffset="40"/>
+  </Node>
+  <Node Id="6" Class="UI:Functions:MainMenu:AddButton" pos="1380,1240,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_GraphicSettings" tooltip="@ui_GraphicSettingsTT" consoleButtonCaption="@ui_ButtonSelect" id="MM_GraphicsSettings"/>
+  </Node>
+  <Node Id="7" Class="UI:Functions:MainMenu:AddSeparator" pos="500,1280,0" flags="0">
+   <Inputs instanceID="-1" Caption="" ID="" Tooltip=""/>
+  </Node>
+  <Node Id="8" Class="UI:Functions:MainMenu:AddButton" pos="1920,1280,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_SoundSettings" tooltip="@ui_SoundSettingsTT" consoleButtonCaption="@ui_ButtonSelect" id="MM_SoundSettings"/>
+  </Node>
+  <Node Id="9" Class="UI:Functions:MainMenu:AddButton" pos="2280,1640,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_ExitToMain" tooltip="@ui_ExitToMainTT" consoleButtonCaption="@ui_ButtonSelect" id="IDD_ExitToMain"/>
+  </Node>
+  <Node Id="29" Name="Setup_page" Class="_commentbox" pos="-1640,900.45703,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="4230" Height="850"/>
+   <NodeSize Width="4230" Height="886.93372"/>
+  </Node>
+  <Node Id="30" Class="UI:Events:MainMenu:OnButton" pos="-1600,1960,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="IDD_Resume"/>
+  </Node>
+  <Node Id="33" Name="Handle_events" Class="_commentbox" pos="-1640,1837.8475,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1460" Height="1280"/>
+   <NodeSize Width="1460" Height="1316.9337"/>
+  </Node>
+  <Node Id="79" Class="UI:Action:Control" pos="-1200,2480,0" flags="0">
+   <Inputs uiActions_UIAction="MM_Confirmation" Strict="0" Args="@ui_ExitToMainQ|@ui_Yes|@ui_No"/>
+  </Node>
+  <Node Id="80" Class="Logic:Condition" pos="-760,2480,0" flags="0">
+   <Inputs Condition="0"/>
+  </Node>
+  <Node Id="81" Name="Handle_resume" Class="_comment" pos="-1600,1930,0" flags="0"/>
+  <Node Id="83" Class="UI:Action:Control" pos="-1200,2320,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args="MM_IngameMenu"/>
+  </Node>
+  <Node Id="90" Class="UI:Action:Start" pos="-1600,2320,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="91" Class="UI:Action:End" pos="-760,2320,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="92" Name="Use_default_event_state_as_well" Class="_comment" pos="-1600,2290,0" flags="0"/>
+  <Node Id="93" Class="UI:Functions:MainMenu:AddButton" pos="820,1280,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_GameSettings" tooltip="@ui_GameSettingsTT" consoleButtonCaption="@ui_ButtonSelect" id="MM_GameSettings"/>
+  </Node>
+  <Node Id="94" Class="UI:Display:Display" pos="-1200,1960,0" flags="0">
+   <Inputs uiElements_Element="MainMenu" instanceID="-1"/>
+  </Node>
+  <Node Id="95" Class="UI:Functions:MainMenu:AddSeparator" pos="-1040,1160,0" flags="0">
+   <Inputs instanceID="-1" Caption="" ID="" Tooltip=""/>
+  </Node>
+  <Node Id="96" Class="UI:Functions:MainMenu:AddQuitButton" pos="-740,1160,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Resume" tooltip="@ui_ResumeTT" id="IDD_Resume"/>
+  </Node>
+  <Node Id="97" Class="UI:Action:End" pos="-360,2510,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="98" Class="UI:Events:MainMenu:OnButton" pos="-1600,2480,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="IDD_ExitToMain"/>
+  </Node>
+  <Node Id="99" Name="Handle_Exit_button" Class="_comment" pos="-1600,2450,0" flags="0"/>
+  <Node Id="100" Class="Debug:ExecuteString" pos="-530,2510,0" flags="0">
+   <Inputs String="disconnect" NextFrame="1"/>
+  </Node>
+  <Node Id="101" Class="UI:Functions:MenuEvents:DisplayIngameMenu" pos="-800,1960,0" flags="0">
+   <Inputs Display="0"/>
+  </Node>
+  <Node Id="102" Class="UI:Util:Platform" pos="1160,1280,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="103" Class="Logic:Any" pos="1760,1280,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="104" Class="UI:Functions:MainMenu:AddButton" pos="1920,1460,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_GamepadLayout" tooltip="@ui_GamepadLayoutTT" consoleButtonCaption="@ui_ButtonSelect" id="MM_GamepadLayout"/>
+  </Node>
+  <Node Id="105" Class="UI:Functions:MainMenu:AddButton" pos="1920,1640,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_WeaponCust" tooltip="@ui_WeaponCustTT" consoleButtonCaption="@ui_ButtonSelect" id="MM_WeaponCustomization"/>
+  </Node>
+  <Node Id="107" Class="UI:Functions:MainMenu:AddButton" pos="-140,1480,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_SaveGame" tooltip="@ui_SaveGameTT" consoleButtonCaption="@ui_ButtonSelect" id="IDD_SaveGame"/>
+  </Node>
+  <Node Id="108" Class="UI:Functions:MainMenu:AddButton" pos="-140,1610,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_LoadGame" tooltip="@ui_LoadGameTT" consoleButtonCaption="@ui_ButtonSelect" id="IDD_LoadGame"/>
+  </Node>
+  <Node Id="114" Class="UI:Events:MainMenu:OnButton" pos="-1600,2680,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="IDD_SaveGame"/>
+  </Node>
+  <Node Id="120" Class="Debug:ExecuteString" pos="-400,2680,0" flags="0">
+   <Inputs String="save" NextFrame="0"/>
+  </Node>
+  <Node Id="121" Class="UI:Events:MainMenu:OnButton" pos="-1600,2840,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="IDD_LoadGame"/>
+  </Node>
+  <Node Id="122" Class="Debug:ExecuteString" pos="-1200,2840,0" flags="0">
+   <Inputs String="load" NextFrame="1"/>
+  </Node>
+  <Node Id="124" Class="Multiplayer:IsMultiplayer" pos="-450,1160,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="125" Class="UI:Action:Control" pos="-1200,2680,0" flags="0">
+   <Inputs uiActions_UIAction="MM_Confirmation" Strict="0" Args="@ui_SaveGameQ|@ui_Yes|@ui_No"/>
+  </Node>
+  <Node Id="126" Class="Logic:Condition" pos="-760,2680,0" flags="0">
+   <Inputs Condition="0"/>
+  </Node>
+  <Node Id="127" Class="UI:Action:End" pos="-400,2920,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="128" Class="UI:Display:Display" pos="-1200,2920,0" flags="0">
+   <Inputs uiElements_Element="MainMenu" instanceID="-1"/>
+  </Node>
+  <Node Id="129" Class="UI:Functions:MenuEvents:DisplayIngameMenu" pos="-800,2920,0" flags="0">
+   <Inputs Display="0"/>
+  </Node>
+  <Node Id="214" Class="UI:Functions:MainMenu:AddSwitch" pos="-140,1000,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_PlayerClass" tooltip="@ui_PlayerClassTT" value="" id="SW_PLAYERCLASS"/>
+  </Node>
+  <Node Id="215" Class="UI:Functions:MainMenu:AddSwitchOption" pos="-140,1160,0" flags="0">
+   <Inputs instanceID="-1" id="SW_PLAYERCLASS" caption="Rifle" value="0"/>
+  </Node>
+  <Node Id="216" Class="UI:Functions:MainMenu:AddSwitchOption" pos="-140,1280,0" flags="0">
+   <Inputs instanceID="-1" id="SW_PLAYERCLASS" caption="Shotgun" value="1"/>
+  </Node>
+  <Node Id="217" Class="UI:Functions:MainMenu:GetControlVal" pos="-1200,2180,0" flags="0">
+   <Inputs instanceID="-1" id="SW_PLAYERCLASS"/>
+  </Node>
+  <Node Id="219" Class="Actor:LocalPlayer" pos="-770,2160,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="221" Class="Game:MP:SetEquipmentLoadout" pos="-460,2160,0" flags="0">
+   <Inputs entityId="0" pack="0"/>
+  </Node>
+  <Node Id="223" Class="Logic:Any" pos="360,1280,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="225" Name="Resume" Class="_comment" pos="-740,1130,0" flags="0"/>
+  <Node Id="227" Name="Game_Settings" Class="_comment" pos="820,1250,0" flags="0"/>
+  <Node Id="228" Name="Graphics_Menu_-_Skip_on_Console" Class="_comment" pos="1400,1210,0" flags="0"/>
+  <Node Id="229" Name="Sound_Settings" Class="_comment" pos="1920,1250,0" flags="0"/>
+  <Node Id="230" Name="Controls" Class="_comment" pos="1920,1430,0" flags="0"/>
+  <Node Id="231" Name="Weapon_Customization" Class="_comment" pos="1920,1610,0" flags="0"/>
+  <Node Id="232" Name="Quit/Exit" Class="_comment" pos="2280,1610,0" flags="0"/>
+  <Node Id="233" Name="Add_Class_Selection_in_Multiplayer" Class="_commentbox" pos="-160,943.49847,0" flags="0">
+   <Inputs TextSize="1" Color="0.263175,0.708298,0.687031" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="320" Height="430"/>
+   <NodeSize Width="415.70532" Height="466.93372"/>
+  </Node>
+  <Node Id="234" Name="Add_Save/Load_Game_Options_in_Singleplayer" Class="_commentbox" pos="-160,1423.4995,0" flags="0">
+   <Inputs TextSize="1" Color="0.715465,0.585973,0.259027" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="390" Height="300"/>
+   <NodeSize Width="557.68445" Height="336.93372"/>
+  </Node>
+  <Node Id="235" Class="UI:Functions:MenuEvents:DisplayIngameMenu" pos="-530,2440,0" flags="1">
+   <Inputs Display="0"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="103" nodeOut="6" portIn="in1" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="93" nodeOut="7" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="104" nodeOut="8" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="94" nodeOut="30" portIn="unload" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="217" nodeOut="30" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="80" nodeOut="79" portIn="Condition" portOut="Args" enabled="1"/>
+  <Edge nodeIn="80" nodeOut="79" portIn="In" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="100" nodeOut="80" portIn="Set" portOut="OnTrue" enabled="1"/>
+  <Edge nodeIn="235" nodeOut="80" portIn="send" portOut="OnTrue" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="83" portIn="EndAction" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="90" portIn="Start" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="102" nodeOut="93" portIn="get" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="101" nodeOut="94" portIn="send" portOut="onUnload" enabled="1"/>
+  <Edge nodeIn="96" nodeOut="95" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="124" nodeOut="96" portIn="Get" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="79" nodeOut="98" portIn="Start" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="2" nodeOut="101" portIn="EndAction" portOut="OnEvent" enabled="1"/>
+  <Edge nodeIn="6" nodeOut="102" portIn="Call" portOut="IsPc" enabled="1"/>
+  <Edge nodeIn="103" nodeOut="102" portIn="in6" portOut="IsConsole" enabled="1"/>
+  <Edge nodeIn="8" nodeOut="103" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="105" nodeOut="104" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="9" nodeOut="105" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="108" nodeOut="107" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="223" nodeOut="108" portIn="in2" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="125" nodeOut="114" portIn="Start" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="122" nodeOut="121" portIn="Set" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="128" nodeOut="121" portIn="unload" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="107" nodeOut="124" portIn="Call" portOut="False" enabled="1"/>
+  <Edge nodeIn="214" nodeOut="124" portIn="Call" portOut="True" enabled="1"/>
+  <Edge nodeIn="126" nodeOut="125" portIn="Condition" portOut="Args" enabled="1"/>
+  <Edge nodeIn="126" nodeOut="125" portIn="In" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="120" nodeOut="126" portIn="Set" portOut="OnTrue" enabled="1"/>
+  <Edge nodeIn="129" nodeOut="128" portIn="send" portOut="onUnload" enabled="1"/>
+  <Edge nodeIn="127" nodeOut="129" portIn="EndAction" portOut="OnEvent" enabled="1"/>
+  <Edge nodeIn="215" nodeOut="214" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="216" nodeOut="215" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="223" nodeOut="216" portIn="in1" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="219" nodeOut="217" portIn="update" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="221" nodeOut="217" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="221" nodeOut="217" portIn="pack" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="221" nodeOut="219" portIn="entityId" portOut="entityId" enabled="1"/>
+  <Edge nodeIn="7" nodeOut="223" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="97" nodeOut="235" portIn="EndAction" portOut="OnEvent" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

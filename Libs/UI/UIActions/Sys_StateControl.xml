@@ -1,0 +1,300 @@
+<Graph Description="" Group="" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Events:System:OnSystemStarted" pos="-2260,1160,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="3" Name="Display_MainMenu_on_SystemStart,_LoadingError_or_Level_unload" Class="_commentbox" pos="-2320,1086.7568,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="960" Height="610"/>
+   <NodeSize Width="960" Height="647.15387"/>
+  </Node>
+  <Node Id="6" Class="UI:Events:System:OnLoadingStart" pos="-2270,-290,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="7" Class="UI:Display:Display" pos="-1750,-510,0" flags="0">
+   <Inputs uiElements_Element="MainMenu" instanceID="-1"/>
+  </Node>
+  <Node Id="9" Class="UI:Action:Control" pos="-1390,-370,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DisplayLoadingScreen" Strict="1" Args=""/>
+  </Node>
+  <Node Id="11" Class="UI:Display:Display" pos="360,-370,0" flags="0">
+   <Inputs uiElements_Element="MainMenu" instanceID="-1"/>
+  </Node>
+  <Node Id="14" Class="UI:Events:System:OnLoadingError" pos="-2260,1280,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="18" Class="Logic:Any" pos="-1900,1160,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="19" Class="UI:Display:Display" pos="280,1300,0" flags="0" InHideMask="1023" OutHideMask="255">
+   <Inputs uiElements_Element="MainMenu" instanceID="-1"/>
+  </Node>
+  <Node Id="20" Class="UI:Action:Control" pos="280,840,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DisplayIngameMenu" Strict="1" Args="MM_IngameMenu"/>
+  </Node>
+  <Node Id="24" Class="Logic:Any" pos="-60,-370,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="25" Class="Game:Start" pos="-360,-290,0" flags="0">
+   <Inputs InGame="1" InEditor="1"/>
+  </Node>
+  <Node Id="33" Class="UI:Display:Display" pos="280,1200,0" flags="0" InHideMask="1023" OutHideMask="255">
+   <Inputs uiElements_Element="HUD3D" instanceID="-2"/>
+  </Node>
+  <Node Id="34" Class="UI:Events:MenuEvents:OnStartIngameMenu" pos="-400,860,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="35" Class="UI:Events:MenuEvents:OnStopIngameMenu" pos="-400,1220,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="36" Class="UI:Util:ToArray" pos="-1750,-290,0" flags="0">
+   <Inputs Count="4"/>
+  </Node>
+  <Node Id="58" Class="UI:Action:Control" pos="-1390,-250,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DisplayMenuLoading" Strict="1" Args=""/>
+  </Node>
+  <Node Id="60" Class="UI:Events:System:OnGameplayStarted" pos="-360,-370,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="62" Class="UI:Events:System:OnUnloadComplete" pos="-2260,1360,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="63" Name="Unload_the_MainMenu_and_display_a_loadingscreen_on_level_loading" Class="_commentbox" pos="-2310,-591.94037,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1310" Height="640"/>
+   <NodeSize Width="1310" Height="677.15387"/>
+  </Node>
+  <Node Id="64" Name="Unload_Loadingscreen_und_start_HUD_UIAction_on_Start_Gameplay" Class="_commentbox" pos="-390,-451.9404,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1380" Height="280"/>
+   <NodeSize Width="1380" Height="317.15384"/>
+  </Node>
+  <Node Id="65" Name="Display/Hide_ingame_menu_-_Controlled_via_UIMenuEvents" Class="_commentbox" pos="-440,756.75824,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1340" Height="930"/>
+   <NodeSize Width="1340" Height="967.15387"/>
+  </Node>
+  <Node Id="66" Class="UI:Events:System:OnUnloadStart" pos="-400,440,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="67" Class="UI:Action:Control" pos="500,560,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DisplayLoadingScreen" Strict="1" Args="@ui_unloading||Libs/UI/Textures/Unloading.dds"/>
+  </Node>
+  <Node Id="68" Name="Display_unloading_screen" Class="_commentbox" pos="-440,356.75784,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1320" Height="310"/>
+   <NodeSize Width="1320" Height="347.15384"/>
+  </Node>
+  <Node Id="69" Class="UI:Action:Control" pos="500,440,0" flags="0">
+   <Inputs uiActions_UIAction="HUD_Unloading" Strict="1" Args=""/>
+  </Node>
+  <Node Id="71" Class="UI:Util:ToArray" pos="200,440,0" flags="0">
+   <Inputs Count="4"/>
+  </Node>
+  <Node Id="73" Class="String:SetString" pos="-100,440,0" flags="0">
+   <Inputs In="@ui_unloading"/>
+  </Node>
+  <Node Id="75" Class="String:SetString" pos="-1970,-190,0" flags="0">
+   <Inputs In="@ui_Loading"/>
+  </Node>
+  <Node Id="76" Class="String:SetString" pos="-100,540,0" flags="0">
+   <Inputs In="@ui_UnloadingSpinner"/>
+  </Node>
+  <Node Id="82" Class="UI:Events:MainMenu:OnButton" pos="-1940,760,0" flags="0">
+   <Inputs instanceID="-1" Port="-1" Idx=""/>
+  </Node>
+  <Node Id="102" Class="UI:Events:System:OnReload" pos="-1600,480,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="106" Class="UI:Action:Control" pos="-860,820,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DisplayIngameMenu" Strict="0" Args="MM_IngameMenu"/>
+  </Node>
+  <Node Id="126" Class="UI:Util:ToArray" pos="-1220,820,0" flags="0" InHideMask="63" OutHideMask="3">
+   <Inputs Count="2"/>
+  </Node>
+  <Node Id="155" Name="Reload_screen" Class="_commentbox" pos="-2320,352.40454,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1840" Height="580"/>
+   <NodeSize Width="1840" Height="617.15387"/>
+  </Node>
+  <Node Id="161" Class="UI:Events:System:OnLoadingComplete" pos="-1940,540,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="165" Class="UI:Events:System:OnUnloadComplete" pos="-1940,620,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="184" Class="UI:Action:Control" pos="-860,480,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DisplayMenu" Strict="0" Args="MM_Main"/>
+  </Node>
+  <Node Id="197" Class="Logic:Any" pos="0,820,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="211" Class="Math:BooleanTo" pos="-1480,540,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="280" Class="String:SetString" pos="-1940,840,0" flags="0">
+   <Inputs In="MM_InGameMenu"/>
+  </Node>
+  <Node Id="281" Class="String:SetString" pos="-1940,700,0" flags="0">
+   <Inputs In="MM_Main"/>
+  </Node>
+  <Node Id="282" Class="UI:Util:ToArray" pos="-1220,660,0" flags="0" InHideMask="63" OutHideMask="3">
+   <Inputs Count="2"/>
+  </Node>
+  <Node Id="283" Class="UI:Events:System:OnSystemStarted" pos="-2280,580,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="285" Class="Logic:Any" pos="-1640,580,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="291" Class="Math:BooleanFrom" pos="-1100,480,0" flags="0">
+   <Inputs Value="0"/>
+  </Node>
+  <Node Id="299" Class="Math:SetNumber" pos="-1280,480,0" flags="0">
+   <Inputs in="0"/>
+  </Node>
+  <Node Id="302" Name="Show_main_menu" Class="_comment" pos="-860,450,0" flags="0"/>
+  <Node Id="303" Name="Show_in-game_menu" Class="_comment" pos="-860,790,0" flags="0"/>
+  <Node Id="305" Class="Logic:Any" pos="-1420,760,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="308" Class="UI:Action:Control" pos="-1740,1160,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DisplayMenu" Strict="1" Args="MM_Main"/>
+  </Node>
+  <Node Id="325" Class="Debug:Log" pos="-1740,1280,0" flags="0">
+   <Inputs message="LoadingError Called"/>
+  </Node>
+  <Node Id="326" Class="Debug:Log" pos="-1740,1360,0" flags="0">
+   <Inputs message="OnUnload Called!"/>
+  </Node>
+  <Node Id="329" Class="UI:Functions:MainMenu:hideLoader" pos="70,-370,0" flags="0">
+   <Inputs instanceID="-1"/>
+  </Node>
+  <Node Id="331" Class="Image:EffectDepthOfField" pos="280,1000,0" flags="0" InHideMask="511">
+   <Inputs entityId="0" Enabled="0" Disabled="1" Dof_User_Active="0" Dof_User_FocusDistance="0" Dof_User_FocusRange="0.1" Dof_User_BlurAmount="10" Dof_MaxCoC="12" Dof_CenterWeight="1"/>
+  </Node>
+  <Node Id="333" Class="Math:BooleanTo" pos="0,1020,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="337" Class="UI:Action:Control" pos="600,1200,0" flags="0">
+   <Inputs uiActions_UIAction="HUD" Strict="0" Args=""/>
+  </Node>
+  <Node Id="338" Class="UI:Action:Control" pos="720,-370,0" flags="0">
+   <Inputs uiActions_UIAction="HUD" Strict="0" Args=""/>
+  </Node>
+  <Node Id="351" Class="Actor:LocalPlayer" pos="280,960,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="354" Name="Add_Depth_of_Field_effect" Class="_comment" pos="460,1000,0" flags="0"/>
+  <Node Id="356" Name="Open_In-Game_Menu" Class="_comment" pos="-400,920,0" flags="0"/>
+  <Node Id="357" Name="Close_In-Game_Menu" Class="_comment" pos="-400,1280,0" flags="0"/>
+  <Node Id="358" Name="Remember_LocalPlayer_for_MP_use" Class="_comment" pos="430,970,0" flags="0"/>
+  <Node Id="359" Class="UI:Display:Display" pos="280,1100,0" flags="0" InHideMask="1023" OutHideMask="255">
+   <Inputs uiElements_Element="HUD2D" instanceID="-2"/>
+  </Node>
+  <Node Id="360" Name="MainMenu" Class="_comment" pos="420,1300,0" flags="0"/>
+  <Node Id="361" Name="HUD3D" Class="_comment" pos="420,1200,0" flags="0"/>
+  <Node Id="362" Name="HUD2D" Class="_comment" pos="420,1100,0" flags="0"/>
+  <Node Id="363" Class="Audio:Trigger" pos="-1730,1610,0" flags="0">
+   <Inputs entityId="0" audioTrigger_PlayTrigger="Play_ui_menu_ambience" audioTrigger_StopTrigger="do_nothing"/>
+  </Node>
+  <Node Id="364" Name="start_menu_ambience_when_main_menu_is_displayed" Class="_comment" pos="-1730,1580,0" flags="0"/>
+  <Node Id="367" Class="Audio:Trigger" pos="-1970,-50,0" flags="0">
+   <Inputs entityId="0" audioTrigger_PlayTrigger="Stop_ui_menu_all" audioTrigger_StopTrigger=""/>
+  </Node>
+  <Node Id="368" Name="stop_all_sounds_in_Wwise_upon_loading_screen" Class="_comment" pos="-1970,-80,0" flags="0"/>
+  <Node Id="370" Class="Audio:Trigger" pos="200,1470,0" flags="0">
+   <Inputs entityId="0" audioTrigger_PlayTrigger="Play_ui_menu_screen_open" audioTrigger_StopTrigger=""/>
+  </Node>
+  <Node Id="371" Class="Audio:Trigger" pos="-1970,100,0" flags="0">
+   <Inputs entityId="0" audioTrigger_PlayTrigger="Play_m_global_menu_loading_screen" audioTrigger_StopTrigger=""/>
+  </Node>
+  <Node Id="372" Name="play_loading_screen_music" Class="_comment" pos="-1970,70,0" flags="0"/>
+  <Node Id="373" Class="Audio:Trigger" pos="-50,70,0" flags="0">
+   <Inputs entityId="0" audioTrigger_PlayTrigger="Stop_m_global_menu_loading_screen" audioTrigger_StopTrigger=""/>
+  </Node>
+  <Node Id="374" Name="stop_loading_screen_music" Class="_comment" pos="-50,30,0" flags="0"/>
+  <Node Id="375" Class="Audio:Trigger" pos="200,1590,0" flags="0">
+   <Inputs entityId="0" audioTrigger_PlayTrigger="Play_m_global_menu_ingame" audioTrigger_StopTrigger="Stop_m_global_menu_ingame"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="18" nodeOut="1" portIn="in1" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="7" nodeOut="6" portIn="unload" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="36" nodeOut="6" portIn="Val3" portOut="Image" enabled="1"/>
+  <Edge nodeIn="36" nodeOut="6" portIn="Val1" portOut="Level" enabled="1"/>
+  <Edge nodeIn="36" nodeOut="6" portIn="Val2" portOut="Video" enabled="1"/>
+  <Edge nodeIn="36" nodeOut="6" portIn="Set" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="75" nodeOut="6" portIn="Set" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="367" nodeOut="6" portIn="Play" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="371" nodeOut="6" portIn="Play" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="338" nodeOut="11" portIn="Start" portOut="onUnload" enabled="1"/>
+  <Edge nodeIn="18" nodeOut="14" portIn="in2" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="325" nodeOut="14" portIn="input" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="308" nodeOut="18" portIn="Start" portOut="out" enabled="1"/>
+  <Edge nodeIn="363" nodeOut="18" portIn="Play" portOut="out" enabled="1"/>
+  <Edge nodeIn="329" nodeOut="24" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="24" nodeOut="25" portIn="in2" portOut="output" enabled="1"/>
+  <Edge nodeIn="337" nodeOut="33" portIn="Start" portOut="onShow" enabled="1"/>
+  <Edge nodeIn="20" nodeOut="34" portIn="Start" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="197" nodeOut="34" portIn="in2" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="331" nodeOut="34" portIn="Enabled" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="333" nodeOut="34" portIn="true" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="351" nodeOut="34" portIn="update" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="370" nodeOut="34" portIn="Play" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="375" nodeOut="34" portIn="Play" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="19" nodeOut="35" portIn="unload" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="33" nodeOut="35" portIn="init" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="33" nodeOut="35" portIn="show" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="333" nodeOut="35" portIn="false" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="359" nodeOut="35" portIn="init" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="359" nodeOut="35" portIn="show" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="375" nodeOut="35" portIn="Stop" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="9" nodeOut="36" portIn="Args" portOut="Array" enabled="1"/>
+  <Edge nodeIn="9" nodeOut="36" portIn="Start" portOut="OnSet" enabled="1"/>
+  <Edge nodeIn="58" nodeOut="36" portIn="Args" portOut="Array" enabled="1"/>
+  <Edge nodeIn="58" nodeOut="36" portIn="Start" portOut="OnSet" enabled="1"/>
+  <Edge nodeIn="24" nodeOut="60" portIn="in1" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="373" nodeOut="60" portIn="Play" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="18" nodeOut="62" portIn="in3" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="326" nodeOut="62" portIn="input" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="71" nodeOut="66" portIn="Val3" portOut="Image" enabled="1"/>
+  <Edge nodeIn="73" nodeOut="66" portIn="Set" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="76" nodeOut="66" portIn="Set" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="67" nodeOut="71" portIn="Args" portOut="Array" enabled="1"/>
+  <Edge nodeIn="67" nodeOut="71" portIn="Start" portOut="OnSet" enabled="1"/>
+  <Edge nodeIn="69" nodeOut="71" portIn="Start" portOut="OnSet" enabled="1"/>
+  <Edge nodeIn="71" nodeOut="73" portIn="Set" portOut="Out" enabled="1"/>
+  <Edge nodeIn="71" nodeOut="73" portIn="Val1" portOut="Out" enabled="1"/>
+  <Edge nodeIn="36" nodeOut="75" portIn="Val4" portOut="Out" enabled="1"/>
+  <Edge nodeIn="71" nodeOut="76" portIn="Val4" portOut="Out" enabled="1"/>
+  <Edge nodeIn="126" nodeOut="82" portIn="Val1" portOut="Id" enabled="1"/>
+  <Edge nodeIn="282" nodeOut="82" portIn="Val1" portOut="Id" enabled="1"/>
+  <Edge nodeIn="305" nodeOut="82" portIn="in1" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="299" nodeOut="102" portIn="set" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="197" nodeOut="106" portIn="in1" portOut="OnStart" enabled="1"/>
+  <Edge nodeIn="106" nodeOut="126" portIn="Args" portOut="Array" enabled="1"/>
+  <Edge nodeIn="211" nodeOut="161" portIn="true" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="285" nodeOut="165" portIn="in2" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="33" nodeOut="197" portIn="hide" portOut="out" enabled="1"/>
+  <Edge nodeIn="359" nodeOut="197" portIn="hide" portOut="out" enabled="1"/>
+  <Edge nodeIn="299" nodeOut="211" portIn="in" portOut="out" enabled="1"/>
+  <Edge nodeIn="126" nodeOut="280" portIn="Val2" portOut="Out" enabled="1"/>
+  <Edge nodeIn="305" nodeOut="280" portIn="in2" portOut="Out" enabled="1"/>
+  <Edge nodeIn="282" nodeOut="281" portIn="Val2" portOut="Out" enabled="1"/>
+  <Edge nodeIn="184" nodeOut="282" portIn="Args" portOut="Array" enabled="1"/>
+  <Edge nodeIn="280" nodeOut="283" portIn="Set" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="281" nodeOut="283" portIn="Set" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="285" nodeOut="283" portIn="in1" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="211" nodeOut="285" portIn="false" portOut="out" enabled="1"/>
+  <Edge nodeIn="106" nodeOut="291" portIn="Start" portOut="True" enabled="1"/>
+  <Edge nodeIn="184" nodeOut="291" portIn="Start" portOut="False" enabled="1"/>
+  <Edge nodeIn="291" nodeOut="299" portIn="Value" portOut="out" enabled="1"/>
+  <Edge nodeIn="126" nodeOut="305" portIn="Set" portOut="out" enabled="1"/>
+  <Edge nodeIn="282" nodeOut="305" portIn="Set" portOut="out" enabled="1"/>
+  <Edge nodeIn="11" nodeOut="329" portIn="unload" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="331" nodeOut="333" portIn="Dof_User_Active" portOut="out" enabled="1"/>
+  <Edge nodeIn="331" nodeOut="351" portIn="entityId" portOut="entityId" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

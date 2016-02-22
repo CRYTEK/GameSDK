@@ -1,0 +1,47 @@
+<UIElements name="Menus">
+
+	<UIElement name="Menu_Dialogs" mouseevents="1" keyevents="1" cursor="1" controller_input="1" events_exclusive="1">
+
+		<GFx file="Menus_Dialogs.gfx" layer="99">
+			<Constraints>
+				<Align mode="dynamic" valign="center" halign="center" scale="1" max="0"/>
+			</Constraints>
+		</GFx>
+
+		<functions>
+			<!-- Common stuff -->
+			<function name="AddDialog" funcname="addDialog" desc="Adds a dialog to the screen">
+				<param name="Id" desc="Dialog ID" type="int"/>
+				<param name="type" desc="Wait, Warning, Error, AcceptDecline, Confirm, Okay or Input" type="string"/>
+				<param name="Title" desc="" type="string"/>
+				<param name="Message" desc="" type="string"/>
+				<param name="Param1" desc="" type="string"/>
+				<param name="Param2" desc="" type="string"/>
+			</function>
+
+			<function name="RemoveDialog" funcname="removeDialog" desc="Removes a dialog from the screen">
+				<param name="Id" desc="Dialog ID" type="int"/>
+			</function>
+
+		</functions>
+
+		<events>
+
+			<event name="OnConfirm" fscommand="onConfirm" desc="">
+				<param name="Id" desc="Dialog ID" type="int"/>
+				<param name="Return" desc="Return value" type="int"/>
+				<param name="Param" desc="String result for input dialog e.g." type="string"/>
+			</event>
+
+			<event name="PlaySound" fscommand="FrontEnd_Move" desc=""/>
+
+		</events>
+
+		<variables>
+			<variable name="FadeInTime" varname="FadeInTime"/>
+			<variable name="FadeOutTime" varname="FadeOutTime"/>
+		</variables>
+
+	</UIElement>
+
+</UIElements>

@@ -1,0 +1,99 @@
+<Graph Description="" Group="MM_PagesMain" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="-440,-200,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="-160,-200,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_setPlayerNameTitle" ShowLine="1" MaxButtons="5" ButtonXPos="-250" ButtonYPos="0" ButtonOffset="40"/>
+  </Node>
+  <Node Id="30" Class="UI:Events:MainMenu:OnButton" pos="-440,280,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="IDD_OK"/>
+  </Node>
+  <Node Id="33" Name="Setup_page" Class="_commentbox" pos="-480,-272.60938,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="2000" Height="390"/>
+   <NodeSize Width="2000" Height="417.39063"/>
+  </Node>
+  <Node Id="34" Class="UI:Functions:MainMenu:AddBackButton" pos="540,-200,0" flags="0">
+   <Inputs instanceID="-1" id="MM_HostMP"/>
+  </Node>
+  <Node Id="35" Class="UI:Functions:MainMenu:AddTextField" pos="200,-200,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_PlayerName" tooltip="@ui_PlayerNameTT" consoleButtonCaption="@ui_Edit" isSending="0" id="IDD_PlayerName"/>
+  </Node>
+  <Node Id="40" Class="UI:Functions:MainMenu:AddApplyButton" pos="880,-200,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Ok" tooltip="@ui_Ok" id="IDD_OK"/>
+  </Node>
+  <Node Id="41" Name="Handle_events" Class="_commentbox" pos="-480,209.99983,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1400" Height="360"/>
+   <NodeSize Width="1400" Height="387.39063"/>
+  </Node>
+  <Node Id="83" Class="UI:Action:Control" pos="-160,440,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args=""/>
+  </Node>
+  <Node Id="91" Class="UI:Action:End" pos="220,440,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="93" Class="UI:Action:Start" pos="-440,440,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="94" Name="Use_default_event_state_as_well" Class="_comment" pos="-440,410,0" flags="0"/>
+  <Node Id="95" Class="UI:Functions:MP:SetPlayerName" pos="160,280,0" flags="0">
+   <Inputs Name="Dude"/>
+  </Node>
+  <Node Id="97" Class="UI:Action:End" pos="740,280,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="98" Class="UI:Functions:MainMenu:GetTextFieldText" pos="-160,320,0" flags="0">
+   <Inputs instanceID="-1" id="IDD_PlayerName"/>
+  </Node>
+  <Node Id="101" Class="UI:Functions:MP:GetPlayerName" pos="1200,-200,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="102" Class="UI:Events:MP:OnGetName" pos="1000,270,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="103" Class="UI:Functions:MainMenu:SetTextFieldText" pos="1300,270,0" flags="0">
+   <Inputs instanceID="-1" id="IDD_PlayerName" value=""/>
+  </Node>
+  <Node Id="104" Name="Setup_current_player_name" Class="_commentbox" pos="960,209.1302,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="660" Height="160"/>
+   <NodeSize Width="660" Height="187.39063"/>
+  </Node>
+  <Node Id="109" Class="UI:Action:Control" pos="440,280,0" flags="0">
+   <Inputs uiActions_UIAction="MM_HostMP" Strict="0" Args=""/>
+  </Node>
+  <Node Id="110" Class="UI:Util:Platform" pos="880,-60,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="119" Class="UI:Functions:MainMenu:AddActionButton" pos="1200,-80,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_XSelect"/>
+  </Node>
+  <Node Id="120" Class="UI:Functions:MainMenu:AddActionButton" pos="1200,20,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_PSSelect"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="0"/>
+  <Edge nodeIn="35" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="30" portIn="send" portOut="onEvent" enabled="0"/>
+  <Edge nodeIn="98" nodeOut="30" portIn="instanceID" portOut="instanceID" enabled="0"/>
+  <Edge nodeIn="98" nodeOut="30" portIn="Call" portOut="onEvent" enabled="0"/>
+  <Edge nodeIn="40" nodeOut="34" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="110" nodeOut="34" portIn="get" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="34" nodeOut="35" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="101" nodeOut="40" portIn="send" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="83" portIn="EndAction" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="93" portIn="Args" portOut="Args" enabled="0"/>
+  <Edge nodeIn="83" nodeOut="93" portIn="Start" portOut="StartAction" enabled="0"/>
+  <Edge nodeIn="109" nodeOut="95" portIn="Start" portOut="OnEvent" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="98" portIn="Name" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="103" nodeOut="102" portIn="value" portOut="Name" enabled="1"/>
+  <Edge nodeIn="103" nodeOut="102" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="97" nodeOut="109" portIn="EndAction" portOut="OnStart" enabled="1"/>
+  <Edge nodeIn="119" nodeOut="110" portIn="Call" portOut="IsXBoxOne" enabled="1"/>
+  <Edge nodeIn="120" nodeOut="110" portIn="Call" portOut="IsPS4" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

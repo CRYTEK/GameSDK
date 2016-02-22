@@ -1,0 +1,183 @@
+<Graph Description="" Group="HUD" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="14" Class="Minimap:PlayerPos" pos="-200,-280,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="16" Class="UI:Functions:HUD3D:SetupMap" pos="120,-40,0" flags="0">
+   <Inputs instanceID="-1" MapFile="" Width="0" Height="0"/>
+  </Node>
+  <Node Id="17" Class="Minimap:MapInfo" pos="-200,-40,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="18" Class="UI:Functions:HUD3D:SetPlayerPos" pos="120,-280,0" flags="0">
+   <Inputs instanceID="-1" X="0" Y="0" Rot="0"/>
+  </Node>
+  <Node Id="27" Class="UI:Action:Start" pos="-620,-140,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="29" Class="UI:Action:End" pos="120,220,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="30" Name="Setup_and_update_minimap" Class="_commentbox" pos="-660,-377.35876,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1040" Height="660"/>
+   <NodeSize Width="1040" Height="715.29749"/>
+  </Node>
+  <Node Id="31" Name="Start_this_action_will_enable_updated" Class="_comment" pos="-620,-170,0" flags="0"/>
+  <Node Id="32" Name="On_level_end_stop_this_action" Class="_comment" pos="-620,190,0" flags="0"/>
+  <Node Id="286" Class="UI:Events:System:OnGameplayEnded" pos="-620,220,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="287" Class="UI:Functions:HUD3D:ScaleMap" pos="120,-140,0" flags="0">
+   <Inputs instanceID="-1" Factor="0.5"/>
+  </Node>
+  <Node Id="288" Class="UI:Functions:HUD3D:AddRadarItem" pos="1360,-200,0" flags="0">
+   <Inputs instanceID="-1" ID="1" ItemType="Icon_Radar_Objective"/>
+  </Node>
+  <Node Id="293" Class="UI:Functions:HUD3D:RemoveRadarItem" pos="1360,-100,0" flags="0">
+   <Inputs instanceID="-1" ID="0"/>
+  </Node>
+  <Node Id="295" Class="UI:Functions:HUD3D:UpdateRadarItem" pos="1360,-20,0" flags="0">
+   <Inputs instanceID="-1" ID="0" X="0" Y="0" Rot="0"/>
+  </Node>
+  <Node Id="310" Class="Minimap:EntityPos" pos="1040,0,0" flags="0">
+   <Inputs entityId="0"/>
+  </Node>
+  <Node Id="325" Class="HUD:EntityTrackedListener" pos="480,-200,0" flags="0">
+   <Inputs MissionOnly="0" Class="MissionObjective" CustomClasses=""/>
+  </Node>
+  <Node Id="326" Class="UI:Functions:HUD3D:AddRadarItem" pos="1360,240,0" flags="0">
+   <Inputs instanceID="-1" ID="1" ItemType="grunt"/>
+  </Node>
+  <Node Id="327" Class="UI:Functions:HUD3D:RemoveRadarItem" pos="1360,340,0" flags="0">
+   <Inputs instanceID="-1" ID="0"/>
+  </Node>
+  <Node Id="328" Class="UI:Functions:HUD3D:UpdateRadarItem" pos="1360,420,0" flags="0">
+   <Inputs instanceID="-1" ID="0" X="0" Y="0" Rot="0"/>
+  </Node>
+  <Node Id="329" Class="Minimap:EntityPos" pos="1040,440,0" flags="0">
+   <Inputs entityId="0"/>
+  </Node>
+  <Node Id="330" Class="HUD:EntityTrackedListener" pos="480,240,0" flags="0">
+   <Inputs MissionOnly="0" Class="Human" CustomClasses=""/>
+  </Node>
+  <Node Id="331" Name="Radar_Icons_For_Mission_Objectives" Class="_commentbox" pos="400,-380.51358,0" flags="0">
+   <Inputs TextSize="1" Color="0.56681,0.442323,0.358654" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1650" Height="1370"/>
+   <NodeSize Width="1650" Height="1425.2975"/>
+  </Node>
+  <Node Id="332" Name="AI_Characters" Class="_commentbox" pos="440,139.48332,0" flags="0">
+   <Inputs TextSize="1" Color="0.701169,0.267358,0.267358" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1280" Height="370"/>
+   <NodeSize Width="1280" Height="425.29749"/>
+  </Node>
+  <Node Id="333" Name="Mission_Objective" Class="_commentbox" pos="440,-300.51611,0" flags="0">
+   <Inputs TextSize="1" Color="0.263175,0.632043,0.708298" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1280" Height="370"/>
+   <NodeSize Width="1280" Height="425.29749"/>
+  </Node>
+  <Node Id="337" Class="UI:Functions:HUD3D:AddRadarItem" pos="1600,680,0" flags="0">
+   <Inputs instanceID="-1" ID="1" ItemType="Icon_Radar_Enemy_Red_Edge"/>
+  </Node>
+  <Node Id="338" Class="UI:Functions:HUD3D:RemoveRadarItem" pos="1600,780,0" flags="0">
+   <Inputs instanceID="-1" ID="0"/>
+  </Node>
+  <Node Id="339" Class="UI:Functions:HUD3D:UpdateRadarItem" pos="1600,860,0" flags="0">
+   <Inputs instanceID="-1" ID="0" X="0" Y="0" Rot="0"/>
+  </Node>
+  <Node Id="340" Class="Minimap:EntityPos" pos="1280,880,0" flags="0">
+   <Inputs entityId="0"/>
+  </Node>
+  <Node Id="341" Class="HUD:EntityTrackedListener" pos="480,680,0" flags="0">
+   <Inputs MissionOnly="0" Class="CustomClasses" CustomClasses="Abrams,HMMWV,MH60_Blackhawk,SpeedBoat"/>
+  </Node>
+  <Node Id="342" Name="Vehicles" Class="_commentbox" pos="440,582.09351,0" flags="0">
+   <Inputs TextSize="1" Color="0.7593,0.541798,0.22331" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1560" Height="370"/>
+   <NodeSize Width="1560" Height="425.29749"/>
+  </Node>
+  <Node Id="348" Class="Logic:Any" pos="1280,820,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="349" Class="Logic:Any" pos="1040,380,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="350" Class="Logic:Any" pos="1040,-60,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="351" Name="Specify_&quot;CustomClasses&quot;_for_Class_input" Class="_comment" pos="480,760,0" flags="0"/>
+  <Node Id="352" Name="Comma_separated_vehicle_entities_listed_instead_of_one_rig_per_vehicle" Class="_comment" pos="480,790,0" flags="0"/>
+  <Node Id="353" Name="ItemType_is_the_name_of_the_flash_element_to_be_displayed_on_the_radar" Class="_comment" pos="1200,-230,0" flags="0"/>
+  <Node Id="354" Name="Need_delay_for_correct_chronological_updating" Class="_comment" pos="480,400,0" flags="0"/>
+  <Node Id="356" Class="UI:Util:UIDelay" pos="820,20,0" flags="0">
+   <Inputs delay="0.1"/>
+  </Node>
+  <Node Id="357" Class="UI:Util:UIDelay" pos="800,460,0" flags="0">
+   <Inputs delay="0.1"/>
+  </Node>
+  <Node Id="358" Class="UI:Util:UIDelay" pos="1060,900,0" flags="0">
+   <Inputs delay="0.1"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="18" nodeOut="14" portIn="Call" portOut="OnPosChange" enabled="1"/>
+  <Edge nodeIn="18" nodeOut="14" portIn="X" portOut="PosX" enabled="1"/>
+  <Edge nodeIn="18" nodeOut="14" portIn="Y" portOut="PosY" enabled="1"/>
+  <Edge nodeIn="18" nodeOut="14" portIn="Rot" portOut="Rotation" enabled="1"/>
+  <Edge nodeIn="16" nodeOut="17" portIn="Height" portOut="Height" enabled="1"/>
+  <Edge nodeIn="16" nodeOut="17" portIn="MapFile" portOut="MapFile" enabled="1"/>
+  <Edge nodeIn="16" nodeOut="17" portIn="Call" portOut="OnGet" enabled="1"/>
+  <Edge nodeIn="16" nodeOut="17" portIn="Width" portOut="Width" enabled="1"/>
+  <Edge nodeIn="14" nodeOut="27" portIn="Enable" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="14" nodeOut="27" portIn="Get" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="17" nodeOut="27" portIn="Get" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="287" nodeOut="27" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="29" nodeOut="286" portIn="EndAction" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="295" nodeOut="310" portIn="Call" portOut="OnPosChange" enabled="1"/>
+  <Edge nodeIn="295" nodeOut="310" portIn="X" portOut="PosX" enabled="1"/>
+  <Edge nodeIn="295" nodeOut="310" portIn="Y" portOut="PosY" enabled="1"/>
+  <Edge nodeIn="295" nodeOut="310" portIn="Rot" portOut="Rotation" enabled="1"/>
+  <Edge nodeIn="288" nodeOut="325" portIn="Call" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="293" nodeOut="325" portIn="Call" portOut="EntityRemoved" enabled="1"/>
+  <Edge nodeIn="310" nodeOut="325" portIn="Enable" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="310" nodeOut="325" portIn="Disable" portOut="EntityRemoved" enabled="1"/>
+  <Edge nodeIn="350" nodeOut="325" portIn="in1" portOut="Entity" enabled="1"/>
+  <Edge nodeIn="356" nodeOut="325" portIn="in" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="328" nodeOut="329" portIn="Call" portOut="OnPosChange" enabled="1"/>
+  <Edge nodeIn="328" nodeOut="329" portIn="X" portOut="PosX" enabled="1"/>
+  <Edge nodeIn="328" nodeOut="329" portIn="Y" portOut="PosY" enabled="1"/>
+  <Edge nodeIn="328" nodeOut="329" portIn="Rot" portOut="Rotation" enabled="1"/>
+  <Edge nodeIn="326" nodeOut="330" portIn="Call" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="327" nodeOut="330" portIn="Call" portOut="EntityRemoved" enabled="1"/>
+  <Edge nodeIn="329" nodeOut="330" portIn="Enable" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="329" nodeOut="330" portIn="Disable" portOut="EntityRemoved" enabled="1"/>
+  <Edge nodeIn="349" nodeOut="330" portIn="in1" portOut="Entity" enabled="1"/>
+  <Edge nodeIn="357" nodeOut="330" portIn="in" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="339" nodeOut="340" portIn="Call" portOut="OnPosChange" enabled="1"/>
+  <Edge nodeIn="339" nodeOut="340" portIn="X" portOut="PosX" enabled="1"/>
+  <Edge nodeIn="339" nodeOut="340" portIn="Y" portOut="PosY" enabled="1"/>
+  <Edge nodeIn="339" nodeOut="340" portIn="Rot" portOut="Rotation" enabled="1"/>
+  <Edge nodeIn="337" nodeOut="341" portIn="Call" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="338" nodeOut="341" portIn="Call" portOut="EntityRemoved" enabled="1"/>
+  <Edge nodeIn="340" nodeOut="341" portIn="Enable" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="340" nodeOut="341" portIn="Disable" portOut="EntityRemoved" enabled="1"/>
+  <Edge nodeIn="348" nodeOut="341" portIn="in1" portOut="Entity" enabled="1"/>
+  <Edge nodeIn="358" nodeOut="341" portIn="in" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="337" nodeOut="348" portIn="ID" portOut="out" enabled="1"/>
+  <Edge nodeIn="338" nodeOut="348" portIn="ID" portOut="out" enabled="1"/>
+  <Edge nodeIn="339" nodeOut="348" portIn="ID" portOut="out" enabled="1"/>
+  <Edge nodeIn="340" nodeOut="348" portIn="entityId" portOut="out" enabled="1"/>
+  <Edge nodeIn="326" nodeOut="349" portIn="ID" portOut="out" enabled="1"/>
+  <Edge nodeIn="327" nodeOut="349" portIn="ID" portOut="out" enabled="1"/>
+  <Edge nodeIn="328" nodeOut="349" portIn="ID" portOut="out" enabled="1"/>
+  <Edge nodeIn="329" nodeOut="349" portIn="entityId" portOut="out" enabled="1"/>
+  <Edge nodeIn="288" nodeOut="350" portIn="ID" portOut="out" enabled="1"/>
+  <Edge nodeIn="293" nodeOut="350" portIn="ID" portOut="out" enabled="1"/>
+  <Edge nodeIn="295" nodeOut="350" portIn="ID" portOut="out" enabled="1"/>
+  <Edge nodeIn="310" nodeOut="350" portIn="entityId" portOut="out" enabled="1"/>
+  <Edge nodeIn="310" nodeOut="356" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="329" nodeOut="357" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="340" nodeOut="358" portIn="Get" portOut="out" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

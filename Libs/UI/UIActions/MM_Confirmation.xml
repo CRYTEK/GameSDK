@@ -1,0 +1,38 @@
+<Graph Description="" Group="MM_Common" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="70" Class="UI:Functions:MainMenu:ShowConfirmation" pos="120,-60,0" flags="0">
+   <Inputs instanceID="-1" message="Apply Changes?" btn1Caption="Ok" btn2Caption="Cancel" id="IDD_CONFIRM"/>
+  </Node>
+  <Node Id="71" Class="UI:Action:Start" pos="-400,-60,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="72" Class="UI:Events:MainMenu:OnConfirm" pos="-400,100,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="IDD_CONFIRM"/>
+  </Node>
+  <Node Id="73" Class="UI:Functions:MainMenu:HideConfirmation" pos="-100,100,0" flags="0">
+   <Inputs instanceID="-1"/>
+  </Node>
+  <Node Id="77" Class="UI:Action:End" pos="260,100,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="78" Name="Confirmation_Dialog" Class="_commentbox" pos="-440,-130,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="880" Height="330"/>
+   <NodeSize Width="880" Height="357.39063"/>
+  </Node>
+  <Node Id="79" Class="UI:Util:FromArray" pos="-100,-20,0" flags="0" InHideMask="1" OutHideMask="63">
+   <Inputs Array=""/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="70" nodeOut="71" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="79" nodeOut="71" portIn="Array" portOut="Args" enabled="1"/>
+  <Edge nodeIn="73" nodeOut="72" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="77" nodeOut="72" portIn="Args" portOut="Accepted" enabled="1"/>
+  <Edge nodeIn="77" nodeOut="73" portIn="EndAction" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="70" nodeOut="79" portIn="message" portOut="Val1" enabled="1"/>
+  <Edge nodeIn="70" nodeOut="79" portIn="btn1Caption" portOut="Val2" enabled="1"/>
+  <Edge nodeIn="70" nodeOut="79" portIn="btn2Caption" portOut="Val3" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

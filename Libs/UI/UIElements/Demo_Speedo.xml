@@ -1,0 +1,41 @@
+<UIElements name="DEMO_SPEEDO">
+
+	<UIElement name="Demo_Speedo" >
+
+		<GFx file="FlashAssets/demo/Demo_Speedo.gfx" layer="0">
+			<Constraints>
+				<Align mode="dynamic" valign="right" halign="top" scale="0"/>
+			</Constraints>
+		</GFx>
+
+		<variables>
+		</variables>
+
+		<arrays>
+			<array name="NewGearSpeeds" varname="_root.g_newGearSpeedArray"/>
+		</arrays>
+
+		<functions>
+			<function name="UpdateSpeedometer" funcname="UpdateSpeedometer" >
+				<param name="_speed" desc="Current Speed in default game units (mps)" type="float"/>
+			</function>
+
+			<function name="SetSpeedUnits" funcname="SetSpeedUnits" >
+				<param name="_speedUnits" desc="Speedometer Units to convert to from current speed (ms, kmh, mph or kn)" type="string"/>
+			</function>
+
+			<function name="AllowFakeRevsAndGears" funcname="AllowFakeRevsAndGears" >
+				<param name="_allowFakeRevsAndGears" desc="When this is true, revs and gears will be faked based on the current speed" type="int"/>
+			</function>
+
+			<function name="SetFakeGearSpeeds" funcname="SetFakeGearSpeeds" >
+			</function>
+		</functions>
+
+
+		<events>
+		</events>
+
+	</UIElement>
+
+</UIElements>

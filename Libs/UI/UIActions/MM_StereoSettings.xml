@@ -1,0 +1,254 @@
+<Graph Description="" Group="MM_PagesShared" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="-400,80,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="2" Class="UI:Action:End" pos="1120,1130,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="-120,80,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_StereoSettingsTitle" ShowLine="1" MaxButtons="5" ButtonXPos="-500" ButtonYPos="0" ButtonOffset="40"/>
+  </Node>
+  <Node Id="6" Class="UI:Functions:MainMenu:AddBackButton" pos="1640,480,0" flags="0">
+   <Inputs instanceID="-1" id="MM_GraphicsSettings"/>
+  </Node>
+  <Node Id="7" Class="UI:Functions:Settings:GetResolutionList" pos="2000,560,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="9" Class="UI:Functions:MainMenu:AddSwitch" pos="560,80,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_StereoFlipEyes" tooltip="@ui_StereoFlipEyesTT" value="" id="SW_FLIPEYES"/>
+  </Node>
+  <Node Id="21" Class="UI:Functions:MainMenu:AddApplyButton" pos="1640,560,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Apply" tooltip="@ui_ApplyTT" id="ID_APPLY_STEREO"/>
+  </Node>
+  <Node Id="29" Name="Setup_page" Class="_commentbox" pos="-440,-50.000015,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="3080" Height="800"/>
+   <NodeSize Width="3080" Height="882.17188"/>
+  </Node>
+  <Node Id="39" Name="Handle_events" Class="_commentbox" pos="-450,830,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1960" Height="1460"/>
+   <NodeSize Width="1960" Height="1542.1719"/>
+  </Node>
+  <Node Id="49" Class="UI:Functions:MainMenu:GetControlVal" pos="0,1330,0" flags="0">
+   <Inputs instanceID="0" id="SW_FLIPEYES"/>
+  </Node>
+  <Node Id="52" Class="UI:Functions:Settings:GetCurrGraphics" pos="2320,560,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="62" Class="UI:Action:Control" pos="840,1130,0" flags="0">
+   <Inputs uiActions_UIAction="MM_Main" Strict="0" Args=""/>
+  </Node>
+  <Node Id="67" Class="UI:Events:MainMenu:OnButton" pos="-400,960,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="ID_RESET_STEREO"/>
+  </Node>
+  <Node Id="70" Class="UI:Functions:Settings:GetCurrGraphics" pos="0,960,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="73" Class="UI:Events:MainMenu:OnButton" pos="-400,1330,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="ID_APPLY_STEREO"/>
+  </Node>
+  <Node Id="79" Class="UI:Action:Control" pos="0,1210,0" flags="0">
+   <Inputs uiActions_UIAction="MM_Confirmation" Strict="0" Args="@ui_ApplyChanges|@ui_Yes|@ui_No"/>
+  </Node>
+  <Node Id="80" Class="Logic:Condition" pos="440,1210,0" flags="0">
+   <Inputs Condition="0"/>
+  </Node>
+  <Node Id="86" Class="UI:Functions:MainMenu:GetControlVal" pos="0,1810,0" flags="0">
+   <Inputs instanceID="0" id="SW_STEREO3D"/>
+  </Node>
+  <Node Id="89" Name="Reset_to_current_state" Class="_comment" pos="-400,930,0" flags="0"/>
+  <Node Id="90" Name="Apply_Stereo_Changes" Class="_comment" pos="-400,1300,0" flags="0"/>
+  <Node Id="91" Class="UI:Action:End" pos="380,2210,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="93" Class="UI:Action:Start" pos="-400,2210,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="94" Name="Use_default_event_state_as_well" Class="_comment" pos="-400,2180,0" flags="0"/>
+  <Node Id="95" Class="UI:Action:Control" pos="0,2210,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args=""/>
+  </Node>
+  <Node Id="96" Class="UI:Action:Start" pos="440,1130,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="97" Class="UI:Functions:MainMenu:AddSwitch" pos="1240,80,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Stereo3D" tooltip="@ui_Stereo3DTT" value="" id="SW_STEREO3D"/>
+  </Node>
+  <Node Id="98" Class="UI:Functions:MainMenu:AddSwitchOption" pos="1240,240,0" flags="0">
+   <Inputs instanceID="-1" id="SW_STEREO3D" caption="@ui_StereoDisabled" value="0"/>
+  </Node>
+  <Node Id="99" Class="UI:Functions:MainMenu:AddSwitchOption" pos="1240,360,0" flags="0">
+   <Inputs instanceID="-1" id="SW_STEREO3D" caption="@ui_StereoSideBySide" value="1"/>
+  </Node>
+  <Node Id="101" Class="UI:Functions:MainMenu:AddSwitchOption" pos="1240,480,0" flags="0">
+   <Inputs instanceID="-1" id="SW_STEREO3D" caption="@ui_StereoInterlaced" value="2"/>
+  </Node>
+  <Node Id="102" Class="Debug:ConsoleVariable" pos="1120,1330,0" flags="0">
+   <Inputs CVar="r_StereoFlipEyes" Value=""/>
+  </Node>
+  <Node Id="119" Class="UI:Functions:MainMenu:AddActionButton" pos="2320,620,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_XSelect"/>
+  </Node>
+  <Node Id="120" Class="UI:Functions:MainMenu:AddActionButton" pos="2320,720,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_PSSelect"/>
+  </Node>
+  <Node Id="121" Class="UI:Functions:MainMenu:GetControlVal" pos="0,1410,0" flags="0">
+   <Inputs instanceID="-1" id="ID_STEREOSTRENGTH"/>
+  </Node>
+  <Node Id="123" Class="UI:Util:Platform" pos="2000,640,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="209" Class="UI:Functions:MainMenu:AddSeparator" pos="240,80,0" flags="0">
+   <Inputs instanceID="-1" Caption="" ID="" Tooltip=""/>
+  </Node>
+  <Node Id="210" Class="UI:Functions:MainMenu:AddDefaultsButton" pos="1640,680,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Reset" tooltip="@ui_ResetTT" id="ID_RESET_STEREO"/>
+  </Node>
+  <Node Id="211" Class="UI:Functions:MainMenu:AddSwitchOption" pos="560,240,0" flags="0">
+   <Inputs instanceID="-1" id="SW_FLIPEYES" caption="@ui_Yes" value="1"/>
+  </Node>
+  <Node Id="212" Class="UI:Functions:MainMenu:AddSwitchOption" pos="560,360,0" flags="0">
+   <Inputs instanceID="-1" id="SW_FLIPEYES" caption="@ui_No" value="0"/>
+  </Node>
+  <Node Id="213" Class="UI:Functions:MainMenu:AddSlider" pos="900,80,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_StereoStrength" tooltip="@ui_StereoStrengthTT" min="0.5" max="1.5" step="0.1" value="0" id="ID_STEREOSTRENGTH"/>
+  </Node>
+  <Node Id="215" Class="Debug:ConsoleVariable" pos="1120,1430,0" flags="0">
+   <Inputs CVar="r_StereoStrength" Value=""/>
+  </Node>
+  <Node Id="218" Class="Debug:ConsoleVariable" pos="1120,1730,0" flags="0">
+   <Inputs CVar="r_StereoOutput" Value=""/>
+  </Node>
+  <Node Id="219" Class="Math:Equal" pos="460,1890,0" flags="0">
+   <Inputs A="0" B="0"/>
+  </Node>
+  <Node Id="220" Class="Math:Equal" pos="460,1810,0" flags="0">
+   <Inputs A="1" B="0"/>
+  </Node>
+  <Node Id="221" Class="Math:Equal" pos="460,1730,0" flags="0">
+   <Inputs A="2" B="0"/>
+  </Node>
+  <Node Id="222" Class="Debug:ConsoleVariable" pos="1120,1830,0" flags="0">
+   <Inputs CVar="r_StereoDevice" Value=""/>
+  </Node>
+  <Node Id="223" Class="Debug:ConsoleVariable" pos="1120,1930,0" flags="0">
+   <Inputs CVar="r_StereoMode" Value=""/>
+  </Node>
+  <Node Id="225" Name="Disabled" Class="_comment" pos="460,1970,0" flags="0"/>
+  <Node Id="227" Name="Side-By-Side" Class="_comment" pos="320,1840,0" flags="0"/>
+  <Node Id="228" Name="Interlaced" Class="_comment" pos="460,1700,0" flags="0"/>
+  <Node Id="246" Class="Math:SetNumber" pos="680,2070,0" flags="0">
+   <Inputs in="0"/>
+  </Node>
+  <Node Id="247" Class="Math:SetNumber" pos="680,2010,0" flags="0">
+   <Inputs in="100"/>
+  </Node>
+  <Node Id="248" Class="Math:SetNumber" pos="680,1950,0" flags="0">
+   <Inputs in="0"/>
+  </Node>
+  <Node Id="249" Class="Logic:Any" pos="930,1930,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="250" Class="Logic:Any" pos="930,1830,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="251" Class="Logic:Any" pos="930,1730,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="252" Class="Math:SetNumber" pos="680,1890,0" flags="0">
+   <Inputs in="2"/>
+  </Node>
+  <Node Id="253" Class="Math:SetNumber" pos="680,1830,0" flags="0">
+   <Inputs in="3"/>
+  </Node>
+  <Node Id="254" Class="Math:SetNumber" pos="680,1770,0" flags="0">
+   <Inputs in="4"/>
+  </Node>
+  <Node Id="255" Class="Math:SetNumber" pos="680,1710,0" flags="0">
+   <Inputs in="2"/>
+  </Node>
+  <Node Id="256" Class="Math:SetNumber" pos="680,1650,0" flags="0">
+   <Inputs in="1"/>
+  </Node>
+  <Node Id="257" Class="Math:SetNumber" pos="680,1590,0" flags="0">
+   <Inputs in="5"/>
+  </Node>
+  <Node Id="258" Class="Logic:Any" pos="930,1670,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="259" Name="Flip_Eyes" Class="_comment" pos="560,50,0" flags="0"/>
+  <Node Id="260" Name="Stereo_Strength" Class="_comment" pos="900,50,0" flags="0"/>
+  <Node Id="261" Name="Stereo_3D" Class="_comment" pos="1240,50,0" flags="0"/>
+  <Node Id="263" Name="Back/Default/Apply" Class="_comment" pos="1640,450,0" flags="0"/>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="209" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="21" nodeOut="6" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="52" nodeOut="7" portIn="send" portOut="OnEvent" enabled="0"/>
+  <Edge nodeIn="211" nodeOut="9" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="7" nodeOut="21" portIn="send" portOut="OnCall" enabled="0"/>
+  <Edge nodeIn="123" nodeOut="21" portIn="get" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="102" nodeOut="49" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="2" nodeOut="62" portIn="EndAction" portOut="OnStart" enabled="1"/>
+  <Edge nodeIn="70" nodeOut="67" portIn="send" portOut="onEvent" enabled="0"/>
+  <Edge nodeIn="49" nodeOut="73" portIn="instanceID" portOut="instanceID" enabled="1"/>
+  <Edge nodeIn="49" nodeOut="73" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="79" nodeOut="73" portIn="Start" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="86" nodeOut="73" portIn="instanceID" portOut="instanceID" enabled="1"/>
+  <Edge nodeIn="86" nodeOut="73" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="121" nodeOut="73" portIn="instanceID" portOut="instanceID" enabled="1"/>
+  <Edge nodeIn="121" nodeOut="73" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="80" nodeOut="79" portIn="Condition" portOut="Args" enabled="1"/>
+  <Edge nodeIn="80" nodeOut="79" portIn="In" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="62" nodeOut="80" portIn="Start" portOut="OnTrue" enabled="1"/>
+  <Edge nodeIn="102" nodeOut="80" portIn="Set" portOut="OnTrue" enabled="1"/>
+  <Edge nodeIn="215" nodeOut="80" portIn="Set" portOut="OnTrue" enabled="1"/>
+  <Edge nodeIn="258" nodeOut="80" portIn="in1" portOut="OnTrue" enabled="1"/>
+  <Edge nodeIn="219" nodeOut="86" portIn="B" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="220" nodeOut="86" portIn="B" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="221" nodeOut="86" portIn="B" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="93" portIn="Args" portOut="Args" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="93" portIn="Start" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="95" portIn="EndAction" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="62" nodeOut="96" portIn="uiActions_UIAction" portOut="Args" enabled="1"/>
+  <Edge nodeIn="98" nodeOut="97" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="99" nodeOut="98" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="101" nodeOut="99" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="6" nodeOut="101" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="215" nodeOut="121" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="119" nodeOut="123" portIn="Call" portOut="IsXBoxOne" enabled="1"/>
+  <Edge nodeIn="120" nodeOut="123" portIn="Call" portOut="IsPS4" enabled="1"/>
+  <Edge nodeIn="9" nodeOut="209" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="212" nodeOut="211" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="213" nodeOut="212" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="97" nodeOut="213" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="246" nodeOut="219" portIn="set" portOut="true" enabled="1"/>
+  <Edge nodeIn="247" nodeOut="219" portIn="set" portOut="true" enabled="1"/>
+  <Edge nodeIn="248" nodeOut="219" portIn="set" portOut="true" enabled="1"/>
+  <Edge nodeIn="252" nodeOut="220" portIn="set" portOut="true" enabled="1"/>
+  <Edge nodeIn="253" nodeOut="220" portIn="set" portOut="true" enabled="1"/>
+  <Edge nodeIn="254" nodeOut="220" portIn="set" portOut="true" enabled="1"/>
+  <Edge nodeIn="255" nodeOut="221" portIn="set" portOut="true" enabled="1"/>
+  <Edge nodeIn="256" nodeOut="221" portIn="set" portOut="true" enabled="1"/>
+  <Edge nodeIn="257" nodeOut="221" portIn="set" portOut="true" enabled="1"/>
+  <Edge nodeIn="249" nodeOut="246" portIn="in1" portOut="out" enabled="1"/>
+  <Edge nodeIn="250" nodeOut="247" portIn="in1" portOut="out" enabled="1"/>
+  <Edge nodeIn="251" nodeOut="248" portIn="in1" portOut="out" enabled="1"/>
+  <Edge nodeIn="223" nodeOut="249" portIn="Value" portOut="out" enabled="1"/>
+  <Edge nodeIn="222" nodeOut="250" portIn="Value" portOut="out" enabled="1"/>
+  <Edge nodeIn="218" nodeOut="251" portIn="Value" portOut="out" enabled="1"/>
+  <Edge nodeIn="249" nodeOut="252" portIn="in2" portOut="out" enabled="1"/>
+  <Edge nodeIn="250" nodeOut="253" portIn="in2" portOut="out" enabled="1"/>
+  <Edge nodeIn="251" nodeOut="254" portIn="in2" portOut="out" enabled="1"/>
+  <Edge nodeIn="249" nodeOut="255" portIn="in3" portOut="out" enabled="1"/>
+  <Edge nodeIn="250" nodeOut="256" portIn="in3" portOut="out" enabled="1"/>
+  <Edge nodeIn="251" nodeOut="257" portIn="in3" portOut="out" enabled="1"/>
+  <Edge nodeIn="218" nodeOut="258" portIn="Set" portOut="out" enabled="1"/>
+  <Edge nodeIn="222" nodeOut="258" portIn="Set" portOut="out" enabled="1"/>
+  <Edge nodeIn="223" nodeOut="258" portIn="Set" portOut="out" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

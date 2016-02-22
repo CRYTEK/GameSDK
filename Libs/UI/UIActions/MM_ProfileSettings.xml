@@ -1,0 +1,129 @@
+<Graph Description="" Group="MM_PagesShared" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="-700,260,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="-440,-160,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_ProfileSettingsTitle" ShowLine="1" MaxButtons="2" ButtonXPos="-500" ButtonYPos="-150" ButtonOffset="40"/>
+  </Node>
+  <Node Id="29" Name="Setup_page" Class="_commentbox" pos="-740,-230.00159,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="2900" Height="800"/>
+   <NodeSize Width="2900" Height="827.39063"/>
+  </Node>
+  <Node Id="91" Class="UI:Action:End" pos="80,720,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="93" Class="UI:Action:Start" pos="-700,720,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="94" Name="Use_default_event_state_as_well" Class="_comment" pos="-700,690,0" flags="0"/>
+  <Node Id="95" Class="UI:Action:Control" pos="-300,720,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args=""/>
+  </Node>
+  <Node Id="103" Class="UI:Functions:MainMenu:AddImage" pos="600,120,0" flags="0">
+   <Inputs instanceID="-1" path="Textures/defaults/logo_vertical_black.dds" id="ID_IMAGE_CRYENGINE" x="230" y="315" w="200" h="200"/>
+  </Node>
+  <Node Id="108" Class="UI:Events:MainMenu:OnControlChanged" pos="-700,1140,0" flags="0">
+   <Inputs instanceID="-1" Port="-1" Idx="IDD_AvatarSwitch"/>
+  </Node>
+  <Node Id="129" Class="UI:Functions:MainMenu:GetControlVal" pos="80,1140,0" flags="0">
+   <Inputs instanceID="-1" id="IDD_AvatarSwitch"/>
+  </Node>
+  <Node Id="156" Class="UI:Functions:MainMenu:ShowImage" pos="420,1140,0" flags="0">
+   <Inputs instanceID="-1" id="Xbox_OnFoot" fadeTime="0.25"/>
+  </Node>
+  <Node Id="167" Class="UI:Functions:MainMenu:HideImage" pos="-300,1200,0" flags="0">
+   <Inputs instanceID="-1" id="" fadeTime="0.25"/>
+  </Node>
+  <Node Id="202" Class="UI:Functions:MainMenu:AddSeparator" pos="-80,-160,0" flags="0">
+   <Inputs instanceID="-1" Caption="" ID="" Tooltip=""/>
+  </Node>
+  <Node Id="204" Class="UI:Functions:MainMenu:AddTextField" pos="240,-160,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_SetPlayerName" tooltip="@ui_SetPlayerNameTT" consoleButtonCaption="@ui_Edit" isSending="0" id="IDD_PlayerNameTXT"/>
+  </Node>
+  <Node Id="206" Class="UI:Functions:MainMenu:AddBackButton" pos="1560,240,0" flags="0">
+   <Inputs instanceID="-1" id=""/>
+  </Node>
+  <Node Id="208" Class="UI:Functions:MainMenu:AddApplyButton" pos="1560,320,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Apply" tooltip="@ui_ApplyTT" id="IDD_ProfileApply"/>
+  </Node>
+  <Node Id="214" Name="Handle_Events" Class="_commentbox" pos="-740,648.26038,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1460" Height="680"/>
+   <NodeSize Width="1460" Height="707.39063"/>
+  </Node>
+  <Node Id="216" Class="UI:Functions:MainMenu:AddSwitch" pos="600,-160,0" flags="0">
+   <Inputs instanceID="-1" caption="Player Avatar" tooltip="Set Avatar Image" value="" id="IDD_AvatarSwitch"/>
+  </Node>
+  <Node Id="218" Class="UI:Functions:MainMenu:AddSwitchOption" pos="600,0,0" flags="0">
+   <Inputs instanceID="-1" id="IDD_AvatarSwitch" caption="CRYENGINE Avatar" value="ID_IMAGE_CRYENGINE"/>
+  </Node>
+  <Node Id="219" Class="UI:Functions:MainMenu:AddSwitchOption" pos="1040,0,0" flags="0">
+   <Inputs instanceID="-1" id="IDD_AvatarSwitch" caption="Crytek Avatar" value="ID_IMAGE_CRYTEK"/>
+  </Node>
+  <Node Id="241" Class="UI:Functions:MainMenu:AddDefaultsButton" pos="1560,440,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Reset" tooltip="@ui_ResetTT" id="IDD_ProfileReset"/>
+  </Node>
+  <Node Id="243" Class="UI:Functions:MP:GetPlayerName" pos="1900,320,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="245" Class="UI:Events:MP:OnGetName" pos="-700,880,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="247" Class="UI:Functions:MainMenu:SetTextFieldText" pos="-300,880,0" flags="0">
+   <Inputs instanceID="-1" id="IDD_PlayerNameTXT" value=""/>
+  </Node>
+  <Node Id="251" Class="UI:Functions:MP:SetPlayerName" pos="80,1000,0" flags="0">
+   <Inputs Name=""/>
+  </Node>
+  <Node Id="252" Name="Back/Apply/Default" Class="_comment" pos="1560,210,0" flags="0"/>
+  <Node Id="253" Name="Avatars" Class="_comment" pos="600,-190,0" flags="0"/>
+  <Node Id="254" Name="Name" Class="_comment" pos="240,-190,0" flags="0"/>
+  <Node Id="262" Class="UI:Functions:MainMenu:AddImage" pos="1040,120,0" flags="0">
+   <Inputs instanceID="-1" path="Textures/defaults/logo_vertical_black_inverted.dds" id="ID_IMAGE_CRYTEK" x="230" y="315" w="200" h="200"/>
+  </Node>
+  <Node Id="268" Class="UI:Util:UIDelay" pos="-300,1140,0" flags="0">
+   <Inputs delay="0.01"/>
+  </Node>
+  <Node Id="269" Name="Queue_current_image_for_hiding_so_they_don&apos;t_overlap" Class="_comment" pos="-300,1300,0" flags="0"/>
+  <Node Id="270" Name="Delay_needed_to_display_image" Class="_comment" pos="-300,1110,0" flags="0"/>
+  <Node Id="271" Name="Set_Playername_in_Text_field" Class="_comment" pos="-700,850,0" flags="0"/>
+  <Node Id="273" Class="UI:Events:MainMenu:OnButton" pos="-700,1000,0" flags="0">
+   <Inputs instanceID="-1" Port="-1" Idx="IDD_ProfileApply"/>
+  </Node>
+  <Node Id="275" Class="UI:Functions:MainMenu:GetControlVal" pos="-300,1000,0" flags="0">
+   <Inputs instanceID="-1" id="IDD_PlayerNameTXT"/>
+  </Node>
+  <Node Id="278" Name="Reset_disabled" Class="_comment" pos="1560,550,0" flags="0"/>
+  <Node Id="279" Name="On_apply,_get_name_then_set" Class="_comment" pos="-700,970,0" flags="0"/>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="206" nodeOut="1" portIn="id" portOut="Args" enabled="1"/>
+  <Edge nodeIn="202" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="93" portIn="Start" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="95" portIn="EndAction" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="219" nodeOut="103" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="167" nodeOut="108" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="268" nodeOut="108" portIn="in" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="156" nodeOut="129" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="156" nodeOut="129" portIn="id" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="167" nodeOut="129" portIn="id" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="204" nodeOut="202" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="216" nodeOut="204" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="208" nodeOut="206" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="243" nodeOut="208" portIn="send" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="218" nodeOut="216" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="103" nodeOut="218" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="262" nodeOut="219" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="247" nodeOut="245" portIn="value" portOut="Name" enabled="1"/>
+  <Edge nodeIn="247" nodeOut="245" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="206" nodeOut="262" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="129" nodeOut="268" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="275" nodeOut="273" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="251" nodeOut="275" portIn="send" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="251" nodeOut="275" portIn="Name" portOut="ReturnVal" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

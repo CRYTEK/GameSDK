@@ -1,0 +1,74 @@
+<Graph Description="" Group="MM_Common" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="33" Name="Handle_default_events" Class="_commentbox" pos="-400,-290.27985,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="860" Height="720"/>
+   <NodeSize Width="860" Height="821.58032"/>
+  </Node>
+  <Node Id="61" Class="UI:Events:MainMenu:OnButton" pos="560,-30,0" flags="0">
+   <Inputs instanceID="-1" Port="-1" Idx=""/>
+  </Node>
+  <Node Id="65" Class="UI:Events:MainMenu:OnControlChanged" pos="560,170,0" flags="0">
+   <Inputs instanceID="-1" Port="-1" Idx=""/>
+  </Node>
+  <Node Id="69" Name="ATL_Triggers" Class="_commentbox" pos="510,-295.05975,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="680" Height="730"/>
+   <NodeSize Width="680" Height="831.58032"/>
+  </Node>
+  <Node Id="70" Class="UI:Events:MainMenu:OnConfirm" pos="560,370,0" flags="0">
+   <Inputs instanceID="-1" Port="-1" Idx=""/>
+  </Node>
+  <Node Id="82" Class="UI:Events:MainMenu:OnButton" pos="-360,-80,0" flags="0">
+   <Inputs instanceID="-1" Port="-1" Idx=""/>
+  </Node>
+  <Node Id="83" Class="UI:Action:Control" pos="60,-80,0" flags="0">
+   <Inputs uiActions_UIAction="" Strict="0" Args=""/>
+  </Node>
+  <Node Id="84" Class="UI:Action:End" pos="280,-80,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="86" Name="Start_UIAction_via_OnButton_event_\n(we_simply_assigned_the_UIAction_names_as_ID_to_the_buttons_which_should_change_the_menu_page)\nWe_pass_the_name_of_the_calling_UIAction_as_parameter_to_this_action,_which_can_be_used_to_determine_the_previous_UIAction" Class="_comment" pos="-360,-160,0" flags="0"/>
+  <Node Id="87" Name="We_want_to_leave_each_menu_state_if_the_MainMenu_gets_hidden" Class="_comment" pos="-360,270,0" flags="0"/>
+  <Node Id="88" Class="UI:Display:UIElementListener" pos="-360,120,0" flags="0">
+   <Inputs uiElements_Element="MainMenu" instanceID="-1"/>
+  </Node>
+  <Node Id="89" Class="UI:Action:End" pos="60,120,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="90" Class="UI:Action:Start" pos="-360,0,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="92" Class="UI:Events:LobbyMP:InviteAccepted" pos="-360,360,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="93" Class="UI:Action:Control" pos="60,360,0" flags="0">
+   <Inputs uiActions_UIAction="MM_LobbyJoin" Strict="0" Args="MM_JoinMP"/>
+  </Node>
+  <Node Id="334" Class="Audio:Trigger" pos="870,-80,0" flags="0">
+   <Inputs entityId="0" audioTrigger_PlayTrigger="Play_ui_menu_roll_over" audioTrigger_StopTrigger="do_nothing"/>
+  </Node>
+  <Node Id="335" Class="Audio:Trigger" pos="890,320,0" flags="0">
+   <Inputs entityId="0" audioTrigger_PlayTrigger="Play_ui_menu_confirm" audioTrigger_StopTrigger="do_nothing"/>
+  </Node>
+  <Node Id="336" Class="Audio:Trigger" pos="870,120,0" flags="0">
+   <Inputs entityId="0" audioTrigger_PlayTrigger="Play_ui_menu_controls" audioTrigger_StopTrigger="do_nothing"/>
+  </Node>
+  <Node Id="338" Name="controls_sounds_select" Class="_comment" pos="560,130,0" flags="0"/>
+  <Node Id="339" Name="button_sounds_confirm" Class="_comment" pos="560,340,0" flags="0"/>
+  <Node Id="340" Name="all_normal_buttons" Class="_comment" pos="560,-70,0" flags="0"/>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="334" nodeOut="61" portIn="Play" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="336" nodeOut="65" portIn="Play" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="335" nodeOut="70" portIn="Play" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="82" portIn="uiActions_UIAction" portOut="Id" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="82" portIn="Start" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="84" nodeOut="83" portIn="EndAction" portOut="OnStart" enabled="1"/>
+  <Edge nodeIn="89" nodeOut="88" portIn="EndAction" portOut="onHide" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="90" portIn="Args" portOut="Args" enabled="1"/>
+  <Edge nodeIn="89" nodeOut="90" portIn="Args" portOut="Args" enabled="1"/>
+  <Edge nodeIn="93" nodeOut="92" portIn="Start" portOut="onEvent" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

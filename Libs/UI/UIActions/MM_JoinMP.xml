@@ -1,0 +1,206 @@
+<Graph Description="" Group="MM_PagesMain" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="-4440,-520,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="-4160,-520,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_JoinMPTitle" ShowLine="1" MaxButtons="5" ButtonXPos="-500" ButtonYPos="0" ButtonOffset="40"/>
+  </Node>
+  <Node Id="30" Class="UI:Events:MainMenu:OnButton" pos="-4440,360,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="MM_LobbyJoin"/>
+  </Node>
+  <Node Id="33" Name="Setup_page" Class="_commentbox" pos="-4480,-588.94788,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="3280" Height="650"/>
+   <NodeSize Width="3280" Height="677.64063"/>
+  </Node>
+  <Node Id="34" Class="UI:Functions:MainMenu:AddBackButton" pos="-2200,-240,0" flags="0">
+   <Inputs instanceID="-1" id="MM_MultiPlayer"/>
+  </Node>
+  <Node Id="35" Class="UI:Functions:MainMenu:AddTextField" pos="-3520,-520,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_PlayerName" tooltip="@ui_PlayerNameTT" consoleButtonCaption="@ui_Edit" isSending="0" id="IDD_PlayerName"/>
+  </Node>
+  <Node Id="40" Class="UI:Functions:MainMenu:AddApplyButton" pos="-1880,-240,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_JoinMpBtn" tooltip="@ui_JoinMpBtnTT" id="MM_LobbyJoin"/>
+  </Node>
+  <Node Id="41" Name="Handle_events" Class="_commentbox" pos="-4480,167.14754,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1520" Height="1150"/>
+   <NodeSize Width="1520" Height="1177.6406"/>
+  </Node>
+  <Node Id="83" Class="UI:Action:Control" pos="-4040,1200,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args=""/>
+  </Node>
+  <Node Id="93" Class="UI:Action:Start" pos="-4440,1200,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="94" Name="Use_default_event_state_as_well" Class="_comment" pos="-4440,1170,0" flags="0"/>
+  <Node Id="98" Class="UI:Functions:MainMenu:GetTextFieldText" pos="-4040,360,0" flags="0">
+   <Inputs instanceID="-1" id="IDD_PlayerName"/>
+  </Node>
+  <Node Id="101" Class="UI:Functions:MP:GetPlayerName" pos="-1560,-240,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="102" Class="UI:Events:MP:OnGetName" pos="-2840,240,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="103" Class="UI:Functions:MainMenu:SetTextFieldText" pos="-2500,240,0" flags="0">
+   <Inputs instanceID="-1" id="IDD_PlayerName" value=""/>
+  </Node>
+  <Node Id="104" Name="Setup_current_player_name" Class="_commentbox" pos="-2880,166.27031,0" flags="0">
+   <Inputs TextSize="1" Color="0.263175,0.598942,0.708298" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="680" Height="280"/>
+   <NodeSize Width="680" Height="307.64063"/>
+  </Node>
+  <Node Id="105" Class="UI:Functions:MP:GetLastServer" pos="-1560,-200,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="107" Class="UI:Functions:MainMenu:SetTextFieldText" pos="-2500,360,0" flags="0">
+   <Inputs instanceID="-1" id="IDD_ServerName" value=""/>
+  </Node>
+  <Node Id="108" Class="UI:Events:MP:OnGetServerName" pos="-2840,360,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="117" Class="UI:Functions:MainMenu:AddSwitch" pos="-3200,-520,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_LobbyType" tooltip="@ui_LobbyTypeTT" value="LAN" id="ID_LOBBYTYPE"/>
+  </Node>
+  <Node Id="119" Class="UI:Functions:MainMenu:AddSwitchOption" pos="-3200,-360,0" flags="0">
+   <Inputs instanceID="-1" id="ID_LOBBYTYPE" caption="@ui_TypeLAN" value="1"/>
+  </Node>
+  <Node Id="120" Class="UI:Functions:MainMenu:AddSwitchOption" pos="-3200,-240,0" flags="0">
+   <Inputs instanceID="-1" id="ID_LOBBYTYPE" caption="@ui_TypeInternet" value="0"/>
+  </Node>
+  <Node Id="144" Class="UI:Events:LobbyMP:ServerFound" pos="-4440,1000,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="148" Class="UI:Functions:MainMenu:AddButton" pos="-2880,-240,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_JoinServerSearch" tooltip="@ui_JoinServerSearchTT" consoleButtonCaption="@ui_ButtonSelect" id="ID_SEARCH"/>
+  </Node>
+  <Node Id="150" Class="UI:Functions:LobbyMP:SearchGames" pos="-2470,730,0" flags="0">
+   <Inputs LAN="0"/>
+  </Node>
+  <Node Id="152" Class="UI:Events:MainMenu:OnButton" pos="-4440,760,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="ID_SEARCH"/>
+  </Node>
+  <Node Id="158" Class="UI:Functions:MainMenu:GetControlVal" pos="-2770,770,0" flags="0">
+   <Inputs instanceID="-1" id="ID_LOBBYTYPE"/>
+  </Node>
+  <Node Id="166" Class="UI:Functions:LobbyMP:JoinGame" pos="-3640,460,0" flags="0">
+   <Inputs serverID="0"/>
+  </Node>
+  <Node Id="168" Name="Callback_when_searched_was_clicked" Class="_comment" pos="-4440,970,0" flags="0"/>
+  <Node Id="169" Name="Start_searching_servers" Class="_comment" pos="-4440,730,0" flags="0"/>
+  <Node Id="170" Class="UI:Events:MainMenu:OnButton" pos="-4440,600,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="MM_MultiPlayer"/>
+  </Node>
+  <Node Id="172" Class="UI:Functions:LobbyMP:LeaveGame" pos="-3640,600,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="173" Name="Leave_game_when_Back_is_pressed" Class="_comment" pos="-4440,570,0" flags="0"/>
+  <Node Id="177" Class="UI:Functions:MainMenu:ClearListBox" pos="-2470,650,0" flags="0">
+   <Inputs instanceID="-1" id="ID_SERVERS"/>
+  </Node>
+  <Node Id="178" Class="Debug:ConsoleVariable" pos="-4040,260,0" flags="0">
+   <Inputs CVar="gl_skip" Value="1"/>
+  </Node>
+  <Node Id="179" Class="UI:Functions:MainMenu:AddListboxItem" pos="-4040,1000,0" flags="0">
+   <Inputs instanceID="-1" id="ID_SERVERS" caption="" value=""/>
+  </Node>
+  <Node Id="181" Class="UI:Functions:MainMenu:AddListbox" pos="-2500,-240,0" flags="0">
+   <Inputs instanceID="-1" id="ID_SERVERS" caption="@ui_ServerList" Tooltip="@ui_ServerListTT"/>
+  </Node>
+  <Node Id="189" Class="UI:Action:End" pos="-3180,520,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="193" Class="UI:Util:Platform" pos="-1880,-120,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="194" Class="UI:Functions:MainMenu:AddActionButton" pos="-1560,-140,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_XSelect"/>
+  </Node>
+  <Node Id="195" Class="UI:Functions:MainMenu:AddActionButton" pos="-1560,-40,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_PSSelect"/>
+  </Node>
+  <Node Id="197" Class="UI:Functions:MainMenu:AddSeparator" pos="-3840,-520,0" flags="0">
+   <Inputs instanceID="-1" Caption="" ID="" Tooltip=""/>
+  </Node>
+  <Node Id="199" Class="Debug:Log" pos="-2150,790,0" flags="0">
+   <Inputs message=""/>
+  </Node>
+  <Node Id="201" Class="String:Concat" pos="-2470,790,0" flags="0">
+   <Inputs String1="ID_LOBBYTYPE: " String2=""/>
+  </Node>
+  <Node Id="327" Class="Debug:ConsoleVariable" pos="-3640,360,0" flags="0">
+   <Inputs CVar="cl_nickname" Value=""/>
+  </Node>
+  <Node Id="328" Name="Set_player_name_via_CVar" Class="_comment" pos="-3640,330,0" flags="0"/>
+  <Node Id="330" Name="Server_List" Class="_comment" pos="-2500,-270,0" flags="0"/>
+  <Node Id="331" Name="Server_Search_Button" Class="_comment" pos="-2880,-270,0" flags="0"/>
+  <Node Id="332" Name="Lobby_Type" Class="_comment" pos="-3200,-550,0" flags="0"/>
+  <Node Id="333" Name="Player_Name" Class="_comment" pos="-3520,-550,0" flags="0"/>
+  <Node Id="334" Name="Join_button_clicked" Class="_comment" pos="-4440,330,0" flags="0"/>
+  <Node Id="337" Name="Set_Game_Lobby_skip_when_joining_games" Class="_comment" pos="-4040,230,0" flags="0"/>
+  <Node Id="338" Class="Logic:Any" pos="-3320,520,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="339" Name="Search_Multiplayer_Servers" Class="_commentbox" pos="-2880,578.01031,0" flags="0">
+   <Inputs TextSize="1" Color="0.152926,0.938686,0.473532" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="840" Height="280"/>
+   <NodeSize Width="840" Height="307.64063"/>
+  </Node>
+  <Node Id="341" Class="Logic:Any" pos="-2870,730,0" flags="0" InHideMask="1020">
+   <Inputs />
+  </Node>
+  <Node Id="349" Class="UI:Functions:MainMenu:GetListboxItemValue" pos="-4050,460,0" flags="1">
+   <Inputs instanceID="-1" id="ID_SERVERS"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="197" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="98" nodeOut="30" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="178" nodeOut="30" portIn="Set" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="349" nodeOut="30" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="40" nodeOut="34" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="193" nodeOut="34" portIn="get" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="117" nodeOut="35" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="101" nodeOut="40" portIn="send" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="341" nodeOut="40" portIn="in2" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="93" portIn="Args" portOut="Args" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="93" portIn="Start" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="327" nodeOut="98" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="327" nodeOut="98" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="105" nodeOut="101" portIn="send" portOut="OnEvent" enabled="1"/>
+  <Edge nodeIn="103" nodeOut="102" portIn="value" portOut="Name" enabled="1"/>
+  <Edge nodeIn="103" nodeOut="102" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="107" nodeOut="108" portIn="value" portOut="Address" enabled="1"/>
+  <Edge nodeIn="107" nodeOut="108" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="119" nodeOut="117" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="120" nodeOut="119" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="148" nodeOut="120" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="179" nodeOut="144" portIn="value" portOut="ServerId" enabled="1"/>
+  <Edge nodeIn="179" nodeOut="144" portIn="caption" portOut="ServerName" enabled="1"/>
+  <Edge nodeIn="179" nodeOut="144" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="181" nodeOut="148" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="341" nodeOut="152" portIn="in1" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="150" nodeOut="158" portIn="LAN" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="201" nodeOut="158" portIn="Set" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="201" nodeOut="158" portIn="String2" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="338" nodeOut="166" portIn="in1" portOut="OnEvent" enabled="1"/>
+  <Edge nodeIn="172" nodeOut="170" portIn="send" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="338" nodeOut="172" portIn="in2" portOut="OnEvent" enabled="1"/>
+  <Edge nodeIn="34" nodeOut="181" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="194" nodeOut="193" portIn="Call" portOut="IsXBoxOne" enabled="1"/>
+  <Edge nodeIn="195" nodeOut="193" portIn="Call" portOut="IsPS4" enabled="1"/>
+  <Edge nodeIn="35" nodeOut="197" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="199" nodeOut="201" portIn="input" portOut="Out" enabled="1"/>
+  <Edge nodeIn="199" nodeOut="201" portIn="message" portOut="Out" enabled="1"/>
+  <Edge nodeIn="189" nodeOut="338" portIn="EndAction" portOut="out" enabled="1"/>
+  <Edge nodeIn="150" nodeOut="341" portIn="send" portOut="out" enabled="1"/>
+  <Edge nodeIn="158" nodeOut="341" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="177" nodeOut="341" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="166" nodeOut="349" portIn="send" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="166" nodeOut="349" portIn="serverID" portOut="ReturnVal" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

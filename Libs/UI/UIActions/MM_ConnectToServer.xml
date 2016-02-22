@@ -1,0 +1,52 @@
+<Graph Description="" Group="MM_PagesMain" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="-20,-40,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="260,-40,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_ConnectTitle" ShowLine="0" MaxButtons="1" ButtonXPos="-250" ButtonYPos="0" ButtonOffset="40"/>
+  </Node>
+  <Node Id="33" Name="Setup_page" Class="_commentbox" pos="-60,-109.99977,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="940" Height="240"/>
+   <NodeSize Width="940" Height="267.39063"/>
+  </Node>
+  <Node Id="41" Name="Handle_events" Class="_commentbox" pos="-60,189.99998,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1200" Height="360"/>
+   <NodeSize Width="1200" Height="387.39063"/>
+  </Node>
+  <Node Id="79" Class="UI:Action:Control" pos="260,440,0" flags="0">
+   <Inputs uiActions_UIAction="MM_Confirmation" Strict="0" Args="@ui_ConnectionFailed|@ui_Ok||"/>
+  </Node>
+  <Node Id="83" Class="UI:Action:Control" pos="260,260,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args="MM_IngameMenu"/>
+  </Node>
+  <Node Id="91" Class="UI:Action:End" pos="600,260,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="93" Class="UI:Action:Start" pos="-20,280,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="94" Name="Use_default_event_state_as_well" Class="_comment" pos="-20,250,0" flags="0"/>
+  <Node Id="100" Class="UI:Events:System:OnDisconnect" pos="-20,440,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="101" Class="UI:Action:End" pos="960,440,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="102" Class="UI:Action:Control" pos="660,440,0" flags="0">
+   <Inputs uiActions_UIAction="MM_JoinMP" Strict="0" Args=""/>
+  </Node>
+  <Node Id="103" Name="Go_back_to_JoinMP_if_connection_failed" Class="_comment" pos="-20,410,0" flags="1"/>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="102" nodeOut="79" portIn="Start" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="83" portIn="EndAction" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="93" portIn="Start" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="79" nodeOut="100" portIn="Start" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="101" nodeOut="102" portIn="EndAction" portOut="OnStart" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

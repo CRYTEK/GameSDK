@@ -1,0 +1,136 @@
+<GlobalEnums>
+
+	<ColliderMode>
+		<entry enum="Undefined=0" />
+		<entry enum="Disabled=1" />
+		<entry enum="Pushable=3" />
+		<entry enum="NonPushable=4" />
+		<entry enum="PushesPlayersOnly=5" />
+	</ColliderMode>
+
+	<ReinforcementType>
+		<entry enum="Wave=0" />
+		<entry enum="Radio=1" />
+		<entry enum="Flare=2" />
+		<entry enum="SmokeGrenade=3" />
+	</ReinforcementType>
+
+	<Species>
+		<entry enum="Neutral=-1" />
+		<entry enum="Friendly=0" />
+		<entry enum="Human(Hostile)=1" />
+		<entry enum="Alien(Hostile)=2" />
+	</Species>
+
+	<OnlySpecies>
+		<entry enum="Any=-1" />
+		<entry enum="Friendly=0" />
+		<entry enum="Human(Hostile)=1" />
+		<entry enum="Alien(Hostile)=2" />
+	</OnlySpecies>
+
+	<InterestCategory>
+		<entry enum="Aim=2" />
+		<entry enum="Movement=3" />
+		<entry enum="EyeCatching=4" />
+		<entry enum="View=5" />
+	</InterestCategory>
+
+	<InterestFOV>
+		<entry enum="Primary=1" />
+		<entry enum="Secondary=2" />
+		<entry enum="Full(360)=3" />
+	</InterestFOV>
+
+	<AttachForm>
+		<entry enum="Vertices" />
+		<entry enum="Edges" />
+		<entry enum="Surface" />
+		<entry enum="Volume" />
+	</AttachForm>
+
+	<AttachType>
+		<entry enum="None" />
+		<entry enum="BoundingBox" />
+		<entry enum="Physics" />
+		<entry enum="Render" />
+	</AttachType>
+
+	<HazardType>
+		<entry enum="None=0" />
+		<entry enum="Fire=1" />
+		<entry enum="Frost=2" />
+		<entry enum="Electricity=3" />
+	</HazardType>
+
+	<Tutorials>
+		<entry enum="STEALTH" />
+		<entry enum="ARMOR" />
+		<entry enum="VISOR" />
+		<entry enum="NanoCustom" />
+	</Tutorials>
+
+	<HackEncryption>
+		<entry enum="None=0" />
+		<entry enum="Light=100" />
+		<entry enum="Medium=200" />
+		<entry enum="Strong=300" />
+		<entry enum="Insane=400" />
+		<entry enum="Ludicrous=500" />
+	</HackEncryption>
+
+	<PhysicsType>
+		<entry enum="Rigid=0" />
+		<entry enum="Static=1" />
+		<entry enum="None=2" />
+	</PhysicsType>
+	
+	<SoundObstructionType>
+		<entry enum="Ignore=1" />
+		<entry enum="SingleRay=2" />
+		<entry enum="MultiRay=3" />
+	</SoundObstructionType>
+	
+	<VolumeType>
+		<entry enum="Ellipsoid=0"/>
+		<entry enum="Cube=1"/>
+	</VolumeType>
+
+	<Alignment>
+		<entry enum="#unsorted"/>
+		<entry enum="Default=-1"/>
+
+		<entry enum="+x+y+z=0"/>
+		<entry enum="+x-y-z=1"/>
+		<entry enum="-x+y-z=2"/>
+		<entry enum="-x-y+z=3"/>
+
+		<entry enum="-x-z-y=7"/>
+		<entry enum="-x+z+y=6"/>
+		<entry enum="+x-z+y=4"/>
+		<entry enum="+x+z-y=5"/>
+
+		<entry enum="+z+x+y=8"/>
+		<entry enum="+z-x-y=11"/>
+		<entry enum="-z+x-y=9"/>
+		<entry enum="-z-x+y=10"/>
+
+		<entry enum="-y-x-z=15"/>
+		<entry enum="-y+x+z=13"/>
+		<entry enum="+y-x+z=14"/>
+		<entry enum="+y+x-z=12"/>
+
+		<entry enum="+y+z+x=16"/>
+		<entry enum="+y-z-x=18"/>
+		<entry enum="-y+z-x=19"/>
+		<entry enum="-y-z+x=17"/>
+
+		<entry enum="-z-y-x=23"/>
+		<entry enum="-z+y+x=20"/>
+		<entry enum="+z-y+x=21"/>
+		<entry enum="+z+y-x=22"/>
+
+		<entry enum="Random=24"/>
+	</Alignment>
+
+</GlobalEnums>

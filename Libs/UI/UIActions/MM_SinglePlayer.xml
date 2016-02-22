@@ -1,0 +1,178 @@
+<Graph Description="" Group="MM_PagesMain" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="-400,-640,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="-120,-640,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_SingleplayerTitle" ShowLine="1" MaxButtons="10" ButtonXPos="-500" ButtonYPos="0" ButtonOffset="40"/>
+  </Node>
+  <Node Id="6" Class="UI:Functions:MainMenu:AddBackButton" pos="1500,-640,0" flags="0">
+   <Inputs instanceID="-1" id="MM_Main"/>
+  </Node>
+  <Node Id="29" Name="Setup_page" Class="_commentbox" pos="-440,-789.13025,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="2610" Height="850"/>
+   <NodeSize Width="2610" Height="895.651"/>
+  </Node>
+  <Node Id="31" Class="UI:Functions:Game:LoadLevel" pos="280,420,0" flags="0">
+   <Inputs Level="" Server="0" GameRules="SinglePlayer"/>
+  </Node>
+  <Node Id="32" Class="UI:Functions:Settings:GetLevels" pos="1220,-640,0" flags="0">
+   <Inputs LevelPath=""/>
+  </Node>
+  <Node Id="33" Class="UI:Events:Settings:OnLevelItem" pos="-400,-40,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="38" Name="After_we_called_&quot;GetLevels&quot;,_the_&quot;OnLevelItem&quot;_node_is_triggered_once_per_level" Class="_comment" pos="-400,-70,0" flags="0"/>
+  <Node Id="40" Name="Handle_events" Class="_commentbox" pos="-440,149.12856,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1210" Height="660"/>
+   <NodeSize Width="1210" Height="705.651"/>
+  </Node>
+  <Node Id="83" Class="UI:Action:Control" pos="-80,720,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args=""/>
+  </Node>
+  <Node Id="90" Class="UI:Action:End" pos="600,420,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="91" Class="UI:Action:End" pos="280,720,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="92" Name="Load_a_level" Class="_comment" pos="-400,230,0" flags="0"/>
+  <Node Id="93" Class="UI:Action:Start" pos="-400,720,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="94" Name="Use_default_event_state_as_well" Class="_comment" pos="-400,690,0" flags="0"/>
+  <Node Id="95" Class="UI:Functions:MainMenu:AddApplyButton" pos="280,260,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Load" tooltip="@ui_LoadTT" id="ID_LOADLEVEL"/>
+  </Node>
+  <Node Id="103" Class="UI:Events:MainMenu:OnButton" pos="-400,420,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="ID_LOADLEVEL"/>
+  </Node>
+  <Node Id="110" Class="Logic:Gate" pos="-40,260,0" flags="0">
+   <Inputs Closed="0"/>
+  </Node>
+  <Node Id="113" Class="UI:Events:MainMenu:OnButton" pos="860,220,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="MM_Main"/>
+  </Node>
+  <Node Id="117" Class="UI:Functions:LobbyMP:LockController" pos="1180,220,0" flags="0">
+   <Inputs LockController="0"/>
+  </Node>
+  <Node Id="118" Name="Release_locked_controller_when_returning_to_main_menu" Class="_commentbox" pos="840,150,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="620" Height="120"/>
+   <NodeSize Width="852.36743" Height="165.65103"/>
+  </Node>
+  <Node Id="209" Class="UI:Functions:MainMenu:AddSeparator" pos="220,-640,0" flags="0">
+   <Inputs instanceID="-1" Caption="" ID="" Tooltip=""/>
+  </Node>
+  <Node Id="210" Name="Add_LOAD_button" Class="_comment" pos="280,230,0" flags="0"/>
+  <Node Id="212" Class="UI:Functions:MainMenu:AddListbox" pos="920,-640,0" flags="0">
+   <Inputs instanceID="-1" id="ID_SP_LEVELS" caption="Level Select" Tooltip="@ui_LoadLevel"/>
+  </Node>
+  <Node Id="214" Class="UI:Functions:MainMenu:AddListboxItem" pos="-80,-40,0" flags="0">
+   <Inputs instanceID="-1" id="ID_SP_LEVELS" caption="" value=""/>
+  </Node>
+  <Node Id="219" Class="UI:Events:MainMenu:OnControlChanged" pos="-400,260,0" flags="0">
+   <Inputs instanceID="0" Port="-1" Idx="ID_SP_LEVELS"/>
+  </Node>
+  <Node Id="221" Class="UI:Functions:MainMenu:AddSwitch" pos="540,-640,0" flags="0">
+   <Inputs instanceID="-1" caption="Difficulty" tooltip="" value="" id="ID_DIFFICULTY"/>
+  </Node>
+  <Node Id="223" Class="UI:Functions:MainMenu:AddSwitchOption" pos="540,-500,0" flags="0">
+   <Inputs instanceID="-1" id="ID_DIFFICULTY" caption="Easy" value="1"/>
+  </Node>
+  <Node Id="224" Class="UI:Functions:MainMenu:AddSwitchOption" pos="540,-380,0" flags="0">
+   <Inputs instanceID="-1" id="ID_DIFFICULTY" caption="Normal" value="2"/>
+  </Node>
+  <Node Id="225" Class="UI:Functions:MainMenu:AddSwitchOption" pos="540,-260,0" flags="0">
+   <Inputs instanceID="-1" id="ID_DIFFICULTY" caption="Hard" value="3"/>
+  </Node>
+  <Node Id="226" Class="UI:Functions:MainMenu:AddSwitchOption" pos="540,-140,0" flags="0">
+   <Inputs instanceID="-1" id="ID_DIFFICULTY" caption="Delta" value="4"/>
+  </Node>
+  <Node Id="227" Class="UI:Events:MainMenu:OnControlChanged" pos="-400,560,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="ID_DIFFICULTY"/>
+  </Node>
+  <Node Id="229" Class="Debug:ConsoleVariable" pos="-40,560,0" flags="0">
+   <Inputs CVar="g_DifficultyLevel" Value=""/>
+  </Node>
+  <Node Id="236" Name="Click_LOAD_button" Class="_comment" pos="-400,390,0" flags="0"/>
+  <Node Id="237" Name="Set_Difficulty_level" Class="_comment" pos="-400,530,0" flags="0"/>
+  <Node Id="238" Name="Difficulty" Class="_comment" pos="540,-670,0" flags="0"/>
+  <Node Id="240" Class="UI:Functions:MainMenu:SetControlVal" pos="1880,-280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_DIFFICULTY"/>
+  </Node>
+  <Node Id="242" Class="Game:DifficultyLevel" pos="1280,-280,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="245" Class="UI:Functions:MainMenu:AddSwitchOption" pos="540,-20,0" flags="0">
+   <Inputs instanceID="-1" id="ID_DIFFICULTY" caption="Extreme" value="5"/>
+  </Node>
+  <Node Id="249" Class="Math:SetNumber" pos="1540,-360,0" flags="0">
+   <Inputs in="1"/>
+  </Node>
+  <Node Id="250" Class="Math:SetNumber" pos="1540,-300,0" flags="0">
+   <Inputs in="2"/>
+  </Node>
+  <Node Id="251" Class="Math:SetNumber" pos="1540,-240,0" flags="0">
+   <Inputs in="3"/>
+  </Node>
+  <Node Id="252" Class="Math:SetNumber" pos="1540,-180,0" flags="0">
+   <Inputs in="4"/>
+  </Node>
+  <Node Id="253" Class="Math:SetNumber" pos="1540,-120,0" flags="0">
+   <Inputs in="5"/>
+  </Node>
+  <Node Id="255" Class="Logic:Any" pos="1720,-280,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="258" Name="Readback_current_Difficulty_level_and_set_ControlVal" Class="_commentbox" pos="1260,-430.00003,0" flags="0">
+   <Inputs TextSize="1" Color="0.371238,0.527115,0.545725" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="900" Height="340"/>
+   <NodeSize Width="900" Height="385.65103"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="209" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="242" nodeOut="6" portIn="Trigger" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="90" nodeOut="31" portIn="EndAction" portOut="OnEvent" enabled="1"/>
+  <Edge nodeIn="6" nodeOut="32" portIn="Call" portOut="OnEvent" enabled="1"/>
+  <Edge nodeIn="214" nodeOut="33" portIn="caption" portOut="LevelLabel" enabled="1"/>
+  <Edge nodeIn="214" nodeOut="33" portIn="value" portOut="LevelName" enabled="1"/>
+  <Edge nodeIn="214" nodeOut="33" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="83" portIn="EndAction" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="93" portIn="Args" portOut="Args" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="93" portIn="Start" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="110" nodeOut="95" portIn="Close" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="31" nodeOut="103" portIn="send" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="110" portIn="Call" portOut="Out" enabled="1"/>
+  <Edge nodeIn="117" nodeOut="113" portIn="send" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="221" nodeOut="209" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="32" nodeOut="212" portIn="send" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="31" nodeOut="219" portIn="Level" portOut="Value" enabled="1"/>
+  <Edge nodeIn="110" nodeOut="219" portIn="In" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="223" nodeOut="221" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="224" nodeOut="223" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="225" nodeOut="224" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="226" nodeOut="225" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="245" nodeOut="226" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="229" nodeOut="227" portIn="Value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="229" nodeOut="227" portIn="Set" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="249" nodeOut="242" portIn="set" portOut="Easy" enabled="1"/>
+  <Edge nodeIn="250" nodeOut="242" portIn="set" portOut="Normal" enabled="1"/>
+  <Edge nodeIn="251" nodeOut="242" portIn="set" portOut="Hard" enabled="1"/>
+  <Edge nodeIn="252" nodeOut="242" portIn="set" portOut="Delta" enabled="1"/>
+  <Edge nodeIn="253" nodeOut="242" portIn="set" portOut="PostHumanWarrior" enabled="1"/>
+  <Edge nodeIn="212" nodeOut="245" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="255" nodeOut="249" portIn="in1" portOut="out" enabled="1"/>
+  <Edge nodeIn="255" nodeOut="250" portIn="in2" portOut="out" enabled="1"/>
+  <Edge nodeIn="255" nodeOut="251" portIn="in3" portOut="out" enabled="1"/>
+  <Edge nodeIn="255" nodeOut="252" portIn="in4" portOut="out" enabled="1"/>
+  <Edge nodeIn="255" nodeOut="253" portIn="in5" portOut="out" enabled="1"/>
+  <Edge nodeIn="240" nodeOut="255" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="240" nodeOut="255" portIn="value" portOut="out" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

@@ -1,0 +1,41 @@
+<Graph Description="" Group="MM_Display" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="6" Class="UI:Action:Control" pos="1180,-140,0" flags="0">
+   <Inputs uiActions_UIAction="MM_IngameMenu" Strict="0" Args=""/>
+  </Node>
+  <Node Id="25" Name="Init_MainMenu_and_display_the_Main_page" Class="_commentbox" pos="-520,-312.60938,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="2220" Height="390"/>
+   <NodeSize Width="2220" Height="417.39063"/>
+  </Node>
+  <Node Id="76" Class="UI:Action:Start" pos="-480,-240,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="77" Class="UI:Action:End" pos="1520,-140,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="78" Class="UI:Display:Display" pos="-200,-240,0" flags="0">
+   <Inputs uiElements_Element="MainMenu" instanceID="-1"/>
+  </Node>
+  <Node Id="84" Class="UI:Display:Config" pos="160,-240,0" flags="1">
+   <Inputs uiElements_Element="MainMenu" instanceID="-1" cursor="1" mouseEvents="1" keyEvents="1" consoleMouse="0" consoleCursor="0" controllerInput="1" eventsExclusive="1" fixedProjDepth="0" forceNoUnload="0" alpha="0" layer="3"/>
+  </Node>
+  <Node Id="90" Class="UI:Functions:MainMenu:ShowBackGroundIMG" pos="480,-140,0" flags="0">
+   <Inputs instanceID="-1"/>
+  </Node>
+  <Node Id="91" Name="This_is_called_when_loading_the_menu_from_inside_the_game,_in_a_level" Class="_comment" pos="-480,40,0" flags="0"/>
+  <Node Id="92" Name="Enable_BG_image_for_the_in-game_menu" Class="_comment" pos="480,-80,0" flags="0"/>
+  <Node Id="94" Class="UI:Functions:MainMenu:HideBackGroundIMG" pos="480,-40,0" flags="0">
+   <Inputs instanceID="-1"/>
+  </Node>
+  <Node Id="95" Name="Or_choose_to_hide_background_image" Class="_comment" pos="480,20,0" flags="0"/>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="77" nodeOut="6" portIn="EndAction" portOut="OnStart" enabled="1"/>
+  <Edge nodeIn="78" nodeOut="76" portIn="show" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="84" nodeOut="78" portIn="set" portOut="onShow" enabled="1"/>
+  <Edge nodeIn="94" nodeOut="84" portIn="Call" portOut="OnSet" enabled="1"/>
+  <Edge nodeIn="6" nodeOut="94" portIn="Start" portOut="OnCall" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

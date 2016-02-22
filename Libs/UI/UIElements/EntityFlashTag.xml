@@ -1,0 +1,13 @@
+<UIElements name="Common">
+
+	<UIElement name="EntityFlashTag" >
+
+		<GFx file="EntityFlashTag.gfx"/>
+
+		<variables>
+			<variable name="PlayerName" varname="test.text"/>
+		</variables>
+
+	</UIElement>
+
+</UIElements>

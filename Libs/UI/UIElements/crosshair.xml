@@ -1,0 +1,16 @@
+<!-- Category name, of your own choosing -->
+<UIElements name="Crosshair">
+
+	<!-- Object name, again, of your own choosing -->
+	<UIElement name="Crosshair" render_lockless="1">
+
+		<!-- Point it to the correct files and give it some default settings -->
+		<GFx file="crosshair.gfx" layer="0">
+			<Constraints>
+				<Align mode="dynamic" valign="center" halign="center" scale="0" max="0"/>
+			</Constraints>
+		</GFx>
+
+	</UIElement>
+
+</UIElements>

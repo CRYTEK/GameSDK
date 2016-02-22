@@ -1,0 +1,160 @@
+<Graph Description="" Group="MM_PagesShared" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="-200,-220,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="2" Class="UI:Action:End" pos="1480,780,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="80,-480,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_SoundSettingsTitle" ShowLine="1" MaxButtons="5" ButtonXPos="-500" ButtonYPos="0" ButtonOffset="40"/>
+  </Node>
+  <Node Id="6" Class="UI:Functions:MainMenu:AddBackButton" pos="1840,-240,0" flags="0">
+   <Inputs instanceID="-1" id="MM_Main"/>
+  </Node>
+  <Node Id="7" Class="UI:Functions:MainMenu:AddApplyButton" pos="1840,-40,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Apply" tooltip="@ui_ApplyTT" id="ID_APPLY_SOUND"/>
+  </Node>
+  <Node Id="8" Class="UI:Functions:MainMenu:AddSlider" pos="740,-480,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_MusicVolume" tooltip="@ui_MusicVolumeTT" min="0" max="1" step="0.1" value="0" id="SL_Music"/>
+  </Node>
+  <Node Id="9" Class="UI:Functions:MainMenu:AddSlider" pos="1080,-480,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_SoundVolume" tooltip="@ui_SoundVolumeTT" min="0" max="1" step="0.1" value="0" id="SL_SFX"/>
+  </Node>
+  <Node Id="12" Class="UI:Functions:Settings:SetSound" pos="940,840,0" flags="0">
+   <Inputs Music="0" SFx="0" Video="0"/>
+  </Node>
+  <Node Id="23" Name="Handle_events" Class="_commentbox" pos="-240,369.12927,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1900" Height="780"/>
+   <NodeSize Width="1900" Height="843.91144"/>
+  </Node>
+  <Node Id="28" Class="UI:Functions:MainMenu:AddDefaultsButton" pos="1840,-160,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Reset" tooltip="@ui_ResetTT" id="ID_RESET_SOUND"/>
+  </Node>
+  <Node Id="29" Name="Setup_page" Class="_commentbox" pos="-240,-589.99994,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="2980" Height="840"/>
+   <NodeSize Width="2980" Height="903.91144"/>
+  </Node>
+  <Node Id="30" Class="UI:Events:MainMenu:OnButton" pos="-200,780,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="ID_APPLY_SOUND"/>
+  </Node>
+  <Node Id="51" Class="UI:Functions:MainMenu:GetControlVal" pos="200,780,0" flags="0">
+   <Inputs instanceID="0" id="SL_Music"/>
+  </Node>
+  <Node Id="52" Class="UI:Functions:MainMenu:GetControlVal" pos="200,860,0" flags="0">
+   <Inputs instanceID="0" id="SL_SFX"/>
+  </Node>
+  <Node Id="59" Class="UI:Functions:Settings:GetCurrSound" pos="2200,-40,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="60" Class="UI:Functions:MainMenu:SetControlVal" pos="260,80,0" flags="0">
+   <Inputs instanceID="-1" id="SL_SFX"/>
+  </Node>
+  <Node Id="61" Class="UI:Functions:MainMenu:SetControlVal" pos="260,-20,0" flags="0">
+   <Inputs instanceID="-1" id="SL_Music"/>
+  </Node>
+  <Node Id="64" Class="UI:Events:Settings:OnSoundChanged" pos="-200,80,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="67" Class="UI:Events:MainMenu:OnButton" pos="-200,520,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="ID_RESET_SOUND"/>
+  </Node>
+  <Node Id="68" Class="UI:Functions:Settings:GetCurrSound" pos="200,520,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="75" Class="UI:Action:Control" pos="1240,780,0" flags="0">
+   <Inputs uiActions_UIAction="MM_Main" Strict="0" Args=""/>
+  </Node>
+  <Node Id="79" Class="UI:Action:Control" pos="200,660,0" flags="0">
+   <Inputs uiActions_UIAction="MM_Confirmation" Strict="0" Args="@ui_ApplyChanges|@ui_Yes|@ui_No"/>
+  </Node>
+  <Node Id="80" Class="Logic:Condition" pos="660,660,0" flags="0">
+   <Inputs Condition="0"/>
+  </Node>
+  <Node Id="81" Name="Reset_to_current_state" Class="_comment" pos="-200,490,0" flags="0"/>
+  <Node Id="82" Name="This_event_is_fired_every_time_the_sound_changes_and_also_if_the_GetCurrentSound_Node_was_tiggered" Class="_comment" pos="-160,-50,0" flags="0"/>
+  <Node Id="83" Class="UI:Functions:MainMenu:AddSlider" pos="1440,-480,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_VideoVolume" tooltip="@ui_VideoVolumeTT" min="0" max="1" step="0.1" value="0" id="SL_Video"/>
+  </Node>
+  <Node Id="84" Class="UI:Functions:MainMenu:SetControlVal" pos="260,180,0" flags="0">
+   <Inputs instanceID="-1" id="SL_Video"/>
+  </Node>
+  <Node Id="85" Class="UI:Functions:MainMenu:GetControlVal" pos="200,940,0" flags="0">
+   <Inputs instanceID="0" id="SL_Video"/>
+  </Node>
+  <Node Id="86" Name="On_Apply_changes_display_confirmation,_and_apply_changes_if_user_pressed_the_ok_button" Class="_comment" pos="-120,630,0" flags="0"/>
+  <Node Id="91" Class="UI:Action:End" pos="580,1080,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="93" Class="UI:Action:Start" pos="-200,1080,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="94" Name="Use_default_event_state_as_well" Class="_comment" pos="-200,1050,0" flags="0"/>
+  <Node Id="95" Class="UI:Action:Control" pos="200,1080,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args=""/>
+  </Node>
+  <Node Id="96" Class="UI:Action:Start" pos="940,780,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="97" Class="UI:Util:Platform" pos="2200,40,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="119" Class="UI:Functions:MainMenu:AddActionButton" pos="2420,20,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_XSelect"/>
+  </Node>
+  <Node Id="120" Class="UI:Functions:MainMenu:AddActionButton" pos="2420,130,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_PSSelect"/>
+  </Node>
+  <Node Id="209" Class="UI:Functions:MainMenu:AddSeparator" pos="440,-480,0" flags="0">
+   <Inputs instanceID="-1" Caption="" ID="" Tooltip=""/>
+  </Node>
+  <Node Id="210" Name="Music_Volume" Class="_comment" pos="740,-510,0" flags="0"/>
+  <Node Id="211" Name="Sound_Effects_Volume" Class="_comment" pos="1080,-510,0" flags="0"/>
+  <Node Id="212" Name="Video_Volume" Class="_comment" pos="1440,-510,0" flags="0"/>
+  <Node Id="252" Name="Back/Default/Apply" Class="_comment" pos="1840,-270,0" flags="0"/>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="6" nodeOut="1" portIn="id" portOut="Args" enabled="1"/>
+  <Edge nodeIn="209" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="28" nodeOut="6" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="59" nodeOut="7" portIn="send" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="97" nodeOut="7" portIn="get" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="9" nodeOut="8" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="9" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="75" nodeOut="12" portIn="Start" portOut="OnEvent" enabled="1"/>
+  <Edge nodeIn="7" nodeOut="28" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="51" nodeOut="30" portIn="instanceID" portOut="instanceID" enabled="1"/>
+  <Edge nodeIn="51" nodeOut="30" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="52" nodeOut="30" portIn="instanceID" portOut="instanceID" enabled="1"/>
+  <Edge nodeIn="52" nodeOut="30" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="79" nodeOut="30" portIn="Start" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="85" nodeOut="30" portIn="instanceID" portOut="instanceID" enabled="1"/>
+  <Edge nodeIn="85" nodeOut="30" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="51" portIn="Music" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="52" portIn="SFx" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="60" nodeOut="64" portIn="value" portOut="SFx" enabled="1"/>
+  <Edge nodeIn="60" nodeOut="64" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="61" nodeOut="64" portIn="value" portOut="Music" enabled="1"/>
+  <Edge nodeIn="61" nodeOut="64" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="84" nodeOut="64" portIn="value" portOut="Video" enabled="1"/>
+  <Edge nodeIn="84" nodeOut="64" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="68" nodeOut="67" portIn="send" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="2" nodeOut="75" portIn="EndAction" portOut="OnStart" enabled="1"/>
+  <Edge nodeIn="80" nodeOut="79" portIn="Condition" portOut="Args" enabled="1"/>
+  <Edge nodeIn="80" nodeOut="79" portIn="In" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="80" portIn="send" portOut="OnTrue" enabled="1"/>
+  <Edge nodeIn="6" nodeOut="83" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="12" nodeOut="85" portIn="Video" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="93" portIn="Args" portOut="Args" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="93" portIn="Start" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="95" portIn="EndAction" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="75" nodeOut="96" portIn="uiActions_UIAction" portOut="Args" enabled="1"/>
+  <Edge nodeIn="119" nodeOut="97" portIn="Call" portOut="IsXBoxOne" enabled="1"/>
+  <Edge nodeIn="120" nodeOut="97" portIn="Call" portOut="IsPS4" enabled="1"/>
+  <Edge nodeIn="8" nodeOut="209" portIn="Call" portOut="OnCall" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

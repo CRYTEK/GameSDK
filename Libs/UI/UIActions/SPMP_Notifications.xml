@@ -1,0 +1,133 @@
+<Graph Description="" Group="InGame" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="78" Class="HUD:BattleAreaListener" pos="-280,-20,0" flags="0">
+   <Inputs Event="210"/>
+  </Node>
+  <Node Id="81" Class="HUD:BattleAreaListener" pos="-280,80,0" flags="0">
+   <Inputs Event="211"/>
+  </Node>
+  <Node Id="90" Class="Time:Time" pos="660,-120,0" flags="0">
+   <Inputs paused="0"/>
+  </Node>
+  <Node Id="92" Class="Math:Sub" pos="1140,-20,0" flags="0">
+   <Inputs A="0" B="0"/>
+  </Node>
+  <Node Id="93" Class="Math:Clamp" pos="1280,-20,0" flags="0">
+   <Inputs in="0" min="0" max="999"/>
+  </Node>
+  <Node Id="102" Class="UI:Functions:HUD3D:DisplayMessage" pos="2200,-20,0" flags="0">
+   <Inputs instanceID="-1" Message=""/>
+  </Node>
+  <Node Id="104" Class="UI:Functions:HUD3D:HideMessage" pos="2200,60,0" flags="0">
+   <Inputs instanceID="-1"/>
+  </Node>
+  <Node Id="106" Class="String:Concat" pos="1880,-20,0" flags="0">
+   <Inputs String1="RETURN TO BATTLE! " String2=""/>
+  </Node>
+  <Node Id="107" Class="String:SetString" pos="1680,-20,0" flags="0">
+   <Inputs In=""/>
+  </Node>
+  <Node Id="108" Class="Game:Start" pos="-280,-120,0" flags="0">
+   <Inputs InGame="1" InEditor="1"/>
+  </Node>
+  <Node Id="109" Class="Logic:Gate" pos="860,-120,0" flags="0">
+   <Inputs Closed="1"/>
+  </Node>
+  <Node Id="111" Class="Logic:Any" pos="260,-120,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+  <Node Id="113" Class="Math:BooleanTo" pos="460,-120,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="114" Class="Math:Round" pos="860,-20,0" flags="0">
+   <Inputs In="0"/>
+  </Node>
+  <Node Id="115" Class="Math:Round" pos="1480,-20,0" flags="0">
+   <Inputs In="0"/>
+  </Node>
+  <Node Id="116" Name="Forbidden_Area:_Display_Warning_Message_On_HUD" Class="_commentbox" pos="-320,-236.52124,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="2800" Height="330"/>
+   <NodeSize Width="2800" Height="403.04166"/>
+  </Node>
+  <Node Id="117" Class="Multiplayer:GameState" pos="-280,680,0" flags="0"/>
+  <Node Id="124" Class="String:SetString" pos="280,720,0" flags="0">
+   <Inputs In="Post Game"/>
+  </Node>
+  <Node Id="125" Class="String:SetString" pos="280,780,0" flags="0">
+   <Inputs In="New Round Start!"/>
+  </Node>
+  <Node Id="126" Class="String:SetString" pos="280,840,0" flags="0">
+   <Inputs In="First Round Begins!"/>
+  </Node>
+  <Node Id="127" Class="String:SetString" pos="280,900,0" flags="0">
+   <Inputs In="Last Round Begins!"/>
+  </Node>
+  <Node Id="149" Class="Image:ScreenFader" pos="280,520,0" flags="0">
+   <Inputs FadeGroup="0" UseCurColor="1" FadeInTime="0.5" FadeOutTime="1" color_FadeColor="1,1,1" tex_TextureName="libs/ui/textures/game_prematch_text.tif" UpdateAlways="0"/>
+  </Node>
+  <Node Id="155" Class="Image:ScreenFader" pos="1000,520,0" flags="0">
+   <Inputs FadeGroup="0" UseCurColor="1" FadeInTime="1" FadeOutTime="1" color_FadeColor="1,1,1" tex_TextureName="libs/ui/textures/game_round_start_text.tif" UpdateAlways="0"/>
+  </Node>
+  <Node Id="159" Class="UI:Util:UIDelay" pos="800,520,0" flags="0">
+   <Inputs delay="1"/>
+  </Node>
+  <Node Id="160" Class="Debug:Log" pos="600,840,0" flags="0">
+   <Inputs message=""/>
+  </Node>
+  <Node Id="161" Class="Debug:Log" pos="600,900,0" flags="0">
+   <Inputs message=""/>
+  </Node>
+  <Node Id="162" Class="Debug:Log" pos="600,780,0" flags="0">
+   <Inputs message=""/>
+  </Node>
+  <Node Id="163" Class="Debug:Log" pos="600,720,0" flags="0">
+   <Inputs message=""/>
+  </Node>
+  <Node Id="164" Name="Message_overlay_for_different_MP_GameStates" Class="_commentbox" pos="-320,408.26004,0" flags="0">
+   <Inputs TextSize="1" Color="0.334458,0.598942,0.585973" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1800" Height="520"/>
+   <NodeSize Width="1800" Height="593.04163"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="109" nodeOut="78" portIn="Open" portOut="EventFired" enabled="1"/>
+  <Edge nodeIn="113" nodeOut="78" portIn="false" portOut="EventFired" enabled="1"/>
+  <Edge nodeIn="114" nodeOut="78" portIn="In" portOut="DeathTimer" enabled="1"/>
+  <Edge nodeIn="104" nodeOut="81" portIn="Call" portOut="EventFired" enabled="1"/>
+  <Edge nodeIn="109" nodeOut="81" portIn="Close" portOut="EventFired" enabled="1"/>
+  <Edge nodeIn="111" nodeOut="81" portIn="in2" portOut="EventFired" enabled="1"/>
+  <Edge nodeIn="109" nodeOut="90" portIn="In" portOut="seconds" enabled="1"/>
+  <Edge nodeIn="93" nodeOut="92" portIn="in" portOut="out" enabled="1"/>
+  <Edge nodeIn="115" nodeOut="93" portIn="In" portOut="out" enabled="1"/>
+  <Edge nodeIn="102" nodeOut="106" portIn="Call" portOut="Out" enabled="1"/>
+  <Edge nodeIn="102" nodeOut="106" portIn="Message" portOut="Out" enabled="1"/>
+  <Edge nodeIn="106" nodeOut="107" portIn="Set" portOut="Out" enabled="1"/>
+  <Edge nodeIn="106" nodeOut="107" portIn="String2" portOut="Out" enabled="1"/>
+  <Edge nodeIn="111" nodeOut="108" portIn="in1" portOut="output" enabled="1"/>
+  <Edge nodeIn="92" nodeOut="109" portIn="B" portOut="Out" enabled="1"/>
+  <Edge nodeIn="113" nodeOut="111" portIn="true" portOut="out" enabled="1"/>
+  <Edge nodeIn="90" nodeOut="113" portIn="paused" portOut="out" enabled="1"/>
+  <Edge nodeIn="92" nodeOut="114" portIn="A" portOut="outRounded" enabled="1"/>
+  <Edge nodeIn="107" nodeOut="115" portIn="In" portOut="outRounded" enabled="1"/>
+  <Edge nodeIn="107" nodeOut="115" portIn="Set" portOut="outRounded" enabled="1"/>
+  <Edge nodeIn="124" nodeOut="117" portIn="Set" portOut="OnPostGameStateStart" enabled="1"/>
+  <Edge nodeIn="125" nodeOut="117" portIn="Set" portOut="OnAnyNewRoundStart" enabled="1"/>
+  <Edge nodeIn="126" nodeOut="117" portIn="Set" portOut="OnFirstRoundStart" enabled="1"/>
+  <Edge nodeIn="127" nodeOut="117" portIn="Set" portOut="OnFinalRoundStart" enabled="1"/>
+  <Edge nodeIn="149" nodeOut="117" portIn="FadeIn" portOut="OnInGameStateStart" enabled="1"/>
+  <Edge nodeIn="149" nodeOut="117" portIn="FadeOut" portOut="OnPrematchStateStart" enabled="1"/>
+  <Edge nodeIn="163" nodeOut="124" portIn="input" portOut="Out" enabled="1"/>
+  <Edge nodeIn="163" nodeOut="124" portIn="message" portOut="Out" enabled="1"/>
+  <Edge nodeIn="162" nodeOut="125" portIn="input" portOut="Out" enabled="1"/>
+  <Edge nodeIn="162" nodeOut="125" portIn="message" portOut="Out" enabled="1"/>
+  <Edge nodeIn="160" nodeOut="126" portIn="input" portOut="Out" enabled="1"/>
+  <Edge nodeIn="160" nodeOut="126" portIn="message" portOut="Out" enabled="1"/>
+  <Edge nodeIn="161" nodeOut="127" portIn="input" portOut="Out" enabled="1"/>
+  <Edge nodeIn="161" nodeOut="127" portIn="message" portOut="Out" enabled="1"/>
+  <Edge nodeIn="155" nodeOut="149" portIn="FadeOut" portOut="FadedIn" enabled="1"/>
+  <Edge nodeIn="159" nodeOut="149" portIn="in" portOut="FadedIn" enabled="1"/>
+  <Edge nodeIn="155" nodeOut="159" portIn="FadeIn" portOut="out" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

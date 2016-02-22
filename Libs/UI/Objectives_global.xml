@@ -1,0 +1,7 @@
+<Root>
+  <Example>
+    <Objective_01 Name="Example Objective 1" Description="Example Text." />
+    <Objective_02 Name="Example Objective 2" Description="Example Text." />
+    <Objective_03 Name="Example Objective 3" Description="Example Text." />
+  </Example>
+</Root>

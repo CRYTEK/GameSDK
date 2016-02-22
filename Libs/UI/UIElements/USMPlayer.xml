@@ -1,0 +1,65 @@
+<UIElements name="Common">
+
+	<UIElement name="USMPlayer" >
+
+		<GFx file="USM_Player.gfx" layer="0">
+			<Constraints>
+				<Align mode="dynamic" valign="center" halign="center" scale="1"/>
+			</Constraints>
+		</GFx>
+
+		<variables>
+			<variable name="DebugMode" varname="DebugMode" type="bool"/>
+			<variable name="EnableAudio" varname="enableAudio" type="bool"/>
+			<variable name="ShowSubtitle" varname="showSubtitle" type="bool"/>
+		</variables>
+
+		<functions>
+
+			<!-- Video -->
+			<function name="Play" funcname="vPlay"/>
+			<function name="Pause" funcname="vPause"/>
+			<function name="Resume" funcname="vResume"/>
+			<function name="Stop" funcname="vStop"/>
+			<function name="SetLoopMode" funcname="SetLoopMode">
+				<param name="Loop" desc="" type="bool"/>
+			</function>
+			<function name="SetMoviePath" funcname="setMoviePath">
+				<param name="Movie" desc="Path to movie file" type="string"/>
+			</function>
+			<function name="SetInvisible" funcname="setInvisible"/>
+
+			<!-- Audio -->
+			<function name="SelectAudioChannel" funcname="vSelectAudioChannel">
+				<param name="Channel" desc="" type="int"/>
+			</function>
+			<function name="SelectSubtitleChannel" funcname="vSelectSubtitleChannel">
+				<param name="Channel" desc="" type="int"/>
+			</function>
+
+			<!-- BG -->
+			<function name="SetBGAlpha" funcname="setBackGroundAlpha">
+				<param name="Alpha" desc="Value between 0 and 100" type="float"/>
+			</function>
+
+			<!-- Mirrow -->
+			<function name="MirrowVideo" funcname="mirrowVideo">
+				<param name="Mirrow" desc="" type="bool"/>
+			</function>
+
+		</functions>
+
+		<events>
+			<event name="OnPlay" fscommand="onPlay" desc=""/>
+			<event name="OnPause" fscommand="onPause" desc=""/>
+			<event name="OnResume" fscommand="onResume" desc=""/>
+			<event name="OnStop" fscommand="onStop" desc="">
+				<param name="VideoFinished" desc="True if Video was finished, false if stop was requested"  type="bool"/>
+			</event>
+			<event name="OnLooped" fscommand="onLooped" desc=""/>
+			<event name="OnFileNotFound" fscommand="onFileNotFound" desc=""/>
+		</events>
+
+	</UIElement>
+
+</UIElements>
