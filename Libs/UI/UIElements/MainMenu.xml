@@ -1,0 +1,345 @@
+<UIElements name="Menus">
+
+	<UIElement name="MainMenu" mouseevents="1" keyevents="1" cursor="1" controller_input="1">
+
+		<GFx file="Menus_Startmenu.gfx" layer="3">
+			<Constraints>
+				<Align mode="dynamic" valign="center" halign="center" scale="1" max="0"/>
+			</Constraints>
+		</GFx>
+
+		<functions>
+			<!-- Common stuff -->
+			<function name="ShowBackground" funcname="setBackgroundObject" desc="Show/Hide background">
+				<param name="show" desc="if true background is shown, otherwise not" type="bool"/>
+			</function>
+
+			<function name="SetMenuVisible" funcname="setVisible" desc="">
+				<param name="visible" desc="" type="bool"/>
+			</function>
+
+			<!-- setup screens -->
+			<function name="SetupScreen" funcname="setupScreen" desc="Setup a new screen">
+				<param name="Caption" desc="" type="string"/>
+				<param name="ShowLine" desc="" type="bool"/>
+				<param name="MaxButtons" desc="" type="int"/>
+				<param name="ButtonXPos" desc="" type="int"/>
+				<param name="ButtonYPos" desc="" type="int"/>
+				<param name="ButtonOffset" desc="" type="int"/>
+			</function>
+
+			<!-- image -->
+			<function name="AddImage" funcname="addImage" desc="Adds an image to the scene">
+				<param name="path" desc="" type="string"/>
+				<param name="id" desc="" type="string"/>
+				<param name="x" desc="" type="int"/>
+				<param name="y" desc="" type="int"/>
+				<param name="w" desc="" type="int"/>
+				<param name="h" desc="" type="int"/>
+				<param name="visible" desc="" type="bool"/>
+			</function>
+
+			<function name="HideImage" funcname="hideImage" desc="Hides an added image">
+				<param name="id" desc="" type="string"/>
+				<param name="fadeTime" desc="" type="float"/>
+			</function>
+			<function name="ShowImage" funcname="showImage" desc="Shows an added image">
+				<param name="id" desc="" type="string"/>
+				<param name="fadeTime" desc="" type="float"/>
+			</function>
+
+			<!-- Listbox -->
+			<function name="AddListbox" funcname="addListbox" desc="Adds a listbox to the menu">
+				<param name="id" desc="" type="string"/>
+				<param name="caption" desc="" type="string"/>
+				<param name="Tooltip" desc="" type="string"/>
+			</function>
+
+			<function name="AddListboxItem" funcname="addListboxItem" desc="Adds an item to a listbox">
+				<param name="id" desc="" type="string"/>
+				<param name="caption" desc="" type="string"/>
+				<param name="value" desc="" type="string"/>
+			</function>
+
+			<function name="AddPlayerListboxItem" funcname="addPlayerListboxItem" desc="Adds a player-item to a listbox. provides mute functionality for voicechat">
+				<param name="id" desc="" type="string"/>
+				<param name="caption" desc="" type="string"/>
+				<param name="value" desc="" type="string"/>
+				<param name="muted" desc="" type="bool"/>
+			</function>
+
+			<function name="AddListboxItems" funcname="addListboxItems" desc="Adds item to a listbox you have first set the arrays 'ListBoxCaptions' and 'ListBoxValues'">
+				<param name="id" desc="" type="string"/>
+				<param name="captions" desc="" type="string"/>
+				<param name="values" desc="" type="string"/>
+			</function>
+
+			<function name="ClearListBox" funcname="clearListbox" desc="Clears a listbox">
+				<param name="id" desc="" type="string"/>
+			</function>
+
+			<!-- buttons -->
+			<function name="AddButton" funcname="addButton" desc="Adds a  button to the menu">
+				<param name="caption" desc="" type="string"/>
+				<param name="tooltip" desc="" type="string"/>
+				<param name="consoleButtonCaption" desc="Caption displayed next to button icon on consoles when item is selected" type="string"/>
+				<param name="id" desc="id to identify object" type="string"/>
+			</function>
+
+			<function name="AddButtonDisabled" funcname="addButtonDisabled" desc="Adds a disabled button to the menu">
+				<param name="caption" desc="" type="string"/>
+				<param name="tooltip" desc="" type="string"/>
+				<param name="id" desc="id to identify object" type="string"/>
+			</function>
+
+			<function name="RemoveButton" funcname="removeButton" desc="Removes a button from the menu">
+				<param name="id" desc="id to identify object" type="string"/>
+			</function>
+
+			<function name="RemoveListboxItem" funcname="removeListboxItem" desc="Adds an item to a listbox">
+				<param name="id" desc="id of Listbox" type="string"/>
+				<param name="index" desc="index of listbox Item" type="string"/>
+			</function>
+
+			<function name="SetPlayerMuted" funcname="setPlayerMuted" desc="Adds an item to a listbox">
+				<param name="id" desc="id of Listbox" type="string"/>
+				<param name="index" desc="index of Listbox Item" type="string"/>
+				<param name="muted" desc="" type="bool"/>
+			</function>
+
+			<function name="AddQuitButton" funcname="addQuitButton" desc="">
+				<param name="caption" desc="" type="string"/>
+				<param name="tooltip" desc="" type="string"/>
+				<param name="id" desc="id to identify object" type="string"/>
+			</function>
+
+			<function name="AddBackButton" funcname="addBackButton" desc="" >
+				<param name="id" desc="id to identify object" type="string"/>
+			</function>
+
+			<function name="AddApplyButton" funcname="addApplyButton" desc="">
+				<param name="caption" desc="" type="string"/>
+				<param name="tooltip" desc="" type="string"/>
+				<param name="id" desc="id to identify object" type="string"/>
+			</function>
+
+			<function name="AddDefaultsButton" funcname="addDefaultButton" desc="" >
+				<param name="caption" desc="" type="string"/>
+				<param name="tooltip" desc="" type="string"/>
+				<param name="id" desc="id to identify object" type="string"/>
+			</function>
+
+			<function name="AddActionButton" funcname="addActionButton" desc="" >
+				<param name="caption" desc="" type="string"/>
+				<param name="id" desc="id to identify object" type="string"/>
+			</function>
+
+			<!-- Separator -->
+			<function name="AddSeparator" funcname="addSeparator" desc="">
+				<param name="Caption" desc="" type="string"/>
+				<param name="ID" desc="" type="string"/>
+				<param name="Tooltip" desc="" type="string"/>
+			</function>
+
+			<!-- switch -->
+			<function name="AddSwitch" funcname="addSwitch" desc="">
+				<param name="caption" desc="" type="string"/>
+				<param name="tooltip" desc="" type="string"/>
+				<param name="value" desc="" type="string"/>
+				<param name="id" desc="id sended by onButtonPressed callback" type="string"/>
+			</function>
+
+			<function name="AddSwitchOption" funcname="addSwitchOption" desc="">
+				<param name="id" desc="id of switch" type="string"/>
+				<param name="caption" desc="" type="string"/>
+				<param name="value" desc="" type="string"/>
+			</function>
+
+			<function name="ClearSwitchOptions" funcname="clearSwitchOptions" desc="">
+				<param name="id" desc="id of switch" type="string"/>
+			</function>
+
+			<function name="AddSwitchOptionsFromString" funcname="addSwitchOptionsFromString" desc="Adds comma seperated string to switch as options">
+				<param name="id" desc="id of switch" type="string"/>
+				<param name="options" desc="" type="string"/>
+				<param name="delimter" desc="" type="string"/>
+			</function>
+
+			<!-- slider -->
+			<function name="AddSlider" funcname="addSlider" desc="">
+				<param name="caption" desc="" type="string"/>
+				<param name="tooltip" desc="" type="string"/>
+				<param name="min" desc="" type="float"/>
+				<param name="max" desc="" type="float"/>
+				<param name="step" desc="" type="float"/>
+				<param name="value" desc="" type="float"/>
+				<param name="id" desc="id sended by onButtonPressed callback" type="string"/>
+			</function>
+
+			<!-- leaderboard -->
+			<function name="AddLeaderboard" funcname="addLeaderboard" desc="">
+				<param name="columnTitles" desc="CSV data. seperate columns with ','" type="string"/>
+				<param name="linebreakIndex" desc="" type="int"/>
+				<param name="scrollable" desc="" type="bool"/>
+			</function>
+
+			<function name="SetLeaderboardItemIcon" funcname="setLeaderboardItemIcon" desc="">
+				<param name="index" desc="index of leaderboard item" type="int"/>
+				<param name="iconKeyframe" desc="keyframe of icon in 'leaderboardIcon' movieclip" type="int"/>
+			</function>
+
+			<function name="AppendLeaderboardRow" funcname="appendLeaderboardRow" desc="">
+				<param name="data" desc="CSV data. seperate entries with pipe '|'" type="string"/>
+			</function>
+
+			<function name="ClearLeaderboard" funcname="clearLeaderboard" desc=""/>
+
+			<!-- user stats -->
+
+			<function name="AddUserStats" funcname="addUserStats" desc="">
+				<param name="linebreakIndex" desc="number of items per Row" type="int"/>
+				<param name="scrollable" desc="" type="bool"/>
+			</function>
+
+			<function name="AppendUserStatsCell" funcname="appendUserStatsCell" desc="">
+				<param name="title" desc="" type="string"/>
+				<param name="value" desc="" type="string"/>
+			</function>
+
+			<function name="ClearUserStats" funcname="clearUserStats" desc=""/>
+
+			<function name="SetUserStatsItemColor" funcname="setUserStatsItemColor" desc="">
+				<param name="index" desc="" type="int"/>
+				<param name="color" desc="" type="string"/>
+			</function>
+
+			<!-- textfield -->
+			<function name="AddTextField" funcname="addTextField" desc="">
+				<param name="caption" desc="" type="string"/>
+				<param name="tooltip" desc="" type="string"/>
+				<param name="consoleButtonCaption" desc="Caption displayed next to button icon on consoles when item is selected" type="string"/>
+				<param name="isSending" desc="send or static" type="bool"/>
+				<param name="id" desc="id sended by OnTextFieldChange callback" type="string"/>
+			</function>
+
+			<function name="GetTextFieldText" funcname="getTextFieldText" desc="">
+				<param name="id" desc="" type="string"/>
+			</function>
+
+			<function name="SetTextFieldText" funcname="setTextFieldText" desc="">
+				<param name="id" desc="" type="string"/>
+				<param name="value" desc="" type="string"/>
+			</function>
+
+			<function name="GetListboxItemCaption" funcname="getListboxItemCaption" desc="">
+				<param name="id" desc="" type="string"/>
+			</function>
+
+			<function name="GetListboxItemValue" funcname="getListboxItemValue" desc="">
+				<param name="id" desc="" type="string"/>
+			</function>
+
+			<!-- control values -->
+			<function name="GetControlVal" funcname="getControlVal" desc="">
+				<param name="id" desc="" type="string"/>
+			</function>
+
+			<function name="SetControlVal" funcname="setControlVal" desc="">
+				<param name="id" desc="" type="string"/>
+				<param name="value" desc=""/>
+			</function>
+
+			<!-- dialogs -->
+			<function name="ShowConfirmation" funcname="showConfirmDiag" desc="">
+				<param name="message" desc="" type="string"/>
+				<param name="btn1Caption" desc="" type="string"/>
+				<param name="btn2Caption" desc="" type="string"/>
+				<param name="id" desc="" type="string"/>
+			</function>
+
+			<function name="HideConfirmation" funcname="hideConfirmDiag" desc=""/>
+
+			<function name="DisplayLoadingDialog" funcname="displayLoadingDialog" desc="">
+				<param name="caption" desc="" type="string"/>
+			</function>
+
+			<function name="RemoveLoadingDialog" funcname="removeLoadingDialog" desc=""/>
+
+			<!-- loadingScreen -->
+			<function name="HideBackGroundIMG" funcname="hideBG" desc=""/>
+			<function name="ShowBackGroundIMG" funcname="showBG" desc=""/>
+			<!-- Version Control -->
+			<function name="SetVersion" funcname="setVersion" desc="Set Version">
+				<param name="version" desc="" type="string"/>
+			</function>
+			<!-- Start Count Down -->
+			<function name="StartCountDown" funcname="startCountDown" desc="Set Version"/>
+			<!-- Various 3.5-->
+			<function name="AddScreenText" funcname="addScreenText" desc="Add ScreenText">
+				<param name="text" desc="" type="string"/>
+				<param name="id" desc="" type="string"/>
+				<param name="alignment" desc="" type="string"/>
+			</function>
+
+			<function name="SendChatMessage" funcname="sendMessage" desc="Receive global chat">
+				<param name="ID" desc="" type="string"/>
+				<param name="Message" desc="" type="string"/>
+			</function>
+
+			<function name="showLoader" funcname="show_loader" desc="Show Loading Screen"/>
+			<function name="hideLoader" funcname="hide_loader" desc="Hide Loading Screen"/>
+
+			<function name="showLogo" funcname="showlogo" desc="Show the logo and hide page name"/>
+			<function name="hideLogo" funcname="hidelogo" desc="Hide the logo and show page name"/>
+
+			<function name="SetLoadingImage" funcname="setLevelLoadingImage" desc="">
+				<param name="image" desc="" type="string"/>
+			</function>
+		</functions>
+
+		<events>
+			<!-- buttons -->
+			<event name="OnButton" fscommand="onButton" desc="">
+				<param name="Id" desc="Button Id" type="string"/>
+			</event>
+
+			<!-- textfield -->
+			<event name="OnTextFieldChanged" fscommand="textfieldChanged" desc="">
+				<param name="Id" desc="Control Id" type="string"/>
+				<param name="Value" desc="" type="string"/>
+			</event>
+
+			<!-- controls -->
+			<event name="OnControlChanged" fscommand="onControl" desc="">
+				<param name="Id" desc="Control Id" type="string"/>
+				<param name="Value" desc=""/>
+			</event>
+
+			<event name="OnPlayerMuteChanged" fscommand="playerMuteChanged" desc="">
+				<param name="Id" desc="Listbox Id" type="string"/>
+				<param name="Index" desc="Index Listitem" type="string"/>
+				<param name="Muted" type="bool" desc=""/>
+			</event>
+
+			<!-- common -->
+			<event name="OnSound" fscommand="FrontEnd_Move" desc=""/>
+
+			<!-- confirm -->
+			<event name="OnConfirm" fscommand="onConfirm" desc="">
+				<param name="id" desc=""  type="string"/>
+				<param name="Accepted" desc="true or false" type="bool"/>
+			</event>
+		</events>
+
+		<Arrays>
+			<Array name="ListBoxCaptions" varname="listBoxCaptions" desc="Array of captions used by AddListboxItems function"/>
+			<Array name="ListBoxValues" varname="listBoxValues" desc="Array of values used by AddListboxItems function"/>
+		</Arrays>
+
+		<MovieClips>
+			<MovieClip name="Cursor" instancename="Cursor"/>
+			<MovieClip name="Holder" instancename="HolderMC"/>
+		</MovieClips>
+
+	</UIElement>
+</UIElements>

@@ -1,0 +1,18 @@
+<Graph Description="" Group="Demo_HUD" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="2" Class="UI:Display:Display" pos="-340.91479,-143.18422,0" flags="0">
+   <Inputs uiElements_Element="Demo_Speedo" instanceID="-1"/>
+  </Node>
+  <Node Id="4" Class="UI:Action:End" pos="40,-130,0" flags="1">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="8" Class="UI:Action:Start" pos="-620,-90,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="4" nodeOut="2" portIn="EndAction" portOut="onHide" enabled="1"/>
+  <Edge nodeIn="2" nodeOut="8" portIn="hide" portOut="StartAction" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

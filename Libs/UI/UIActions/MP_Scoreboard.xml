@@ -1,0 +1,73 @@
+<Graph Description="" Group="InGame" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="23" Class="Game:Start" pos="-400,-160,0" flags="0">
+   <Inputs InGame="1" InEditor="1"/>
+  </Node>
+  <Node Id="38" Class="Input:ActionListener" pos="280,-160,0" flags="0">
+   <Inputs entityId="0" Action="menu_scoreboard_open" ActionMap="menu" NonDevMode="1"/>
+  </Node>
+  <Node Id="40" Class="UI:Functions:HUD2D:OnHideScoreboard" pos="680,-100,0" flags="0">
+   <Inputs instanceID="-1"/>
+  </Node>
+  <Node Id="42" Class="UI:Functions:HUD2D:OnShowScoreboard" pos="1200,-160,0" flags="0">
+   <Inputs instanceID="-1"/>
+  </Node>
+  <Node Id="63" Class="UI:Functions:HUD2D:UpdateOrAddScoreboardItem" pos="40,80,0" flags="0">
+   <Inputs instanceID="-1" PlayerID="0" Name="" Kills="0" Deaths="0" Team=""/>
+  </Node>
+  <Node Id="64" Name="Scoreboard_functionality" Class="_commentbox" pos="-440,-242.17685,0" flags="0">
+   <Inputs TextSize="1" Color="0.399293,0.523443,0.394083" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1960" Height="610"/>
+   <NodeSize Width="1960" Height="646.95813"/>
+  </Node>
+  <Node Id="67" Class="UI:Events:MP:PlayerLeft" pos="-400,280,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="73" Class="UI:Functions:HUD2D:RemoveScoreBoardItem" pos="260,280,0" flags="0">
+   <Inputs instanceID="-1" PlayerID="0"/>
+  </Node>
+  <Node Id="79" Class="Actor:LocalPlayer" pos="-160,-160,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="80" Class="UI:Events:MP:ScoreBoardItemWasUpdated" pos="-400,80,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="81" Class="UI:Util:UIDelay" pos="20,280,0" flags="0">
+   <Inputs delay="1"/>
+  </Node>
+  <Node Id="82" Class="UI:Functions:MP:RequestUpdatedScores" pos="680,-160,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="83" Class="UI:Util:UIDelay" pos="1000,-160,0" flags="0">
+   <Inputs delay="0.25"/>
+  </Node>
+  <Node Id="84" Name="Remove_player_from_scoreboard_after_disconnect" Class="_comment" pos="-400,250,0" flags="0"/>
+  <Node Id="85" Name="Trigger_to_update_information_in_scoreboard" Class="_comment" pos="-400,50,0" flags="0"/>
+  <Node Id="87" Name="Request_updated_scores_before_showing_scoreboard" Class="_comment" pos="680,-190,0" flags="0"/>
+  <Node Id="91" Class="Multiplayer:IsMultiplayer" pos="-160,-120,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="92" Name="Display_Scoreboard_in_Multiplayer" Class="_comment" pos="-160,-60,0" flags="0"/>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="79" nodeOut="23" portIn="update" portOut="output" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="23" portIn="Get" portOut="output" enabled="1"/>
+  <Edge nodeIn="40" nodeOut="38" portIn="Call" portOut="Released" enabled="1"/>
+  <Edge nodeIn="82" nodeOut="38" portIn="send" portOut="Pressed" enabled="1"/>
+  <Edge nodeIn="73" nodeOut="67" portIn="PlayerID" portOut="ID" enabled="1"/>
+  <Edge nodeIn="81" nodeOut="67" portIn="in" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="38" nodeOut="79" portIn="entityId" portOut="entityId" enabled="1"/>
+  <Edge nodeIn="63" nodeOut="80" portIn="Deaths" portOut="Deaths" enabled="1"/>
+  <Edge nodeIn="63" nodeOut="80" portIn="PlayerID" portOut="ID" enabled="1"/>
+  <Edge nodeIn="63" nodeOut="80" portIn="Kills" portOut="Kills" enabled="1"/>
+  <Edge nodeIn="63" nodeOut="80" portIn="Name" portOut="Name" enabled="1"/>
+  <Edge nodeIn="63" nodeOut="80" portIn="Team" portOut="Team" enabled="1"/>
+  <Edge nodeIn="63" nodeOut="80" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="73" nodeOut="81" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="82" portIn="in" portOut="OnEvent" enabled="1"/>
+  <Edge nodeIn="42" nodeOut="83" portIn="Call" portOut="out" enabled="1"/>
+  <Edge nodeIn="38" nodeOut="91" portIn="Disable" portOut="False" enabled="1"/>
+  <Edge nodeIn="38" nodeOut="91" portIn="Enable" portOut="True" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

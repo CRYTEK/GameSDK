@@ -1,0 +1,137 @@
+<Graph Description="" Group="Dialogs" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Events:Dialogs:ShowDialogAsset" pos="220,100,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="2" Class="UI:Events:Dialogs:HideDialogAsset" pos="220,220,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="4" Class="UI:Display:Display" pos="800,100,0" flags="0">
+   <Inputs uiElements_Element="Menu_Dialogs" instanceID="-1"/>
+  </Node>
+  <Node Id="5" Class="UI:Events:Dialogs:DisplayAcceptDecline" pos="-500,100,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="6" Class="UI:Events:Dialogs:DisplayConfirm" pos="-500,280,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="7" Class="UI:Events:Dialogs:DisplayError" pos="-500,460,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="8" Class="UI:Events:Dialogs:DisplayInputDialog" pos="-500,640,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="9" Class="UI:Events:Dialogs:DisplayOk" pos="-500,820,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="10" Class="UI:Events:Dialogs:DisplayWaitDialog" pos="-500,1000,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="11" Class="UI:Events:Dialogs:DisplayWarning" pos="-500,1180,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="12" Class="UI:Events:Dialogs:RemoveDialog" pos="220,390,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="13" Class="UI:Functions:Menu_Dialogs:AddDialog" pos="-160,100,0" flags="0">
+   <Inputs instanceID="-1" Id="0" type="AcceptDecline" Title="" Message="" Param1="" Param2=""/>
+  </Node>
+  <Node Id="14" Class="UI:Functions:Menu_Dialogs:AddDialog" pos="-160,280,0" flags="0">
+   <Inputs instanceID="-1" Id="0" type="Confirm" Title="" Message="" Param1="" Param2=""/>
+  </Node>
+  <Node Id="15" Class="UI:Functions:Menu_Dialogs:AddDialog" pos="-160,460,0" flags="0">
+   <Inputs instanceID="-1" Id="0" type="Error" Title="" Message="" Param1="" Param2=""/>
+  </Node>
+  <Node Id="16" Class="UI:Functions:Menu_Dialogs:AddDialog" pos="-160,640,0" flags="0">
+   <Inputs instanceID="-1" Id="0" type="Input" Title="" Message="" Param1="" Param2=""/>
+  </Node>
+  <Node Id="17" Class="UI:Functions:Menu_Dialogs:AddDialog" pos="-160,820,0" flags="0">
+   <Inputs instanceID="-1" Id="0" type="Okay" Title="" Message="" Param1="" Param2=""/>
+  </Node>
+  <Node Id="18" Class="UI:Functions:Menu_Dialogs:AddDialog" pos="-160,1000,0" flags="0">
+   <Inputs instanceID="-1" Id="0" type="Wait" Title="" Message="" Param1="" Param2=""/>
+  </Node>
+  <Node Id="19" Class="UI:Functions:Menu_Dialogs:AddDialog" pos="-160,1180,0" flags="0">
+   <Inputs instanceID="-1" Id="0" type="Warning" Title="" Message="" Param1="" Param2=""/>
+  </Node>
+  <Node Id="21" Class="UI:Functions:Menu_Dialogs:RemoveDialog" pos="560,390,0" flags="0">
+   <Inputs instanceID="-1" Id="0"/>
+  </Node>
+  <Node Id="22" Class="UI:Events:Menu_Dialogs:OnConfirm" pos="220,490,0" flags="0">
+   <Inputs instanceID="-1" Port="-1" Idx=""/>
+  </Node>
+  <Node Id="23" Class="UI:Functions:Dialogs:DialogResult" pos="560,490,0" flags="0">
+   <Inputs DialogId="0" DialogResult="0" Message=""/>
+  </Node>
+  <Node Id="61" Name="Display_/_hide_the_asset_if_needed" Class="_commentbox" pos="180,50.000038,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="980" Height="240"/>
+   <NodeSize Width="980" Height="267.39063"/>
+  </Node>
+  <Node Id="63" Name="Add_different_dialogs" Class="_commentbox" pos="-540,49.130745,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="680" Height="1290"/>
+   <NodeSize Width="680" Height="1317.3906"/>
+  </Node>
+  <Node Id="65" Name="Remove_dialogs_/_handle_dialog_events" Class="_commentbox" pos="180,340,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="740" Height="270"/>
+   <NodeSize Width="740" Height="297.39063"/>
+  </Node>
+  <Node Id="69" Class="Actor:ActionFilter" pos="540,140,0" flags="0">
+   <Inputs entityId="0" Filter="only_ui"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="4" nodeOut="1" portIn="show" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="69" nodeOut="1" portIn="Enable" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="4" nodeOut="2" portIn="requestHide" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="69" nodeOut="2" portIn="Disable" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="13" nodeOut="5" portIn="Param1" portOut="Button1" enabled="1"/>
+  <Edge nodeIn="13" nodeOut="5" portIn="Param2" portOut="Button2" enabled="1"/>
+  <Edge nodeIn="13" nodeOut="5" portIn="Id" portOut="DialogId" enabled="1"/>
+  <Edge nodeIn="13" nodeOut="5" portIn="Message" portOut="Message" enabled="1"/>
+  <Edge nodeIn="13" nodeOut="5" portIn="Title" portOut="Title" enabled="1"/>
+  <Edge nodeIn="13" nodeOut="5" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="14" nodeOut="6" portIn="Param1" portOut="Button1" enabled="1"/>
+  <Edge nodeIn="14" nodeOut="6" portIn="Param2" portOut="Button2" enabled="1"/>
+  <Edge nodeIn="14" nodeOut="6" portIn="Id" portOut="DialogId" enabled="1"/>
+  <Edge nodeIn="14" nodeOut="6" portIn="Message" portOut="Message" enabled="1"/>
+  <Edge nodeIn="14" nodeOut="6" portIn="Title" portOut="Title" enabled="1"/>
+  <Edge nodeIn="14" nodeOut="6" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="15" nodeOut="7" portIn="Param1" portOut="Button1" enabled="1"/>
+  <Edge nodeIn="15" nodeOut="7" portIn="Param2" portOut="Button2" enabled="1"/>
+  <Edge nodeIn="15" nodeOut="7" portIn="Id" portOut="DialogId" enabled="1"/>
+  <Edge nodeIn="15" nodeOut="7" portIn="Message" portOut="Message" enabled="1"/>
+  <Edge nodeIn="15" nodeOut="7" portIn="Title" portOut="Title" enabled="1"/>
+  <Edge nodeIn="15" nodeOut="7" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="16" nodeOut="8" portIn="Param1" portOut="Default" enabled="1"/>
+  <Edge nodeIn="16" nodeOut="8" portIn="Id" portOut="DialogId" enabled="1"/>
+  <Edge nodeIn="16" nodeOut="8" portIn="Message" portOut="Message" enabled="1"/>
+  <Edge nodeIn="16" nodeOut="8" portIn="Title" portOut="Title" enabled="1"/>
+  <Edge nodeIn="16" nodeOut="8" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="17" nodeOut="9" portIn="Param1" portOut="Button1" enabled="1"/>
+  <Edge nodeIn="17" nodeOut="9" portIn="Param2" portOut="Button2" enabled="1"/>
+  <Edge nodeIn="17" nodeOut="9" portIn="Id" portOut="DialogId" enabled="1"/>
+  <Edge nodeIn="17" nodeOut="9" portIn="Message" portOut="Message" enabled="1"/>
+  <Edge nodeIn="17" nodeOut="9" portIn="Title" portOut="Title" enabled="1"/>
+  <Edge nodeIn="17" nodeOut="9" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="18" nodeOut="10" portIn="Id" portOut="DialogId" enabled="1"/>
+  <Edge nodeIn="18" nodeOut="10" portIn="Message" portOut="Message" enabled="1"/>
+  <Edge nodeIn="18" nodeOut="10" portIn="Title" portOut="Title" enabled="1"/>
+  <Edge nodeIn="18" nodeOut="10" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="19" nodeOut="11" portIn="Param1" portOut="Button1" enabled="1"/>
+  <Edge nodeIn="19" nodeOut="11" portIn="Param2" portOut="Button2" enabled="1"/>
+  <Edge nodeIn="19" nodeOut="11" portIn="Id" portOut="DialogId" enabled="1"/>
+  <Edge nodeIn="19" nodeOut="11" portIn="Message" portOut="Message" enabled="1"/>
+  <Edge nodeIn="19" nodeOut="11" portIn="Title" portOut="Title" enabled="1"/>
+  <Edge nodeIn="19" nodeOut="11" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="21" nodeOut="12" portIn="Id" portOut="DialogId" enabled="1"/>
+  <Edge nodeIn="21" nodeOut="12" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="23" nodeOut="22" portIn="DialogId" portOut="Id" enabled="1"/>
+  <Edge nodeIn="23" nodeOut="22" portIn="Message" portOut="Param" enabled="1"/>
+  <Edge nodeIn="23" nodeOut="22" portIn="DialogResult" portOut="Return" enabled="1"/>
+  <Edge nodeIn="23" nodeOut="22" portIn="send" portOut="onEvent" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

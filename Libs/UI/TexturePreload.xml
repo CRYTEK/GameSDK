@@ -1,0 +1,39 @@
+<!-- 
+Common				: Always preloaded
+NoLevel				: Loaded from the main menu (when there is no level active)
+Levels, Common		: Always loaded after a level is loaded
+Levels, <levelname>	: Loaded after a level is loaded with this name, if the level is Singleplayer/Forest, the tag should be Singleplayer_Forest
+-->
+<Preload>
+
+	<!-- Always preloaded (level and main menu) -->
+	<Common>
+			<Preload file="Libs/UI/Textures/*"/>
+	</Common>
+
+	<!-- Only preloaded when enter the main menu -->
+	<NoLevel>
+		<!-- preload images for loadingscreen otherwise they won't show up! -->
+		<Preload file="Levels/Multiplayer/Airfield/LoadingAirfield.dds"/> 
+	</NoLevel>
+
+	<!-- level specific -->
+	<Levels>
+
+		<!-- Only preloaded when loading a level -->
+		<Common>
+		</Common>
+
+		<!-- Per level -->
+		<Singleplayer_Woodland>
+			<Preload file="Levels/Singleplayer/Woodland/Woodland.dds"/>
+		</Singleplayer_Woodland>
+
+		<Multiplayer_Airfield>
+			<Preload file="Levels/Multiplayer/Airfield/Airfield.dds"/>
+			<Preload file="Levels/Multiplayer/Airfield/LoadingAirfield.dds"/>
+		</Multiplayer_Airfield>
+
+	</Levels>
+
+</Preload>

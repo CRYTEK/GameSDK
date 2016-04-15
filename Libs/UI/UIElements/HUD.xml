@@ -1,0 +1,198 @@
+<UIElements name="Menus">
+
+	<!-- HUD 2D START -->
+	<UIElement name="HUD2D" render_lockless="1" keyevents="1" controller_input="1" is_Hud="1">
+
+		<GFx file="HUD_2D.gfx" layer="3" alpha="0">
+			<Constraints>
+				<Align mode="dynamic" valign="center" halign="center" scale="1" max="1"/>
+			</Constraints>
+		</GFx>
+
+		<Templates>
+			<MovieClip name="SBItem" template="MCScoreboard"/>
+		</Templates>
+
+		<functions>
+			<!-- Chat -->
+			<function name="StartChat" funcname="startChat"/>
+
+			<function name="DisplayChatMessage" funcname="displayChatMessage">
+				<param name="Player" desc="" type="String"/>
+				<param name="Message" desc="" type="String"/>
+			</function>
+
+			<!-- scoreboard -->
+			<function name="OnShowScoreboard" funcname="onShowScoreboard"/>
+
+			<function name="OnHideScoreboard" funcname="onHideScoreboard"/>
+
+			<function name="UpdateOrAddScoreboardItem" funcname="updateOrAddScoreboardItem">
+				<param name="PlayerID" desc="" type="int"/>
+				<param name="Name" desc="" type="String"/>
+				<param name="Kills" desc="" type="int"/>
+				<param name="Deaths" desc="" type="int"/>
+				<param name="Team" desc="" type="String"/>
+			</function>
+
+			<function name="RemoveScoreBoardItem" funcname="removeItem">
+				<param name="PlayerID" desc="" type="int"/>
+			</function>
+
+			<!-- Weapons -->
+			<function name="SetWeapon" funcname="setWeapon">
+				<param name="WeaponName" desc="" type="string"/>
+				<param name="Zoomed" desc="" type="bool"/>
+			</function>
+
+			<function name="OnShoot" funcname="onShoot"/>
+
+			<function name="SetZoomMode" funcname="setZoomStep">
+				<param name="Step" desc="" type="int"/>
+			</function>
+
+			<function name="SetZoomDistance" funcname="setZoomDistance">
+				<param name="distance" desc="" type="int"/>
+			</function>
+		</functions>
+
+		<events>
+			<event name="OnChatMessageSend" fscommand="onChatMessageSend" desc="">
+				<param name="Message" desc="chat message" type="string"  />
+			</event>
+			<event name="OnChatMessageCancel" fscommand="onChatMessageCancel" desc=""/>
+		</events>
+
+	</UIElement>
+	<!-- HUD 2D END -->
+
+
+
+
+
+	<!-- HUD 3D START -->
+	<UIElement name="HUD3D" render_lockless="0" is_Hud="1">
+
+		<GFx file="HUD_3D.gfx" layer="0">
+			<Constraints>
+				<Align mode="fullscreen"/>
+			</Constraints>
+		</GFx>
+
+		<functions>
+			<!-- Health -->
+			<function name="SetHealth" funcname="setHealth">
+				<param name="Health" desc="Players current health" type="int"/>
+			</function>
+
+			<!-- Stamina -->
+			<function name="SetStamina" funcname="setStamina">
+				<param name="Stamina" desc="Players current stamina, float from 0 to 1" type="float"/>
+			</function>
+
+			<!-- Weapons -->
+			<function name="SetAmmo" funcname="setAmmo">
+				<param name="Ammo" desc="" type="int"/>
+				<param name="LowAmmo" desc="String for for caption of low Ammo" type="string"/>
+				<param name="OutOfAmmo" desc="String for caption of out of ammo indicator" type="string"/>
+			</function>
+
+			<function name="SetWeapon" funcname="setWeapon">
+				<param name="WeaponName" desc="" type="string"/>
+				<param name="AmmoTypeName" desc="" type="string"/>
+				<param name="IsMelee" desc="" type="bool"/>
+				<param name="PoolAmmo" desc="" type="int"/>
+				<param name="MaxAmmo" desc="" type="int"/>
+				<param name="LowAmmo" desc="String for for caption of low Ammo" type="string"/>
+				<param name="OutOfAmmo" desc="String for caption of out of ammo indicator" type="string"/>
+			</function>
+
+			<!-- Video -->
+			<function name="PlayVideo" funcname="playVideo">
+				<param name="Movie" desc="Path to movie file" type="string"/>
+			</function>
+
+			<!-- Message -->
+			<function name="DisplayMessage" funcname="displayMessage">
+				<param name="Message" desc="" type="string"/>
+			</function>
+
+			<function name="QueueMissionMessageDetail" funcname="queueMissionMessageDetail">
+				<param name="Message" desc="" type="string"/>
+				<param name="TypingSpeed" desc="" type="double"/>
+			</function>
+
+			<function name="ShowNextMissionMessageDetail" funcname="showNextMissionMessageDetail">
+			</function>
+
+			<function name="HideMissionMessageDetail" funcname="hideMissionMessageDetail"/>
+
+			<function name="ShowMissionMessagePrimary" funcname="showMissionMessagePrimary">
+				<param name="Message" desc="" type="string"/>
+				<param name="TypingSpeed" desc="" type="double"/>
+			</function>
+
+			<function name="HideMissionMessagePrimary" funcname="hideMissionMessagePrimary"/>
+
+			<function name="ShowMissionMessageSecondary" funcname="showMissionMessageSecondary">
+				<param name="Message" desc="" type="string"/>
+				<param name="TypingSpeed" desc="" type="double"/>
+			</function>
+
+			<function name="HideMissionMessageSecondary" funcname="hideMissionMessageSecondary"/>
+
+			<function name="HideMessage" funcname="hideMessage"/>
+
+			<!-- Radar -->
+			<function name="SetupMap" funcname="setupMiniMap" >
+				<param name="MapFile" desc="Filename of map dds file" type="string"/>
+				<param name="Width" desc="" type="int"/>
+				<param name="Height" desc="" type="int"/>
+			</function>
+
+			<function name="ScaleMap" funcname="scaleMap">
+				<param name="Factor" desc="scale factor" type="float"/>
+			</function>
+
+			<function name="SetPlayerPos" funcname="setPlayerPos">
+				<param name="X" desc="Scaled player x pos ( 0 to 1 )" type="float"/>
+				<param name="Y" desc="Scaled player y pos ( 0 to 1 )" type="float"/>
+				<param name="Rot" desc="Player rotation in degree" type="int"/>
+			</function>
+
+			<function name="AddRadarItem" funcname="addMiniMapItem">
+				<param name="ID" desc="ID of the item" type="int"/>
+				<param name="ItemType" desc="Name of the Movieclip that should be used" type="string"/>
+			</function>
+
+			<function name="UpdateRadarItem" funcname="updateMiniMapItem">
+				<param name="ID" desc="ID of the item" type="int"/>
+				<param name="X" desc="Scaled entity x pos ( 0 to 1 )" type="float"/>
+				<param name="Y" desc="Scaled entity y pos ( 0 to 1 )" type="float"/>
+				<param name="Rot" desc="Entity rotation in degree" type="int"/>
+			</function>
+
+			<function name="RemoveRadarItem" funcname="removeMiniMapItem">
+				<param name="ID" desc="ID of the item" type="int"/>
+			</function>
+
+			<function name ="SetThreatLevel" funcname="setThreatLevel">
+				<param name="threatLevel" desc="input: 0 - 100" type="int"/>
+			</function>
+
+			<!-- MP Messages -->
+			<function name="AddMpMessage" funcname="addMessageItem">
+				<param name="MsgType" desc="can be 'kill', 'join' or 'left'" type="string"/>
+				<param name="Str1" desc="First string (usually player name)" type="string"/>
+				<param name="Str2" desc="Second string in case of 'kill' name of killed player" type="string"/>
+			</function>
+		</functions>
+
+		<events>
+			<event name="OnTransmissionDone" fscommand="onVideoStop" desc=""/>
+		</events>
+
+	</UIElement>
+	<!-- HUD 3D END -->
+
+</UIElements>

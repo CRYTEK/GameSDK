@@ -1,0 +1,27 @@
+<Graph Description="" Group="Demo_HUD" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="2" Class="UI:Display:Display" pos="390,-70,0" flags="0">
+   <Inputs uiElements_Element="Demo_Speedo" instanceID="-1"/>
+  </Node>
+  <Node Id="4" Class="UI:Action:End" pos="770,-50,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="286" Class="UI:Events:System:OnGameplayEnded" pos="60,60,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="288" Class="UI:Action:Start" pos="60,-20,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="295" Name="Set_up_the_Demo_HUD_elements" Class="_commentbox" pos="30,-140.00002,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1080" Height="430"/>
+   <NodeSize Width="1080" Height="457.39063"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="4" nodeOut="2" portIn="EndAction" portOut="onUnload" enabled="1"/>
+  <Edge nodeIn="2" nodeOut="286" portIn="unload" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="2" nodeOut="288" portIn="show" portOut="StartAction" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

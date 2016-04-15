@@ -1,0 +1,44 @@
+<Graph Description="" Group="MM_Display" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="2040,660,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_LoadingEngine" ShowLine="0" MaxButtons="1" ButtonXPos="-250" ButtonYPos="0" ButtonOffset="40"/>
+  </Node>
+  <Node Id="25" Name="Show_interim_loading_screen" Class="_commentbox" pos="40,477.39063,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="2770" Height="370"/>
+   <NodeSize Width="2770" Height="406.52081"/>
+  </Node>
+  <Node Id="76" Class="UI:Action:Start" pos="80,680,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="77" Class="UI:Action:End" pos="2640,660,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="78" Class="UI:Display:Display" pos="360,560,0" flags="0">
+   <Inputs uiElements_Element="MainMenu" instanceID="-1"/>
+  </Node>
+  <Node Id="83" Class="UI:Display:Config" pos="1080,560,0" flags="0">
+   <Inputs uiElements_Element="MainMenu" instanceID="-1" cursor="0" mouseEvents="0" keyEvents="0" consoleMouse="0" consoleCursor="0" controllerInput="0" eventsExclusive="0" fixedProjDepth="0" forceNoUnload="0" alpha="1" layer="3"/>
+  </Node>
+  <Node Id="87" Class="UI:Functions:MainMenu:ShowBackground" pos="1400,560,0" flags="0">
+   <Inputs instanceID="-1" show="0"/>
+  </Node>
+  <Node Id="88" Class="UI:Display:Display" pos="720,560,0" flags="0">
+   <Inputs uiElements_Element="MainMenu" instanceID="-1"/>
+  </Node>
+  <Node Id="109" Class="UI:Functions:MainMenu:showLoader" pos="2360,660,0" flags="0">
+   <Inputs instanceID="-1"/>
+  </Node>
+  <Node Id="114" Name="This_is_loaded_during_startup_as_an_interim_page,_before_the_main_menu_is_loaded,_in_the_case_of_slow_hardware" Class="_comment" pos="80,820,0" flags="0"/>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="109" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="78" nodeOut="76" portIn="reload" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="88" nodeOut="78" portIn="show" portOut="onReload" enabled="1"/>
+  <Edge nodeIn="87" nodeOut="83" portIn="Call" portOut="OnSet" enabled="1"/>
+  <Edge nodeIn="5" nodeOut="87" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="88" portIn="set" portOut="onShow" enabled="1"/>
+  <Edge nodeIn="77" nodeOut="109" portIn="EndAction" portOut="OnCall" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

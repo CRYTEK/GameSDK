@@ -1,0 +1,92 @@
+<Graph Description="" Group="MM_PagesMain" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="-340,-20,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="-60,-20,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_MultiplayerTitle" ShowLine="1" MaxButtons="2" ButtonXPos="-500" ButtonYPos="0" ButtonOffset="40"/>
+  </Node>
+  <Node Id="33" Name="Setup_page" Class="_commentbox" pos="-360,-128.25923,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="3220" Height="230"/>
+   <NodeSize Width="3220" Height="284.78125"/>
+  </Node>
+  <Node Id="34" Class="UI:Functions:MainMenu:AddBackButton" pos="2060,-20,0" flags="0">
+   <Inputs instanceID="-1" id="MM_Main"/>
+  </Node>
+  <Node Id="35" Class="UI:Functions:MainMenu:AddButton" pos="600,-20,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_HostLan" tooltip="@ui_HostLanTT" consoleButtonCaption="@ui_ButtonSelect" id="MM_HostMP"/>
+  </Node>
+  <Node Id="36" Class="UI:Functions:MainMenu:AddButton" pos="980,-20,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_JoinLan" tooltip="@ui_JoinLanTT" consoleButtonCaption="@ui_ButtonSelect" id="MM_JoinMP"/>
+  </Node>
+  <Node Id="40" Name="Handle_events" Class="_commentbox" pos="-370,170.87013,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="830" Height="210"/>
+   <NodeSize Width="830" Height="264.78125"/>
+  </Node>
+  <Node Id="83" Class="UI:Action:Control" pos="-60,300,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args=""/>
+  </Node>
+  <Node Id="91" Class="UI:Action:End" pos="280,300,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="93" Class="UI:Action:Start" pos="-340,300,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="94" Name="Use_default_event_state_as_well" Class="_comment" pos="-340,270,0" flags="0"/>
+  <Node Id="96" Class="UI:Events:MainMenu:OnButton" pos="600,300,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="MM_Main"/>
+  </Node>
+  <Node Id="98" Class="UI:Functions:LobbyMP:SetMultiplayer" pos="900,300,0" flags="0">
+   <Inputs isMultiplayer="0"/>
+  </Node>
+  <Node Id="99" Name="Revert_multiplayer_state" Class="_comment" pos="900,270,0" flags="0"/>
+  <Node Id="117" Class="UI:Functions:LobbyMP:LockController" pos="900,360,0" flags="0">
+   <Inputs LockController="0"/>
+  </Node>
+  <Node Id="118" Name="Release_locked_controller_when_returning_to_main_menu" Class="_commentbox" pos="560,173.47951,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="630" Height="210"/>
+   <NodeSize Width="1022.8409" Height="264.78125"/>
+  </Node>
+  <Node Id="119" Class="UI:Util:Platform" pos="2350,-20,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="120" Class="UI:Functions:MainMenu:AddActionButton" pos="2570,-40,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_XSelect"/>
+  </Node>
+  <Node Id="121" Class="UI:Functions:MainMenu:AddActionButton" pos="2570,60,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_PSSelect"/>
+  </Node>
+  <Node Id="209" Class="UI:Functions:MainMenu:AddSeparator" pos="280,-20,0" flags="0">
+   <Inputs instanceID="-1" Caption="" ID="" Tooltip=""/>
+  </Node>
+  <Node Id="210" Name="Host_LAN" Class="_comment" pos="600,-50,0" flags="0"/>
+  <Node Id="211" Name="Join_LAN" Class="_comment" pos="980,-50,0" flags="0"/>
+  <Node Id="212" Class="UI:Functions:MainMenu:AddButton" pos="1360,-20,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Leaderboard" tooltip="@ui_Leaderboard" consoleButtonCaption="@ui_ButtonSelect" id="MM_Leaderboard"/>
+  </Node>
+  <Node Id="213" Class="UI:Functions:MainMenu:AddButton" pos="1770,-20,0" flags="1">
+   <Inputs instanceID="-1" caption="@ui_UserStats" tooltip="@ui_UserStats" consoleButtonCaption="@ui_ButtonSelect" id="MM_UserStats"/>
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="209" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="119" nodeOut="34" portIn="get" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="36" nodeOut="35" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="212" nodeOut="36" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="83" portIn="EndAction" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="93" portIn="Args" portOut="Args" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="93" portIn="Start" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="98" nodeOut="96" portIn="send" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="117" nodeOut="96" portIn="send" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="120" nodeOut="119" portIn="Call" portOut="IsXBoxOne" enabled="1"/>
+  <Edge nodeIn="121" nodeOut="119" portIn="Call" portOut="IsPS4" enabled="1"/>
+  <Edge nodeIn="35" nodeOut="209" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="213" nodeOut="212" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="34" nodeOut="213" portIn="Call" portOut="OnCall" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

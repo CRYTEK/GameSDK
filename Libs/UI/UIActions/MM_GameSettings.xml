@@ -1,0 +1,176 @@
+<Graph Description="" Group="MM_PagesShared" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="1" Class="UI:Action:Start" pos="1040,-1300,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="2" Class="UI:Action:End" pos="2760,-380,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="5" Class="UI:Functions:MainMenu:SetupScreen" pos="1400,-1680,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_GameSettingsTitle" ShowLine="1" MaxButtons="5" ButtonXPos="-500" ButtonYPos="0" ButtonOffset="40"/>
+  </Node>
+  <Node Id="6" Class="UI:Functions:MainMenu:AddBackButton" pos="3160,-1320,0" flags="0">
+   <Inputs instanceID="-1" id="MM_Main"/>
+  </Node>
+  <Node Id="21" Class="UI:Functions:MainMenu:AddApplyButton" pos="3160,-1120,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Apply" tooltip="@ui_ApplyTT" id="ID_APPLY_GAMESETTINGS"/>
+  </Node>
+  <Node Id="29" Name="Setup_page" Class="_commentbox" pos="1000,-1786.5212,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="3130" Height="920"/>
+   <NodeSize Width="3130" Height="983.91144"/>
+  </Node>
+  <Node Id="39" Name="Handle_events" Class="_commentbox" pos="1000,-787.39069,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="1970" Height="820"/>
+   <NodeSize Width="1970" Height="883.91144"/>
+  </Node>
+  <Node Id="49" Class="UI:Functions:MainMenu:GetControlVal" pos="1440,-400,0" flags="0">
+   <Inputs instanceID="0" id="ID_SEN_MOUSE"/>
+  </Node>
+  <Node Id="54" Class="UI:Functions:MainMenu:SetControlVal" pos="1440,-1160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_SEN_MOUSE"/>
+  </Node>
+  <Node Id="62" Class="UI:Action:Control" pos="2480,-380,0" flags="0">
+   <Inputs uiActions_UIAction="MM_Main" Strict="0" Args=""/>
+  </Node>
+  <Node Id="67" Class="UI:Events:MainMenu:OnButton" pos="1040,-640,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="ID_RESET_GAMESETTINGS"/>
+  </Node>
+  <Node Id="71" Class="UI:Functions:MainMenu:AddDefaultsButton" pos="3160,-1240,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Reset" tooltip="@ui_ResetTT" id="ID_RESET_GAMESETTINGS"/>
+  </Node>
+  <Node Id="73" Class="UI:Events:MainMenu:OnButton" pos="1040,-400,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="ID_APPLY_GAMESETTINGS"/>
+  </Node>
+  <Node Id="79" Class="UI:Action:Control" pos="1440,-520,0" flags="0">
+   <Inputs uiActions_UIAction="MM_Confirmation" Strict="0" Args="@ui_ApplyChanges|@ui_Yes|@ui_No"/>
+  </Node>
+  <Node Id="80" Class="Logic:Condition" pos="1870,-520,0" flags="0">
+   <Inputs Condition="0"/>
+  </Node>
+  <Node Id="82" Class="UI:Functions:MainMenu:AddSwitch" pos="2400,-1680,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_InvertMouse" tooltip="@ui_InvertMouseTT" value="" id="SW_INV_MOUSE"/>
+  </Node>
+  <Node Id="83" Class="UI:Functions:MainMenu:AddSwitchOption" pos="2400,-1520,0" flags="0">
+   <Inputs instanceID="-1" id="SW_INV_MOUSE" caption="@ui_Yes" value="1"/>
+  </Node>
+  <Node Id="84" Class="UI:Functions:MainMenu:AddSwitchOption" pos="2400,-1400,0" flags="0">
+   <Inputs instanceID="-1" id="SW_INV_MOUSE" caption="@ui_No" value="0"/>
+  </Node>
+  <Node Id="85" Class="UI:Functions:MainMenu:SetControlVal" pos="1440,-1040,0" flags="0">
+   <Inputs instanceID="-1" id="SW_INV_MOUSE"/>
+  </Node>
+  <Node Id="86" Class="UI:Functions:MainMenu:GetControlVal" pos="1440,-320,0" flags="0">
+   <Inputs instanceID="0" id="SW_INV_MOUSE"/>
+  </Node>
+  <Node Id="88" Name="Update_Data" Class="_comment" pos="1040,-1070,0" flags="0"/>
+  <Node Id="89" Name="Reset_to_current_state" Class="_comment" pos="1040,-670,0" flags="0"/>
+  <Node Id="90" Name="Apply_Changes" Class="_comment" pos="1040,-430,0" flags="0"/>
+  <Node Id="91" Class="UI:Action:End" pos="1840,-40,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="93" Class="UI:Action:Start" pos="1040,-40,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="94" Name="Use_default_event_state_as_well" Class="_comment" pos="1040,-70,0" flags="0"/>
+  <Node Id="95" Class="UI:Action:Control" pos="1440,-40,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args=""/>
+  </Node>
+  <Node Id="96" Class="UI:Action:Start" pos="2160,-400,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="98" Class="UI:Functions:MainMenu:AddSwitch" pos="2760,-1680,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_InvertController" tooltip="@ui_InvertControllerTT" value="" id="SW_INV_CONTROLLER"/>
+  </Node>
+  <Node Id="99" Class="UI:Functions:MainMenu:AddSwitchOption" pos="2760,-1520,0" flags="0">
+   <Inputs instanceID="-1" id="SW_INV_CONTROLLER" caption="@ui_Yes" value="1"/>
+  </Node>
+  <Node Id="100" Class="UI:Functions:MainMenu:AddSwitchOption" pos="2760,-1400,0" flags="0">
+   <Inputs instanceID="-1" id="SW_INV_CONTROLLER" caption="@ui_No" value="0"/>
+  </Node>
+  <Node Id="101" Class="UI:Functions:MainMenu:AddSlider" pos="2040,-1680,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_MouseSensitivity" tooltip="@ui_MouseSensitivityTT" min="0" max="100" step="5" value="0" id="ID_SEN_MOUSE"/>
+  </Node>
+  <Node Id="102" Class="UI:Functions:Settings:GetCurrGameSettings" pos="3560,-1120,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="103" Class="UI:Events:Settings:OnGameSettingsChanged" pos="1040,-1040,0" flags="0">
+   <Inputs Port="-1" Idx=""/>
+  </Node>
+  <Node Id="104" Class="UI:Functions:MainMenu:SetControlVal" pos="1440,-920,0" flags="0">
+   <Inputs instanceID="-1" id="SW_INV_CONTROLLER"/>
+  </Node>
+  <Node Id="105" Class="UI:Functions:Settings:GetCurrGameSettings" pos="1440,-640,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="106" Class="UI:Functions:Settings:SetGameSettings" pos="2160,-340,0" flags="0">
+   <Inputs MouseSensitivity="0" InvertMouse="0" InvertController="0"/>
+  </Node>
+  <Node Id="107" Class="UI:Functions:MainMenu:GetControlVal" pos="1440,-240,0" flags="0">
+   <Inputs instanceID="0" id="SW_INV_CONTROLLER"/>
+  </Node>
+  <Node Id="108" Class="UI:Util:Platform" pos="3560,-1040,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="119" Class="UI:Functions:MainMenu:AddActionButton" pos="3800,-1070,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_XSelect"/>
+  </Node>
+  <Node Id="120" Class="UI:Functions:MainMenu:AddActionButton" pos="3800,-970,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Select" id="IDD_PSSelect"/>
+  </Node>
+  <Node Id="209" Class="UI:Functions:MainMenu:AddSeparator" pos="1740,-1680,0" flags="0">
+   <Inputs instanceID="-1" Caption="" ID="" Tooltip=""/>
+  </Node>
+  <Node Id="222" Name="Mouse_Sensitivity" Class="_comment" pos="2040,-1710,0" flags="0"/>
+  <Node Id="223" Name="Invert_Mouse" Class="_comment" pos="2400,-1710,0" flags="0"/>
+  <Node Id="224" Name="Invert_Controller" Class="_comment" pos="2760,-1710,0" flags="0"/>
+  <Node Id="253" Name="Back/Default/Apply" Class="_comment" pos="3160,-1350,0" flags="0"/>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="6" nodeOut="1" portIn="id" portOut="Args" enabled="1"/>
+  <Edge nodeIn="209" nodeOut="5" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="71" nodeOut="6" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="102" nodeOut="21" portIn="send" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="108" nodeOut="21" portIn="get" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="106" nodeOut="49" portIn="MouseSensitivity" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="2" nodeOut="62" portIn="EndAction" portOut="OnStart" enabled="1"/>
+  <Edge nodeIn="105" nodeOut="67" portIn="send" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="21" nodeOut="71" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="49" nodeOut="73" portIn="instanceID" portOut="instanceID" enabled="1"/>
+  <Edge nodeIn="49" nodeOut="73" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="79" nodeOut="73" portIn="Start" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="86" nodeOut="73" portIn="instanceID" portOut="instanceID" enabled="1"/>
+  <Edge nodeIn="86" nodeOut="73" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="107" nodeOut="73" portIn="instanceID" portOut="instanceID" enabled="1"/>
+  <Edge nodeIn="107" nodeOut="73" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="80" nodeOut="79" portIn="Condition" portOut="Args" enabled="1"/>
+  <Edge nodeIn="80" nodeOut="79" portIn="In" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="106" nodeOut="80" portIn="send" portOut="OnTrue" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="82" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="84" nodeOut="83" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="98" nodeOut="84" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="106" nodeOut="86" portIn="InvertMouse" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="93" portIn="Args" portOut="Args" enabled="1"/>
+  <Edge nodeIn="95" nodeOut="93" portIn="Start" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="95" portIn="EndAction" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="62" nodeOut="96" portIn="uiActions_UIAction" portOut="Args" enabled="1"/>
+  <Edge nodeIn="99" nodeOut="98" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="100" nodeOut="99" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="6" nodeOut="100" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="82" nodeOut="101" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="54" nodeOut="103" portIn="value" portOut="MouseSensitivity" enabled="1"/>
+  <Edge nodeIn="54" nodeOut="103" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="85" nodeOut="103" portIn="value" portOut="InvertMouse" enabled="1"/>
+  <Edge nodeIn="85" nodeOut="103" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="104" nodeOut="103" portIn="value" portOut="InvertController" enabled="1"/>
+  <Edge nodeIn="104" nodeOut="103" portIn="Call" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="62" nodeOut="106" portIn="Start" portOut="OnEvent" enabled="1"/>
+  <Edge nodeIn="106" nodeOut="107" portIn="InvertController" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="119" nodeOut="108" portIn="Call" portOut="IsXBoxOne" enabled="1"/>
+  <Edge nodeIn="120" nodeOut="108" portIn="Call" portOut="IsPS4" enabled="1"/>
+  <Edge nodeIn="101" nodeOut="209" portIn="Call" portOut="OnCall" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>

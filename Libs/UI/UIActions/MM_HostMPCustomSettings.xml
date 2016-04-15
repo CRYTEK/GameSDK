@@ -1,0 +1,537 @@
+<Graph Description="" Group="MM_PagesMain" enabled="1" MultiPlayer="ClientServer">
+ <Nodes>
+  <Node Id="3" Class="UI:Action:Start" pos="-880,0,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="34" Class="UI:Functions:MainMenu:AddBackButton" pos="-600,240,0" flags="0">
+   <Inputs instanceID="-1" id="MM_LobbyHost"/>
+  </Node>
+  <Node Id="37" Class="UI:Functions:MainMenu:SetupScreen" pos="-600,0,0" flags="0">
+   <Inputs instanceID="-1" Caption="@ui_HostMPCustomSettingsTitle" ShowLine="1" MaxButtons="10" ButtonXPos="-250" ButtonYPos="0" ButtonOffset="40"/>
+  </Node>
+  <Node Id="71" Class="UI:Functions:MainMenu:AddDefaultsButton" pos="-600,320,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Reset" tooltip="@ui_ResetTT" id="ID_RESET_HOSTMPCUSTOMSETTINGS"/>
+  </Node>
+  <Node Id="79" Class="UI:Action:Control" pos="-440,1180,0" flags="0">
+   <Inputs uiActions_UIAction="MM_Confirmation" Strict="0" Args="@ui_ApplyChanges|@ui_Yes|@ui_No"/>
+  </Node>
+  <Node Id="80" Class="Logic:Condition" pos="80,1180,0" flags="0">
+   <Inputs Condition="0"/>
+  </Node>
+  <Node Id="83" Class="UI:Action:Control" pos="-560,1400,0" flags="0">
+   <Inputs uiActions_UIAction="MM_DefaultEvents" Strict="0" Args=""/>
+  </Node>
+  <Node Id="91" Class="UI:Action:End" pos="-160,1400,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="93" Class="UI:Action:Start" pos="-920,1410,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="94" Name="Use_default_event_state_as_well" Class="_comment" pos="-920,1380,0" flags="0"/>
+  <Node Id="107" Class="UI:Functions:MainMenu:AddApplyButton" pos="-600,440,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Apply" tooltip="@ui_ApplyTT" id="ID_APPLY_HOSTMPCUSTOMSETTINGS"/>
+  </Node>
+  <Node Id="109" Class="UI:Events:MainMenu:OnButton" pos="-920,1180,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="ID_APPLY_HOSTMPCUSTOMSETTINGS"/>
+  </Node>
+  <Node Id="111" Class="UI:Functions:MainMenu:GetControlVal" pos="380,1280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMSCORELIMIT"/>
+  </Node>
+  <Node Id="114" Class="UI:Functions:MainMenu:GetControlVal" pos="480,3610,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMRESPAWNDELAY"/>
+  </Node>
+  <Node Id="246" Class="UI:Functions:MainMenu:GetControlVal" pos="480,3710,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMMAXHEALTH"/>
+  </Node>
+  <Node Id="265" Class="UI:Functions:MainMenu:AddSeparator" pos="-160,0,0" flags="0">
+   <Inputs instanceID="-1" Caption="" ID="" Tooltip=""/>
+  </Node>
+  <Node Id="268" Class="UI:Functions:MainMenu:AddSwitchOption" pos="160,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMTIMELIMIT" caption="5" value="5"/>
+  </Node>
+  <Node Id="270" Class="UI:Functions:MainMenu:AddSwitch" pos="160,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Time Limit" tooltip="" value="" id="ID_CUSTOMTIMELIMIT"/>
+  </Node>
+  <Node Id="271" Class="UI:Functions:MainMenu:AddSwitchOption" pos="160,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMTIMELIMIT" caption="10" value="10"/>
+  </Node>
+  <Node Id="272" Class="UI:Functions:MainMenu:AddSwitchOption" pos="160,400,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMTIMELIMIT" caption="15" value="15"/>
+  </Node>
+  <Node Id="273" Class="UI:Functions:MainMenu:AddSwitchOption" pos="160,520,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMTIMELIMIT" caption="30" value="30"/>
+  </Node>
+  <Node Id="274" Class="UI:Functions:MainMenu:AddSwitchOption" pos="160,640,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMTIMELIMIT" caption="60" value="60"/>
+  </Node>
+  <Node Id="275" Class="UI:Functions:MainMenu:AddSwitchOption" pos="160,760,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMTIMELIMIT" caption="Unlimited" value="999"/>
+  </Node>
+  <Node Id="276" Class="UI:Functions:MainMenu:AddSwitchOption" pos="560,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMSCORELIMIT" caption="5" value="5"/>
+  </Node>
+  <Node Id="277" Class="UI:Functions:MainMenu:AddSwitch" pos="560,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Score Limit" tooltip="" value="" id="ID_CUSTOMSCORELIMIT"/>
+  </Node>
+  <Node Id="278" Class="UI:Functions:MainMenu:AddSwitchOption" pos="560,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMSCORELIMIT" caption="10" value="10"/>
+  </Node>
+  <Node Id="279" Class="UI:Functions:MainMenu:AddSwitchOption" pos="560,400,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMSCORELIMIT" caption="15" value="15"/>
+  </Node>
+  <Node Id="280" Class="UI:Functions:MainMenu:AddSwitchOption" pos="560,520,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMSCORELIMIT" caption="30" value="30"/>
+  </Node>
+  <Node Id="281" Class="UI:Functions:MainMenu:AddSwitchOption" pos="560,640,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMSCORELIMIT" caption="60" value="60"/>
+  </Node>
+  <Node Id="282" Class="UI:Functions:MainMenu:AddSwitchOption" pos="560,760,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMSCORELIMIT" caption="Unlimited" value="999"/>
+  </Node>
+  <Node Id="287" Class="UI:Functions:MainMenu:AddSwitchOption" pos="960,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMRESPAWNDELAY" caption="5 sec" value="5"/>
+  </Node>
+  <Node Id="288" Class="UI:Functions:MainMenu:AddSwitch" pos="960,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Respawn Delay" tooltip="" value="" id="ID_CUSTOMRESPAWNDELAY"/>
+  </Node>
+  <Node Id="289" Class="UI:Functions:MainMenu:AddSwitchOption" pos="960,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMRESPAWNDELAY" caption="7 sec" value="7"/>
+  </Node>
+  <Node Id="290" Class="UI:Functions:MainMenu:AddSwitchOption" pos="960,400,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMRESPAWNDELAY" caption="15 sec" value="15"/>
+  </Node>
+  <Node Id="291" Class="UI:Functions:MainMenu:AddSwitchOption" pos="1360,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMMAXHEALTH" caption="100%" value="1"/>
+  </Node>
+  <Node Id="292" Class="UI:Functions:MainMenu:AddSwitch" pos="1360,0,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_MaximumHealth" tooltip="@ui_MaximumHealthTT" value="" id="ID_CUSTOMMAXHEALTH"/>
+  </Node>
+  <Node Id="293" Class="UI:Functions:MainMenu:AddSwitchOption" pos="1360,400,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMMAXHEALTH" caption="150%" value="1.5"/>
+  </Node>
+  <Node Id="294" Class="UI:Functions:MainMenu:AddSwitchOption" pos="1360,520,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMMAXHEALTH" caption="200%" value="2"/>
+  </Node>
+  <Node Id="295" Class="UI:Functions:MainMenu:AddSwitchOption" pos="1360,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMMAXHEALTH" caption="50%" value="0.5"/>
+  </Node>
+  <Node Id="296" Class="UI:Functions:MainMenu:AddSwitchOption" pos="1760,400,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMHEALTHREGEN" caption="FAST" value="2"/>
+  </Node>
+  <Node Id="297" Class="UI:Functions:MainMenu:AddSwitch" pos="1760,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Health Regeneration" tooltip="" value="" id="ID_CUSTOMHEALTHREGEN"/>
+  </Node>
+  <Node Id="300" Class="UI:Functions:MainMenu:AddSwitchOption" pos="1760,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMHEALTHREGEN" caption="SLOW" value="0"/>
+  </Node>
+  <Node Id="301" Class="UI:Functions:MainMenu:AddSwitchOption" pos="1760,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMHEALTHREGEN" caption="NORMAL" value="1"/>
+  </Node>
+  <Node Id="302" Class="UI:Functions:MainMenu:AddSwitchOption" pos="2160,400,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMFRIENDLYFIRE" caption="FULL DAMAGE" value="2"/>
+  </Node>
+  <Node Id="303" Class="UI:Functions:MainMenu:AddSwitch" pos="2160,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Friendly Fire" tooltip="" value="" id="ID_CUSTOMFRIENDLYFIRE"/>
+  </Node>
+  <Node Id="306" Class="UI:Functions:MainMenu:AddSwitchOption" pos="2160,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMFRIENDLYFIRE" caption="HALF DAMAGE" value="1"/>
+  </Node>
+  <Node Id="307" Class="UI:Functions:MainMenu:AddSwitchOption" pos="2160,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMFRIENDLYFIRE" caption="OFF" value="0"/>
+  </Node>
+  <Node Id="309" Class="UI:Functions:MainMenu:AddSwitch" pos="2560,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Minimal HUD" tooltip="" value="" id="ID_CUSTOMMINHUD"/>
+  </Node>
+  <Node Id="310" Class="UI:Functions:MainMenu:AddSwitchOption" pos="2560,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMMINHUD" caption="ON" value="1"/>
+  </Node>
+  <Node Id="311" Class="UI:Functions:MainMenu:AddSwitchOption" pos="2560,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMMINHUD" caption="OFF" value="0"/>
+  </Node>
+  <Node Id="312" Class="UI:Functions:MainMenu:AddSwitch" pos="2920,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Headshots Only" tooltip="" value="" id="ID_CUSTOMHEADSHOTSONLY"/>
+  </Node>
+  <Node Id="313" Class="UI:Functions:MainMenu:AddSwitchOption" pos="2920,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMHEADSHOTSONLY" caption="ON" value="1"/>
+  </Node>
+  <Node Id="314" Class="UI:Functions:MainMenu:AddSwitchOption" pos="2920,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMHEADSHOTSONLY" caption="OFF" value="0"/>
+  </Node>
+  <Node Id="315" Class="UI:Functions:MainMenu:AddSwitch" pos="3320,0,0" flags="0">
+   <Inputs instanceID="-1" caption="No Environment Weapons" tooltip="" value="" id="ID_CUSTOMNOENVIROWEAPONS"/>
+  </Node>
+  <Node Id="316" Class="UI:Functions:MainMenu:AddSwitchOption" pos="3320,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMNOENVIROWEAPONS" caption="FALSE" value="0"/>
+  </Node>
+  <Node Id="317" Class="UI:Functions:MainMenu:AddSwitchOption" pos="3320,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMNOENVIROWEAPONS" caption="TRUE" value="1"/>
+  </Node>
+  <Node Id="318" Class="UI:Functions:MainMenu:AddSwitch" pos="3760,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Force Weapon" tooltip="" value="" id="ID_CUSTOMFORCEWEAPON"/>
+  </Node>
+  <Node Id="319" Class="UI:Functions:MainMenu:AddSwitchOption" pos="3760,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMFORCEWEAPON" caption="Pistol" value="Pistol"/>
+  </Node>
+  <Node Id="320" Class="UI:Functions:MainMenu:AddSwitchOption" pos="3760,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMFORCEWEAPON" caption="Disabled" value="0"/>
+  </Node>
+  <Node Id="321" Class="UI:Functions:MainMenu:AddSwitchOption" pos="3760,400,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMFORCEWEAPON" caption="Rifle" value="Rifle"/>
+  </Node>
+  <Node Id="322" Class="UI:Functions:MainMenu:AddSwitchOption" pos="3760,520,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMFORCEWEAPON" caption="Shotgun" value="Shotgun"/>
+  </Node>
+  <Node Id="323" Class="UI:Functions:MainMenu:AddSwitch" pos="4160,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Infinite Ammo" tooltip="" value="" id="ID_CUSTOMINFINITEAMMO"/>
+  </Node>
+  <Node Id="324" Class="UI:Functions:MainMenu:AddSwitchOption" pos="4160,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMINFINITEAMMO" caption="ON" value="1"/>
+  </Node>
+  <Node Id="325" Class="UI:Functions:MainMenu:AddSwitchOption" pos="4160,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMINFINITEAMMO" caption="OFF" value="0"/>
+  </Node>
+  <Node Id="328" Class="UI:Functions:MainMenu:AddSwitch" pos="4560,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Weapon Customization" tooltip="" value="" id="ID_CUSTOMWEAPONCUSTOMIZATION"/>
+  </Node>
+  <Node Id="329" Class="UI:Functions:MainMenu:AddSwitchOption" pos="4560,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMWEAPONCUSTOMIZATION" caption="ON" value="1"/>
+  </Node>
+  <Node Id="330" Class="UI:Functions:MainMenu:AddSwitchOption" pos="4560,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMWEAPONCUSTOMIZATION" caption="OFF" value="0"/>
+  </Node>
+  <Node Id="331" Class="UI:Functions:MainMenu:AddSwitch" pos="5040,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Disable Kill Cam" tooltip="" value="" id="ID_CUSTOMDISABLEKILLCAM"/>
+  </Node>
+  <Node Id="332" Class="UI:Functions:MainMenu:AddSwitchOption" pos="5040,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMDISABLEKILLCAM" caption="TRUE" value="1"/>
+  </Node>
+  <Node Id="333" Class="UI:Functions:MainMenu:AddSwitchOption" pos="5040,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMDISABLEKILLCAM" caption="FALSE" value="0"/>
+  </Node>
+  <Node Id="334" Class="UI:Functions:MainMenu:AddSwitch" pos="5440,0,0" flags="0">
+   <Inputs instanceID="-1" caption="Disable Spectator Cam" tooltip="" value="" id="ID_CUSTOMDISABLESPECCAM"/>
+  </Node>
+  <Node Id="335" Class="UI:Functions:MainMenu:AddSwitchOption" pos="5440,280,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMDISABLESPECCAM" caption="TRUE" value="1"/>
+  </Node>
+  <Node Id="336" Class="UI:Functions:MainMenu:AddSwitchOption" pos="5440,160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMDISABLESPECCAM" caption="FALSE" value="0"/>
+  </Node>
+  <Node Id="338" Name="Setup" Class="_commentbox" pos="-960,-283.45978,0" flags="0">
+   <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="6810" Height="1040"/>
+   <NodeSize Width="6810" Height="1240.8645"/>
+  </Node>
+  <Node Id="339" Class="UI:Functions:MainMenu:GetControlVal" pos="480,3810,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMHEALTHREGEN"/>
+  </Node>
+  <Node Id="342" Class="UI:Functions:MainMenu:GetControlVal" pos="380,1180,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMTIMELIMIT"/>
+  </Node>
+  <Node Id="347" Name="g_autoReviveTime" Class="_comment" pos="1380,3590,0" flags="0"/>
+  <Node Id="348" Name="g_scoreLimit" Class="_comment" pos="1260,1260,0" flags="0"/>
+  <Node Id="349" Name="g_timelimit" Class="_comment" pos="1250,1160,0" flags="0"/>
+  <Node Id="350" Name="g_maxHealthMultiplier" Class="_comment" pos="1310,3690,0" flags="0"/>
+  <Node Id="351" Class="UI:Functions:MainMenu:GetControlVal" pos="480,4010,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMMINHUD"/>
+  </Node>
+  <Node Id="352" Class="UI:Functions:MainMenu:GetControlVal" pos="480,4110,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMHEADSHOTSONLY"/>
+  </Node>
+  <Node Id="353" Class="UI:Functions:MainMenu:GetControlVal" pos="480,4210,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMNOENVIROWEAPONS"/>
+  </Node>
+  <Node Id="355" Class="UI:Functions:MainMenu:GetControlVal" pos="480,4310,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMFORCEWEAPON"/>
+  </Node>
+  <Node Id="356" Class="UI:Functions:MainMenu:GetControlVal" pos="480,3910,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMFRIENDLYFIRE"/>
+  </Node>
+  <Node Id="361" Name="g_mpHeadshotsOnly" Class="_comment" pos="1300,4090,0" flags="0"/>
+  <Node Id="362" Name="g_modevarivar_proHud" Class="_comment" pos="1260,3990,0" flags="0"/>
+  <Node Id="363" Name="g_friendlyfireratio" Class="_comment" pos="1280,3890,0" flags="0"/>
+  <Node Id="364" Name="g_mpNoEnvironmentalWeapons" Class="_comment" pos="1300,4190,0" flags="0"/>
+  <Node Id="365" Name="g_mpRegenerationRate" Class="_comment" pos="1290,3790,0" flags="0"/>
+  <Node Id="366" Class="UI:Functions:MainMenu:GetControlVal" pos="480,4410,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMINFINITEAMMO"/>
+  </Node>
+  <Node Id="368" Class="UI:Functions:MainMenu:GetControlVal" pos="480,4510,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMWEAPONCUSTOMIZATION"/>
+  </Node>
+  <Node Id="370" Class="UI:Functions:MainMenu:GetControlVal" pos="480,4610,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMDISABLEKILLCAM"/>
+  </Node>
+  <Node Id="372" Class="UI:Functions:MainMenu:GetControlVal" pos="480,4710,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMDISABLESPECCAM"/>
+  </Node>
+  <Node Id="375" Name="g_infiniteAmmo" Class="_comment" pos="1290,4390,0" flags="0"/>
+  <Node Id="376" Name="g_allowWeaponCustomisation" Class="_comment" pos="1350,4490,0" flags="0"/>
+  <Node Id="377" Name="g_modevarivar_disableKillCam" Class="_comment" pos="1300,4590,0" flags="0"/>
+  <Node Id="378" Name="g_modevarivar_disableSpectatorCam" Class="_comment" pos="1340,4690,0" flags="0"/>
+  <Node Id="379" Name="Handle_Events" Class="_commentbox" pos="-960,914.78485,0" flags="0">
+   <Inputs TextSize="1" Color="0.311181,0.632043,0.344026" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
+   <ResizeBorder X="0" Y="0" Width="2920" Height="1530"/>
+   <NodeSize Width="2920" Height="1730.8645"/>
+  </Node>
+  <Node Id="382" Name="Defaults" Class="_comment" pos="-600,210,0" flags="0"/>
+  <Node Id="387" Class="UI:Functions:MainMenu:SetControlVal" pos="1520,1160,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMTIMELIMIT"/>
+  </Node>
+  <Node Id="390" Class="Multiplayer:GameOption" pos="900,1160,0" flags="0">
+   <Inputs Option="MP/Options/InstantAction/TimeLimit" Value=""/>
+  </Node>
+  <Node Id="391" Class="Multiplayer:GameOption" pos="900,1260,0" flags="0">
+   <Inputs Option="MP/Options/InstantAction/ScoreLimit" Value=""/>
+  </Node>
+  <Node Id="392" Class="Multiplayer:GameOption" pos="1000,3590,0" flags="0">
+   <Inputs Option="MP/Options/InstantAction/RespawnDelay" Value=""/>
+  </Node>
+  <Node Id="393" Class="Multiplayer:GameOption" pos="1000,3690,0" flags="0">
+   <Inputs Option="MP/Options/MaximumHealth" Value=""/>
+  </Node>
+  <Node Id="394" Class="Multiplayer:GameOption" pos="1000,3790,0" flags="0">
+   <Inputs Option="MP/Options/HealthRegen" Value=""/>
+  </Node>
+  <Node Id="395" Class="Multiplayer:GameOption" pos="1000,3890,0" flags="0">
+   <Inputs Option="MP/Options/FriendlyFire" Value=""/>
+  </Node>
+  <Node Id="396" Class="Multiplayer:GameOption" pos="1000,3990,0" flags="0">
+   <Inputs Option="MP/Options/ProHUD" Value=""/>
+  </Node>
+  <Node Id="397" Class="Multiplayer:GameOption" pos="1000,4090,0" flags="0">
+   <Inputs Option="MP/Options/HeadshotsOnly" Value=""/>
+  </Node>
+  <Node Id="398" Class="Multiplayer:GameOption" pos="1000,4190,0" flags="0">
+   <Inputs Option="MP/Options/NoEnvWeapons" Value=""/>
+  </Node>
+  <Node Id="399" Class="Multiplayer:GameOption" pos="1000,4290,0" flags="0">
+   <Inputs Option="MP/Options/ForceWeapon" Value=""/>
+  </Node>
+  <Node Id="400" Class="Multiplayer:GameOption" pos="1000,4390,0" flags="0">
+   <Inputs Option="MP/Options/InfiniteAmmo" Value=""/>
+  </Node>
+  <Node Id="401" Class="Multiplayer:GameOption" pos="1000,4490,0" flags="0">
+   <Inputs Option="MP/Options/AllowWeaponCustomise" Value=""/>
+  </Node>
+  <Node Id="402" Class="Multiplayer:GameOption" pos="1000,4590,0" flags="0">
+   <Inputs Option="MP/Options/DisableKillcam" Value=""/>
+  </Node>
+  <Node Id="403" Class="Multiplayer:GameOption" pos="1000,4690,0" flags="0">
+   <Inputs Option="MP/Options/DisableSpectatorCam" Value=""/>
+  </Node>
+  <Node Id="404" Name="g_forceWeapon" Class="_comment" pos="1290,4290,0" flags="0"/>
+  <Node Id="405" Class="Logic:Any" pos="660,3220,0" flags="0">
+   <Inputs />
+  </Node>
+  <Node Id="406" Class="UI:Functions:MainMenu:SetControlVal" pos="1520,1260,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMSCORELIMIT"/>
+  </Node>
+  <Node Id="407" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,3590,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMRESPAWNDELAY"/>
+  </Node>
+  <Node Id="413" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,3690,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMMAXHEALTH"/>
+  </Node>
+  <Node Id="414" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,3790,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMHEALTHREGEN"/>
+  </Node>
+  <Node Id="415" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,3890,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMFRIENDLYFIRE"/>
+  </Node>
+  <Node Id="416" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,3990,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMMINHUD"/>
+  </Node>
+  <Node Id="417" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,4090,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMHEADSHOTSONLY"/>
+  </Node>
+  <Node Id="418" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,4190,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMNOENVIROWEAPONS"/>
+  </Node>
+  <Node Id="419" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,4290,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMFORCEWEAPON"/>
+  </Node>
+  <Node Id="420" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,4390,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMINFINITEAMMO"/>
+  </Node>
+  <Node Id="421" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,4490,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMWEAPONCUSTOMIZATION"/>
+  </Node>
+  <Node Id="422" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,4590,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMDISABLEKILLCAM"/>
+  </Node>
+  <Node Id="423" Class="UI:Functions:MainMenu:SetControlVal" pos="1620,4690,0" flags="0">
+   <Inputs instanceID="-1" id="ID_CUSTOMDISABLESPECCAM"/>
+  </Node>
+  <Node Id="433" Class="String:Compare" pos="900,1010,0" flags="0">
+   <Inputs A="" B="" IgnoreCase="1"/>
+  </Node>
+  <Node Id="435" Class="Debug:Log" pos="1220,970,0" flags="0">
+   <Inputs message="False LOOK AT ME"/>
+  </Node>
+  <Node Id="436" Class="Debug:Log" pos="1220,1040,0" flags="0">
+   <Inputs message="True LOOK AT ME"/>
+  </Node>
+  <Node Id="437" Class="Logic:Any" pos="560,940,0" flags="0" InHideMask="1023" OutHideMask="1">
+   <Inputs />
+  </Node>
+ </Nodes>
+ <Edges>
+  <Edge nodeIn="34" nodeOut="3" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="37" nodeOut="3" portIn="Call" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="71" nodeOut="34" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="265" nodeOut="37" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="107" nodeOut="71" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="80" nodeOut="79" portIn="Condition" portOut="Args" enabled="1"/>
+  <Edge nodeIn="80" nodeOut="79" portIn="In" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="342" nodeOut="80" portIn="Call" portOut="OnTrue" enabled="1"/>
+  <Edge nodeIn="91" nodeOut="83" portIn="EndAction" portOut="OnEnd" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="93" portIn="Args" portOut="Args" enabled="1"/>
+  <Edge nodeIn="83" nodeOut="93" portIn="Start" portOut="StartAction" enabled="1"/>
+  <Edge nodeIn="79" nodeOut="109" portIn="Start" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="391" nodeOut="111" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="391" nodeOut="111" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="246" nodeOut="114" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="392" nodeOut="114" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="392" nodeOut="114" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="339" nodeOut="246" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="393" nodeOut="246" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="393" nodeOut="246" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="270" nodeOut="265" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="271" nodeOut="268" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="268" nodeOut="270" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="272" nodeOut="271" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="273" nodeOut="272" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="274" nodeOut="273" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="275" nodeOut="274" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="277" nodeOut="275" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="278" nodeOut="276" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="276" nodeOut="277" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="279" nodeOut="278" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="280" nodeOut="279" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="281" nodeOut="280" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="282" nodeOut="281" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="288" nodeOut="282" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="289" nodeOut="287" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="287" nodeOut="288" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="290" nodeOut="289" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="292" nodeOut="290" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="293" nodeOut="291" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="295" nodeOut="292" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="294" nodeOut="293" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="297" nodeOut="294" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="291" nodeOut="295" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="303" nodeOut="296" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="301" nodeOut="297" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="296" nodeOut="300" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="300" nodeOut="301" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="309" nodeOut="302" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="307" nodeOut="303" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="302" nodeOut="306" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="306" nodeOut="307" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="311" nodeOut="309" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="312" nodeOut="310" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="310" nodeOut="311" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="314" nodeOut="312" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="315" nodeOut="313" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="313" nodeOut="314" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="317" nodeOut="315" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="318" nodeOut="316" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="316" nodeOut="317" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="320" nodeOut="318" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="321" nodeOut="319" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="319" nodeOut="320" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="322" nodeOut="321" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="323" nodeOut="322" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="325" nodeOut="323" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="328" nodeOut="324" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="324" nodeOut="325" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="330" nodeOut="328" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="331" nodeOut="329" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="329" nodeOut="330" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="333" nodeOut="331" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="334" nodeOut="332" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="332" nodeOut="333" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="336" nodeOut="334" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="437" nodeOut="335" portIn="in1" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="335" nodeOut="336" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="356" nodeOut="339" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="394" nodeOut="339" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="394" nodeOut="339" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="111" nodeOut="342" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="390" nodeOut="342" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="433" nodeOut="342" portIn="Compare" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="433" nodeOut="342" portIn="A" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="352" nodeOut="351" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="396" nodeOut="351" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="396" nodeOut="351" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="353" nodeOut="352" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="397" nodeOut="352" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="397" nodeOut="352" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="355" nodeOut="353" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="398" nodeOut="353" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="398" nodeOut="353" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="366" nodeOut="355" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="399" nodeOut="355" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="399" nodeOut="355" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="351" nodeOut="356" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="395" nodeOut="356" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="395" nodeOut="356" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="368" nodeOut="366" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="400" nodeOut="366" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="400" nodeOut="366" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="370" nodeOut="368" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="401" nodeOut="368" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="401" nodeOut="368" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="372" nodeOut="370" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="402" nodeOut="370" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="402" nodeOut="370" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="403" nodeOut="372" portIn="Set" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="403" nodeOut="372" portIn="Value" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="433" nodeOut="387" portIn="B" portOut="ReturnVal" enabled="1"/>
+  <Edge nodeIn="387" nodeOut="390" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="387" nodeOut="390" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="406" nodeOut="391" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="406" nodeOut="391" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="407" nodeOut="392" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="407" nodeOut="392" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="413" nodeOut="393" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="413" nodeOut="393" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="414" nodeOut="394" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="414" nodeOut="394" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="415" nodeOut="395" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="415" nodeOut="395" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="416" nodeOut="396" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="416" nodeOut="396" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="417" nodeOut="397" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="417" nodeOut="397" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="418" nodeOut="398" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="418" nodeOut="398" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="419" nodeOut="399" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="419" nodeOut="399" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="420" nodeOut="400" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="420" nodeOut="400" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="421" nodeOut="401" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="421" nodeOut="401" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="422" nodeOut="402" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="422" nodeOut="402" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="423" nodeOut="403" portIn="Call" portOut="Value" enabled="1"/>
+  <Edge nodeIn="423" nodeOut="403" portIn="value" portOut="Value" enabled="1"/>
+  <Edge nodeIn="392" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="393" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="394" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="395" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="396" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="397" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="398" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="399" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="400" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="401" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="402" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="403" nodeOut="405" portIn="Get" portOut="out" enabled="1"/>
+  <Edge nodeIn="390" nodeOut="433" portIn="Set" portOut="False" enabled="1"/>
+  <Edge nodeIn="435" nodeOut="433" portIn="input" portOut="False" enabled="1"/>
+  <Edge nodeIn="436" nodeOut="433" portIn="input" portOut="True" enabled="1"/>
+  <Edge nodeIn="390" nodeOut="437" portIn="Get" portOut="out" enabled="1"/>
+ </Edges>
+ <GraphTokens />
+</Graph>
