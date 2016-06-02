@@ -87,8 +87,10 @@
 	
 	<SoundObstructionType>
 		<entry enum="Ignore=1" />
-		<entry enum="SingleRay=2" />
-		<entry enum="MultiRay=3" />
+		<entry enum="Adaptive=2" />
+		<entry enum="Low=3" />
+		<entry enum="Medium=4" />
+		<entry enum="High=5" />
 	</SoundObstructionType>
 	
 	<VolumeType>
