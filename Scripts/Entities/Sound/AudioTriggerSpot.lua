@@ -253,8 +253,8 @@ AudioTriggerSpot["Client"] = {
 				local radius = Sound.GetAudioTriggerRadius(self.hOnTriggerID);
 				System.DrawSphere(pos.x, pos.y, pos.z, radius, 250, 100, 100, 100);
 				
-				local fadeOutArea = Sound.GetAudioTriggerOcclusionFadeOutArea(self.hOnTriggerID);
-				System.DrawSphere(pos.x, pos.y, pos.z, radius - fadeOutArea, 200, 200, 255, 100);
+				local fadeOutDistance = Sound.GetAudioTriggerOcclusionFadeOutDistance(self.hOnTriggerID);
+				System.DrawSphere(pos.x, pos.y, pos.z, radius - fadeOutDistance, 200, 200, 255, 100);
 			end
 		end
 	end,
