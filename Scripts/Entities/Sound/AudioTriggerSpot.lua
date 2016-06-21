@@ -8,6 +8,7 @@ AudioTriggerSpot = {
 	
 	Properties = {
 		bEnabled = true,
+		bDrawActivityRadius = false,
 		audioTriggerPlayTriggerName = "",
 		audioTriggerStopTriggerName = "",
 		bSerializePlayState = true, -- Determines if execution after de-serialization is needed.
@@ -87,6 +88,10 @@ function AudioTriggerSpot:OnSpawn()
 	else
 		self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 2);
 		self:SetFlagsExtended(ENTITY_FLAG_EXTENDED_NEEDS_MOVEINSIDE, 2);
+	end
+	
+	if (System.IsEditor()) then
+		self:Activate(1);
 	end
 end
 
@@ -237,6 +242,21 @@ AudioTriggerSpot["Client"] = {
 	----------------------------------------------------------------------------------------
 	OnMove = function(self)
 		self.bHasMoved = true;
+	end,
+	
+	----------------------------------------------------------------------------------------
+	OnUpdate = function(self)
+		if (System.IsEditor() and (self.Properties.bDrawActivityRadius)) then
+			if ((self.hOnTriggerID ~= nil) and (not self.bIsHidden)) then
+				local pos = self:GetWorldPos();
+				
+				local radius = Sound.GetAudioTriggerRadius(self.hOnTriggerID);
+				System.DrawSphere(pos.x, pos.y, pos.z, radius, 250, 100, 100, 100);
+				
+				local fadeOutArea = Sound.GetAudioTriggerOcclusionFadeOutArea(self.hOnTriggerID);
+				System.DrawSphere(pos.x, pos.y, pos.z, radius - fadeOutArea, 200, 200, 255, 100);
+			end
+		end
 	end,
 }
 
