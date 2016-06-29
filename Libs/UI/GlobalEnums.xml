@@ -93,6 +93,12 @@
 		<entry enum="High=5" />
 	</SoundObstructionType>
 	
+	<Behaviour>
+		<entry enum="Single=0" />
+		<entry enum="Delay=1" />
+		<entry enum="Trigger Rate=2" />
+	</Behaviour>
+	
 	<VolumeType>
 		<entry enum="Ellipsoid=0"/>
 		<entry enum="Cube=1"/>

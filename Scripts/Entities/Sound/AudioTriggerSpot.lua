@@ -8,19 +8,25 @@ AudioTriggerSpot = {
 	
 	Properties = {
 		bEnabled = true,
-		bDrawActivityRadius = false,
 		audioTriggerPlayTriggerName = "",
 		audioTriggerStopTriggerName = "",
 		bSerializePlayState = true, -- Determines if execution after de-serialization is needed.
 		bTriggerAreasOnMove = false, -- Triggers area events or not. (i.e. dynamic environment updates on move)
 		eiSoundObstructionType = 1, -- Clamped between 1 and 5. 1=ignore, 2=adaptive, 3=low, 4=medium, 5=high
-		bPlayOnX = false,
-		bPlayOnY = false,
-		bPlayOnZ = false,
-		fRadiusRandom = 10.0,
-		bPlayRandom = false,
-		fMinDelay = 1,
-		fMaxDelay = 2,
+			
+		PlayMode = {
+			eiBehaviour = 0, -- 0=Single, 1=Delay, 2=TriggerRate
+			bPlayOnX = false,
+			bPlayOnY = false,
+			bPlayOnZ = false,
+			fRadius = 10.0,
+			fMinDelay = 1,
+			fMaxDelay = 2,
+		},
+		
+		Debug = {
+			bDrawActivityRadius = false,
+		}
 	},
 	
 	hOnTriggerID = nil,
@@ -28,6 +34,7 @@ AudioTriggerSpot = {
 	hCurrentOnTriggerID = nil,
 	hCurrentOffTriggerID = nil, -- only used in OnPropertyChange()
 	tObstructionType = {},
+	currentBehaviour = 0,
 	
 	bIsHidden = false,
 	bIsPlaying = false,
@@ -62,18 +69,18 @@ function AudioTriggerSpot:_GenerateOffset()
 	local offset = {x=0,y=0,z=0}
 	local len = 0
 	
-	if (self.Properties.bPlayOnX) then
+	if (self.Properties.PlayMode.bPlayOnX) then
 		offset.x=randomF(-1,1);
 	end
-	if (self.Properties.bPlayOnY) then
+	if (self.Properties.PlayMode.bPlayOnY) then
 		offset.y=randomF(-1,1);
 	end
-	if (self.Properties.bPlayOnZ) then
+	if (self.Properties.PlayMode.bPlayOnZ) then
 		offset.z=randomF(-1,1);
 	end
 	
 	NormalizeVector(offset);
-	ScaleVectorInPlace(offset, randomF(0,self.Properties.fRadiusRandom));
+	ScaleVectorInPlace(offset, randomF(0,self.Properties.PlayMode.fRadius));
 	
 	return offset;
 end
@@ -154,10 +161,23 @@ function AudioTriggerSpot:OnPropertyChange()
 		self.bHasMoved = false;
 		self:KillTimer(0);		
 	end
-	
-	if (not self.bIsPlaying) then
-		-- Try to play, if disabled, hidden or invalid on-trigger Play() will fail!
-		self:Play();
+		
+	if (self.currentBehaviour ~= self.Properties.PlayMode.eiBehaviour) then
+		self:Stop();
+		self:KillTimer(0);
+		
+		if (self.Properties.PlayMode.eiBehaviour == 0) then
+			self:Play();
+		else
+			self:SetTimer(0, 1000 * randomF(self.Properties.PlayMode.fMinDelay, self.Properties.PlayMode.fMaxDelay));
+		end
+
+		self.currentBehaviour = self.Properties.PlayMode.eiBehaviour;
+	else
+		if (not self.bIsPlaying) then
+			-- Try to play, if disabled, hidden or invalid on-trigger Play() will fail!
+			self:Play();
+		end
 	end
 		
 	if (not self.Properties.bEnabled and ((self.bOriginalEnabled) or (self.hCurrentOffTriggerID ~= self.hOffTriggerID))) then
@@ -217,6 +237,9 @@ AudioTriggerSpot["Client"] = {
 	OnSoundDone = function(self, hTriggerID)
 		if (self.hOnTriggerID == hTriggerID) then
 			self:ActivateOutput( "Done",true );
+			if (self.Properties.PlayMode.eiBehaviour == 2) then
+				self:SetTimer(0, 1000 * randomF(self.Properties.PlayMode.fMinDelay, self.Properties.PlayMode.fMaxDelay));
+			end
 		end
 	end,
 	
@@ -246,8 +269,9 @@ AudioTriggerSpot["Client"] = {
 	
 	----------------------------------------------------------------------------------------
 	OnUpdate = function(self)
-		if (System.IsEditor() and (self.Properties.bDrawActivityRadius)) then
+		if (System.IsEditor() and (self.Properties.Debug.bDrawActivityRadius)) then
 			if ((self.hOnTriggerID ~= nil) and (not self.bIsHidden)) then
+				
 				local pos = self:GetWorldPos();
 				
 				local radius = Sound.GetAudioTriggerRadius(self.hOnTriggerID);
@@ -255,6 +279,8 @@ AudioTriggerSpot["Client"] = {
 				
 				local fadeOutDistance = Sound.GetAudioTriggerOcclusionFadeOutDistance(self.hOnTriggerID);
 				System.DrawSphere(pos.x, pos.y, pos.z, radius - fadeOutDistance, 200, 200, 255, 100);
+				
+				
 			end
 		end
 	end,
@@ -276,8 +302,8 @@ function AudioTriggerSpot:Play()
 		self.bHasMoved = false;
 		self.hCurrentOnTriggerID = self.hOnTriggerID;
 		
-		if (self.Properties.bPlayRandom) then
-			self:SetTimer(0, 1000 * randomF(self.Properties.fMinDelay, self.Properties.fMaxDelay));
+		if (self.Properties.PlayMode.eiBehaviour == 1) then
+			self:SetTimer(0, 1000 * randomF(self.Properties.PlayMode.fMinDelay, self.Properties.PlayMode.fMaxDelay));
 		end
 	end
 end
