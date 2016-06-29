@@ -237,7 +237,7 @@ AudioTriggerSpot["Client"] = {
 	OnSoundDone = function(self, hTriggerID)
 		if (self.hOnTriggerID == hTriggerID) then
 			self:ActivateOutput( "Done",true );
-			if (self.Properties.PlayMode.eiBehaviour == 2) then
+			if (self.Properties.PlayMode.eiBehaviour == 1) then
 				self:SetTimer(0, 1000 * randomF(self.Properties.PlayMode.fMinDelay, self.Properties.PlayMode.fMaxDelay));
 			end
 		end
@@ -302,7 +302,7 @@ function AudioTriggerSpot:Play()
 		self.bHasMoved = false;
 		self.hCurrentOnTriggerID = self.hOnTriggerID;
 		
-		if (self.Properties.PlayMode.eiBehaviour == 1) then
+		if (self.Properties.PlayMode.eiBehaviour == 2) then
 			self:SetTimer(0, 1000 * randomF(self.Properties.PlayMode.fMinDelay, self.Properties.PlayMode.fMaxDelay));
 		end
 	end
