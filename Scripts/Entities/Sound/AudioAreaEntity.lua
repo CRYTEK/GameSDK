@@ -17,12 +17,13 @@ AudioAreaEntity = {
 		fFadeDistance = 5.0,
 		fEnvironmentDistance = 5.0,
 	},
-  
+	
 	fFadeValue = 0.0,
 	nState = 0, -- 0 = far, 1 = near, 2 = inside
 	fFadeOnUnregister = 1.0,
 	hEnvironmentID = nil,
 	tObstructionType = {},
+	bIsActive = false,
 }
 
 ----------------------------------------------------------------------------------------
@@ -135,30 +136,30 @@ function AudioAreaEntity:CliSrv_OnInit()
 	self.nState = 0;
 	self.fFadeValue = 0.0;
 	self.fFadeOnUnregister = 1.0;
-	self:SetFlags(ENTITY_FLAG_VOLUME_SOUND,0);
+	self:SetFlags(ENTITY_FLAG_VOLUME_SOUND, 0);
  
 	self:_UpdateParameters();
 end
 
 ----------------------------------------------------------------------------------------
-function AudioAreaEntity:UpdateFadeValue(player, fFade, fDistSq)
-	if (not(self.Properties.bEnabled) or (fFade == 0.0 and fDistSq == 0.0)) then
-		if (self.fFadeValue ~= 0.0) then
-			self.fFadeValue = 0.0;
-			self:_ActivateOutput("FadeValue", self.fFadeValue);
-		end
-		
+function AudioAreaEntity:UpdateFadeValue(player, distance)
+	if (not(self.Properties.bEnabled)) then
+		self.fFadeValue = 0.0;
+		self:_ActivateOutput("FadeValue", self.fFadeValue);
 		do return end;
 	end
 	
 	if (self.Properties.fFadeDistance > 0.0) then
+		local fade = (self.Properties.fFadeDistance - distance) / self.Properties.fFadeDistance;
+		fade = (fade > 0.0) and fade or 0.0;
+		
 		if (self.nState == 2) then
-			if (self.fFadeValue ~= fFade) then
-				self.fFadeValue = fFade;
+			if (self.fFadeValue ~= fade) then
+				self.fFadeValue = fade;
 				self:_ActivateOutput("FadeValue", self.fFadeValue);
 			end
 		else
-			self.fFadeValue = fFade;
+			self.fFadeValue = fade;
 			self:_ActivateOutput("FadeValue", self.fFadeValue);
 		end
 	end
@@ -169,7 +170,7 @@ AudioAreaEntity.Server={
 	OnInit = function(self)
 		self:CliSrv_OnInit();
 	end,
-  
+	
 	OnShutDown = function(self)
 	end,
 }
@@ -187,68 +188,85 @@ AudioAreaEntity.Client={
 	----------------------------------------------------------------------------------------
 	OnShutDown = function(self)
 		self.nState = 0;
-    self:RegisterForAreaEvents(0);
+		self:RegisterForAreaEvents(0);
 	end,
 	
 	----------------------------------------------------------------------------------------
-	OnAudioListenerEnterNearArea = function(self, player, nAreaID, fFade)
+	OnAudioListenerEnterNearArea = function(self, player, areaId, distance)
 		if (self.nState == 0) then
-			self:_ActivateOutput("OnFarToNear", true);
+			if (distance < self.Properties.fFadeDistance) then
+				self.bIsActive = true;
+				self.fFadeValue = 0.0;
+				self:_ActivateOutput("OnFarToNear", true);
+				self:_ActivateOutput("FadeValue", self.fFadeValue);
+			end
 		elseif (self.nState == 2) then
+			self.fFadeValue = fade;
 			self:_ActivateOutput("OnInsideToNear", true);
+			self:_ActivateOutput("FadeValue", self.fFadeValue);
 		end
 		
-    self.nState = 1;
-		self.fFadeValue = 0.0;
-		self:_ActivateOutput("FadeValue", self.fFadeValue);
+		self.nState = 1;
 	end,
 	
 	----------------------------------------------------------------------------------------
-	OnAudioListenerMoveNearArea = function(self, player, areaId, fFade, fDistsq)
+	OnAudioListenerMoveNearArea = function(self, player, areaId, distance)
 		self.nState = 1;
-		self:UpdateFadeValue(player, fFade, fDistsq);
+		
+		if ((not self.bIsActive) and distance < self.Properties.fFadeDistance) then
+			self.bIsActive = true;
+			self:_ActivateOutput("OnFarToNear", true);
+			self:UpdateFadeValue(player, distance);
+		elseif ((self.bIsActive) and distance > self.Properties.fFadeDistance) then
+			self:_ActivateOutput("OnNearToFar", true);
+			self:UpdateFadeValue(player, distance);
+			self.bIsActive = false;
+		elseif (distance < self.Properties.fFadeDistance) then
+			self:UpdateFadeValue(player, distance);
+		end
 	end,	
 	
 	----------------------------------------------------------------------------------------
-	OnAudioListenerEnterArea = function(self, player, areaId, fFade)
-    if (self.nState == 0) then
+	OnAudioListenerEnterArea = function(self, player)
+		if (self.nState == 0) then
 			-- possible if the player is teleported or gets spawned inside the area
 			-- technically, the listener enters the Near Area and the Inside Area at the same time
+			self.bIsActive = true;
 			self:_ActivateOutput("OnFarToNear", true);
 		end
 		
 		self.nState = 2;
-	  self.fFadeValue = 1.0;
+		self.fFadeValue = 1.0;
 		self:_ActivateOutput("OnNearToInside", true);
 		self:_ActivateOutput("FadeValue", self.fFadeValue);
 		self:_DisableObstruction();
-	end,	
-	
-	----------------------------------------------------------------------------------------
-	OnAudioListenerProceedFadeArea = function(self, player, areaId, fExternalFade)
-	  -- fExternalFade holds the fade value which was calculated by an inner, higher priority area
-	  -- in the AreaManager to fade out the outer sound dependent on the largest fade distance of all attached entities
-	  if (fExternalFade > 0.0) then
-	  	self.nState = 2;
-	  	self:UpdateFadeValue(player, fExternalFade, 0.0);
-	  else
-	  	self:UpdateFadeValue(player, 0.0, 0.0);
-	  end
 	end,
 	
 	----------------------------------------------------------------------------------------
-	OnAudioListenerLeaveArea = function(self, player, nAreaID, fFade)
+	OnAudioListenerProceedFadeArea = function(self, player, fade)
+		-- normalized fade value depending on the "InnerFadeDistance" set to an inner, higher priority area
+		self.nState = 2;
+		self.fFadeValue = fade;
+		self:_ActivateOutput("FadeValue", self.fFadeValue);
+	end,
+	
+	----------------------------------------------------------------------------------------
+	OnAudioListenerLeaveArea = function(self, player, areaId, fade)
 		self.nState = 1;
 		self:_ActivateOutput("OnInsideToNear", true);
 		self:_SetObstruction();
-	end,	
+	end,
 	
 	----------------------------------------------------------------------------------------
-	OnAudioListenerLeaveNearArea = function(self, player, nAreaID, fFade)
+	OnAudioListenerLeaveNearArea = function(self, player, areaId, fade)
 		self.nState = 0;
 		self.fFadeValue = 0.0;
-		self:_ActivateOutput("OnNearToFar", true);
-		self:_ActivateOutput("FadeValue", self.fFadeValue);
+		
+		if (self.bIsActive) then
+			self:_ActivateOutput("OnNearToFar", true);
+			self:_ActivateOutput("FadeValue", self.fFadeValue);
+			self.bIsActive = false;
+		end
 	end,
 	
 	----------------------------------------------------------------------------------------
@@ -267,13 +285,13 @@ AudioAreaEntity.Client={
 -- Event Handlers
 ----------------------------------------------------------------------------------------
 function AudioAreaEntity:Event_Enable(sender)
-  self.Properties.bEnabled = true;
-  self:OnPropertyChange();
+	self.Properties.bEnabled = true;
+	self:OnPropertyChange();
 end
 
 function AudioAreaEntity:Event_Disable(sender)
-  self.Properties.bEnabled = false;
-  self:OnPropertyChange();
+	self.Properties.bEnabled = false;
+	self:OnPropertyChange();
 end
 
 AudioAreaEntity.FlowEvents =
