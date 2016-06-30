@@ -16,16 +16,14 @@ AudioTriggerSpot = {
 			
 		PlayMode = {
 			eiBehaviour = 0, -- 0=Single, 1=Delay, 2=TriggerRate
-			bPlayOnX = false,
-			bPlayOnY = false,
-			bPlayOnZ = false,
-			fRadius = 10.0,
 			fMinDelay = 1,
 			fMaxDelay = 2,
+			vectorRandomizationArea = {x=0.0, y=0.0, z=0.0},
 		},
 		
 		Debug = {
 			bDrawActivityRadius = false,
+			bDrawRandomizationArea = false,
 		}
 	},
 	
@@ -66,22 +64,10 @@ end
 
 ----------------------------------------------------------------------------------------
 function AudioTriggerSpot:_GenerateOffset()
-	local offset = {x=0,y=0,z=0}
-	local len = 0
-	
-	if (self.Properties.PlayMode.bPlayOnX) then
-		offset.x=randomF(-1,1);
-	end
-	if (self.Properties.PlayMode.bPlayOnY) then
-		offset.y=randomF(-1,1);
-	end
-	if (self.Properties.PlayMode.bPlayOnZ) then
-		offset.z=randomF(-1,1);
-	end
-	
-	NormalizeVector(offset);
-	ScaleVectorInPlace(offset, randomF(0,self.Properties.PlayMode.fRadius));
-	
+	local offset = {x=0, y=0, z=0};
+	offset.x = randomF(-self.Properties.PlayMode.vectorRandomizationArea.x/2.0, self.Properties.PlayMode.vectorRandomizationArea.x/2.0);
+	offset.y = randomF(-self.Properties.PlayMode.vectorRandomizationArea.y/2.0, self.Properties.PlayMode.vectorRandomizationArea.y/2.0);
+	offset.z = randomF(-self.Properties.PlayMode.vectorRandomizationArea.z/2.0, self.Properties.PlayMode.vectorRandomizationArea.z/2.0);
 	return offset;
 end
 
@@ -138,6 +124,16 @@ function AudioTriggerSpot:OnPropertyChange()
 		self.Properties.eiSoundObstructionType = 1;
 	elseif (self.Properties.eiSoundObstructionType > 5) then
 		self.Properties.eiSoundObstructionType = 5;
+	end
+	
+	if(self.Properties.PlayMode.vectorRandomizationArea.x < 0.0) then
+		self.Properties.PlayMode.vectorRandomizationArea.x = 0.0;
+	end
+	if(self.Properties.PlayMode.vectorRandomizationArea.y < 0.0) then
+		self.Properties.PlayMode.vectorRandomizationArea.y = 0.0;
+	end
+	if(self.Properties.PlayMode.vectorRandomizationArea.z < 0.0) then
+		self.Properties.PlayMode.vectorRandomizationArea.z = 0.0;
 	end
 	
 	self:_LookupTriggerIDs();
@@ -269,18 +265,24 @@ AudioTriggerSpot["Client"] = {
 	
 	----------------------------------------------------------------------------------------
 	OnUpdate = function(self)
-		if (System.IsEditor() and (self.Properties.Debug.bDrawActivityRadius)) then
-			if ((self.hOnTriggerID ~= nil) and (not self.bIsHidden)) then
-				
-				local pos = self:GetWorldPos();
-				
+		local pos = self:GetWorldPos();
+		
+		if (System.IsEditor() and (not self.bIsHidden)) then
+		
+			if (self.Properties.Debug.bDrawRandomizationArea) then
+				local area = self.Properties.PlayMode.vectorRandomizationArea;
+				local rot = self:GetWorldAngles();
+				System.DrawOBB(pos.x, pos.y, pos.z, area.x, area.y, area.z, rot.x, rot.y, rot.z);
+			end
+			
+			if ((self.hOnTriggerID ~= nil) and (self.Properties.Debug.bDrawActivityRadius))then
 				local radius = Sound.GetAudioTriggerRadius(self.hOnTriggerID);
 				System.DrawSphere(pos.x, pos.y, pos.z, radius, 250, 100, 100, 100);
-				
+					
 				local fadeOutDistance = Sound.GetAudioTriggerOcclusionFadeOutDistance(self.hOnTriggerID);
-				System.DrawSphere(pos.x, pos.y, pos.z, radius - fadeOutDistance, 200, 200, 255, 100);
-				
-				
+				if(fadeOutDistance > 0.0) then
+					System.DrawSphere(pos.x, pos.y, pos.z, radius - fadeOutDistance, 200, 200, 255, 100);
+				end
 			end
 		end
 	end,
