@@ -22,7 +22,7 @@ AudioTriggerSpot = {
 		},
 		
 		Debug = {
-			bDrawActivityRadius = false,
+			eiDrawActivityRadius = 0,
 			bDrawRandomizationArea = false,
 		}
 	},
@@ -275,13 +275,24 @@ AudioTriggerSpot["Client"] = {
 				System.DrawOBB(pos.x, pos.y, pos.z, area.x, area.y, area.z, rot.x, rot.y, rot.z);
 			end
 			
-			if ((self.hOnTriggerID ~= nil) and (self.Properties.Debug.bDrawActivityRadius))then
-				local radius = Sound.GetAudioTriggerRadius(self.hOnTriggerID);
-				System.DrawSphere(pos.x, pos.y, pos.z, radius, 250, 100, 100, 100);
-					
-				local fadeOutDistance = Sound.GetAudioTriggerOcclusionFadeOutDistance(self.hOnTriggerID);
-				if(fadeOutDistance > 0.0) then
-					System.DrawSphere(pos.x, pos.y, pos.z, radius - fadeOutDistance, 200, 200, 255, 100);
+			if(self.Properties.Debug.eiDrawActivityRadius > 0) then
+				if ((self.hOnTriggerID ~= nil) and (self.Properties.Debug.eiDrawActivityRadius == 1))then
+					local radius = Sound.GetAudioTriggerRadius(self.hOnTriggerID);
+					System.DrawSphere(pos.x, pos.y, pos.z, radius, 250, 100, 100, 100);
+						
+					local fadeOutDistance = Sound.GetAudioTriggerOcclusionFadeOutDistance(self.hOnTriggerID);
+					if(fadeOutDistance > 0.0) then
+						System.DrawSphere(pos.x, pos.y, pos.z, radius - fadeOutDistance, 200, 200, 255, 100);
+					end
+				end
+				if ((self.hOffTriggerID ~= nil) and (self.Properties.Debug.eiDrawActivityRadius == 2))then
+					local radius = Sound.GetAudioTriggerRadius(self.hOffTriggerID);
+					System.DrawSphere(pos.x, pos.y, pos.z, radius, 250, 100, 100, 100);
+						
+					local fadeOutDistance = Sound.GetAudioTriggerOcclusionFadeOutDistance(self.hOffTriggerID);
+					if(fadeOutDistance > 0.0) then
+						System.DrawSphere(pos.x, pos.y, pos.z, radius - fadeOutDistance, 200, 200, 255, 100);
+					end
 				end
 			end
 		end

@@ -99,6 +99,12 @@
 		<entry enum="Trigger Rate=2" />
 	</Behaviour>
 	
+	<DrawActivityRadius>
+		<entry enum="None=0" />
+		<entry enum="Play Trigger=1" />
+		<entry enum="Stop Trigger=2" />
+	</DrawActivityRadius>
+	
 	<VolumeType>
 		<entry enum="Ellipsoid=0"/>
 		<entry enum="Cube=1"/>
