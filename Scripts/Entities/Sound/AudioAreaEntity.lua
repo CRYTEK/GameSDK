@@ -153,12 +153,7 @@ function AudioAreaEntity:UpdateFadeValue(player, distance)
 		local fade = (self.Properties.fFadeDistance - distance) / self.Properties.fFadeDistance;
 		fade = (fade > 0.0) and fade or 0.0;
 		
-		if (self.nState == 2) then
-			if (self.fFadeValue ~= fade) then
-				self.fFadeValue = fade;
-				self:_ActivateOutput("FadeValue", self.fFadeValue);
-			end
-		else
+		if (math.abs(self.fFadeValue - fade) > AudioUtils.areaFadeEpsilon) then
 			self.fFadeValue = fade;
 			self:_ActivateOutput("FadeValue", self.fFadeValue);
 		end
@@ -246,8 +241,11 @@ AudioAreaEntity.Client={
 	OnAudioListenerProceedFadeArea = function(self, player, fade)
 		-- normalized fade value depending on the "InnerFadeDistance" set to an inner, higher priority area
 		self.nState = 2;
-		self.fFadeValue = fade;
-		self:_ActivateOutput("FadeValue", self.fFadeValue);
+		
+		if (math.abs(self.fFadeValue - fade) > AudioUtils.areaFadeEpsilon) then
+			self.fFadeValue = fade;
+			self:_ActivateOutput("FadeValue", self.fFadeValue);
+		end
 	end,
 	
 	----------------------------------------------------------------------------------------

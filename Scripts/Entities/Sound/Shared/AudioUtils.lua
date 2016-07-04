@@ -1,6 +1,7 @@
 AudioUtils = {
 	sObstructionCalcSwitchName = "ObstrOcclCalcType",
 	sObstructionStateNames = {"ignore", "adaptive", "low", "medium", "high"},
+	areaFadeEpsilon = 0.0025,
 }
 
 ----------------------------------------------------------------------------------------
