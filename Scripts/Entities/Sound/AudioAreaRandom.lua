@@ -334,9 +334,15 @@ AudioAreaRandom.Client={
 		-- normalized fade value depending on the "InnerFadeDistance" set to an inner, higher priority area
 		self.nState = 2;
 		
-		if (math.abs(self.fFadeValue - fade) > AudioUtils.areaFadeEpsilon) then
+		if ((math.abs(self.fFadeValue - fade) > AudioUtils.areaFadeEpsilon) or ((fade == 0.0) and (self.fFadeValue ~= fade))) then
 			self.fFadeValue = fade;
 			self:_UpdateRtpc();
+			
+			if ((not self.bIsPlaying) and (fade > 0.0)) then
+				self:Play();
+			elseif ((self.bIsPlaying) and (fade == 0.0)) then
+				self:Stop();
+			end
 		end
 	end,
 	

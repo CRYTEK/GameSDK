@@ -242,9 +242,19 @@ AudioAreaEntity.Client={
 		-- normalized fade value depending on the "InnerFadeDistance" set to an inner, higher priority area
 		self.nState = 2;
 		
-		if (math.abs(self.fFadeValue - fade) > AudioUtils.areaFadeEpsilon) then
+		if ((math.abs(self.fFadeValue - fade) > AudioUtils.areaFadeEpsilon) or ((fade == 0.0) and (self.fFadeValue ~= fade))) then
 			self.fFadeValue = fade;
 			self:_ActivateOutput("FadeValue", self.fFadeValue);
+			
+			if ((not self.bIsActive) and (fade > 0.0)) then
+				self.bIsActive = true;
+				self:_ActivateOutput("OnFarToNear", true);
+				self:_ActivateOutput("OnNearToInside", true);
+			elseif ((self.bIsActive) and (fade == 0.0)) then
+				self:_ActivateOutput("OnInsideToNear", true);
+				self:_ActivateOutput("OnNearToFar", true);
+				self.bIsActive = false;
+			end
 		end
 	end,
 	
