@@ -20,6 +20,7 @@ AnimObject =
 		},
 		Physics =
 		{
+			bActor = 0,
 			bArticulated = 0,
 			bRigidBody = 0,
 			bPushableByPlayers = 0,
@@ -563,7 +564,17 @@ end
 ------------------------------------------------------------------------------------------------------
 function AnimObject:PhysicalizeThis()
 
-	BasicEntity.PhysicalizeThis(self);
+	if self.Properties.Physics.bActor and self.Properties.Physics.bActor==1 then
+		local LivingPhys = { 
+			mass = self.Properties.Physics.Mass, 
+			density = self.Properties.Physics.Density, 
+			stiffness_scale = 80,
+			Living = { mass=self.Properties.Physics.Mass }, 
+		};
+	  self:Physicalize(0, PE_LIVING, LivingPhys);
+	else
+		BasicEntity.PhysicalizeThis(self);
+	end
 
 	-- Remove bullet collision if desired
 	local Physics = self.Properties.Physics;
