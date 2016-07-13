@@ -43,7 +43,7 @@
 	</ammos>
 
 	<geometry>
-		<firstperson name="objects/weapons/frag_grenade/frag_grenade.chr" angles="0,0,0"/>
+		<firstperson name="objects/weapons/frag_grenade/frag_grenade.cdf" angles="0,0,0"/>
 		<thirdperson name="objects/weapons/frag_grenade/frag_grenade_tp.cgf" />
 	</geometry>
 
