@@ -9,10 +9,10 @@
   <Node Id="4" Class="UI:Action:End" pos="-640,-40,0" flags="0">
    <Inputs UseAsState="1" Args=""/>
   </Node>
-  <Node Id="5" Name="Display_the_2d_hud_and_unload_the_hud_on_level_end" Class="_commentbox" pos="-1360,-128.83832,0" flags="0">
+  <Node Id="5" Name="Display_the_2d_hud_and_unload_the_hud_on_level_end" Class="_commentbox" pos="-1360,-110.24898,0" flags="0">
    <Inputs TextSize="1" Color="0.665387,0.371238,0.287441" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="920" Height="280"/>
-   <NodeSize Width="920" Height="326.22989"/>
+   <NodeSize Width="920" Height="307.64063"/>
   </Node>
   <Node Id="6" Class="Game:WeaponSensor" pos="-440,320,0" flags="0" InHideMask="15" OutHideMask="8388607">
    <Inputs entityId="0"/>
@@ -38,10 +38,10 @@
   <Node Id="167" Class="Physics:RayCastCamera" pos="580,740,0" flags="0" InHideMask="7" OutHideMask="511">
    <Inputs offset="0,0,0" maxLength="201"/>
   </Node>
-  <Node Id="267" Name="Raycast_when_using_binoculars" Class="_commentbox" pos="40,510.83487,0" flags="0">
+  <Node Id="267" Name="Raycast_when_using_binoculars" Class="_commentbox" pos="40,529.42413,0" flags="0">
    <Inputs TextSize="1" Color="0.386429,0.527115,0.396755" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="1100" Height="330"/>
-   <NodeSize Width="1100" Height="376.22989"/>
+   <NodeSize Width="1100" Height="357.64063"/>
   </Node>
   <Node Id="269" Class="UI:Functions:HUD2D:SetZoomDistance" pos="840,780,0" flags="0">
    <Inputs instanceID="-1" distance="0"/>
@@ -58,15 +58,15 @@
   <Node Id="276" Class="Time:Timer" pos="400,740,0" flags="0">
    <Inputs period="0.2" min="0" max="0" paused="1"/>
   </Node>
-  <Node Id="277" Name="Setup_Weapon_info_for_crosshair" Class="_commentbox" pos="40,109.22023,0" flags="0">
+  <Node Id="277" Name="Setup_Weapon_info_for_crosshair" Class="_commentbox" pos="40,127.80956,0" flags="0">
    <Inputs TextSize="1" Color="0.527115,0.351533,0.571125" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="480" Height="330"/>
-   <NodeSize Width="499.78882" Height="376.22989"/>
+   <NodeSize Width="480" Height="357.64063"/>
   </Node>
-  <Node Id="278" Name="handle_weapon_events" Class="_commentbox" pos="-1360,231.16034,0" flags="0">
+  <Node Id="278" Name="handle_weapon_events" Class="_commentbox" pos="-1360,249.7496,0" flags="0">
    <Inputs TextSize="1" Color="0.283149,0.545725,0.672443" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="1180" Height="280"/>
-   <NodeSize Width="1180" Height="326.22989"/>
+   <NodeSize Width="1180" Height="307.64063"/>
   </Node>
   <Node Id="279" Class="Logic:AND" pos="80,740,0" flags="0">
    <Inputs A="0" B="0" Always="0"/>
@@ -77,19 +77,13 @@
   <Node Id="286" Class="UI:Events:System:OnGameplayEnded" pos="-1320,40,0" flags="0">
    <Inputs Port="-1" Idx=""/>
   </Node>
-  <Node Id="288" Class="Actor:ActionFilter" pos="-440,720,0" flags="0">
-   <Inputs entityId="0" Filter="only_ui"/>
-  </Node>
   <Node Id="290" Class="Actor:LocalPlayer" pos="-1020,720,0" flags="0">
    <Inputs />
   </Node>
-  <Node Id="293" Class="Input:ActionListener" pos="-780,760,0" flags="0">
-   <Inputs entityId="0" Action="hud_openchat" ActionMap="default" NonDevMode="1"/>
-  </Node>
-  <Node Id="295" Name="Chat_functionality" Class="_commentbox" pos="-1360,631.66211,0" flags="0">
+  <Node Id="295" Name="Chat_functionality" Class="_commentbox" pos="-1360,650.2514,0" flags="0">
    <Inputs TextSize="1" Color="0.665387,0.47932,0.287441" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="1180" Height="580"/>
-   <NodeSize Width="1180" Height="626.22992"/>
+   <NodeSize Width="1180" Height="607.64063"/>
   </Node>
   <Node Id="297" Class="UI:Functions:HUD2D:StartChat" pos="-440,820,0" flags="0">
    <Inputs instanceID="-1"/>
@@ -124,8 +118,14 @@
   <Node Id="354" Class="Game:Start" pos="-1320,720,0" flags="0">
    <Inputs InGame="1" InEditor="1"/>
   </Node>
-  <Node Id="358" Class="Time:Delay" pos="-1020,840,0" flags="0">
+  <Node Id="358" Class="Time:Delay" pos="-1050,870,0" flags="0">
    <Inputs delay="1" resetOnInput="0"/>
+  </Node>
+  <Node Id="360" Class="Input:ActionMaps:ActionListener" pos="-850,770,0" flags="0">
+   <Inputs entityId="0" actionMapActions_Action="hud_openchat"/>
+  </Node>
+  <Node Id="362" Class="Input:ActionMaps:ActionFilter" pos="-440,720,0" flags="1">
+   <Inputs actionFilter_Filter="only_ui"/>
   </Node>
  </Nodes>
  <Edges>
@@ -160,15 +160,12 @@
   <Edge nodeIn="285" nodeOut="279" portIn="in" portOut="out" enabled="1"/>
   <Edge nodeIn="276" nodeOut="285" portIn="paused" portOut="out" enabled="1"/>
   <Edge nodeIn="2" nodeOut="286" portIn="unload" portOut="onEvent" enabled="1"/>
-  <Edge nodeIn="288" nodeOut="290" portIn="entityId" portOut="entityId" enabled="1"/>
-  <Edge nodeIn="293" nodeOut="290" portIn="entityId" portOut="entityId" enabled="1"/>
-  <Edge nodeIn="288" nodeOut="293" portIn="Enable" portOut="Pressed" enabled="1"/>
-  <Edge nodeIn="297" nodeOut="293" portIn="Call" portOut="Pressed" enabled="1"/>
+  <Edge nodeIn="360" nodeOut="290" portIn="entityId" portOut="entityId" enabled="1"/>
   <Edge nodeIn="303" nodeOut="299" portIn="in2" portOut="onEvent" enabled="1"/>
   <Edge nodeIn="314" nodeOut="299" portIn="Message" portOut="Message" enabled="1"/>
   <Edge nodeIn="314" nodeOut="299" portIn="send" portOut="onEvent" enabled="1"/>
   <Edge nodeIn="303" nodeOut="301" portIn="in1" portOut="onEvent" enabled="1"/>
-  <Edge nodeIn="288" nodeOut="303" portIn="Disable" portOut="out" enabled="1"/>
+  <Edge nodeIn="362" nodeOut="303" portIn="Disable" portOut="out" enabled="1"/>
   <Edge nodeIn="308" nodeOut="312" portIn="Message" portOut="Message" enabled="1"/>
   <Edge nodeIn="308" nodeOut="312" portIn="Player" portOut="Player" enabled="1"/>
   <Edge nodeIn="308" nodeOut="312" portIn="Call" portOut="onEvent" enabled="1"/>
@@ -176,10 +173,12 @@
   <Edge nodeIn="317" nodeOut="316" portIn="in2" portOut="SeatChange" enabled="1"/>
   <Edge nodeIn="6" nodeOut="317" portIn="Get" portOut="out" enabled="1"/>
   <Edge nodeIn="290" nodeOut="346" portIn="update" portOut="True" enabled="1"/>
-  <Edge nodeIn="293" nodeOut="346" portIn="Disable" portOut="False" enabled="1"/>
   <Edge nodeIn="358" nodeOut="346" portIn="in" portOut="True" enabled="1"/>
+  <Edge nodeIn="360" nodeOut="346" portIn="Disable" portOut="False" enabled="1"/>
   <Edge nodeIn="346" nodeOut="354" portIn="Get" portOut="output" enabled="1"/>
-  <Edge nodeIn="293" nodeOut="358" portIn="Enable" portOut="out" enabled="1"/>
+  <Edge nodeIn="360" nodeOut="358" portIn="Enable" portOut="out" enabled="1"/>
+  <Edge nodeIn="297" nodeOut="360" portIn="Call" portOut="Pressed" enabled="1"/>
+  <Edge nodeIn="362" nodeOut="360" portIn="Enable" portOut="Pressed" enabled="1"/>
  </Edges>
  <GraphTokens />
 </Graph>
