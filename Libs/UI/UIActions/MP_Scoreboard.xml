@@ -3,9 +3,6 @@
   <Node Id="23" Class="Game:Start" pos="-400,-160,0" flags="0">
    <Inputs InGame="1" InEditor="1"/>
   </Node>
-  <Node Id="38" Class="Input:ActionListener" pos="280,-160,0" flags="0">
-   <Inputs entityId="0" Action="menu_scoreboard_open" ActionMap="menu" NonDevMode="1"/>
-  </Node>
   <Node Id="40" Class="UI:Functions:HUD2D:OnHideScoreboard" pos="680,-100,0" flags="0">
    <Inputs instanceID="-1"/>
   </Node>
@@ -15,10 +12,10 @@
   <Node Id="63" Class="UI:Functions:HUD2D:UpdateOrAddScoreboardItem" pos="40,80,0" flags="0">
    <Inputs instanceID="-1" PlayerID="0" Name="" Kills="0" Deaths="0" Team=""/>
   </Node>
-  <Node Id="64" Name="Scoreboard_functionality" Class="_commentbox" pos="-440,-242.17685,0" flags="0">
+  <Node Id="64" Name="Scoreboard_functionality" Class="_commentbox" pos="-440,-233.01645,0" flags="0">
    <Inputs TextSize="1" Color="0.399293,0.523443,0.394083" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="1960" Height="610"/>
-   <NodeSize Width="1960" Height="646.95813"/>
+   <NodeSize Width="1960" Height="637.79767"/>
   </Node>
   <Node Id="67" Class="UI:Events:MP:PlayerLeft" pos="-400,280,0" flags="0">
    <Inputs Port="-1" Idx=""/>
@@ -48,15 +45,16 @@
    <Inputs />
   </Node>
   <Node Id="92" Name="Display_Scoreboard_in_Multiplayer" Class="_comment" pos="-160,-60,0" flags="0"/>
+  <Node Id="94" Class="Input:ActionMaps:ActionListener" pos="260,-130,0" flags="1">
+   <Inputs entityId="0" actionMapActions_Action="menu_scoreboard_open"/>
+  </Node>
  </Nodes>
  <Edges>
   <Edge nodeIn="79" nodeOut="23" portIn="update" portOut="output" enabled="1"/>
   <Edge nodeIn="91" nodeOut="23" portIn="Get" portOut="output" enabled="1"/>
-  <Edge nodeIn="40" nodeOut="38" portIn="Call" portOut="Released" enabled="1"/>
-  <Edge nodeIn="82" nodeOut="38" portIn="send" portOut="Pressed" enabled="1"/>
   <Edge nodeIn="73" nodeOut="67" portIn="PlayerID" portOut="ID" enabled="1"/>
   <Edge nodeIn="81" nodeOut="67" portIn="in" portOut="onEvent" enabled="1"/>
-  <Edge nodeIn="38" nodeOut="79" portIn="entityId" portOut="entityId" enabled="1"/>
+  <Edge nodeIn="94" nodeOut="79" portIn="entityId" portOut="entityId" enabled="1"/>
   <Edge nodeIn="63" nodeOut="80" portIn="Deaths" portOut="Deaths" enabled="1"/>
   <Edge nodeIn="63" nodeOut="80" portIn="PlayerID" portOut="ID" enabled="1"/>
   <Edge nodeIn="63" nodeOut="80" portIn="Kills" portOut="Kills" enabled="1"/>
@@ -66,8 +64,10 @@
   <Edge nodeIn="73" nodeOut="81" portIn="Call" portOut="out" enabled="1"/>
   <Edge nodeIn="83" nodeOut="82" portIn="in" portOut="OnEvent" enabled="1"/>
   <Edge nodeIn="42" nodeOut="83" portIn="Call" portOut="out" enabled="1"/>
-  <Edge nodeIn="38" nodeOut="91" portIn="Disable" portOut="False" enabled="1"/>
-  <Edge nodeIn="38" nodeOut="91" portIn="Enable" portOut="True" enabled="1"/>
+  <Edge nodeIn="94" nodeOut="91" portIn="Disable" portOut="False" enabled="1"/>
+  <Edge nodeIn="94" nodeOut="91" portIn="Enable" portOut="True" enabled="1"/>
+  <Edge nodeIn="40" nodeOut="94" portIn="Call" portOut="Released" enabled="1"/>
+  <Edge nodeIn="82" nodeOut="94" portIn="send" portOut="Pressed" enabled="1"/>
  </Edges>
  <GraphTokens />
 </Graph>

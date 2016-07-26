@@ -63,30 +63,28 @@
   <Node Id="23" Class="UI:Functions:Dialogs:DialogResult" pos="560,490,0" flags="0">
    <Inputs DialogId="0" DialogResult="0" Message=""/>
   </Node>
-  <Node Id="61" Name="Display_/_hide_the_asset_if_needed" Class="_commentbox" pos="180,50.000038,0" flags="0">
+  <Node Id="61" Name="Display_/_hide_the_asset_if_needed" Class="_commentbox" pos="180,49.750053,0" flags="0">
    <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="980" Height="240"/>
-   <NodeSize Width="980" Height="267.39063"/>
+   <NodeSize Width="980" Height="267.64063"/>
   </Node>
-  <Node Id="63" Name="Add_different_dialogs" Class="_commentbox" pos="-540,49.130745,0" flags="0">
+  <Node Id="63" Name="Add_different_dialogs" Class="_commentbox" pos="-540,48.880821,0" flags="0">
    <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="680" Height="1290"/>
-   <NodeSize Width="680" Height="1317.3906"/>
+   <NodeSize Width="680" Height="1317.6406"/>
   </Node>
-  <Node Id="65" Name="Remove_dialogs_/_handle_dialog_events" Class="_commentbox" pos="180,340,0" flags="0">
+  <Node Id="65" Name="Remove_dialogs_/_handle_dialog_events" Class="_commentbox" pos="180,339.75,0" flags="0">
    <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="740" Height="270"/>
-   <NodeSize Width="740" Height="297.39063"/>
+   <NodeSize Width="740" Height="297.64063"/>
   </Node>
-  <Node Id="69" Class="Actor:ActionFilter" pos="540,140,0" flags="0">
-   <Inputs entityId="0" Filter="only_ui"/>
+  <Node Id="71" Class="Input:ActionMaps:ActionFilter" pos="530,160,0" flags="1">
+   <Inputs actionFilter_Filter="only_ui"/>
   </Node>
  </Nodes>
  <Edges>
-  <Edge nodeIn="4" nodeOut="1" portIn="show" portOut="onEvent" enabled="1"/>
-  <Edge nodeIn="69" nodeOut="1" portIn="Enable" portOut="onEvent" enabled="1"/>
-  <Edge nodeIn="4" nodeOut="2" portIn="requestHide" portOut="onEvent" enabled="1"/>
-  <Edge nodeIn="69" nodeOut="2" portIn="Disable" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="71" nodeOut="1" portIn="Enable" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="71" nodeOut="2" portIn="Disable" portOut="onEvent" enabled="1"/>
   <Edge nodeIn="13" nodeOut="5" portIn="Param1" portOut="Button1" enabled="1"/>
   <Edge nodeIn="13" nodeOut="5" portIn="Param2" portOut="Button2" enabled="1"/>
   <Edge nodeIn="13" nodeOut="5" portIn="Id" portOut="DialogId" enabled="1"/>
@@ -132,6 +130,8 @@
   <Edge nodeIn="23" nodeOut="22" portIn="Message" portOut="Param" enabled="1"/>
   <Edge nodeIn="23" nodeOut="22" portIn="DialogResult" portOut="Return" enabled="1"/>
   <Edge nodeIn="23" nodeOut="22" portIn="send" portOut="onEvent" enabled="1"/>
+  <Edge nodeIn="4" nodeOut="71" portIn="requestHide" portOut="Disabled" enabled="1"/>
+  <Edge nodeIn="4" nodeOut="71" portIn="show" portOut="Enabled" enabled="1"/>
  </Edges>
  <GraphTokens />
 </Graph>

@@ -26,24 +26,21 @@
   </Node>
   <Node Id="60" Name="Completed" Class="_comment" pos="-180,1840,0" flags="0"/>
   <Node Id="61" Name="Activated" Class="_comment" pos="-180,2030,0" flags="0"/>
-  <Node Id="62" Name="Display_Mission_Details" Class="_commentbox" pos="-640,1065.3434,0" flags="0">
+  <Node Id="62" Name="Display_Mission_Details" Class="_commentbox" pos="-640,1139.2609,0" flags="0">
    <Inputs TextSize="1" Color="0.729919,0.487765,0.25084" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="2540" Height="500"/>
-   <NodeSize Width="2540" Height="601.55811"/>
+   <NodeSize Width="2540" Height="527.64063"/>
   </Node>
-  <Node Id="63" Name="Show_mission_status_in_center_screen" Class="_commentbox" pos="-210,1713.1876,0" flags="0">
+  <Node Id="63" Name="Show_mission_status_in_center_screen" Class="_commentbox" pos="-210,1787.1051,0" flags="0">
    <Inputs TextSize="1" Color="0.38891,0.65237,0.147998" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="1340" Height="330"/>
-   <NodeSize Width="1340" Height="431.55811"/>
+   <NodeSize Width="1340" Height="357.64063"/>
   </Node>
   <Node Id="69" Class="Logic:Any" pos="660,-350,0" flags="0" InHideMask="1020" OutHideMask="1">
    <Inputs />
   </Node>
   <Node Id="70" Class="Logic:Any" pos="120,140,0" flags="0" InHideMask="1022" OutHideMask="1">
    <Inputs />
-  </Node>
-  <Node Id="72" Class="Input:ActionListener" pos="-660,550,0" flags="0">
-   <Inputs entityId="0" Action="objectives" ActionMap="default" NonDevMode="1"/>
   </Node>
   <Node Id="73" Name="Only_show_one_mission_detail_message_at_a_time,_display_the_other_one_once_the_first_displayed_message_has_been_hidden" Class="_comment" pos="1080,1140,0" flags="0"/>
   <Node Id="74" Class="UI:Util:UIDelay" pos="700,1870,0" flags="0">
@@ -58,10 +55,10 @@
   <Node Id="88" Class="Math:EqualCheck" pos="-990,600,0" flags="0">
    <Inputs A="0" B="3"/>
   </Node>
-  <Node Id="93" Name="Secondary_Mission_Name" Class="_commentbox" pos="-200,194.96449,0" flags="0">
+  <Node Id="93" Name="Secondary_Mission_Name" Class="_commentbox" pos="-200,268.88202,0" flags="0">
    <Inputs TextSize="1" Color="0.311181,0.632043,0.632043" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="960" Height="140"/>
-   <NodeSize Width="960" Height="241.55812"/>
+   <NodeSize Width="960" Height="167.64063"/>
   </Node>
   <Node Id="96" Class="UI:Functions:HUD3D:ShowMissionMessagePrimary" pos="250,140,0" flags="0">
    <Inputs instanceID="-1" Message=""/>
@@ -81,10 +78,10 @@
   <Node Id="116" Class="String:Concat" pos="-200,1460,0" flags="0">
    <Inputs String1="Secondary mission details:&lt;br&gt;&lt;br&gt;" String2=""/>
   </Node>
-  <Node Id="223" Name="Primary_Mission_Name" Class="_commentbox" pos="-200,16.378174,0" flags="0">
+  <Node Id="223" Name="Primary_Mission_Name" Class="_commentbox" pos="-200,90.295731,0" flags="0">
    <Inputs TextSize="1" Color="0.311181,0.632043,0.632043" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="960" Height="140"/>
-   <NodeSize Width="960" Height="241.55812"/>
+   <NodeSize Width="960" Height="167.64063"/>
   </Node>
   <Node Id="296" Class="Logic:Any" pos="660,-240,0" flags="0" InHideMask="1023" OutHideMask="1">
    <Inputs />
@@ -171,10 +168,10 @@
   <Node Id="362" Class="Logic:AND" pos="1360,1410,0" flags="0">
    <Inputs A="0" B="0" Always="1"/>
   </Node>
-  <Node Id="365" Name="Display_Mission_Details_on_button_press" Class="_commentbox" pos="430,555.41125,0" flags="0">
+  <Node Id="365" Name="Display_Mission_Details_on_button_press" Class="_commentbox" pos="430,629.32874,0" flags="0">
    <Inputs TextSize="1" Color="0.729919,0.487765,0.25084" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="1470" Height="410"/>
-   <NodeSize Width="1470" Height="511.55811"/>
+   <NodeSize Width="1470" Height="437.64063"/>
   </Node>
   <Node Id="367" Class="Logic:Gate" pos="-50,650,0" flags="0">
    <Inputs Closed="1"/>
@@ -227,10 +224,10 @@
   <Node Id="432" Class="Logic:Any" pos="1050,240,0" flags="0" InHideMask="1023" OutHideMask="1">
    <Inputs />
   </Node>
-  <Node Id="433" Name="Hide_Mission_Messages" Class="_commentbox" pos="1030,5.5778809,0" flags="0">
+  <Node Id="433" Name="Hide_Mission_Messages" Class="_commentbox" pos="1030,79.495438,0" flags="0">
    <Inputs TextSize="1" Color="0.311181,0.632043,0.632043" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="480" Height="240"/>
-   <NodeSize Width="788.61633" Height="341.55811"/>
+   <NodeSize Width="480" Height="267.64063"/>
   </Node>
   <Node Id="464" Class="Logic:Gate" pos="-770,-220,0" flags="0">
    <Inputs Closed="1"/>
@@ -263,10 +260,10 @@
    <Inputs in="0"/>
   </Node>
   <Node Id="517" Class="HUD:MissionStateListener" pos="-1900,-310,0" flags="0"/>
-  <Node Id="518" Name="Display_Primary/Secondary_&quot;complete&quot;_messages" Class="_commentbox" pos="-1940,-625.48962,0" flags="0">
+  <Node Id="518" Name="Display_Primary/Secondary_&quot;complete&quot;_messages" Class="_commentbox" pos="-1940,-551.57214,0" flags="0">
    <Inputs TextSize="1" Color="0.311181,0.632043,0.632043" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="1810" Height="580"/>
-   <NodeSize Width="1810" Height="681.55811"/>
+   <NodeSize Width="1810" Height="607.64063"/>
   </Node>
   <Node Id="526" Class="String:SetString" pos="-40,2060,0" flags="0">
    <Inputs In="Mission Failed"/>
@@ -323,10 +320,10 @@
    <Inputs in="0"/>
   </Node>
   <Node Id="597" Class="HUD:MissionStateListener" pos="-1900,-1000,0" flags="0"/>
-  <Node Id="598" Name="Display_Primary/Secondary_&quot;failed&quot;_messages" Class="_commentbox" pos="-1940,-1373.7462,0" flags="0">
+  <Node Id="598" Name="Display_Primary/Secondary_&quot;failed&quot;_messages" Class="_commentbox" pos="-1940,-1299.8287,0" flags="0">
    <Inputs TextSize="1" Color="0.311181,0.632043,0.632043" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="1820" Height="650"/>
-   <NodeSize Width="1820" Height="751.55811"/>
+   <NodeSize Width="1820" Height="677.64063"/>
   </Node>
   <Node Id="601" Class="Logic:Any" pos="1560,380,0" flags="0" InHideMask="1023" OutHideMask="1">
    <Inputs />
@@ -398,11 +395,14 @@
    <Inputs InGame="1" InEditor="1"/>
   </Node>
   <Node Id="668" Name="Set_Typing_speed._Lower_number,_less_delay" Class="_comment" pos="-660,710,0" flags="0"/>
-  <Node Id="670" Class="Logic:Gate" pos="840,310,0" flags="0">
+  <Node Id="670" Class="Logic:Gate" pos="840,300,0" flags="0">
    <Inputs Closed="0"/>
   </Node>
-  <Node Id="671" Class="Logic:Gate" pos="840,130,0" flags="0">
+  <Node Id="671" Class="Logic:Gate" pos="840,140,0" flags="0">
    <Inputs Closed="0"/>
+  </Node>
+  <Node Id="673" Class="Input:ActionMaps:ActionListener" pos="-630,530,0" flags="1">
+   <Inputs entityId="0" actionMapActions_Action="objectives"/>
   </Node>
  </Nodes>
  <Edges>
@@ -419,12 +419,6 @@
   <Edge nodeIn="386" nodeOut="59" portIn="in1" portOut="out" enabled="1"/>
   <Edge nodeIn="429" nodeOut="69" portIn="in1" portOut="out" enabled="1"/>
   <Edge nodeIn="96" nodeOut="70" portIn="Call" portOut="out" enabled="1"/>
-  <Edge nodeIn="367" nodeOut="72" portIn="In" portOut="Pressed" enabled="1"/>
-  <Edge nodeIn="369" nodeOut="72" portIn="In" portOut="Released" enabled="1"/>
-  <Edge nodeIn="670" nodeOut="72" portIn="Close" portOut="Pressed" enabled="1"/>
-  <Edge nodeIn="670" nodeOut="72" portIn="Open" portOut="Released" enabled="1"/>
-  <Edge nodeIn="671" nodeOut="72" portIn="Close" portOut="Pressed" enabled="1"/>
-  <Edge nodeIn="671" nodeOut="72" portIn="Open" portOut="Released" enabled="1"/>
   <Edge nodeIn="43" nodeOut="74" portIn="Call" portOut="out" enabled="1"/>
   <Edge nodeIn="298" nodeOut="81" portIn="update" portOut="output" enabled="1"/>
   <Edge nodeIn="300" nodeOut="81" portIn="Get" portOut="output" enabled="1"/>
@@ -446,9 +440,9 @@
   <Edge nodeIn="317" nodeOut="116" portIn="in2" portOut="Out" enabled="1"/>
   <Edge nodeIn="432" nodeOut="296" portIn="in1" portOut="out" enabled="1"/>
   <Edge nodeIn="102" nodeOut="297" portIn="Call" portOut="out" enabled="1"/>
-  <Edge nodeIn="72" nodeOut="298" portIn="entityId" portOut="entityId" enabled="1"/>
-  <Edge nodeIn="72" nodeOut="300" portIn="Enable" portOut="False" enabled="1"/>
-  <Edge nodeIn="72" nodeOut="300" portIn="Disable" portOut="True" enabled="1"/>
+  <Edge nodeIn="673" nodeOut="298" portIn="entityId" portOut="entityId" enabled="1"/>
+  <Edge nodeIn="673" nodeOut="300" portIn="Enable" portOut="False" enabled="1"/>
+  <Edge nodeIn="673" nodeOut="300" portIn="Disable" portOut="True" enabled="1"/>
   <Edge nodeIn="56" nodeOut="303" portIn="A" portOut="out" enabled="1"/>
   <Edge nodeIn="58" nodeOut="303" portIn="A" portOut="out" enabled="1"/>
   <Edge nodeIn="527" nodeOut="303" portIn="A" portOut="out" enabled="1"/>
@@ -627,6 +621,12 @@
   <Edge nodeIn="664" nodeOut="667" portIn="set" portOut="output" enabled="1"/>
   <Edge nodeIn="432" nodeOut="670" portIn="in3" portOut="Out" enabled="1"/>
   <Edge nodeIn="429" nodeOut="671" portIn="in2" portOut="Out" enabled="1"/>
+  <Edge nodeIn="367" nodeOut="673" portIn="In" portOut="Pressed" enabled="1"/>
+  <Edge nodeIn="369" nodeOut="673" portIn="In" portOut="Released" enabled="1"/>
+  <Edge nodeIn="670" nodeOut="673" portIn="Close" portOut="Pressed" enabled="1"/>
+  <Edge nodeIn="670" nodeOut="673" portIn="Open" portOut="Released" enabled="1"/>
+  <Edge nodeIn="671" nodeOut="673" portIn="Close" portOut="Pressed" enabled="1"/>
+  <Edge nodeIn="671" nodeOut="673" portIn="Open" portOut="Released" enabled="1"/>
  </Edges>
  <GraphTokens />
 </Graph>
