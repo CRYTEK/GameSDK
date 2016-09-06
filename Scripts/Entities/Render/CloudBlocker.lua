@@ -16,18 +16,18 @@ CloudBlocker =
 		Icon = "Clouds.bmp",
 		ShowBounds = 1,
 	},
-
-	_CloudBlocker = { position={x=0,y=0,z=0},decayStart=0,decayEnd=0,decayInfluence=1,screenSpace=0 },
 }
 
 -------------------------------------------------------
 function CloudBlocker:EnableBlock()
-	self.bActive = true;
+	self.active = true;
+	self:LoadCloudBlocker( 0, self.Properties );
 end
 
 -------------------------------------------------------
 function CloudBlocker:DisableBlock()
-	self.bActive = false;
+	self:FreeSlot( 0 );
+	self.active = false;
 end
 
 -------------------------------------------------------
@@ -38,47 +38,31 @@ end
 
 -------------------------------------------------------
 function CloudBlocker:OnInit()
-	self.bActive = false;
+	self.active = false;
 	if( self.Properties.bActive == 1 ) then
 		self:EnableBlock();
 	end
-	self:Activate(1);
-	-- Force object updates.
-	CryAction.ForceGameObjectUpdate(self.id, true);
 end
 
 -------------------------------------------------------
 function CloudBlocker:OnShutDown()
 	self:DisableBlock();
-	self:Activate(0);
 end
 
 -------------------------------------------------------
 function CloudBlocker:OnPropertyChange()
-	self:DisableBlock();
 	if( self.Properties.bActive == 1 ) then
 		self:EnableBlock();
+	else
+		self:DisableBlock();
 	end
 end
 
 -------------------------------------------------------
 function CloudBlocker:OnReset()
-	self:DisableBlock();
+	self.active = false;
 	if( self.Properties.bActive == 1 ) then
 		self:EnableBlock();
-	end
-end
-
-----------------------------------------------------------------------------------------
-function CloudBlocker:OnUpdate( dt )
-	if( self.bActive == true and self.Properties.bActive == 1 ) then
-		local vEntityPos = self:GetPos();
-		self._CloudBlocker.position = vEntityPos;
-		self._CloudBlocker.decayStart = self.Properties.DecayStart;
-		self._CloudBlocker.decayEnd = self.Properties.DecayEnd;
-		self._CloudBlocker.decayInfluence = self.Properties.fDecayInfluence;
-		self._CloudBlocker.screenSpace = self.Properties.bScreenSpace;
-		System.PushCloudBlocker( self._CloudBlocker );
 	end
 end
 
@@ -86,17 +70,17 @@ end
 -- Serialization
 -------------------------------------------------------
 function CloudBlocker:OnLoad(table)
-	if(self.bActive and not table.bActive) then
+	if(self.active and not table.active) then
 		self:DisableBlock();
-	elseif(not self.bActive and table.bActive) then
+	elseif(not self.active and table.active) then
 		self:EnableBlock();
 	end
-	self.bActive = table.bActive;
+	self.active = table.active;
 end
 
 -------------------------------------------------------
 function CloudBlocker:OnSave(table)
-	table.bActive = self.bActive;
+	table.active = self.active;
 end
 
 -------------------------------------------------------
