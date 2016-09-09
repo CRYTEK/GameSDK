@@ -36,6 +36,26 @@ function MakeDerivedEntityOverride( _DerivedClass,_Parent )
 	return _DerivedClass;
 end
 
+----------------------------------------------------------
+-- Extends an entity by importing fields from another table.
+-- Methods with colliding names will be merged together and invoked in
+-- succession to enable extension tables to hook into entity callbacks.
+-- Fields with colliding names are not allowed.
+----------------------------------------------------------
+function ExtendEntity(_Class, _Extension)
+	for k,v in pairs(_Extension) do
+		if ((type(v) == "table") and (v ~= _Extension)) then -- avoid self-recursion
+			_Class[k] = ExtendEntity(_Class[k] or {}, v);
+		elseif (type(v) == "function") then
+			local _f = _Class[k]
+			_Class[k] = (not _f) and v or function(...) _f(...) v(...) end
+		else
+			assert(not _Class[k], "Data field collision when merging entity tables!")
+			_Class[k] = v;
+		end
+	end
+	return _Class;
+end
 
 ----------------------------------
 function BroadcastEvent( sender,Event  )

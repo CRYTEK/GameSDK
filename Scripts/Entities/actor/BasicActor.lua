@@ -8,6 +8,9 @@
 --  20:10:2004 : Created by Filippo De Luca
 ----------------------------------------------------------------------------------------------------
 
+Script.ReloadScript("Scripts/Utils/EntityUtils.lua");
+Script.ReloadScript("Scripts/Entities/Sound/Shared/AudioEntityExtensions.lua");
+
 --various constants
 BLEED_TIMER = 1;
 PAIN_TIMER = 2;
@@ -1242,3 +1245,5 @@ function BasicActor:OnStanceChanged(newStance, oldStance)
 	-- REINSTANTIATE!!!
 	-- self:PlaySoundEvent(stanceChangeSound, g_Vectors.v000, g_Vectors.v010, SOUND_DEFAULT_3D, 0, SOUND_SEMANTIC_PLAYER_FOLEY);
 end
+
+ExtendEntity(BasicActor, AnimAudioEventHandling);

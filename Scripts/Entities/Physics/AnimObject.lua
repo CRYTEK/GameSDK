@@ -1,4 +1,5 @@
 Script.ReloadScript( "Scripts/Entities/Physics/BasicEntity.lua" );
+Script.ReloadScript("Scripts/Entities/Sound/Shared/AudioEntityExtensions.lua");
 
 SEQUENCE_NOT_STARTED = 0;
 SEQUENCE_PLAYING = 1;
@@ -665,3 +666,5 @@ function AnimObject:OnFlowGraphAnimationEnd()
 	self.curAnimTime = 1;  -- is a normalized time, so 1 == end
 	self.controllingAnimHere = true;
 end
+
+ExtendEntity(AnimObject, AnimAudioEventHandling);
