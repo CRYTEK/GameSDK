@@ -1,0 +1,257 @@
+<Vehicle name="samplebike" actionMap="">
+	<Physics pushable="1">
+		<Buoyancy waterDensity="50" waterResistance="3000" waterDamping="500"/>
+		<Simulation maxTimeStep="0.02" minEnergy="0.02" maxLoggedCollisions="2"/>
+	</Physics>
+	<Damages submergedRatioMax="0.5" submergedDamageMult="0.1" collDamageThreshold="25" vehicleCollisionDestructionSpeed="50">
+		<DamageMultipliers>
+			<DamageMultiplier damageType="melee" multiplier="0.1"/>
+			<DamageMultiplier damageType="collision" multiplier="0.05"/>
+			<DamageMultiplier damageType="explosion" multiplier="1" splash="0.5"/>
+		</DamageMultipliers>
+		<DamagesGroups>
+			<DamagesGroup name="Destroy" useTemplate="BicycleDestroy"/>
+		</DamagesGroups>
+	</Damages>
+	<Components>
+		<Component name="hull" damageMax="250" position="0,0,0" size="1,1,1" useBoundsFromParts="1">
+			<DamageBehaviors>
+				<DamageBehavior class="Group" damageRatioMin="1">
+					<Group name="Destroy"/>
+				</DamageBehavior>
+				<DamageBehavior class="Effect" damageRatioMin="0.5">
+					<Effect effect="Sparks_Rear" disableAfterExplosion="1"/>
+				</DamageBehavior>
+			</DamageBehaviors>
+		</Component>
+		<Component name="engine" damageMax="50" position="0,-0.05,0.35" size="0.25,0.25,0.25" useBoundsFromParts="0" hullAffection="2">
+			<DamageBehaviors>
+				<DamageBehavior class="Effect" damageRatioMin="0.25">
+					<Effect effect="Sparks_Front" disableAfterExplosion="1"/>
+				</DamageBehavior>
+				<DamageBehavior class="Effect" damageRatioMin="0.75">
+					<Effect effect="BurnEngine" disableAfterExplosion="1"/>
+				</DamageBehavior>
+				<DamageBehavior class="MovementNotification" damageRatioMin="0.5"/>
+			</DamageBehaviors>
+		</Component>
+		<Component name="enterDriver" damageMax="0" position="0,0.25,0.5" size="1,1,1" useBoundsFromParts="0">
+			<DamageBehaviors />
+		</Component>
+		<Component name="enterPassenger" damageMax="0" position="0,-0.5,0.5" size="1,1,1" useBoundsFromParts="0">
+			<DamageBehaviors />
+		</Component>
+		<Component name="wheel1" damageMax="50" position="0,0,0" size="1,1,1" useBoundsFromParts="1" hullAffection="0" dontRepair="1">
+			<DamageBehaviors/>
+		</Component>
+		<Component name="wheel2" damageMax="50" position="0,0,0" size="1,1,1" useBoundsFromParts="1" hullAffection="0" dontRepair="1">
+			<DamageBehaviors/>
+		</Component>
+	</Components>
+	<Parts>
+		<Part name="hull" class="Animated" component="hull">
+			<Parts>
+				<Part name="wheel1" class="SubPartWheel" component="wheel1" mass="40">
+					<SubPartWheel rayCast="0" axle="0" density="0" damping="-0.7" driving="0" canBrake="0" lenMax="0.3" maxFriction="1" minFriction="0.95" slipFrictionMod="1" stiffness="0" suspLength="0.1" rimRadius="0.2" torqueScale="0.9"/>
+				</Part>
+				<Part name="wheel2" class="SubPartWheel" component="wheel2" mass="40">
+					<SubPartWheel rayCast="0" axle="1" density="0" damping="-0.7" driving="1" canBrake="1" lenMax="0.3" maxFriction="1" minFriction="0.95" slipFrictionMod="1" stiffness="0" suspLength="0.1" rimRadius="0.2" torqueScale="1.1"/>
+				</Part>
+				<Part name="wheel3" class="SubPartWheel" component="hull" mass="1">
+					<SubPartWheel rayCast="0" axle="2" density="0" damping="-0.7" driving="0" canBrake="0" canSteer="0" lenMax="0.3" maxFriction="0.1" minFriction="0.1" slipFrictionMod="1" stiffness="0" stiffnessWeight="-2" suspLength="0.1" rimRadius="0.2" torqueScale="0.9"/>
+				</Part>
+				<Part name="wheel4" class="SubPartWheel" component="hull" mass="1">
+					<SubPartWheel rayCast="0" axle="2" density="0" damping="-0.7" driving="0" canBrake="0" canSteer="0" lenMax="0.3" maxFriction="0.1" minFriction="0.1" slipFrictionMod="1" stiffness="0" stiffnessWeight="-2" suspLength="0.1" rimRadius="0.2" torqueScale="0.9"/>
+				</Part>
+			</Parts>
+			<Animated filename="objects/vehicles/samplebike/samplebike.cga" filenameDestroyed="objects/vehicles/samplebike/samplebike.cga"/>
+		</Part>
+		<Part name="massBox" class="MassBox" mass="100" position="0,-0.1,0.55" disablePhysics="0" disableCollision="0" isHidden="0">
+			<MassBox size="1,1.25,0.2" drivingOffset="-0.2"/>
+		</Part>
+	</Parts>
+	<Helpers>
+		<Helper name="driver_eye_pos" position="0,-0.036,1.520" direction="0,1,0" part="hull"/>
+		<Helper name="cogs_front" position="0,-0.0725,0.325" direction="0,1,0" part="hull"/>
+		<Helper name="cogs_rear" position="0,-0.59,0.375" direction="0,1,0" part="hull"/>
+		<Helper name="passenger_enter_01" position="-0.5,0,0" direction="-1,0,0" part="hull"/>
+		<Helper name="passenger_seat_01" position="0,0,0" direction="0,0,0" part="hull"/>
+		<Helper name="passenger_seat_02" position="0,0,0" direction="0,0,0" part="hull"/>
+	</Helpers>
+	<Actions>
+		<Action class="Enter">
+			<Activations>
+				<Activation type="OnUsed" param1="component" param2="enterDriver"/>
+			</Activations>
+			<Enter>
+				<Seats>
+					<Seat value="driver"/>
+					<Seat value="passenger1"/>
+				</Seats>
+			</Enter>
+		</Action>
+	</Actions>
+	<Seats>
+		<Seat name="driver" cameraSupressRoll="1" tpCameraDistance="3" part="hull" isPassengerExposed="1" ragdollOnDeath="1" enterHelper="passenger_enter_01" sitHelper="passenger_seat_01" isDriver="1" AimPart="" seatGroupIndex="1" actionMap="vehicle_driver">
+			<Views>
+				<View class="FirstPerson" canRotate="1" relaxTimeMax="0.1" rotationMin="-40,0,-60" rotationMax="10,0,60" hidePlayer="0" followSpeed="16">
+					<FirstPerson offset="0,0,0" characterBone="Bip01 Camera" hidePlayer="1" helper="auto" relativeToHorizon="0.0"/>
+				</View>
+				<View class="SteerThirdPerson">
+					<SteerThirdPerson>
+						<Pos aim="0,0,2.5" offset="0,-6,0" pivotOffset="-1.5"/>
+						<Rotation rotationMax="45,0,160" rotationMax2="45,0,160" stickSensitivity="2,0,2" stickSensitivity2="1,0,2"/>
+						<Motion returnSpeed="1" returnSpeed2="1" angFollow="0"/>
+						<Radius min="0.9" max="1.3" relaxRate="5"/>
+					</SteerThirdPerson>
+				</View>
+			</Views>
+			<SeatActions>
+				<SeatAction class="Sound">
+					<Audio startTrigger="Play_bicycle_horn" stopTrigger="Stop_bicycle_horn" helper="driver_eye_pos"/>
+				</SeatAction>
+				<SeatAction class="SteeringWheel">
+					<SteeringWheel fragmentID="IdleDriver">
+						<Car jitterAmpLow="0.02" jitterAmpHi="0.08" jitterFreqLow="9" jitterFreqHi="25" jitterSuspAmp="0.1" jitterSuspResponse="10"/>
+					</SteeringWheel>
+				</SeatAction>
+			</SeatActions>
+		</Seat>
+		<Seat name="passenger1" hideBackpack="0" cameraSupressRoll="1" part="hull" enterHelper="passenger_enter_02" sitHelper="passenger_seat_02" isDriver="0" AimPart="" ragdollOnDeath="1" isPassengerExposed="1" seatGroupIndex="2" actionMap="">
+			<Views>
+				<View class="FirstPerson" canRotate="1" relaxTimeMax="0.1" rotationMin="-40,0,-60" rotationMax="20,0,70" hidePlayer="0">
+					<FirstPerson offset="0,0,0" characterBone="Bip01 Camera" relativeToHorizon="0"/>
+				</View>
+				<View class="SteerThirdPerson">
+					<SteerThirdPerson>
+						<Pos aim="0,0,2.5" offset="0,-6,0" pivotOffset="-1.5"/>
+						<Rotation rotationMax="45,0,160" rotationMax2="45,0,160" stickSensitivity="2,0,2" stickSensitivity2="1,0,2"/>
+						<Motion returnSpeed="1" returnSpeed2="1" angFollow="0"/>
+						<Radius min="0.9" max="1.3" relaxRate="5"/>
+					</SteerThirdPerson>
+				</View>
+			</Views>
+			<SeatActions />
+		</Seat>
+	</Seats>
+	<MovementParams>
+
+    <StdWheeled vMaxSteerMax="14" 
+					steerSpeed="2" 
+					steerSpeedMin="20" 
+					steerSpeedScale="1" 
+					steerSpeedScaleMin="1" 
+					v0SteerMax="35" 
+					kvSteerMax="31" 
+					steerRelaxation="250" 
+					pedalLimitMax="0.1" 
+					rpmInterpSpeed="4" 
+					rpmRelaxSpeed="2" 
+					rpmGearShiftSpeed="3"
+					driverMass="80"
+					driverPosY="0"
+					driverPosZ="1.5"
+					driverMoveX="0.8"
+					driverMoveXSteer="0.4"
+					driverMoveXSteerHarder="0.9"
+					minVelSteerLean="2"
+					driverMaxMoveX="3"
+					driverCamMaxMoveX="0.5"
+					driverCamOffs="0,-0.3,0.3"
+					driverSpeed="10"
+					rollDamping="6.5"
+					wheelDisableSpeed="2.5"
+					wheelDisableMask="12"
+					uprightOnMount="1">
+			<Wheeled axleFriction="20" 
+					 axleFrictionMax="100" 
+					 brakeTorque="100" 
+					 brakeImpulse="0.5" 
+					 clutchSpeed="2.3" 
+					 damping="0" 
+					 engineIdleRPM="150" 
+					 engineMaxRPM="2000" 
+					 engineMinRPM="80" 
+					 enginePower="20" 
+					 engineShiftDownRPM="400" 
+					 engineShiftUpRPM="1200" 
+					 engineStartRPM="300" 
+					 stabilizer="0" 
+					 maxBrakingFriction="0.6" 
+					 maxSteer="0.61" 
+					 maxSpeed="50" 
+					 maxTimeStep="0.02" 
+					 minEnergy="0.012" 
+					 slipThreshold="0.02" 
+					 suspDampingMin="-0.18" 
+					 suspDampingMax="-0.5" 
+					 suspDampingMaxSpeed="30" 
+					 gearDirSwitchRPM="1000" 
+					 dynFriction="1.25" 
+					 latFriction="1"
+					 wheelMassScale="0.5">
+				<gearRatios>
+					<gearRatio value="-20"/>
+					<gearRatio value="0"/>
+					<gearRatio value="5"/>
+				</gearRatios>
+			</Wheeled>
+			<SoundParams engineSoundPosition="engineSmokeOut" runSoundDelay="1" roadBumpMinSusp="10" roadBumpMinSpeed="6" roadBumpIntensity="0.30000001" maxSlipSpeed="11"/>
+			<AirDamp dampAngle="1.2,0.75,0" dampAngVel="1.5,0.8,0.8"/>
+		</StdWheeled>
+
+	</MovementParams>
+	<Particles mfxRow="vfx_bicycle">
+		<Exhaust insideWater="0" outsideWater="0">
+			<Helpers>
+				<Helper value=""/>
+			</Helpers>
+			<EngineStart effect=""/>
+			<EngineStop effect=""/>
+			<EngineRunning effect="" boostEffect="" baseSizeScale="1" 
+				minSpeed="0" minSpeedSizeScale="1" minSpeedCountScale="1" minSpeedSpeedScale="1" 
+				maxSpeed="15" maxSpeedSizeScale="1" maxSpeedCountScale="1" maxSpeedSpeedScale="1" 
+				minPower="0" minPowerSizeScale="1" minPowerCountScale="1" minPowerSpeedScale="1" 
+				maxPower="1" maxPowerSizeScale="1" maxPowerCountScale="1" maxPowerSpeedScale="1"/>
+		</Exhaust>
+		<DamageEffects>
+			<DamageEffect name="VehicleDestroyed" helper="cogs_front" effect="Vehicles.Bicycle.Damage.Destroyed"/>
+			<DamageEffect name="Sparks_Rear" helper="cogs_rear" effect="Vehicles.Bicycle.Damage.Sparks"/>
+			<DamageEffect name="Sparks_Front" helper="cogs_front" effect="Vehicles.Bicycle.Damage.Sparks"/>
+			<DamageEffect name="BurnEngine" helper="cogs_front" effect="Vehicles.Bicycle.Damage.BurnEngine"/>
+			<DamageEffect name="BlownTirePFX" helper="" effect="vehicles.Common.Ground.Blown_Tire" gravityDirection="0,0,1"/>
+		</DamageEffects>
+		<EnvironmentLayers>
+			<EnvironmentLayer minSpeed="5" minSpeedSizeScale="0.15" minSpeedCountScale="0.15" minSpeedSpeedScale="0.25" maxSpeed="20" maxSpeedSizeScale="0.5" maxSpeedCountScale="0.5" maxSpeedSpeedScale="1">
+				<Alignment alignGroundHeight="0" maxHeightSizeScale="1" maxHeightCountScale="1" alignToWater="0"/>
+				<Emitters />
+				<Wheels>
+					<WheelGroups>
+						<WheelGroup>
+							<Wheels>
+								<Wheel value="1"/>
+							</Wheels>
+						</WheelGroup>
+						<WheelGroup>
+							<Wheels>
+								<Wheel value="2"/>
+							</Wheels>
+						</WheelGroup>
+					</WheelGroups>
+				</Wheels>
+			</EnvironmentLayer>
+			<EnvironmentLayer name="slip" minSpeed="0.5" minSpeedSizeScale="1" minSpeedCountScale="1" minSpeedSpeedScale="1" maxSpeed="25" maxSpeedSizeScale="1" maxSpeedCountScale="1" maxSpeedSpeedScale="1">
+				<Alignment alignGroundHeight="0" maxHeightSizeScale="1" maxHeightCountScale="1" alignToWater="0"/>
+				<Emitters />
+				<Wheels all="1" allActive="0"/>
+			</EnvironmentLayer>
+			<EnvironmentLayer name="rims" minSpeed="3" minSpeedSizeScale="0.25" minSpeedCountScale="1" maxSpeed="10" maxSpeedSizeScale="0.5" maxSpeedCountScale="1">
+				<Alignment alignGroundHeight="0" maxHeightSizeScale="1" maxHeightCountScale="1" alignToWater="0"/>
+				<Emitters />
+				<Wheels all="1" allActive="0"/>
+			</EnvironmentLayer>
+		</EnvironmentLayers>
+	</Particles>
+	<Paints />
+	<Modifications />
+</Vehicle>
