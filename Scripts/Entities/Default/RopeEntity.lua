@@ -8,7 +8,6 @@ RopeEntity =
 			bNetworked		= 0,
 		},
 	},
-	Attachment = {},
 }
 
 ------------------------------------------------------------------------------------------------------
@@ -44,42 +43,53 @@ end
 
 ------------------------------------------------------------------------------------------------------
 function RopeEntity:Event_BreakStart( vPos,nPartId,nOtherPartId )
-	local RopeParams = {}
-	RopeParams.entity_name_1 = "#unattached";
-
+	local RopeParams = { entity_name_1 = "#unattached"; }
 	self:SetPhysicParams(PHYSICPARAM_ROPE,RopeParams);
 end
 function RopeEntity:Event_BreakEnd( vPos,nPartId,nOtherPartId )
-	local RopeParams = {}
-	RopeParams.entity_name_2 = "#unattached";
-
+	local RopeParams = { entity_name_2 = "#unattached"; }
 	self:SetPhysicParams(PHYSICPARAM_ROPE,RopeParams);
 end
 function RopeEntity:Event_BreakDist( sender, dist )
-	local RopeParams = {}
-	RopeParams.break_point = dist;
-
+	local RopeParams = { break_point = dist }
 	self:SetPhysicParams(PHYSICPARAM_ROPE,RopeParams);
 end
 function RopeEntity:Event_Disable()
-	local RopeParams = {}
-	RopeParams.bDisabled = 1;
+	local RopeParams = { bDisabled = 1 }
 	self:SetPhysicParams(PHYSICPARAM_ROPE,RopeParams);
 end
 function RopeEntity:Event_Enable()
-	local RopeParams = {}
-	RopeParams.bDisabled = 0;
+	local RopeParams = { bDisabled = 0 }
 	self:SetPhysicParams(PHYSICPARAM_ROPE,RopeParams);
 end
-function RopeEntity:Event_Length(sender, length)
-	local RopeParams = {}
-	RopeParams.length = length;
+function RopeEntity:Event_Length(sender, len)
+	local RopeParams = { length = len }
 	self:SetPhysicParams(PHYSICPARAM_ROPE,RopeParams);
 end
-function RopeEntity:Event_PtStart( sender, pt )	self.Attachment.end1 = pt; end
-function RopeEntity:Event_PtEnd( sender, pt ) self.Attachment.end2 = pt; end
-function RopeEntity:Event_PhysIdStart( sender, id )	self.Attachment.entity_phys_id_1 = id; end
-function RopeEntity:Event_PhysIdEnd( sender, id ) self.Attachment.entity_phys_id_2 = id; end
+function RopeEntity:Event_PtStart( sender, pt )	
+	if self.Attachment==nil then self.Attachment = {}; end
+	if self.Attachment.end1==nil then
+		self.Attachment.end1 = { x=pt.x,y=pt.y,z=pt.z };
+	else
+		CopyVector(self.Attachment.end1, pt); 
+	end
+end
+function RopeEntity:Event_PtEnd( sender, pt ) 
+	if self.Attachment==nil then self.Attachment = {}; end
+	if self.Attachment.end2==nil then
+		self.Attachment.end2 = { x=pt.x,y=pt.y,z=pt.z };
+	else
+		CopyVector(self.Attachment.end2, pt); 
+	end
+end
+function RopeEntity:Event_PhysIdStart( sender, id )	
+	if self.Attachment==nil then self.Attachment = {}; end
+	self.Attachment.entity_phys_id_1 = id; 
+end
+function RopeEntity:Event_PhysIdEnd( sender, id ) 
+	if self.Attachment==nil then self.Attachment = {}; end
+	self.Attachment.entity_phys_id_2 = id; 
+end
 function RopeEntity:Event_SegCount( sender, nsegs )
 	self:SetPhysicParams(PHYSICPARAM_ROPE, self.Attachment);
 	local RopeParams = {}

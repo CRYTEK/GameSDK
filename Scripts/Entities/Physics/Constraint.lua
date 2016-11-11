@@ -18,7 +18,6 @@ Constraint =
 		  yz_max = 0, --[0,90,0.1,"Maximal bend angle (minimal is always 0). If 0, bending is locked, unless x_min and x_max are also 0, which disables limits"]
 		}
 	},
-	numUpdates = 0,
 
 	Editor=
 	{
