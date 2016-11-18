@@ -111,6 +111,7 @@
 	<Entity Name="RigidBodyEx" Script="Scripts/Entities/Physics/RigidBodyEx.lua"/>
 	<Entity Name="RigidBodyLight" Script="Scripts/Entities/Lights/RigidBodyLight.lua"/>
 	<Entity Name="Rope" Script="Scripts/Entities/Physics/Rope.lua" Invisible="0"/>
+	<Entity Name="RopeEntity" Script="Scripts/Entities/Default/RopeEntity.lua" Invisible="0"/>
 
 	<Entity Name="ScanSpot" Script="Scripts/Entities/AI/ScanSpot.lua" Invisible="1"/>
 	<Entity Name="ShootingTarget" Script="Scripts/Entities/Others/ShootingTarget.lua" Invisible="1"/>
