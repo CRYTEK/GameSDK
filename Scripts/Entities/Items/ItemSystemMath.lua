@@ -302,7 +302,7 @@ function vecNormalize(va)
 		
 		return v, l;
 	end
-	return v,0;
+	return va,0;
 end
 
 
