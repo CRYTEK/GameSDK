@@ -39,8 +39,6 @@ Cloth =
 			bNetworked = 0,
 		},
 	},
-	id_attach_to = -1,
-	id_part_attach_to = -1,
 
 	Editor =
 	{

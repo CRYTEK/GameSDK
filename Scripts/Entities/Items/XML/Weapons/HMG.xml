@@ -24,7 +24,7 @@
 		<param name="can_ledge_grab" value="1" GAME="SP"/>
 		<param name="can_ledge_grab" value="0" GAME="MP"/>
 		<param name="tag" value="SDKHMG" />
-		<param name="adb" value="hmgWeaponAnims.adb" />
+		<!-- <param name="adb" value="hmgWeaponAnims.adb" /> -->
 		<mount>
 			<param name="pivot" value="" />
 			<param name="min_pitch" value="-22" />

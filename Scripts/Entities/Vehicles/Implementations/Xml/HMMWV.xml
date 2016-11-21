@@ -261,13 +261,13 @@
 					</AnimatedJoint>
 				</Part>-->
 				<Part name="wheel1" class="SubPartWheel" component="wheel_1" mass="80">
-					<SubPartWheel axle="0" density="0" damping="-0.7" driving="1" lenMax="0.4" maxFriction="1" minFriction="1" slipFrictionMod="1" stiffness="0" suspLength="0.25" rimRadius="0.32" torqueScale="1.1"/>
+					<SubPartWheel axle="0" density="0" damping="-0.7" driving="1" canBrake="0" lenMax="0.4" maxFriction="1" minFriction="1" slipFrictionMod="1" stiffness="0" suspLength="0.25" rimRadius="0.32" torqueScale="1.1"/>
 				</Part>
 				<Part name="wheel2" class="SubPartWheel" component="wheel_2" mass="80">
 					<SubPartWheel axle="1" density="0" damping="-0.7" driving="0" lenMax="0.4" maxFriction="1" minFriction="1" slipFrictionMod="0.6" stiffness="0" suspLength="0.25" rimRadius="0.32" torqueScale="0.9"/>
 				</Part>
 				<Part name="wheel3" class="SubPartWheel" component="wheel_3" mass="80">
-					<SubPartWheel axle="0" density="0" damping="-0.7" driving="1" lenMax="0.4" maxFriction="1" minFriction="1" slipFrictionMod="1" stiffness="0" suspLength="0.25" rimRadius="0.32" torqueScale="1.1"/>
+					<SubPartWheel axle="0" density="0" damping="-0.7" driving="1" canBrake="0" lenMax="0.4" maxFriction="1" minFriction="1" slipFrictionMod="1" stiffness="0" suspLength="0.25" rimRadius="0.32" torqueScale="1.1"/>
 				</Part>
 				<Part name="wheel4" class="SubPartWheel" component="wheel_4" mass="80">
 					<SubPartWheel axle="1" density="0" damping="-0.7" driving="0" lenMax="0.4" maxFriction="1" minFriction="1" slipFrictionMod="0.6" stiffness="0" suspLength="0.25" rimRadius="0.32" torqueScale="0.9"/>

@@ -108,16 +108,6 @@
   <Node Id="351" Name="Specify_&quot;CustomClasses&quot;_for_Class_input" Class="_comment" pos="480,760,0" flags="0"/>
   <Node Id="352" Name="Comma_separated_vehicle_entities_listed_instead_of_one_rig_per_vehicle" Class="_comment" pos="480,790,0" flags="0"/>
   <Node Id="353" Name="ItemType_is_the_name_of_the_flash_element_to_be_displayed_on_the_radar" Class="_comment" pos="1200,-230,0" flags="0"/>
-  <Node Id="354" Name="Need_delay_for_correct_chronological_updating" Class="_comment" pos="480,400,0" flags="0"/>
-  <Node Id="356" Class="UI:Util:UIDelay" pos="820,20,0" flags="0">
-   <Inputs delay="0.1"/>
-  </Node>
-  <Node Id="357" Class="UI:Util:UIDelay" pos="800,460,0" flags="0">
-   <Inputs delay="0.1"/>
-  </Node>
-  <Node Id="358" Class="UI:Util:UIDelay" pos="1060,900,0" flags="0">
-   <Inputs delay="0.1"/>
-  </Node>
  </Nodes>
  <Edges>
   <Edge nodeIn="18" nodeOut="14" portIn="Call" portOut="OnPosChange" enabled="1"/>
@@ -140,9 +130,9 @@
   <Edge nodeIn="288" nodeOut="325" portIn="Call" portOut="EntityAdded" enabled="1"/>
   <Edge nodeIn="293" nodeOut="325" portIn="Call" portOut="EntityRemoved" enabled="1"/>
   <Edge nodeIn="310" nodeOut="325" portIn="Enable" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="310" nodeOut="325" portIn="Get" portOut="EntityAdded" enabled="1"/>
   <Edge nodeIn="310" nodeOut="325" portIn="Disable" portOut="EntityRemoved" enabled="1"/>
   <Edge nodeIn="350" nodeOut="325" portIn="in1" portOut="Entity" enabled="1"/>
-  <Edge nodeIn="356" nodeOut="325" portIn="in" portOut="EntityAdded" enabled="1"/>
   <Edge nodeIn="328" nodeOut="329" portIn="Call" portOut="OnPosChange" enabled="1"/>
   <Edge nodeIn="328" nodeOut="329" portIn="X" portOut="PosX" enabled="1"/>
   <Edge nodeIn="328" nodeOut="329" portIn="Y" portOut="PosY" enabled="1"/>
@@ -150,9 +140,9 @@
   <Edge nodeIn="326" nodeOut="330" portIn="Call" portOut="EntityAdded" enabled="1"/>
   <Edge nodeIn="327" nodeOut="330" portIn="Call" portOut="EntityRemoved" enabled="1"/>
   <Edge nodeIn="329" nodeOut="330" portIn="Enable" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="329" nodeOut="330" portIn="Get" portOut="EntityAdded" enabled="1"/>
   <Edge nodeIn="329" nodeOut="330" portIn="Disable" portOut="EntityRemoved" enabled="1"/>
   <Edge nodeIn="349" nodeOut="330" portIn="in1" portOut="Entity" enabled="1"/>
-  <Edge nodeIn="357" nodeOut="330" portIn="in" portOut="EntityAdded" enabled="1"/>
   <Edge nodeIn="339" nodeOut="340" portIn="Call" portOut="OnPosChange" enabled="1"/>
   <Edge nodeIn="339" nodeOut="340" portIn="X" portOut="PosX" enabled="1"/>
   <Edge nodeIn="339" nodeOut="340" portIn="Y" portOut="PosY" enabled="1"/>
@@ -160,9 +150,9 @@
   <Edge nodeIn="337" nodeOut="341" portIn="Call" portOut="EntityAdded" enabled="1"/>
   <Edge nodeIn="338" nodeOut="341" portIn="Call" portOut="EntityRemoved" enabled="1"/>
   <Edge nodeIn="340" nodeOut="341" portIn="Enable" portOut="EntityAdded" enabled="1"/>
+  <Edge nodeIn="340" nodeOut="341" portIn="Get" portOut="EntityAdded" enabled="1"/>
   <Edge nodeIn="340" nodeOut="341" portIn="Disable" portOut="EntityRemoved" enabled="1"/>
   <Edge nodeIn="348" nodeOut="341" portIn="in1" portOut="Entity" enabled="1"/>
-  <Edge nodeIn="358" nodeOut="341" portIn="in" portOut="EntityAdded" enabled="1"/>
   <Edge nodeIn="337" nodeOut="348" portIn="ID" portOut="out" enabled="1"/>
   <Edge nodeIn="338" nodeOut="348" portIn="ID" portOut="out" enabled="1"/>
   <Edge nodeIn="339" nodeOut="348" portIn="ID" portOut="out" enabled="1"/>
@@ -175,9 +165,6 @@
   <Edge nodeIn="293" nodeOut="350" portIn="ID" portOut="out" enabled="1"/>
   <Edge nodeIn="295" nodeOut="350" portIn="ID" portOut="out" enabled="1"/>
   <Edge nodeIn="310" nodeOut="350" portIn="entityId" portOut="out" enabled="1"/>
-  <Edge nodeIn="310" nodeOut="356" portIn="Get" portOut="out" enabled="1"/>
-  <Edge nodeIn="329" nodeOut="357" portIn="Get" portOut="out" enabled="1"/>
-  <Edge nodeIn="340" nodeOut="358" portIn="Get" portOut="out" enabled="1"/>
  </Edges>
  <GraphTokens />
 </Graph>
