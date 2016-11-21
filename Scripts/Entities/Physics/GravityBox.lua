@@ -14,6 +14,7 @@ GravityBox =
 	Editor =
 	{
 		Icon = "GravitySphere.bmp",
+		ShowBounds =  1,
 	},
 	_PhysTable = { Area={}, },
 }
