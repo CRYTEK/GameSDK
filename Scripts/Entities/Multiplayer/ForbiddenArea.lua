@@ -13,7 +13,7 @@ ForbiddenArea=
 	Properties=
 	{
 		bEnabled=1,
-		bReversed=1,
+		bReversed=0,
 		DamagePerSecond=35,
 		esDamageType="punish",
 		Delay=5,
