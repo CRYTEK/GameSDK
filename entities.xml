@@ -76,6 +76,7 @@
 	<Entity Name="Frogs" Script="Scripts/Entities/Boids/Frogs.lua"/>
 
 	<Entity Name="GeomCache" Script="Scripts/Entities/Render/GeomCache.lua"/>
+	<Entity Name="GeomEntity" Script="Scripts/Entities/Default/GeomEntity.lua" Invisible="1"/>
 	<Entity Name="GravityBox" Script="Scripts/Entities/Physics/GravityBox.lua"/>
 	<Entity Name="GravitySphere" Script="Scripts/Entities/Physics/GravitySphere.lua"/>
 	<Entity Name="GravityStream" Script="Scripts/Entities/Physics/GravityStream.lua" Invisible="1"/>
