@@ -416,9 +416,9 @@ function DestroyableLight:Reload()
 		self:SetCurrentSlot(0);
 		self:PhysicalizeThis(0);
 
-		-- this is somewhat of a hack: the "or self.lightOn" is there to cover the case when the designer is currently modifying the glow value in the editor. it is irrelevant in pure game
+		-- this is somewhat of a hack: the "or self.lightOn" is there to cover the case when the designer is currently modifying the emissive_intensity value in the editor. it is irrelevant in pure game
 		if (not self.origGlowValue or self.lightOn) then
-			self.origGlowValue = self:GetMaterialFloat(0, self.PropertiesInstance.LightProperties_Base.Options.nGlowSubmatId, "glow" );
+			self.origGlowValue = self:GetMaterialFloat(0, self.PropertiesInstance.LightProperties_Base.Options.nGlowSubmatId, "emissive_intensity" );
 		end
 	end
 
@@ -898,9 +898,9 @@ function DestroyableLight:ShowLightOn()
 	end
 
 	-- Glow effect
-	local glowVal = self:GetMaterialFloat(0, self.PropertiesInstance.LightProperties_Base.Options.nGlowSubmatId, "glow" );
+	local glowVal = self:GetMaterialFloat(0, self.PropertiesInstance.LightProperties_Base.Options.nGlowSubmatId, "emissive_intensity" );
 	if (glowVal~=self.origGlowValue and self.origGlowValue and self.materialIsCloned) then
-		self:SetMaterialFloat(0, self.PropertiesInstance.LightProperties_Base.Options.nGlowSubmatId, "glow", self.origGlowValue );
+		self:SetMaterialFloat(0, self.PropertiesInstance.LightProperties_Base.Options.nGlowSubmatId, "emissive_intensity", self.origGlowValue );
 	end
 end
 
@@ -917,7 +917,7 @@ function DestroyableLight:ShowLightOff()
 	end
 
 	-- Glow effect
-	local currentGlow = self:GetMaterialFloat(0, self.PropertiesInstance.LightProperties_Base.Options.nGlowSubmatId, "glow" );
+	local currentGlow = self:GetMaterialFloat(0, self.PropertiesInstance.LightProperties_Base.Options.nGlowSubmatId, "emissive_intensity" );
 
 	if (currentGlow>0) then
 		if (not self.materialIsCloned) then
@@ -925,7 +925,7 @@ function DestroyableLight:ShowLightOff()
 			self.materialIsCloned = true;
 		end
 
-		self:SetMaterialFloat(0, self.PropertiesInstance.LightProperties_Base.Options.nGlowSubmatId, "glow", 0.0001 );  -- if we use 0 and we clone the material, the glow is forever lost. Not sure if this is intended.
+		self:SetMaterialFloat(0, self.PropertiesInstance.LightProperties_Base.Options.nGlowSubmatId, "emissive_intensity", 0.0001 );  -- if we use 0 and we clone the material, the emissive_intensity is forever lost. Not sure if this is intended.
 	end
 end
 
