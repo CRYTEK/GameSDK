@@ -1,4 +1,4 @@
-<Graph Description="" Group="MM_PagesShared" enabled="1" MultiPlayer="ClientServer">
+<Graph Description="" Group="MM_PagesShared" enabled="0" MultiPlayer="ClientServer">
  <Nodes>
   <Node Id="1" Class="UI:Action:Start" pos="-1360,1700,0" flags="0">
    <Inputs UseAsState="1"/>
@@ -12,15 +12,15 @@
   <Node Id="9" Class="UI:Functions:MainMenu:AddSwitch" pos="-60,1260,0" flags="0">
    <Inputs instanceID="-1" caption="@ui_ControllerType" tooltip="@ui_ControllerTypeTT" value="PC_" id="SW_CTRL"/>
   </Node>
-  <Node Id="29" Name="Setup_page" Class="_commentbox" pos="-1440,1129.7498,0" flags="0">
+  <Node Id="29" Name="Setup_page" Class="_commentbox" pos="-1440,1009.8585,0" flags="0">
    <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="3230" Height="730"/>
-   <NodeSize Width="3230" Height="757.64063"/>
+   <NodeSize Width="3230" Height="877.53333"/>
   </Node>
-  <Node Id="39" Name="Handle_events" Class="_commentbox" pos="3200,1108.8807,0" flags="0">
+  <Node Id="39" Name="Handle_events" Class="_commentbox" pos="3200,988.98877,0" flags="0">
    <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
-   <ResizeBorder X="0" Y="0" Width="2060" Height="460"/>
-   <NodeSize Width="2060" Height="487.64063"/>
+   <ResizeBorder X="0" Y="0" Width="2170" Height="500"/>
+   <NodeSize Width="2170" Height="647.53333"/>
   </Node>
   <Node Id="83" Class="UI:Functions:MainMenu:AddSwitchOption" pos="-60,1420,0" flags="0">
    <Inputs instanceID="-1" id="SW_CTRL" caption="@ui_Controller" value="Xbox_"/>
@@ -53,7 +53,7 @@
   <Node Id="108" Class="UI:Events:MainMenu:OnControlChanged" pos="3240,1200,0" flags="0">
    <Inputs instanceID="-1" Port="-1" Idx=""/>
   </Node>
-  <Node Id="117" Class="UI:Functions:MainMenu:AddImage" pos="1920,1380,0" flags="1">
+  <Node Id="117" Class="UI:Functions:MainMenu:AddImage" pos="1920,1380,0" flags="0">
    <Inputs instanceID="-1" path="Libs/UI/Textures/PC_OnFoot.dds" id="PC_OnFoot" x="540" y="260" w="720" h="360" visible="0"/>
   </Node>
   <Node Id="119" Class="UI:Functions:MainMenu:AddImage" pos="2320,1200,0" flags="0">
@@ -80,10 +80,10 @@
   <Node Id="167" Class="UI:Functions:MainMenu:HideImage" pos="3700,1200,0" flags="0">
    <Inputs instanceID="-1" id="" fadeTime="0.25"/>
   </Node>
-  <Node Id="183" Name="Load_images" Class="_commentbox" pos="1880,1128.8809,0" flags="0">
+  <Node Id="183" Name="Load_images" Class="_commentbox" pos="1880,1008.9886,0" flags="0">
    <Inputs TextSize="1" Color="0.27451,0.352941,0.705882" DisplayFilled="1" DisplayBox="1" SortPriority="16"/>
    <ResizeBorder X="0" Y="0" Width="1240" Height="440"/>
-   <NodeSize Width="1240" Height="467.64063"/>
+   <NodeSize Width="1240" Height="587.53333"/>
   </Node>
   <Node Id="187" Class="String:Concat" pos="4770,1190,0" flags="0">
    <Inputs String1="" String2=""/>
@@ -112,7 +112,7 @@
   <Node Id="205" Class="UI:Util:Platform" pos="1280,1680,0" flags="0">
    <Inputs />
   </Node>
-  <Node Id="206" Class="UI:Functions:MainMenu:AddActionButton" pos="1480,1660,0" flags="0">
+  <Node Id="206" Class="UI:Functions:MainMenu:AddActionButton" pos="1470,1670,0" flags="0">
    <Inputs instanceID="-1" caption="@ui_Select" id="IDD_XSelect"/>
   </Node>
   <Node Id="207" Class="UI:Functions:MainMenu:AddActionButton" pos="1480,1760,0" flags="0">
@@ -126,6 +126,22 @@
   <Node Id="212" Name="360" Class="_comment" pos="2720,1170,0" flags="0"/>
   <Node Id="213" Name="Controller_Type" Class="_comment" pos="-60,1230,0" flags="0"/>
   <Node Id="214" Name="In_Vehicle" Class="_comment" pos="470,1230,0" flags="0"/>
+  <Node Id="269" Class="UI:Functions:MainMenu:AddApplyButton" pos="900,1390,0" flags="0">
+   <Inputs instanceID="-1" caption="@ui_Apply" tooltip="" id="ID_APPLY_GAMESETTINGS"/>
+  </Node>
+  <Node Id="292" Class="UI:Action:End" pos="5190,1470,0" flags="0">
+   <Inputs UseAsState="1" Args=""/>
+  </Node>
+  <Node Id="293" Class="UI:Action:Control" pos="4910,1460,0" flags="0">
+   <Inputs uiActions_UIAction="MM_Main" Strict="0" Args=""/>
+  </Node>
+  <Node Id="294" Class="UI:Action:Start" pos="4610,1460,0" flags="0">
+   <Inputs UseAsState="1"/>
+  </Node>
+  <Node Id="295" Class="UI:Events:MainMenu:OnButton" pos="4560,1530,0" flags="0">
+   <Inputs instanceID="-1" Port="0" Idx="ID_APPLY_GAMESETTINGS"/>
+  </Node>
+  <Node Id="296" Name="Although_there_is_nothing_to_apply_here_the_switch_calls_it" Class="_comment" pos="4800,1420,0" flags="0"/>
  </Nodes>
  <Edges>
   <Edge nodeIn="5" nodeOut="1" portIn="Call" portOut="StartAction" enabled="1"/>
@@ -141,6 +157,7 @@
   <Edge nodeIn="200" nodeOut="97" portIn="in1" portOut="OnCall" enabled="1"/>
   <Edge nodeIn="102" nodeOut="98" portIn="Call" portOut="OnCall" enabled="1"/>
   <Edge nodeIn="6" nodeOut="100" portIn="Call" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="269" nodeOut="100" portIn="Call" portOut="OnCall" enabled="1"/>
   <Edge nodeIn="100" nodeOut="102" portIn="Call" portOut="OnCall" enabled="1"/>
   <Edge nodeIn="117" nodeOut="103" portIn="Call" portOut="OnCall" enabled="1"/>
   <Edge nodeIn="199" nodeOut="108" portIn="in1" portOut="onEvent" enabled="1"/>
@@ -170,6 +187,9 @@
   <Edge nodeIn="206" nodeOut="205" portIn="Call" portOut="IsXBoxOne" enabled="1"/>
   <Edge nodeIn="207" nodeOut="205" portIn="Call" portOut="IsPS4" enabled="1"/>
   <Edge nodeIn="193" nodeOut="209" portIn="get" portOut="OnCall" enabled="1"/>
+  <Edge nodeIn="292" nodeOut="293" portIn="EndAction" portOut="OnStart" enabled="1"/>
+  <Edge nodeIn="293" nodeOut="294" portIn="uiActions_UIAction" portOut="Args" enabled="1"/>
+  <Edge nodeIn="293" nodeOut="295" portIn="Start" portOut="onEvent" enabled="1"/>
  </Edges>
  <GraphTokens />
 </Graph>
