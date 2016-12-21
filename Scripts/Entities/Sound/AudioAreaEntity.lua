@@ -45,7 +45,7 @@ function AudioAreaEntity:_UpdateParameters()
 			self:SetAudioEnvironmentID(self.hEnvironmentID);
 		end
 	else
-		self:SetAudioEnvironmentID(INVALID_AUDIO_ENVIRONMENT_ID);
+		self:SetAudioEnvironmentID(InvalidEnvironmentId);
 	end
 end
 
@@ -58,16 +58,6 @@ end
 ----------------------------------------------------------------------------------------
 function AudioAreaEntity:_SetObstruction()
 	local nStateIdx = self.Properties.eiSoundObstructionType;
-	
-	if ((self.tObstructionType.hSwitchID ~= nil) and (self.tObstructionType.tStateIDs[nStateIdx] ~= nil)) then
-		self:SetAudioSwitchState(self.tObstructionType.hSwitchID, self.tObstructionType.tStateIDs[nStateIdx], self:GetDefaultAuxAudioProxyID());
-	end
-end
-
-----------------------------------------------------------------------------------------
-function AudioAreaEntity:_DisableObstruction()
-	-- Ignore is at index 1
-	local nStateIdx = 1;
 	
 	if ((self.tObstructionType.hSwitchID ~= nil) and (self.tObstructionType.tStateIDs[nStateIdx] ~= nil)) then
 		self:SetAudioSwitchState(self.tObstructionType.hSwitchID, self.tObstructionType.tStateIDs[nStateIdx], self:GetDefaultAuxAudioProxyID());
@@ -126,8 +116,6 @@ function AudioAreaEntity:OnPropertyChange()
 	
 	if (self.nState == 1) then -- near
 		self:_SetObstruction();
-	elseif (self.nState == 2) then -- inside
-		self:_DisableObstruction();
 	end
 end
 
@@ -234,7 +222,6 @@ AudioAreaEntity.Client={
 		self.fFadeValue = 1.0;
 		self:_ActivateOutput("OnNearToInside", true);
 		self:_ActivateOutput("FadeValue", self.fFadeValue);
-		self:_DisableObstruction();
 	end,
 	
 	----------------------------------------------------------------------------------------
@@ -262,7 +249,6 @@ AudioAreaEntity.Client={
 	OnAudioListenerLeaveArea = function(self, player, areaId, fade)
 		self.nState = 1;
 		self:_ActivateOutput("OnInsideToNear", true);
-		self:_SetObstruction();
 	end,
 	
 	----------------------------------------------------------------------------------------

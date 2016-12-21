@@ -63,16 +63,6 @@ function AudioAreaAmbience:_SetObstruction()
 end
 
 ----------------------------------------------------------------------------------------
-function AudioAreaAmbience:_DisableObstruction()
-	-- Ignore is at index 1
-	local nStateIdx = 1;
-	
-	if ((self.tObstructionType.hSwitchID ~= nil) and (self.tObstructionType.tStateIDs[nStateIdx] ~= nil)) then
-		self:SetAudioSwitchState(self.tObstructionType.hSwitchID, self.tObstructionType.tStateIDs[nStateIdx], self:GetDefaultAuxAudioProxyID());
-	end
-end
-
-----------------------------------------------------------------------------------------
 function AudioAreaAmbience:_UpdateParameters()
 	-- Set the distances as the very first thing!
 	self:SetFadeDistance(self.Properties.fRtpcDistance);
@@ -83,7 +73,7 @@ function AudioAreaAmbience:_UpdateParameters()
 			self:SetAudioEnvironmentID(self.hEnvironmentID);
 		end
 	else
-		self:SetAudioEnvironmentID(INVALID_AUDIO_ENVIRONMENT_ID);
+		self:SetAudioEnvironmentID(InvalidEnvironmentId);
 	end
 end
 
@@ -153,8 +143,6 @@ function AudioAreaAmbience:OnPropertyChange()
 	
 	if (self.nState == 1) then -- near
 		self:_SetObstruction();
-	elseif (self.nState == 2) then -- inside
-		self:_DisableObstruction();
 	end
 	
 	if ((self.bIsPlaying) and (self.hCurrentOnTriggerID ~= self.hOnTriggerID)) then
@@ -327,7 +315,6 @@ AudioAreaAmbience.Client={
 		
 		self.fFadeValue = 1.0;
 		self:_UpdateRtpc();
-		self:_DisableObstruction();
 	end,	
 	
 	----------------------------------------------------------------------------------------
@@ -350,7 +337,6 @@ AudioAreaAmbience.Client={
 	----------------------------------------------------------------------------------------
 	OnAudioListenerLeaveArea = function(self, player, areaId, fFade)
 		self.nState = 1;
-		self:_SetObstruction();
 	end,	
 	
 	----------------------------------------------------------------------------------------
