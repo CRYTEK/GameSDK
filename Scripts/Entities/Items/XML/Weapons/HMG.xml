@@ -83,7 +83,7 @@
 
 	<geometry>
 		<firstperson name="Objects/weapons/mounted_gun/mounted_gun_fp.cdf" />
-		<thirdperson name="Objects/weapons/mounted_gun/mounted_gun_tp.cgf" />
+		<thirdperson name="Objects/weapons/mounted_gun/mounted_gun_tp.cdf" />
 	</geometry>
 
 	<firemodes>
@@ -97,7 +97,7 @@
 				<param name="ai_infiniteAmmo" value="1" GAME="SP" />
 				<param name="clip_size" value="150" GAME="SP"/>
 				<param name="clip_size" value="-1" GAME="MP"/>
-				<param name="helper_tp" value="weapon_term" />
+				<param name="helper_tp" value="weapon_term_flash_3p" />
 				<param name="reload_time" value="3.2" />
 				<param name="nearmiss_signal" value="OnNearMiss" />
 				<param name="distance" value="800" />
@@ -125,8 +125,8 @@
 				<param name="speedFP" value="600" />
 				<param name="speed" value="400" />
 				<param name="frequency" value="1" />
-				<param name="helper_fp" value="weapon_term" />
-				<param name="helper_tp" value="weapon_term" />
+				<param name="helper_fp" value="weapon_term_flash_1p" />
+				<param name="helper_tp" value="weapon_term_flash_3p" />
 				<param name="thickness" value="0.2" GAME="SP" />
 				<param name="thickness" value="1.3" GAME="MP" />
 				<param name="thicknessFP" value="0.5" GAME="SP" />
@@ -191,12 +191,12 @@
 				<param name="spread_holdBreathActive_m" value="0.75" />
 			</spread>
 			<muzzleflash>
-				<firstperson effect="weapon_fx.mountedgun.muzzle_flash.muzzle_flash_fp" helper="weapon_term" />
-				<thirdperson effect="weapon_fx.mountedgun.muzzle_flash.muzzle_flash_tp" helper="weapon_term" />
+				<firstperson effect="weapon_fx.mountedgun.muzzle_flash.muzzle_flash_fp" helper="weapon_term_flash_1p" />
+				<thirdperson effect="weapon_fx.mountedgun.muzzle_flash.muzzle_flash_tp" helper="weapon_term_flash_3p" />
 			</muzzleflash>
 			<muzzlesmoke>
-				<firstperson effect="weapon_fx.scar.gun_smoke_fp" helper="weapon_term" />
-				<thirdperson effect="weapon_fx.scar.gun_smoke_fp" helper="weapon_term" />
+				<firstperson effect="weapon_fx.scar.gun_smoke_fp" helper="weapon_term_smoke_1p" />
+				<thirdperson effect="weapon_fx.scar.gun_smoke_fp" helper="weapon_term_smoke_3p" />
 			</muzzlesmoke>
 			<reject>
 				<firstperson effect="weapon_fx.scar.shell_eject_fp" helper="shells" />
@@ -212,7 +212,7 @@
 				<param name="npc_additional_damage" value="-350" GAME="SP" />
 				<param name="npc_additional_damage" value="5" GAME="MP" />
 				<param name="clip_size" value="150" />
-				<param name="helper_tp" value="weapon_term" />
+				<param name="helper_tp" value="weapon_term_flash_3p" />
 				<param name="ooatracer_treshold" value="8" />
 				<param name="reload_time" value="3.2" />
 				<param name="nearmiss_signal" value="OnNearMiss" />
@@ -242,8 +242,8 @@
 				<param name="speedFP" value="600" />
 				<param name="speed" value="600" />
 				<param name="frequency" value="1" />
-				<param name="helper_fp" value="weapon_term" />
-				<param name="helper_tp" value="weapon_term" />
+				<param name="helper_fp" value="weapon_term_flash_1p" />
+				<param name="helper_tp" value="weapon_term_flash_3p" />
 			</tracer>
 			<outofammotracer>
 				<param name="geometryFP" value="Objects/effects/tracer_standard_new.cgf" />
@@ -253,8 +253,8 @@
 				<param name="speedFP" value="600" />
 				<param name="speed" value="600" />
 				<param name="frequency" value="1" />
-				<param name="helper_fp" value="weapon_term" />
-				<param name="helper_tp" value="weapon_term" />
+				<param name="helper_fp" value="weapon_term_flash_1p" />
+				<param name="helper_tp" value="weapon_term_flash_3p" />
 			</outofammotracer>
 			<spread>
 				<param name="min" value="3.0" />
@@ -339,12 +339,12 @@
 				</hints>
 			</recoil>
 			<muzzleflash>
-				<firstperson effect="weapon_fx.mountedgun.muzzle_flash.muzzle_flash_fp" helper="weapon_term" />
-				<thirdperson effect="weapon_fx.mountedgun.muzzle_flash.muzzle_flash_tp" helper="weapon_term" />
+				<firstperson effect="weapon_fx.mountedgun.muzzle_flash.muzzle_flash_fp" helper="weapon_term_flash_1p" />
+				<thirdperson effect="weapon_fx.mountedgun.muzzle_flash.muzzle_flash_tp" helper="weapon_term_flash_3p" />
 			</muzzleflash>
 			<muzzlesmoke>
-				<firstperson effect="weapon_fx.scar.gun_smoke_fp" helper="weapon_term" />
-				<thirdperson effect="weapon_fx.scar.gun_smoke_tp" helper="weapon_term" />
+				<firstperson effect="weapon_fx.scar.gun_smoke_fp" helper="weapon_term_smoke_1p" />
+				<thirdperson effect="weapon_fx.scar.gun_smoke_tp" helper="weapon_term_smoke_3p" />
 			</muzzlesmoke>
 			<reject>
 				<firstperson effect="weapon_fx.scar.shell_eject_fp" helper="shells" />
