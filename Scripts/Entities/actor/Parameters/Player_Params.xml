@@ -75,7 +75,7 @@
 
 	<LedgeGrabbingParams normalSpeedUp="1.0" powerSpeedUp="1.0" mobilitySpeedUp="1.5" mobilitySpeedUpMaximum="1.75" >
 		<!--SP PARAMS-->
-		<LedgeNearByParams searchDir="0.0, 1.0f, -0.1" maxDistance="1.3" maxAngleDeviationFromSearchDirInDegrees="40" maxExtendedAngleDeviationFromSearchDirInDegrees="60" GAME="SP" />
+		<LedgeNearByParams searchDir="0.0, 1.0, -0.1" maxDistance="1.3" maxAngleDeviationFromSearchDirInDegrees="40" maxExtendedAngleDeviationFromSearchDirInDegrees="60" GAME="SP" />
 		<PullUpMidAir 	positionOffset="0.0, 0.5, 1.8" moveDuration="0.95" correctionDuration="0.15" GAME="SP" />
 		<PullUpFalling 	positionOffset="0.0, 0.5, 1.8" moveDuration="0.95" correctionDuration="0.15" GAME="SP" />
 		<PullUpMidAir_NoSuit 	positionOffset="0.0, 0.5, 1.8" moveDuration="1.2" correctionDuration="0.15" GAME="SP" />
@@ -89,7 +89,7 @@
 		<HighVaultOnto positionOffset="0.0, 1.7, 1.2" moveDuration="0.5" correctionDuration="0.05" ledgeType="Wide" isHighVault="1" exitVelocityY="6" keepOrientation="1" GAME="SP" />
 
 		<!--MP PARAMS-->
-		<LedgeNearByParams searchDir="0.0, 1.0f, -0.1" maxDistance="1.3" maxAngleDeviationFromSearchDirInDegrees="40" maxExtendedAngleDeviationFromSearchDirInDegrees="60" GAME="MP"/>
+		<LedgeNearByParams searchDir="0.0, 1.0, -0.1" maxDistance="1.3" maxAngleDeviationFromSearchDirInDegrees="40" maxExtendedAngleDeviationFromSearchDirInDegrees="60" GAME="MP"/>
 		<PullUpMidAir 	positionOffset="0.0, 0.5, 1.8" moveDuration="0.65" correctionDuration="0.15" GAME="MP" />
 		<PullUpFalling 	positionOffset="0.0, 0.5, 1.8" moveDuration="0.65" correctionDuration="0.15" GAME="MP" />
 		<PullUpMidAir_NoSuit 	positionOffset="0.0, 0.5, 1.8" moveDuration="1.2" correctionDuration="0.15" GAME="MP" />
