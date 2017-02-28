@@ -85,13 +85,13 @@
 		<entry enum="None=2" />
 	</PhysicsType>
 	
-	<SoundObstructionType>
+	<OcclusionType>
 		<entry enum="Ignore=1" />
 		<entry enum="Adaptive=2" />
 		<entry enum="Low=3" />
 		<entry enum="Medium=4" />
 		<entry enum="High=5" />
-	</SoundObstructionType>
+	</OcclusionType>
 	
 	<Behaviour>
 		<entry enum="Single=0" />
