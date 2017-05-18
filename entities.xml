@@ -132,7 +132,6 @@
 
 	<Entity Name="UIEntity" Script="Scripts/Entities/Others/UIEntity.lua"/>
 	<Entity Name="ViewDist" Script="Scripts/Entities/Render/ViewDist.lua"/>
-	<Entity Name="VolumeObject" Script="Scripts/Entities/Render/VolumeObject.lua"/>
 	<Entity Name="VTOLSpawnPoint" Script="Scripts/Entities/Multiplayer/VTOLSpawnPoint.lua" Invisible="1"/>
 	<Entity Name="Wind" Script="Scripts/Entities/Physics/Wind.lua"/>
 	<Entity Name="WindArea" Script="Scripts/Entities/Physics/WindArea.lua"/>
