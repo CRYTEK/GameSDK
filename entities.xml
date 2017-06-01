@@ -45,7 +45,6 @@
 	<Entity Name="ClipVolume" Invisible="1"/>
 	<Entity Name="CloneFactory" Script="Scripts/Entities/Others/CloneFactory.lua"/>
 	<Entity Name="Cloth" Script="Scripts/Entities/Physics/Cloth.lua"/>
-	<Entity Name="Cloud" Script="Scripts/Entities/Render/Cloud.lua"/>
 	<Entity Name="CloudBlocker" Script="Scripts/Entities/Render/CloudBlocker.lua"/>
 	<Entity Name="Comment" Script="Scripts/Entities/Others/Comment.lua" Invisible="1"/>
 	<Entity Name="Constraint" Script="Scripts/Entities/Physics/Constraint.lua"/>
