@@ -14,7 +14,7 @@
 		</DamagesGroups>
 	</Damages>
 	<Components>
-		<Component name="hull" damageMax="250" position="0,0,0" size="1,1,1" useBoundsFromParts="1">
+		<Component name="hull" damageMax="0" position="0,0,0" size="1,1,1" useBoundsFromParts="1">
 			<DamageBehaviors>
 				<DamageBehavior class="Group" damageRatioMin="1">
 					<Group name="Destroy"/>
@@ -24,7 +24,7 @@
 				</DamageBehavior>
 			</DamageBehaviors>
 		</Component>
-		<Component name="engine" damageMax="50" position="0,-0.05,0.35" size="0.25,0.25,0.25" useBoundsFromParts="0" hullAffection="2">
+		<Component name="engine" damageMax="0" position="0,-0.05,0.35" size="0.25,0.25,0.25" useBoundsFromParts="0" hullAffection="2">
 			<DamageBehaviors>
 				<DamageBehavior class="Effect" damageRatioMin="0.25">
 					<Effect effect="Sparks_Front" disableAfterExplosion="1"/>
@@ -41,10 +41,10 @@
 		<Component name="enterPassenger" damageMax="0" position="0,-0.5,0.5" size="1,1,1" useBoundsFromParts="0">
 			<DamageBehaviors />
 		</Component>
-		<Component name="wheel1" damageMax="50" position="0,0,0" size="1,1,1" useBoundsFromParts="1" hullAffection="0" dontRepair="1">
+		<Component name="wheel1" damageMax="0" position="0,0,0" size="1,1,1" useBoundsFromParts="1" hullAffection="0" dontRepair="1">
 			<DamageBehaviors/>
 		</Component>
-		<Component name="wheel2" damageMax="50" position="0,0,0" size="1,1,1" useBoundsFromParts="1" hullAffection="0" dontRepair="1">
+		<Component name="wheel2" damageMax="0" position="0,0,0" size="1,1,1" useBoundsFromParts="1" hullAffection="0" dontRepair="1">
 			<DamageBehaviors/>
 		</Component>
 	</Components>
@@ -215,10 +215,6 @@
 				maxPower="1" maxPowerSizeScale="1" maxPowerCountScale="1" maxPowerSpeedScale="1"/>
 		</Exhaust>
 		<DamageEffects>
-			<DamageEffect name="VehicleDestroyed" helper="cogs_front" effect="Vehicles.Bicycle.Damage.Destroyed"/>
-			<DamageEffect name="Sparks_Rear" helper="cogs_rear" effect="Vehicles.Bicycle.Damage.Sparks"/>
-			<DamageEffect name="Sparks_Front" helper="cogs_front" effect="Vehicles.Bicycle.Damage.Sparks"/>
-			<DamageEffect name="BurnEngine" helper="cogs_front" effect="Vehicles.Bicycle.Damage.BurnEngine"/>
 			<DamageEffect name="BlownTirePFX" helper="" effect="vehicles.Common.Ground.Blown_Tire" gravityDirection="0,0,1"/>
 		</DamageEffects>
 		<EnvironmentLayers>

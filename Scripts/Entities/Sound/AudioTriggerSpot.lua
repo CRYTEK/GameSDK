@@ -12,7 +12,7 @@ AudioTriggerSpot = {
 		audioTriggerStopTriggerName = "",
 		bSerializePlayState = true, -- Determines if execution after de-serialization is needed.
 		bTriggerAreasOnMove = false, -- Triggers area events or not. (i.e. dynamic environment updates on move)
-		eiSoundObstructionType = 1, -- Clamped between 1 and 5. 1=ignore, 2=adaptive, 3=low, 4=medium, 5=high
+		eiOcclusionType = 1, -- Clamped between 1 and 5. 1=ignore, 2=adaptive, 3=low, 4=medium, 5=high
 			
 		PlayMode = {
 			eiBehaviour = 0, -- 0=Single, 1=Delay, 2=TriggerRate
@@ -55,7 +55,7 @@ end
 
 ----------------------------------------------------------------------------------------
 function AudioTriggerSpot:_SetObstruction()
-	local nStateIdx = self.Properties.eiSoundObstructionType;
+	local nStateIdx = self.Properties.eiOcclusionType;
 	
 	if ((self.tObstructionType.hSwitchID ~= nil) and (self.tObstructionType.tStateIDs[nStateIdx] ~= nil)) then
 		self:SetAudioSwitchState(self.tObstructionType.hSwitchID, self.tObstructionType.tStateIDs[nStateIdx], self:GetDefaultAuxAudioProxyID());
@@ -120,10 +120,10 @@ end
 
 ----------------------------------------------------------------------------------------
 function AudioTriggerSpot:OnPropertyChange()	
-	if (self.Properties.eiSoundObstructionType < 1) then
-		self.Properties.eiSoundObstructionType = 1;
-	elseif (self.Properties.eiSoundObstructionType > 5) then
-		self.Properties.eiSoundObstructionType = 5;
+	if (self.Properties.eiOcclusionType < 1) then
+		self.Properties.eiOcclusionType = 1;
+	elseif (self.Properties.eiOcclusionType > 5) then
+		self.Properties.eiOcclusionType = 5;
 	end
 	
 	if(self.Properties.PlayMode.vectorRandomizationArea.x < 0.0) then

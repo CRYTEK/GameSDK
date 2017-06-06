@@ -97,7 +97,7 @@ for i,vehicle in pairs(VehicleSystem.VehicleImpls) do
 		if (timerId == AISOUND_TIMER) then
 			if(self.AISoundRadius and self:HasDriver()) then
 				self:SetTimer(AISOUND_TIMER, mSec);
-				AI.SoundEvent(self:GetWorldPos(self.State.pos), self.AISoundRadius, AISOUND_MOVEMENT_LOUD, self.id);
+				Perception.SoundStimulus(self:GetWorldPos(self.State.pos), self.AISoundRadius, AISOUND_MOVEMENT_LOUD, self.id);
 				--System.Log(">>> gVehicle.Client.OnTimer sound "..mSec);
 			end
 		end

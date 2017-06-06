@@ -45,7 +45,6 @@
 	<Entity Name="ClipVolume" Invisible="1"/>
 	<Entity Name="CloneFactory" Script="Scripts/Entities/Others/CloneFactory.lua"/>
 	<Entity Name="Cloth" Script="Scripts/Entities/Physics/Cloth.lua"/>
-	<Entity Name="Cloud" Script="Scripts/Entities/Render/Cloud.lua"/>
 	<Entity Name="CloudBlocker" Script="Scripts/Entities/Render/CloudBlocker.lua"/>
 	<Entity Name="Comment" Script="Scripts/Entities/Others/Comment.lua" Invisible="1"/>
 	<Entity Name="Constraint" Script="Scripts/Entities/Physics/Constraint.lua"/>
@@ -132,7 +131,6 @@
 
 	<Entity Name="UIEntity" Script="Scripts/Entities/Others/UIEntity.lua"/>
 	<Entity Name="ViewDist" Script="Scripts/Entities/Render/ViewDist.lua"/>
-	<Entity Name="VolumeObject" Script="Scripts/Entities/Render/VolumeObject.lua"/>
 	<Entity Name="VTOLSpawnPoint" Script="Scripts/Entities/Multiplayer/VTOLSpawnPoint.lua" Invisible="1"/>
 	<Entity Name="Wind" Script="Scripts/Entities/Physics/Wind.lua"/>
 	<Entity Name="WindArea" Script="Scripts/Entities/Physics/WindArea.lua"/>

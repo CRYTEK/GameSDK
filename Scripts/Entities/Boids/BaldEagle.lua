@@ -18,10 +18,10 @@ BaldEagle =
 		},
 		Movement =
 		{
-			HeightMin = 50,
+			HeightMin = 15,
 			HeightMax = 300,
 			SpeedMin = 2.5,
-			SpeedMax = 15,
+			SpeedMax = 8,
 			FactorOrigin = 0.1,
 			FactorHeight = 0.4,
 			FactorAvoidLand = 10,
@@ -30,7 +30,7 @@ BaldEagle =
 		Boid =
 		{
 			nCount = 10, --[0,1000,1,"Specifies how many individual objects will be spawned."]
-			object_Model = "objects/characters/animals/birds/bald_eagle/eagle.chr",
+			object_Model = "objects/characters/animals/birds/bald_eagle/bald_eagle.cdf",
 			gravity_at_death = -9.81,
 			Mass = 10,
 			bInvulnerable = false,
@@ -41,7 +41,7 @@ BaldEagle =
 			bPickableWhenDead = 1,
 			PickableMessage = "",
 			bFollowPlayer = 0,
-			bNoLanding = 0,
+			bNoLanding = 1,
 			bObstacleAvoidance = 0,
 			VisibilityDist = 200,
 			bActivate = 1,
@@ -51,10 +51,10 @@ BaldEagle =
 	},
 	Animations =
 	{
-		"fly_loop", -- flying
-		"landing",
-		"walk_loop", -- walk
-		"idle_loop", -- idle
+		"fly_loop" -- flying
+		--"landing",
+		--"walk_loop", -- walk
+		--"idle_loop", -- idle
 	},
 	Editor =
 	{

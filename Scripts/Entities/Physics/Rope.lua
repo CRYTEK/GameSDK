@@ -202,11 +202,14 @@ function Rope.Server:OnStartGame()
 			self:SetCharacterPhysicParams(0,rope_name, PHYSICPARAM_FLAGS,RopeParams);
 	    self:SetCharacterPhysicParams(0,rope_name, PHYSICPARAM_ROPE,RopeParams);
 			self:SetCharacterPhysicParams(0,rope_name, PHYSICPARAM_ROPE,RopeParams1);
+			if (self.Properties.bAwake==0) then
+				self:AwakeCharacterPhysics(0,rope_name,0);
+			end
     end
 
 		self:SetSlotPos(0, g_Vectors.v000);	self:SetSlotAngles(0, g_Vectors.v000);
 		pos1 = self:GetBonePos(self:GetBoneNameFromTable(self.iFirstBone));
-		System.LogToConsole("bone pos: "..pos1.x.." "..pos1.y.." "..pos1.z);
+		--System.LogToConsole("bone pos: "..pos1.x.." "..pos1.y.." "..pos1.z);
 		self:SetSlotPos(0, self:VectorToLocal(-1,DifferenceVectors(self:GetWorldPos(), pos1)));
   end
 end

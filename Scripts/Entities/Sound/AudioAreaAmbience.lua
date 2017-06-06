@@ -16,7 +16,7 @@ AudioAreaAmbience = {
 		audioTriggerStopTrigger = "",
 		audioRTPCRtpc = "",
 		audioEnvironmentEnvironment = "",
-		eiSoundObstructionType = 1, -- Clamped between 1 and 5. 1=ignore, 2=adaptive, 3=low, 4=medium, 5=high
+		eiOcclusionType = 1, -- Clamped between 1 and 5. 1=ignore, 2=adaptive, 3=low, 4=medium, 5=high
 		fRtpcDistance = 5.0,
 		fEnvironmentDistance = 5.0,
 		audioRTPCGlobalRtpc = "",
@@ -55,17 +55,7 @@ end
 
 ----------------------------------------------------------------------------------------
 function AudioAreaAmbience:_SetObstruction()
-	local nStateIdx = self.Properties.eiSoundObstructionType;
-	
-	if ((self.tObstructionType.hSwitchID ~= nil) and (self.tObstructionType.tStateIDs[nStateIdx] ~= nil)) then
-		self:SetAudioSwitchState(self.tObstructionType.hSwitchID, self.tObstructionType.tStateIDs[nStateIdx], self:GetDefaultAuxAudioProxyID());
-	end
-end
-
-----------------------------------------------------------------------------------------
-function AudioAreaAmbience:_DisableObstruction()
-	-- Ignore is at index 1
-	local nStateIdx = 1;
+	local nStateIdx = self.Properties.eiOcclusionType;
 	
 	if ((self.tObstructionType.hSwitchID ~= nil) and (self.tObstructionType.tStateIDs[nStateIdx] ~= nil)) then
 		self:SetAudioSwitchState(self.tObstructionType.hSwitchID, self.tObstructionType.tStateIDs[nStateIdx], self:GetDefaultAuxAudioProxyID());
@@ -83,7 +73,7 @@ function AudioAreaAmbience:_UpdateParameters()
 			self:SetAudioEnvironmentID(self.hEnvironmentID);
 		end
 	else
-		self:SetAudioEnvironmentID(INVALID_AUDIO_ENVIRONMENT_ID);
+		self:SetAudioEnvironmentID(InvalidEnvironmentId);
 	end
 end
 
@@ -132,10 +122,10 @@ end
 
 ----------------------------------------------------------------------------------------
 function AudioAreaAmbience:OnPropertyChange()
-	if (self.Properties.eiSoundObstructionType < 1) then
-		self.Properties.eiSoundObstructionType = 1;
-	elseif (self.Properties.eiSoundObstructionType > 5) then
-		self.Properties.eiSoundObstructionType = 5;
+	if (self.Properties.eiOcclusionType < 1) then
+		self.Properties.eiOcclusionType = 1;
+	elseif (self.Properties.eiOcclusionType > 5) then
+		self.Properties.eiOcclusionType = 5;
 	end
 	
 	self:_LookupControlIDs();
@@ -153,8 +143,6 @@ function AudioAreaAmbience:OnPropertyChange()
 	
 	if (self.nState == 1) then -- near
 		self:_SetObstruction();
-	elseif (self.nState == 2) then -- inside
-		self:_DisableObstruction();
 	end
 	
 	if ((self.bIsPlaying) and (self.hCurrentOnTriggerID ~= self.hOnTriggerID)) then
@@ -327,7 +315,6 @@ AudioAreaAmbience.Client={
 		
 		self.fFadeValue = 1.0;
 		self:_UpdateRtpc();
-		self:_DisableObstruction();
 	end,	
 	
 	----------------------------------------------------------------------------------------
@@ -350,7 +337,6 @@ AudioAreaAmbience.Client={
 	----------------------------------------------------------------------------------------
 	OnAudioListenerLeaveArea = function(self, player, areaId, fFade)
 		self.nState = 1;
-		self:_SetObstruction();
 	end,	
 	
 	----------------------------------------------------------------------------------------

@@ -548,9 +548,9 @@ function DestroyableLight:Explode()
 	local aiRadius = self.Properties.Sound.fAISoundRadius;
 	if (aiRadius > 0) then
 		if(self.shooterId) then
-			AI.SoundEvent(self:GetWorldPos(), aiRadius, AISOUND_EXPLOSION, self.shooterId);
+			Perception.SoundStimulus(self:GetWorldPos(), aiRadius, AISOUND_EXPLOSION, self.shooterId);
 		else
-			Log("AI.SoundEvent invalid parameter self.shooterId");
+			Log("Perception.SoundStimulus invalid parameter self.shooterId");
 		end
 	end
 	BroadcastEvent( self,"Explode" );
