@@ -61,7 +61,7 @@ Light =
 
 	Editor =
 	{
-		Model="Editor/Objects/Light_Omni.cgf",
+		Model="%EDITOR%/Objects/Light_Omni.cgf",
 		Icon="Light.bmp",
 		ShowBounds=0,
 		AbsoluteRadius = 1,

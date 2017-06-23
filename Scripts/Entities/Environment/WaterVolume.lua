@@ -31,7 +31,7 @@ WaterVolume =
 
 	Editor = 
 	{
-		Model = "Editor/Objects/T.cgf",
+		Model = "%EDITOR%/Objects/T.cgf",
 		Icon = "Water.bmp",
 		ShowBounds = 1,
 		IsScalable = false;

@@ -10,7 +10,7 @@ AIAlertness = {
   },
 	
 	Editor={
-		Model="Editor/Objects/box.cgf",
+		Model="%EDITOR%/Objects/box.cgf",
 	},
 }
 

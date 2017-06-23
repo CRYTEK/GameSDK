@@ -35,7 +35,7 @@ Hazard =
 	Editor=
 	{
 		Icon = "hazard.bmp",
-		Model="Editor/Objects/T.cgf",
+		Model="%EDITOR%/Objects/T.cgf",
 		ShowBounds = 1,
 	},
 	States = {"Activated","Deactivated","Turning"},

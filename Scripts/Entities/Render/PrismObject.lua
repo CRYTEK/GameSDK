@@ -8,7 +8,7 @@ PrismObject = {
 	},
 
 	Editor = {
-		Model = "Editor/Objects/Particles.cgf",
+		Model = "%EDITOR%/Objects/Particles.cgf",
 		Icon = "Clouds.bmp",
 	},
 }

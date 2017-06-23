@@ -7,7 +7,7 @@ SmartObject = {
   },
 	
 	Editor={
-	Model="Editor/Objects/anchor.cgf",
+	Model="%EDITOR%/Objects/anchor.cgf",
 	Icon="smartobject.bmp",
 	IconOnTop=1,
 	},

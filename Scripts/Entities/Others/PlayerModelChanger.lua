@@ -9,7 +9,7 @@ PlayerModelChanger =
 	
 	Editor =
 	{
-		Model="editor/objects/box.cgf",
+		Model="%EDITOR%/objects/box.cgf",
 	},	
 }
 

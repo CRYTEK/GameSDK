@@ -2,7 +2,7 @@ Script.ReloadScript("scripts/Entities/Sound/Shared/AudioUtils.lua");
 
 AudioTriggerSpot = {
 	Editor={
-		Model="Editor/Objects/Sound.cgf",
+		Model="%EDITOR%/Objects/Sound.cgf",
 		Icon="Sound.bmp",
 	},
 	

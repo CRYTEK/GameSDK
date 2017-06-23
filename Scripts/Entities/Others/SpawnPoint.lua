@@ -17,7 +17,7 @@ SpawnPoint = {
 	Server = {},
 
 	Editor={
-		Model="Editor/Objects/spawnpointhelper.cgf",
+		Model="%EDITOR%/Objects/spawnpointhelper.cgf",
 		Icon="SpawnPoint.bmp",
 		DisplayArrow=1,
 	},

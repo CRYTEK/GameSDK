@@ -44,7 +44,7 @@ CinematicTrigger =
 	Server={},
 	
 	Editor={
-		Model="Editor/Objects/T.cgf",
+		Model="%EDITOR%/Objects/T.cgf",
 		Icon="Trigger.bmp",
 		ShowBounds = 1,
 	},

@@ -30,7 +30,7 @@ ParticleEffect = {
 		}
 	},
 	Editor = {
-		Model="Editor/Objects/Particles.cgf",
+		Model="%EDITOR%/Objects/Particles.cgf",
 		Icon="Particles.bmp",
 	},
 	
