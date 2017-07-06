@@ -312,6 +312,11 @@ function Player:OnInit(bIsReload)
 	--self:SetTimer(0,1);
 end
 
+function Player:OnPlayerPostSerialize()
+	if AI then
+		CryAction.RegisterWithAI(self.id, AIOBJECT_PLAYER, self.Properties,self.PropertiesInstance);
+	end
+end
 
 function Player:OnReset(bFromInit, bIsReload)
 
