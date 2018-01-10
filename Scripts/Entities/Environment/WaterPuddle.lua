@@ -9,7 +9,7 @@ WaterPuddle =
 	
 	Editor = 
 	{
-		Model="%EDITOR%/Objects/T.cgf",
+		Model="Editor/Objects/T.cgf",
 		Icon="Water.bmp",
 		ShowBounds = 1,
 		IsScalable = false;

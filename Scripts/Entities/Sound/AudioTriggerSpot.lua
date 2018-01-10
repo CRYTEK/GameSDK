@@ -2,7 +2,7 @@ Script.ReloadScript("scripts/Entities/Sound/Shared/AudioUtils.lua");
 
 AudioTriggerSpot = {
 	Editor={
-		Model="%EDITOR%/Objects/Sound.cgf",
+		Model="Editor/Objects/Sound.cgf",
 		Icon="Sound.bmp",
 	},
 	
@@ -279,20 +279,10 @@ AudioTriggerSpot["Client"] = {
 				if ((self.hOnTriggerID ~= nil) and (self.Properties.Debug.eiDrawActivityRadius == 1))then
 					local radius = Sound.GetAudioTriggerRadius(self.hOnTriggerID);
 					System.DrawSphere(pos.x, pos.y, pos.z, radius, 250, 100, 100, 100);
-						
-					local fadeOutDistance = Sound.GetAudioTriggerOcclusionFadeOutDistance(self.hOnTriggerID);
-					if(fadeOutDistance > 0.0) then
-						System.DrawSphere(pos.x, pos.y, pos.z, radius - fadeOutDistance, 200, 200, 255, 100);
-					end
 				end
 				if ((self.hOffTriggerID ~= nil) and (self.Properties.Debug.eiDrawActivityRadius == 2))then
 					local radius = Sound.GetAudioTriggerRadius(self.hOffTriggerID);
 					System.DrawSphere(pos.x, pos.y, pos.z, radius, 250, 100, 100, 100);
-						
-					local fadeOutDistance = Sound.GetAudioTriggerOcclusionFadeOutDistance(self.hOffTriggerID);
-					if(fadeOutDistance > 0.0) then
-						System.DrawSphere(pos.x, pos.y, pos.z, radius - fadeOutDistance, 200, 200, 255, 100);
-					end
 				end
 			end
 		end

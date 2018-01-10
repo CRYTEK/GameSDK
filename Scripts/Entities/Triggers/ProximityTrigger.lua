@@ -54,7 +54,7 @@ ProximityTrigger =
 
 	Editor =
 	{
-		Model="%EDITOR%/Objects/T.cgf",
+		Model="Editor/Objects/T.cgf",
 		Icon="Trigger.bmp",
 		ShowBounds = 1,
 		IsScalable = false;

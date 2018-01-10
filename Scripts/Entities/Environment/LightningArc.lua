@@ -17,7 +17,7 @@ LightningArc =
 	
 	Editor =
 	{
-		Model="%EDITOR%/Objects/Particles.cgf",
+		Model="Editor/Objects/Particles.cgf",
 		Icon="Lightning.bmp",
 	},
 }

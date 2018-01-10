@@ -34,7 +34,7 @@ FogVolume =
 
 	Editor = 
 	{
-		Model = "%EDITOR%/Objects/invisiblebox.cgf",
+		Model = "Editor/Objects/invisiblebox.cgf",
 		Icon = "FogVolume.bmp",
 		ShowBounds = 1,
 	},

@@ -16,7 +16,7 @@ AISpawner = {
 	Server = {},
 
 	Editor={
-		Model="%EDITOR%/Objects/Particles.cgf",
+		Model="Editor/Objects/Particles.cgf",
 		Icon="SpawnPoint.bmp",
 		DisplayArrow=1,
 	},

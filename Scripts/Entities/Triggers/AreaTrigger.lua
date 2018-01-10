@@ -35,7 +35,7 @@ AreaTrigger =
 
 	Editor =
 	{
-		Model = "%EDITOR%/Objects/T.cgf",
+		Model = "Editor/Objects/T.cgf",
 		Icon = "AreaTrigger.bmp",
 		IsScalable = false;
 		IsRotatable = false;

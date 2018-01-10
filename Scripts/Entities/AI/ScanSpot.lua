@@ -18,7 +18,7 @@ ScanSpot =
 
 	Editor={
 		Icon = "TagPoint.bmp",
-		--Model = "%EDITOR%/Objects/Sphere.cgf",
+		--Model = "Editor/Objects/Sphere.cgf",
 	},
 
 	Server=

@@ -26,6 +26,7 @@ EnvironmentLight =
 		{
 			bAffectsThisAreaOnly = 1,
 			bIgnoresVisAreas = 0,
+			bLinkToSkyColor = 0, --[0,1,0,"Multiply light color with current sky color (use GI sky color if available)."]
 			bDeferredClipBounds = 0,
 			_texture_deferred_cubemap = "",
 			SortPriority = 0,
@@ -163,6 +164,7 @@ function EnvironmentLight:LoadLightToSlot( nSlot )
 	lt.deferred_cubemap = OptionsAdvanced.texture_deferred_cubemap;
 	lt.this_area_only = Options.bAffectsThisAreaOnly;
 	lt.ignore_visareas = Options.bIgnoresVisAreas;
+	lt.link_to_sky_color = Options.bLinkToSkyColor;
 	lt.volumetric_fog = Options.bVolumetricFog;
 	lt.volumetric_fog_only = Options.bAffectsVolumetricFogOnly;
 

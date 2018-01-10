@@ -5,7 +5,7 @@ AudioAreaAmbience = {
 	type = "AudioAreaAmbience",
 	
 	Editor={
-		Model="%EDITOR%/Objects/Sound.cgf",
+		Model="Editor/Objects/Sound.cgf",
 		Icon="AudioAreaAmbience.bmp",
 	},
 	

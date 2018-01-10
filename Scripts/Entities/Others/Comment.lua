@@ -28,7 +28,7 @@ Comment =
 	},
 
 	Editor={
-		Model="%EDITOR%/Objects/comment.cgf",
+		Model="Editor/Objects/comment.cgf",
 		Icon="Comment.bmp",
 	},
 	

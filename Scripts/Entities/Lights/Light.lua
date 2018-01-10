@@ -35,6 +35,7 @@ Light =
 		{
 			bAffectsThisAreaOnly = 1, --[0,1,1,"Set this parameter to false to make light cast in multiple visareas."]
 			bIgnoresVisAreas = 0, --[0,1,1,"Controls whether the light should respond to visareas."]
+			bLinkToSkyColor = 0, --[0,1,1,"Multiply light color with current sky color (use GI sky color if available)."]
 			bAmbient = 0, --[0,1,1,"Makes the light behave like an ambient light source, with no point of origin."]
 			bFakeLight = 0, --[0,1,1,"Disables light projection, useful for lights which you only want to have Flare effects from."]
 			bVolumetricFog = 1, --[0,1,1,"Enables the light to affect volumetric fog."]
@@ -61,7 +62,7 @@ Light =
 
 	Editor =
 	{
-		Model="%EDITOR%/Objects/Light_Omni.cgf",
+		Model="Editor/Objects/Light_Omni.cgf",
 		Icon="Light.bmp",
 		ShowBounds=0,
 		AbsoluteRadius = 1,
@@ -172,6 +173,7 @@ function Light:LoadLightToSlot( nSlot )
 	lt.specular_multiplier = specular_mul;
 
 	lt.this_area_only = Options.bAffectsThisAreaOnly;
+	lt.link_to_sky_color = props.Options.bLinkToSkyColor;
 	lt.ambient = props.Options.bAmbient;
 	lt.fake = Options.bFakeLight;
 	lt.ignore_visareas = Options.bIgnoresVisAreas;

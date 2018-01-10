@@ -5,7 +5,7 @@ AudioAreaRandom = {
 	type = "AudioAreaRandom",
 	
 	Editor={
-		Model="%EDITOR%/Objects/Sound.cgf",
+		Model="Editor/Objects/Sound.cgf",
 		Icon="AudioAreaRandom.bmp",
 	},
 	
