@@ -12,7 +12,7 @@ CloudBlocker =
 
 	Editor = 
 	{
-		Model = "Editor/Objects/Particles.cgf",
+		Model = "%Editor%/Objects/Particles.cgf",
 		Icon = "Clouds.bmp",
 		ShowBounds = 1,
 	},

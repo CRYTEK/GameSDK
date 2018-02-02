@@ -23,7 +23,7 @@ MissionObjective =
 
 	Editor =
 	{
-		Model="Editor/Objects/T.cgf",
+		Model="%Editor%/Objects/T.cgf",
 		Icon="TagPoint.bmp",
 	},
 

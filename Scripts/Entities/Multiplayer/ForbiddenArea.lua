@@ -4,7 +4,7 @@ ForbiddenArea=
 	Client={},
 	
 	Editor={
-		--Model="Editor/Objects/ForbiddenArea.cgf",
+		--Model="%Editor%/Objects/ForbiddenArea.cgf",
 		Icon="forbiddenarea.bmp",
 	},
 		

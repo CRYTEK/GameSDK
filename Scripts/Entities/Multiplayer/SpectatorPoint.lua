@@ -17,7 +17,7 @@ SpectatorPoint =
 	Server = {},
 
 	Editor={
-		--Model="Editor/Objects/spawnpointhelper.cgf",
+		--Model="%Editor%/Objects/spawnpointhelper.cgf",
 		Icon="spectator.bmp",
 		DisplayArrow=1,
 	},

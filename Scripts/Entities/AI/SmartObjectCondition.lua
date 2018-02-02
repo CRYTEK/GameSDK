@@ -40,7 +40,7 @@ SmartObjectCondition = {
   },
 	
 	Editor={
-		Model="Editor/Objects/Pyramid.cgf",
+		Model="%Editor%/Objects/Pyramid.cgf",
 	},
 }
 

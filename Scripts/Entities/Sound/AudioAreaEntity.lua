@@ -5,7 +5,7 @@ AudioAreaEntity = {
 	type = "AudioAreaEntity",
 	
 	Editor={
-		Model="Editor/Objects/Sound.cgf",
+		Model="%Editor%/Objects/Sound.cgf",
 		Icon="AudioAreaEntity.bmp",
 	},
 	
