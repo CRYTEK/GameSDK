@@ -13,18 +13,8 @@ HUD_MessagePlane = {
 function HUD_MessagePlane:OnInit()
 	self:OnReset();
 	self:Enable(tonumber(self.Properties.bEnabled)~=0);	
-	if (System.IsEditor()) then
-		self:LoadObject(0, self.Editor.Model);
-	end
 end
 
-function HUD_MessagePlane:OnEditorSetGameMode(gameMode)
-	if (gameMode) then
-		self:DrawSlot(0, 0);
-	else
-		self:DrawSlot(0, 1);
-	end
-end
 
 function HUD_MessagePlane:OnPropertyChange()
 	self:OnReset();
