@@ -98,10 +98,7 @@ end
 function AudioTriggerSpot:OnLoad(load)
 	self.Properties = load.Properties;
 	self.bWasPlaying = load.bWasPlaying;
-end
-
-----------------------------------------------------------------------------------------
-function AudioTriggerSpot:OnPostLoad()
+	
 	if (self.Properties.bSerializePlayState) then
 		if (self.bIsPlaying and not self.bWasPlaying) then
 			self:Stop();
@@ -221,7 +218,12 @@ AudioTriggerSpot["Client"] = {
 		self:_LookupObstructionSwitchIDs();
 		self:_SetObstruction();
 		self:SetCurrentAudioEnvironments();
-		self:Play();
+		
+		-- Start play when cloning this script in editor.
+		-- In launcher this will be handled by "OnLevelLoaded" signal.
+		if (System.IsEditor()) then
+			self:Play();
+		end
 	end,
 	
 	----------------------------------------------------------------------------------------
@@ -285,6 +287,14 @@ AudioTriggerSpot["Client"] = {
 					System.DrawSphere(pos.x, pos.y, pos.z, radius, 250, 100, 100, 100);
 				end
 			end
+		end
+	end,
+	
+	OnLevelLoaded = function(self)
+	-- Only play in launcher to avoid playing 2x in editor.
+	-- Play in editor is handled by "OnInit".
+		if (not System.IsEditor()) then
+			self:Play();
 		end
 	end,
 }
