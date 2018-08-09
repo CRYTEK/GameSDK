@@ -48,21 +48,6 @@ function AudioAreaAmbience:_LookupControlIDs()
 end
 
 ----------------------------------------------------------------------------------------
-function AudioAreaAmbience:_LookupObstructionSwitchIDs()
-	-- cache the obstruction switch and state IDs
-	self.tObstructionType = AudioUtils.LookupObstructionSwitchAndStates();
-end
-
-----------------------------------------------------------------------------------------
-function AudioAreaAmbience:_SetObstruction()
-	local nStateIdx = self.Properties.eiOcclusionType;
-	
-	if ((self.tObstructionType.hSwitchID ~= nil) and (self.tObstructionType.tStateIDs[nStateIdx] ~= nil)) then
-		self:SetAudioSwitchState(self.tObstructionType.hSwitchID, self.tObstructionType.tStateIDs[nStateIdx], self:GetDefaultAuxAudioProxyID());
-	end
-end
-
-----------------------------------------------------------------------------------------
 function AudioAreaAmbience:_UpdateParameters()
 	-- Set the distances as the very first thing!
 	self:SetFadeDistance(self.Properties.fRtpcDistance);
@@ -142,7 +127,7 @@ function AudioAreaAmbience:OnPropertyChange()
 	end
 	
 	if (self.nState == 1) then -- near
-		self:_SetObstruction();
+		self:SetAudioOcclusionType(self.Properties.eiOcclusionType, self:GetDefaultAuxAudioProxyID());
 	end
 	
 	if ((self.bIsPlaying) and (self.hCurrentOnTriggerID ~= self.hOnTriggerID)) then
@@ -250,8 +235,7 @@ AudioAreaAmbience.Client={
 	OnInit = function(self)
 		self:RegisterForAreaEvents(1);
 		self:_LookupControlIDs();
-		self:_LookupObstructionSwitchIDs();
-		self:_SetObstruction();
+		self:SetAudioOcclusionType(self.Properties.eiOcclusionType, self:GetDefaultAuxAudioProxyID());
 		self:CliSrv_OnInit();
 	end,
 	

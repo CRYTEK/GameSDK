@@ -45,21 +45,6 @@ function AudioAreaRandom:_LookupControlIDs()
 end
 
 ----------------------------------------------------------------------------------------
-function AudioAreaRandom:_LookupObstructionSwitchIDs()
-	-- cache the obstruction switch and state IDs
-	self.tObstructionType = AudioUtils.LookupObstructionSwitchAndStates();
-end
-
-----------------------------------------------------------------------------------------
-function AudioAreaRandom:_SetObstruction()
-	local nStateIdx = self.Properties.eiOcclusionType;
-	
-	if ((self.tObstructionType.hSwitchID ~= nil) and (self.tObstructionType.tStateIDs[nStateIdx] ~= nil)) then
-		self:SetAudioSwitchState(self.tObstructionType.hSwitchID, self.tObstructionType.tStateIDs[nStateIdx], self:GetDefaultAuxAudioProxyID());
-	end
-end
-
-----------------------------------------------------------------------------------------
 function AudioAreaRandom:_UpdateParameters()	
 	self:SetFadeDistance(self.Properties.fRtpcDistance);
 end
@@ -123,7 +108,7 @@ function AudioAreaRandom:OnPropertyChange()
 	
 	self:_LookupControlIDs();
 	self:_UpdateParameters();
-	self:_SetObstruction();
+	self:SetAudioOcclusionType(self.Properties.eiOcclusionType, self:GetDefaultAuxAudioProxyID());
 	self:SetCurrentAudioEnvironments();
 	self:SetAudioProxyOffset(g_Vectors.v000, self:GetDefaultAuxAudioProxyID());
 	self:AuxAudioProxiesMoveWithEntity(self.Properties.bMoveWithEntity);
@@ -262,8 +247,7 @@ AudioAreaRandom.Client={
 	OnInit = function(self)
 		self:RegisterForAreaEvents(1);
 		self:_LookupControlIDs();
-		self:_LookupObstructionSwitchIDs();
-		self:_SetObstruction();
+		self:SetAudioOcclusionType(self.Properties.eiOcclusionType, self:GetDefaultAuxAudioProxyID());
 		self:CliSrv_OnInit();
 	end,
 	

@@ -1,6 +1,4 @@
 AudioUtils = {
-	sObstructionCalcSwitchName = "occlusion_calculation_type",
-	sObstructionStateNames = {"ignore", "adaptive", "low", "medium", "high"},
 	areaFadeEpsilon = 0.0025,
 }
 
@@ -59,12 +57,4 @@ function AudioUtils.LookupAudioEnvironmentID(sEnvironmentName)
 	end
 	
 	return hEnvironmentID;
-end
-
-----------------------------------------------------------------------------------------
-function AudioUtils.LookupObstructionSwitchAndStates()
-	local nSwitch = AudioUtils.LookupSwitchID(AudioUtils.sObstructionCalcSwitchName);
-	local tStates = AudioUtils.LookupSwitchStateIDs(nSwitch, AudioUtils.sObstructionStateNames);
-	
-	return {hSwitchID = nSwitch, tStateIDs = tStates};
 end
