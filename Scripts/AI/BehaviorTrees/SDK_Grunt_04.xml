@@ -26,6 +26,13 @@
 		<Variable name="ExecuteInterruptibleSequence" />
 	</Variables>
 
+	<Events>
+		<GameEvents>
+			<Event name="GoTo_ApproachAndInspectLastKnownPlayerPosition"/>
+			<Event name="GoTo_Idle"/>
+		</GameEvents>
+	</Events>
+	
 	<SignalVariables>
 		<Signal name="OnNewAttentionTarget" variable="HasTarget" value="true"/>
 		<Signal name="OnNoTarget" variable="HasTarget" value="false"/>
@@ -75,7 +82,7 @@
 
 						<ExecuteLua code="entity.actor:HolsterItem(true)"/>
 
-						<Animate name="ZZ_AI_idleBreak"/>
+						<Animate name="ZZ_AI_idleBreak" playMode="InfiniteLoop"/>
 
 						<Halt/>
 
@@ -254,7 +261,7 @@
 
 						<Parallel successMode="any">
 
-							<Animate name="AI_SearchLookAround" loop="1"/>
+							<Animate name="AI_SearchLookAround" playMode="InfiniteLoop"/>
 
 							<SuppressFailure>
 								<Timeout duration="10"/>

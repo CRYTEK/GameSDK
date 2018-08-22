@@ -3,6 +3,11 @@
 	<Variables>
 	</Variables>
 
+	<Events>
+		<GameEvents>
+		</GameEvents>
+	</Events>
+	
 	<SignalVariables>
 	</SignalVariables>
 

@@ -124,7 +124,7 @@
 											<Transition to="ForcedFire" onEvent="StartForceFire" />
 										</Transitions>
 										<BehaviorTree>
-											<Wait duration="-1" />
+											<MonitorCondition condition="false" />
 										</BehaviorTree>
 									</State>
 
@@ -178,7 +178,7 @@
 													<!-- ~Firing command -->
 
 													<Signal name="OnForceFireFinished" />
-													<Wait duration="-1" />
+													<MonitorCondition condition="false" />
 												</Sequence>
 
 											</Parallel>
@@ -200,7 +200,7 @@
 								<Log message="exiting combat mode" />
 								<Signal name="StartFollowPath" />
 								<Signal name="OnLeavingCombatFinished" />
-								<Wait duration="-1" />
+								<MonitorCondition condition="false" />
 							</Sequence>
 						</BehaviorTree>
 					</State>
@@ -221,7 +221,7 @@
 												<Transition to="ForcedFire" onEvent="StartForceFire" />
 											</Transitions>
 											<BehaviorTree>
-												<Wait duration="-1" />
+												<MonitorCondition condition="false" />
 											</BehaviorTree>
 										</State>
 
@@ -252,7 +252,7 @@
 													<WaitUntilTime since="LostSightOfTarget" isMoreThan="30" />
 													<FlyAimAtCombatTarget />
 												</Parallel>
-												<Wait duration="-1" />
+												<MonitorCondition condition="false" />
 											</Sequence>
 										</Case>
 
@@ -307,13 +307,13 @@
 													</Loop>
 												</Case>
 												<Case>
-													<Wait duration="-1" />
+													<MonitorCondition condition="false" />
 												</Case>
 											</Priority>
 										</Case>
 
 										<Case>
-											<Wait duration="-1" />
+											<MonitorCondition condition="false" />
 										</Case>
 									</Priority>
 
@@ -340,7 +340,7 @@
 																				<Log message="I have not seen the target for a while." />
 																				<Signal name="StartFollowPath" />
 																				<Signal name="GoToDoNotCareAboutGoodPositioning" />
-																				<Wait duration="-1" />
+																				<MonitorCondition condition="false" />
 																			</Sequence>
 																		</IfTime>
 																	</IfCondition>
@@ -373,7 +373,7 @@
 																<IfCondition condition="!InFollowPathState">
 																	<Sequence>
 																		<Signal name="GoToFindGoodPositioning" />
-																		<Wait duration="-1" />
+																		<MonitorCondition condition="false" />
 																	</Sequence>
 																</IfCondition>
 															</SuppressFailure>

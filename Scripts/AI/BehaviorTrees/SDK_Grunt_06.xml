@@ -25,6 +25,19 @@
 		<Variable name="CombatMove"/>
 	</Variables>
 
+	<Events>
+		<GameEvents>
+			<Event name="EnteredCombat"/>
+			<Event name="GiveUpSearch"/>
+			<Event name="GoTo_ApproachAndInspectLastKnownPlayerPosition"/>
+			<Event name="GoTo_Combat"/>
+			<Event name="GoTo_Guard"/>
+			<Event name="GoTo_Idle"/>
+			<Event name="InspectionTimeHalfFinished"/>
+			<Event name="SearchBegins"/>
+		</GameEvents>
+	</Events>
+	
 	<SignalVariables>
 		<Signal name="OnNewAttentionTarget" variable="HasTarget" value="true"/>
 		<Signal name="OnNoTarget" variable="HasTarget" value="false"/>
@@ -199,7 +212,7 @@
 
 															</SuppressFailure>
 
-															<Animate name="ZZ_AI_idleBreak" loop="1"/>
+															<Animate name="ZZ_AI_idleBreak" playMode="InfiniteLoop"/>
 
 														</Sequence>
 
@@ -267,9 +280,9 @@
 
 																	<Bubble message="Who's there!?" duration="2"/>
 
-																	<Animate name="AI_SearchLookAround" loop="0"/>
+																	<Animate name="AI_SearchLookAround" playMode="PlayOnce"/>
 
-																	<Animate name="AI_SearchLookAround" loop="0"/>
+																	<Animate name="AI_SearchLookAround" playMode="PlayOnce"/>
 
 																	<Bubble message="...umm... nothing..." duration="2.0"/>
 
@@ -287,7 +300,7 @@
 
 																</Sequence>
 
-																<Animate name="AI_NoticeFarThreat" loop="0"/>
+																<Animate name="AI_NoticeFarThreat" playMode="PlayOnce"/>
 
 															</Parallel>
 
@@ -339,7 +352,7 @@
 
 												<Look at="Target"/>
 
-												<Animate name="AI_NoticeVisualThreatAndTurn" loop="0" setBodyDirectionTowardsAttentionTarget="1"/>
+												<Animate name="AI_NoticeVisualThreatAndTurn" playMode="PlayOnce" setBodyDirectionTowardsAttentionTarget="1"/>
 
 											</Parallel>
 
@@ -770,15 +783,15 @@
 
 											<Sequence>
 
-												<Animate name="AI_SearchLookAround" loop="0"/>
+												<Animate name="AI_SearchLookAround" playMode="PlayOnce"/>
 
 												<Bubble message="Show yourself!" duration="2"/>
 
-												<Animate name="AI_SearchLookAround" loop="0"/>
+												<Animate name="AI_SearchLookAround" playMode="PlayOnce"/>
 
 												<Signal name="InspectionTimeHalfFinished" filter="GroupExcludingSender"/>
 
-												<Animate name="AI_SearchLookAround" loop="0"/>
+												<Animate name="AI_SearchLookAround" playMode="PlayOnce"/>
 
 												<Bubble message="He's gone!" duration="2"/>
 
@@ -813,7 +826,7 @@
 
 														<Loop count="4">
 
-															<Animate name="AI_NoticeFarThreat" loop="0"/>
+															<Animate name="AI_NoticeFarThreat" playMode="PlayOnce"/>
 
 														</Loop>
 
@@ -821,7 +834,7 @@
 
 													<Loop count="4">
 
-														<Animate name="AI_SearchLookAround" loop="0"/>
+														<Animate name="AI_SearchLookAround" playMode="PlayOnce"/>
 
 													</Loop>
 
@@ -895,7 +908,7 @@
 
 													<Parallel>
 
-														<Animate name="AI_SearchLookAround" loop="0"/>
+														<Animate name="AI_SearchLookAround" playMode="PlayOnce"/>
 
 														<Sequence>
 
@@ -943,7 +956,7 @@
 
 									<StopMovement/>
 
-									<Animate name="AI_NoticeVisualThreatAndTurn" loop="0" setBodyDirectionTowardsAttentionTarget="1"/>
+									<Animate name="AI_NoticeVisualThreatAndTurn" playMode="PlayOnce" setBodyDirectionTowardsAttentionTarget="1"/>
 
 									<Shoot at="Target" stance="Alerted" duration="1.0" fireMode="Forced"/>
 

@@ -18,6 +18,14 @@
 		<Variable name="ExecuteInterruptibleSequence" />
 	</Variables>
 
+	<Events>
+		<GameEvents>
+			<Event name="GoTo_Idle"/>
+			<Event name="GoTo_RunToAndInspectLastKnownPlayerPosition"/>
+		</GameEvents>
+	</Events>
+	
+	
 	<SignalVariables>
 		<Signal name="OnNewAttentionTarget" variable="HasTarget" value="true"/>
 		<Signal name="OnNoTarget" variable="HasTarget" value="false"/>
@@ -53,7 +61,7 @@
 
 						<Stance name="Relaxed"/>
 
-						<Animate name="ZZ_AI_idleBreak"/>
+						<Animate name="ZZ_AI_idleBreak" playMode="InfiniteLoop"/>
 
 						<Halt/>
 
@@ -146,7 +154,7 @@
 
 						<Parallel successMode="any">
 
-							<Animate name="AI_SearchLookAround" loop="1"/>
+							<Animate name="AI_SearchLookAround" playMode="InfiniteLoop"/>
 
 							<SuppressFailure>
 								<Timeout duration="10"/>
