@@ -6,6 +6,17 @@
 		<Variable name="FiringAllowed" default="true" />
 	</Variables>
 
+	<Events>
+		<GameEvents>
+		   <Event name="GoToDoNotCareAboutGoodPositioning"/>
+		   <Event name="GoToFindGoodPositioning"/>
+		   <Event name="GoToRefPoint"/>
+		   <Event name="OnFollowPathEnd"/>
+		   <Event name="OnForceFireFinished"/>
+		   <Event name="OnLeavingCombatFinished"/>
+		</GameEvents>
+	</Events>
+	
 	<SignalVariables>
 		<Signal name="OnEnemySeen" variable="TargetVisible" value="true" />
 		<Signal name="OnLostSightOfTarget" variable="TargetVisible" value="false" />
