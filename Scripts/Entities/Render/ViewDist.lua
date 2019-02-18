@@ -5,7 +5,7 @@ ViewDist = {
 		fFadeTime = 1,
 		},
 	Editor={
-		Model="Editor/Objects/T.cgf",
+		Model="%Editor%/Objects/T.cgf",
 	},
 }
 

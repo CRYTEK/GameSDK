@@ -12,7 +12,7 @@ Tornado = {
 	},
 	
 	Editor={
-		--Model="Editor/Objects/T.cgf",
+		--Model="%Editor%/Objects/T.cgf",
 		Icon="Tornado.bmp",
 	},
 }
