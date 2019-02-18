@@ -147,7 +147,6 @@ AudioAreaEntity.Server={
 AudioAreaEntity.Client={
 	----------------------------------------------------------------------------------------
 	OnInit = function(self)
-		self:RegisterForAreaEvents(1);
 		self:SetAudioOcclusionType(self.Properties.eiOcclusionType, self:GetDefaultAuxAudioProxyID());
 		self:CliSrv_OnInit();
 	end,
@@ -155,7 +154,6 @@ AudioAreaEntity.Client={
 	----------------------------------------------------------------------------------------
 	OnShutDown = function(self)
 		self.nState = 0;
-		self:RegisterForAreaEvents(0);
 	end,
 	
 	----------------------------------------------------------------------------------------

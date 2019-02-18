@@ -245,7 +245,6 @@ AudioAreaRandom.Server={
 AudioAreaRandom.Client={
 	----------------------------------------------------------------------------------------
 	OnInit = function(self)
-		self:RegisterForAreaEvents(1);
 		self:_LookupControlIDs();
 		self:SetAudioOcclusionType(self.Properties.eiOcclusionType, self:GetDefaultAuxAudioProxyID());
 		self:CliSrv_OnInit();
@@ -255,7 +254,6 @@ AudioAreaRandom.Client={
 	OnShutDown = function(self)
 		self:Stop();
 		self.nState = 0;
-		self:RegisterForAreaEvents(0);
 	end,
 	
 	----------------------------------------------------------------------------------------

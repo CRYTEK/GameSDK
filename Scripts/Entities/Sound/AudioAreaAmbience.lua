@@ -233,7 +233,6 @@ AudioAreaAmbience.Server={
 AudioAreaAmbience.Client={
 	----------------------------------------------------------------------------------------
 	OnInit = function(self)
-		self:RegisterForAreaEvents(1);
 		self:_LookupControlIDs();
 		self:SetAudioOcclusionType(self.Properties.eiOcclusionType, self:GetDefaultAuxAudioProxyID());
 		self:CliSrv_OnInit();
@@ -243,7 +242,6 @@ AudioAreaAmbience.Client={
 	OnShutDown = function(self)
 		self:Stop();
 		self.nState = 0;
-		self:RegisterForAreaEvents(0);
 	end,
 	
 	----------------------------------------------------------------------------------------
