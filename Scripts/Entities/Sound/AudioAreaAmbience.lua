@@ -248,7 +248,6 @@ AudioAreaAmbience.Server={
 AudioAreaAmbience.Client={
 	----------------------------------------------------------------------------------------
 	OnInit = function(self)
-		self:RegisterForAreaEvents(1);
 		self:_LookupControlIDs();
 		self:_LookupObstructionSwitchIDs();
 		self:_SetObstruction();
@@ -259,7 +258,6 @@ AudioAreaAmbience.Client={
 	OnShutDown = function(self)
 		self:Stop();
 		self.nState = 0;
-		self:RegisterForAreaEvents(0);
 	end,
 	
 	----------------------------------------------------------------------------------------

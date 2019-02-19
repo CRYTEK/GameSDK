@@ -162,7 +162,6 @@ AudioAreaEntity.Server={
 AudioAreaEntity.Client={
 	----------------------------------------------------------------------------------------
 	OnInit = function(self)
-		self:RegisterForAreaEvents(1);
 		self:_LookupObstructionSwitchIDs();
 		self:_SetObstruction();
 		self:CliSrv_OnInit();
@@ -171,7 +170,6 @@ AudioAreaEntity.Client={
 	----------------------------------------------------------------------------------------
 	OnShutDown = function(self)
 		self.nState = 0;
-		self:RegisterForAreaEvents(0);
 	end,
 	
 	----------------------------------------------------------------------------------------

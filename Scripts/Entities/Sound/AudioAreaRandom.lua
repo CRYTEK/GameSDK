@@ -260,7 +260,6 @@ AudioAreaRandom.Server={
 AudioAreaRandom.Client={
 	----------------------------------------------------------------------------------------
 	OnInit = function(self)
-		self:RegisterForAreaEvents(1);
 		self:_LookupControlIDs();
 		self:_LookupObstructionSwitchIDs();
 		self:_SetObstruction();
@@ -271,7 +270,6 @@ AudioAreaRandom.Client={
 	OnShutDown = function(self)
 		self:Stop();
 		self.nState = 0;
-		self:RegisterForAreaEvents(0);
 	end,
 	
 	----------------------------------------------------------------------------------------
