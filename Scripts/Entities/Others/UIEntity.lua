@@ -45,7 +45,7 @@ function UIEntity:SetFromProperties()
 	
 	self.freezable=tonumber(Properties.bFreezable)~=0;
 	
-	self:LoadObject(0,Properties.object_Model);
+	self:LoadObjectWithFlags(0,Properties.object_Model, 2);
 	self:SetSlotHud3D(0);
 end
 
