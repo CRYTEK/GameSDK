@@ -9,8 +9,8 @@ WindArea =
 		FalloffInner = 0, --[0,100,0.1,"Distance after which the distance-based falloff begins."]
 		Dir = { x=0,y=0,z=0 },
 		Speed = 20, --[0,100,0.1,"Defines whether wind is blowing or not."]
-		AirResistance = 0, --[0,100,0.1,"Causes very light physicalised objects to experience a buoyancy force, if >0."]
-		AirDensity = 0, --[0,100,0.1,"Causes physicalised objects moving through the air to slow down, if >0."]
+		AirResistance = 1, --[0,100,0.1,"Causes very light physicalised objects to experience a buoyancy force, if >0."]
+		AirDensity = 1, --[0,100,0.1,"Causes physicalised objects moving through the air to slow down, if >0."]
 	},
 	Editor = 
 	{
