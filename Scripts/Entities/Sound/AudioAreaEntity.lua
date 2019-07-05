@@ -50,21 +50,6 @@ function AudioAreaEntity:_UpdateParameters()
 end
 
 ----------------------------------------------------------------------------------------
-function AudioAreaEntity:_LookupObstructionSwitchIDs()
-	-- cache the obstruction switch and state IDs
-	self.tObstructionType = AudioUtils.LookupObstructionSwitchAndStates();
-end
-
-----------------------------------------------------------------------------------------
-function AudioAreaEntity:_SetObstruction()
-	local nStateIdx = self.Properties.eiOcclusionType;
-	
-	if ((self.tObstructionType.hSwitchID ~= nil) and (self.tObstructionType.tStateIDs[nStateIdx] ~= nil)) then
-		self:SetAudioSwitchState(self.tObstructionType.hSwitchID, self.tObstructionType.tStateIDs[nStateIdx], self:GetDefaultAuxAudioProxyID());
-	end
-end
-
-----------------------------------------------------------------------------------------
 function AudioAreaEntity:OnSpawn()
 	self:SetFlags(ENTITY_FLAG_CLIENT_ONLY, 0);
 	
@@ -115,7 +100,7 @@ function AudioAreaEntity:OnPropertyChange()
 	end
 	
 	if (self.nState == 1) then -- near
-		self:_SetObstruction();
+		self:SetAudioOcclusionType(self.Properties.eiOcclusionType, self:GetDefaultAuxAudioProxyID());
 	end
 end
 
@@ -162,8 +147,7 @@ AudioAreaEntity.Server={
 AudioAreaEntity.Client={
 	----------------------------------------------------------------------------------------
 	OnInit = function(self)
-		self:_LookupObstructionSwitchIDs();
-		self:_SetObstruction();
+		self:SetAudioOcclusionType(self.Properties.eiOcclusionType, self:GetDefaultAuxAudioProxyID());
 		self:CliSrv_OnInit();
 	end,
 	

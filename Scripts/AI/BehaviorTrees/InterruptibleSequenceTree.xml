@@ -1,0 +1,27 @@
+<BehaviorTree>
+
+	<!--
+	=============================================================================================================================================
+	InterruptibleSequenceTree.xml
+
+	Simple Behavior Tree that runs an Interruptible Sequence defined in FlowGraph by using AISequence::Start node and enabling Interruptible flag. 
+
+	If a non-interruptible behavior is desired, use SequenceTree.xml instead.
+
+	=============================================================================================================================================
+	-->
+
+ <MetaExtensions />
+ <Variables>
+  <Variable name="ExecuteInterruptibleSequence"/>
+ </Variables>
+ <Root>
+  <Loop>
+   <SuppressFailure>
+    <IfCondition condition="ExecuteInterruptibleSequence">
+     <LuaBehavior name="ExecuteInterruptibleSequence"/>
+    </IfCondition>
+   </SuppressFailure>
+  </Loop>
+ </Root>
+</BehaviorTree>

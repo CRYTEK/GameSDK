@@ -3,9 +3,14 @@
 	<Variables>
 	</Variables>
 
+	<Events>
+		<GameEvents>
+		</GameEvents>
+	</Events>
+	
 	<SignalVariables>
 	</SignalVariables>
-
+	
 	<Timestamps>
 	</Timestamps>
 

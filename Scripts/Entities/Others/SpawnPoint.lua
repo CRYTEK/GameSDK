@@ -41,21 +41,7 @@ function SpawnPoint.Server:OnInit()
 	self:Enable(tonumber(self.Properties.bEnabled)~=0);	
 	self:SetFlags(ENTITY_FLAG_CLIENT_ONLY,0);
 	g_gameRules.game:ClientSetTeam(g_gameRules.game:GetTeamId(self.Properties.teamName) or 0, self.id);
-
-	if (System.IsEditor()) then
-		self:LoadObject(0, self.Editor.Model);
-	end
-
 end
-
-function SpawnPoint:OnEditorSetGameMode(gameMode)
-	if (gameMode) then
-		self:DrawSlot(0, 0);
-	else
-		self:DrawSlot(0, 1);
-	end
-end
-
 
 --------------------------------------------------------------------------
 function SpawnPoint.Client:OnInit()

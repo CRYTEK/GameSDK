@@ -5,6 +5,11 @@
 		<Variable name="ExecuteInterruptibleSequence"/>
 	</Variables>
 
+	<Events>
+		<GameEvents>
+		</GameEvents>
+	</Events>
+	
 	<SignalVariables>
 	</SignalVariables>
 

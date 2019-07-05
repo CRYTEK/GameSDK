@@ -88,7 +88,7 @@ function Constraint:OnTimer()
 	end
 end
 
-function Constraint:OnLevelLoaded()
+function Constraint:OnStartGame()
 	--Log("%s:OnLevelLoaded() idEnt: %s idConstr: %s broken: %s", self:GetName(), tostring(self.idEnt),
 	--	tostring(self.idConstr), tostring(self.broken))
 

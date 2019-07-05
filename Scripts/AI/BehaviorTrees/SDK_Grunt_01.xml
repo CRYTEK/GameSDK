@@ -30,7 +30,7 @@
 
 			<Stance name="Relaxed"/>
 
-			<Animate name="ZZ_AI_idleBreak"/>
+			<Animate name="ZZ_AI_idleBreak" playMode="InfiniteLoop"/>
 
 			<Halt/>
 

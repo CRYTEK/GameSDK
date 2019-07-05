@@ -48,21 +48,6 @@ function AudioTriggerSpot:_LookupTriggerIDs()
 end
 
 ----------------------------------------------------------------------------------------
-function AudioTriggerSpot:_LookupObstructionSwitchIDs()
-	-- cache the obstruction switch and state IDs
-	self.tObstructionType = AudioUtils.LookupObstructionSwitchAndStates();
-end
-
-----------------------------------------------------------------------------------------
-function AudioTriggerSpot:_SetObstruction()
-	local nStateIdx = self.Properties.eiOcclusionType;
-	
-	if ((self.tObstructionType.hSwitchID ~= nil) and (self.tObstructionType.tStateIDs[nStateIdx] ~= nil)) then
-		self:SetAudioSwitchState(self.tObstructionType.hSwitchID, self.tObstructionType.tStateIDs[nStateIdx], self:GetDefaultAuxAudioProxyID());
-	end
-end
-
-----------------------------------------------------------------------------------------
 function AudioTriggerSpot:_GenerateOffset()
 	local offset = {x=0, y=0, z=0};
 	offset.x = randomF(-self.Properties.PlayMode.vectorRandomizationArea.x/2.0, self.Properties.PlayMode.vectorRandomizationArea.x/2.0);
@@ -134,7 +119,7 @@ function AudioTriggerSpot:OnPropertyChange()
 	end
 	
 	self:_LookupTriggerIDs();
-	self:_SetObstruction();
+	self:SetAudioOcclusionType(self.Properties.eiOcclusionType, self:GetDefaultAuxAudioProxyID());
 	self:SetCurrentAudioEnvironments();
 	self:SetAudioProxyOffset(g_Vectors.v000, self:GetDefaultAuxAudioProxyID());
 	
@@ -215,8 +200,7 @@ AudioTriggerSpot["Client"] = {
 	OnInit = function(self)
 		self:_Init();
 		self:_LookupTriggerIDs();
-		self:_LookupObstructionSwitchIDs();
-		self:_SetObstruction();
+		self:SetAudioOcclusionType(self.Properties.eiOcclusionType, self:GetDefaultAuxAudioProxyID());
 		self:SetCurrentAudioEnvironments();
 		
 		-- Start play when cloning this script in editor.
