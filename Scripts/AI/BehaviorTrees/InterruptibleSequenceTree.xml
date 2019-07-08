@@ -13,6 +13,8 @@
 
  <MetaExtensions />
  <Variables>
+  <!-- Variable 'ExecuteSequence' should not be needed because this tree only runs Interruptibles Sequences. However, Lua code still tries to set the 'ExecuteSequence' variable sometimes. -->
+  <Variable name="ExecuteSequence"/> 
   <Variable name="ExecuteInterruptibleSequence"/>
  </Variables>
  <Root>
