@@ -71,7 +71,7 @@ local Behavior = CreateAIBehavior("VehicleIdle", "VehicleAct",{
 		-- if (data.iValue == 150) then -- grenade
 		--	 ...
 		if ( data.iValue == AIOBJECT_RPG) then
-			entity:InsertSubpipe(0,"devalue_target");
+			AI.InsertSubpipe(entity.id, 0,"devalue_target");
 		end
 
 	end,

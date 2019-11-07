@@ -52,9 +52,9 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		entity.AI.approachingMountedWeapon = false;
 		local targettype = AI.GetTargetType(entity.id);
 		if(targettype==AITARGET_ENEMY) then 
-			entity:SelectPipe(0,"fire_mounted_weapon");
+			AI.SelectPipe(entity.id, 0,"fire_mounted_weapon");
 		else
-			entity:SelectPipe(0,"mounted_weapon_look_around");
+			AI.SelectPipe(entity.id, 0,"mounted_weapon_look_around");
 		end
 --		elseif(targettype~=AITARGET_NONE and targettype~=AITARGET_FRIENDLY) then 
 --			entity:SelectPipe(0,"near_mounted_weapon_blind_fire");
@@ -75,7 +75,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 				AI.SetRefPointDirection(entity.id,weapon.item:GetMountedDir());
 				local targetType = AI.GetTargetType(entity.id);
 	--			if(targetType==AITARGET_NONE or targetType==AITARGET_FRIENDLY) then 
-	--				entity:SelectPipe(0,"mounted_weapon_look_around");
+	--				entity:InsertSubpipe(0,"mounted_weapon_look_around");
 	--			else
 	--				entity:SelectPipe(0,"do_nothing");
 	--			end
@@ -211,7 +211,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 	SMART_THROW_GRENADE = function( self, entity, sender )
 		if (AI_Utils:CanThrowGrenade(entity) == 1) then
 			AI.PlayCommunication(entity.id, "comm_throwing_grenade", "ImmeadiateThreat", 1.5);		
-			entity:InsertSubpipe(AIGOALPIPE_NOTDUPLICATE,"throw_grenade_execute");
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_NOTDUPLICATE,"throw_grenade_execute");
 		end
 	end,
 		
@@ -261,18 +261,18 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 			AI.CreateGoalPipe(g_StringTemp1);
 			AI.PushGoal(g_StringTemp1, "timeout",1,data.fValue);
 			AI.PushGoal(g_StringTemp1, "signal", 0, 10, "ORD_DONE", SIGNALFILTER_LEADER);
-			entity:InsertSubpipe(0,g_StringTemp1);
+			AI.InsertSubpipe(entity.id, 0,g_StringTemp1);
 		else
-			entity:InsertSubpipe(0, "order_timeout");
+			AI.InsertSubpipe(entity.id, 0, "order_timeout");
 		end
 	end,
 	
 	---------------------------------------------
 	ORDER_ACQUIRE_TARGET = function(self , entity, sender, data)
 		if(data.id ~= NULL_ENTITY) then
-			entity:InsertSubpipe(0,"acquire_target",data.id);
+			AI.InsertSubpipe(entity.id, 0,"acquire_target",data.id);
 		else
-			entity:InsertSubpipe(0,"acquire_target",data.ObjectName);
+			AI.InsertSubpipe(entity.id, 0,"acquire_target",data.ObjectName);
 		end
 		AI.Signal(SIGNALFILTER_LEADER,10,"ORD_DONE",entity.id);
 	end,
@@ -305,7 +305,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 
 	---------------------------------------------
 	ACT_DUMMY = function( self, entity, sender, data )
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
 	end,
 	
 	---------------------------------------------
@@ -342,7 +342,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
     AI.PushGoal(g_StringTemp1, "followpath", 1, pathfind, reverse, startNearest, loops, speed);
 		AI.PushGoal(g_StringTemp1, "signal", 1, 1, "END_ACT_FOLLOWPATH",0);
     
-    entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, g_StringTemp1, nil, data.iValue );
+    AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, g_StringTemp1, nil, data.iValue );
 	end,
 
 	---------------------------------------------
@@ -366,7 +366,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 				AI.PushGoal(g_StringTemp1, "signal", 1, 1, "END_ACT_GOTO", 0);
 
 				entity.gotoSubpipeID = data.iValue; -- Store the goal pipe ID here so we can cancel it correctly later /Jonas
-				entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, g_StringTemp1, nil, data.iValue );
+				AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, g_StringTemp1, nil, data.iValue );
 			end
 		end
 	end,
@@ -374,7 +374,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 	---------------------------------------------
 	CANCEL_CURRENT = function( self, entity )
 		if (entity.gotoSubpipeID) then
-			entity:CancelSubpipe(entity.gotoSubpipeID);
+			AI.CancelSubpipe(entity.id, entity.gotoSubpipeID);
 		end
 	end,
 
@@ -382,9 +382,9 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 	ACT_LOOKATPOINT = function( self, entity, sender, data )
 		if ( data and data.point and (data.point.x~=0 or data.point.y~=0 or data.point.z~=0) ) then
 			AI.SetRefPointPosition( entity.id, data.point );
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_lookatpoint", nil, data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_lookatpoint", nil, data.iValue );
 		else
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_resetlookat", nil, data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_resetlookat", nil, data.iValue );
 		end
 	end,
 
@@ -411,7 +411,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		AI.PushGoal("action_shoot_at", "firecmd",0,0);
 		
 		AI.SetRefPointPosition( entity.id, data.point );
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_shoot_at", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_shoot_at", nil, data.iValue );
 
 		-- draw weapon
 		-- vehicles have no holster
@@ -444,7 +444,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		AI.PushGoal("action_aim_at", "firecmd",0,0);
 		
 		AI.SetRefPointPosition( entity.id, data.point );
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_aim_at", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_aim_at", nil, data.iValue );
 
 		-- draw weapon
 		-- vehicles have no holster
@@ -459,7 +459,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		AI.CreateGoalPipe( "act_animation" );
 		AI.PushGoal( "act_animation", "timeout", 1, 0.1 );
 		AI.PushGoal( "act_animation", "branch", 1, -1, BRANCH_ALWAYS );
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "act_animation", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "act_animation", nil, data.iValue );
 		
 	end,
 	
@@ -468,7 +468,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		AI.CreateGoalPipe( "act_animation" );
 		AI.PushGoal( "act_animation", "timeout", 1, 0.1 );
 		AI.PushGoal( "act_animation", "branch", 1, -1, BRANCH_ALWAYS );
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "act_animation", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "act_animation", nil, data.iValue );
 	end,	
 	
 	---------------------------------------------
@@ -477,8 +477,8 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 			-- this should never happen - lets warn
 			AI.Warning("ACT_FOLLOW "..entity:GetName()..": nil data!");
 	    -- insert and cancel the goal pipe to notify the node
-	    entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, sender.iValue );
-	    entity:CancelSubpipe( sender.iValue );
+	    AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, sender.iValue );
+	    AI.CancelSubpipe(entity.id, sender.iValue );
 	    return;
 		end
 		self:ACT_JOINFORMATION(entity,sender,data);
@@ -495,21 +495,21 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 			-- this should never happen - lets warn
 			AI.Warning("ACT_JOINFORMATION "..entity:GetName()..": nil data!");
 	    -- insert and cancel the goal pipe to notify the node
-	    entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, sender.iValue );
-	    entity:CancelSubpipe( sender.iValue );
+	    AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, sender.iValue );
+	    AI.CancelSubpipe(entity.id, sender.iValue );
 	    return;
 		end
 
 		if ( sender==nil) then
 			-- insert and cancel the goal pipe to notify the node
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
-			entity:CancelSubpipe( data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+			AI.CancelSubpipe(entity.id, data.iValue );
 			return;
 		elseif(sender==entity) then 
 			if ( entity.AI.followGoalPipeId and entity.AI.followGoalPipeId ~=0 ) then
-				entity:CancelSubpipe( entity.AI.followGoalPipeId );
+				AI.CancelSubpipe(entity.id, entity.AI.followGoalPipeId );
 			end
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
 			entity.AI.followGoalPipeId = data.iValue;
 			return;
 		end
@@ -518,7 +518,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		
 		local stance = AI.GetStance(sender.id);
 		
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "stay_in_formation_moving", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "stay_in_formation_moving", nil, data.iValue );
 
 		if(stance==BODYPOS_CROUCH or  stance==BODYPOS_PRONE) then
 			AI.SetStance(entity.id,stance);
@@ -538,21 +538,21 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 			-- this should never happen - lets warn
 			AI.Warning("ACT_JOINFORMATION "..entity:GetName()..": nil data!");
 	    -- insert and cancel the goal pipe to notify the node
-	    entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, sender.iValue );
-	    entity:CancelSubpipe( sender.iValue );
+	    AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, sender.iValue );
+	    AI.CancelSubpipe(entity.id, sender.iValue );
 	    return;
 		end
 
 		if ( sender==nil) then
 			-- insert and cancel the goal pipe to notify the node
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
-			entity:CancelSubpipe( data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+			AI.CancelSubpipe(entity.id, data.iValue );
 			return;
 		elseif(sender==entity) then 
 			if ( entity.AI.followGoalPipeId and entity.AI.followGoalPipeId ~=0 ) then
-				entity:CancelSubpipe( entity.AI.followGoalPipeId );
+				AI.CancelSubpipe(entity.id, entity.AI.followGoalPipeId );
 			end
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
 			entity.AI.followGoalPipeId = data.iValue;
 			return;
 		end
@@ -561,7 +561,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		
 		local stance = AI.GetStance(sender.id);
 		
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "MoveWhileInFormation", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "MoveWhileInFormation", nil, data.iValue );
 
 		if(stance==BODYPOS_CROUCH or  stance==BODYPOS_PRONE) then
 			AI.SetStance(entity.id,stance);
@@ -582,15 +582,15 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 			-- this should never happen - lets warn
 			AI.Warning("ACT_GRAB_OBJECT "..entity:GetName()..": nil data!");
 	    -- insert and cancel the goal pipe to notify the node
-	    entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, sender.iValue );
-	    entity:CancelSubpipe( sender.iValue );
+	    AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, sender.iValue );
+	    AI.CancelSubpipe(entity.id, sender.iValue );
 	    return;
 		end
 	
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
 			AI.Signal(SIGNALFILTER_SENDER,0,"GO_TO_GRABBED",sender.id);
 			if ( entity:GrabObject( sender ) ~= 1 ) then
-				entity:CancelSubpipe( data.iValue );
+				AI.CancelSubpipe(entity.id, data.iValue );
 			end;
 	end,
 	
@@ -606,18 +606,18 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 -- 				grab:AddImpulse( -1, nil, data.point, LengthVector( data.point ), 1 );
 -- 			end
  		end
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
 		--AI.Signal( SIGNALFILTER_SENDER, 10, "ACTION_DONE", entity.id );
 	end,
 	
 	---------------------------------------------
 	ACT_WEAPONDRAW = function( self, entity, sender, data )
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_weapondraw", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_weapondraw", nil, data.iValue );
 	end,
 	
 	---------------------------------------------
 	ACT_WEAPONHOLSTER = function( self, entity, sender, data )
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_weaponholster", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_weaponholster", nil, data.iValue );
 	end,
 
 	---------------------------------------------
@@ -627,8 +627,8 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 			-- this should never happen - lets warn
 			AI.Warning("ACT_USEOBJECT "..entity:GetName()..": nil data!");
 	    -- insert and cancel the goal pipe to notify the node
-	    entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, sender.iValue );
-	    entity:CancelSubpipe( sender.iValue );
+	    AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, sender.iValue );
+	    AI.CancelSubpipe(entity.id, sender.iValue );
 	    return;
 		end
 	
@@ -638,7 +638,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		end
 
 		if (not sender.OnAIUsed) then
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
 		else
 			sender:OnAIUsed(entity, data.iValue);			
 		end
@@ -647,7 +647,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 	---------------------------------------------
 	ACT_WEAPONSELECT = function( self, entity, sender, data )
 		ItemSystem.SetActorItemByName( entity.id, data.ObjectName,false );
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
 	end,
 	
 	---------------------------------------------
@@ -660,10 +660,10 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		-- signal sent from action_enter goal pipe
 		if ( entity.AI.theVehicle ) then
 			if ( entity.AI.theVehicle:EnterVehicle( entity.id, entity.AI.mySeat, true ) ~= true ) then
-				entity:CancelSubpipe();
+				AI.CancelSubpipe(entity.id);
 			end
 		else
-			entity:CancelSubpipe();
+			AI.CancelSubpipe(entity.id);
 		end
 	end,
 
@@ -672,10 +672,10 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		-- signal sent from action_enter goal pipe
 		if ( entity.AI.theVehicle ) then
 			if ( entity.AI.theVehicle:EnterVehicle( entity.id, entity.AI.mySeat, false ) ~= true ) then
-				entity:CancelSubpipe();
+				AI.CancelSubpipe(entity.id);
 			end
 		else
-			entity:CancelSubpipe();
+			AI.CancelSubpipe(entity.id);
 		end
 	end,
 
@@ -683,8 +683,8 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 	ACT_ENTERVEHICLE = function( self, entity, sender, data )
 		if ( entity.AI.theVehicle) then
 			-- fail if already inside a vehicle
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
-			entity:CancelSubpipe( data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+			AI.CancelSubpipe(entity.id, data.iValue );
 			return;
 		end
 		
@@ -693,16 +693,16 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 	 	if ( vehicle == nil) then
 	 		-- no vehicle found 
 			AI.LogEvent( entity:GetName().." couldn't find a vehicle to enter" );
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
-			entity:CancelSubpipe( data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+			AI.CancelSubpipe(entity.id, data.iValue );
 	 		return;
 	 	end
 	 	
 	 	if (not vehicle.AIDriver) then
 	 		-- vehicle not suitable for AI 
 			AI.LogEvent( vehicle:GetName().." has no AI and can't be entered by "..entity:GetName() );
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
-			entity:CancelSubpipe( data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+			AI.CancelSubpipe(entity.id, data.iValue );
 	 		return;
 	 	end
 
@@ -719,8 +719,8 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		
 		if ( entity.AI.mySeat==nil ) then
 			AI.LogEvent(entity:GetName().." aborting enter vehicle "..vehicle:GetName());
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
-			entity:CancelSubpipe( data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+			AI.CancelSubpipe(entity.id, data.iValue );
 			return
 		end
 		
@@ -747,9 +747,9 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 
 		-- check is fast entering needed
 		if ( data.iValue2 == 1 ) then
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_enter_fast", nil, data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_enter_fast", nil, data.iValue );
 		else
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_enter", nil, data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_enter", nil, data.iValue );
 		end
 
 		--entity.AI.theVehicle.AI.goalType	= data.iValue;
@@ -761,8 +761,8 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 	ACT_EXITVEHICLE = function( self, entity, sender, data )
 		if ( entity.AI.theVehicle == nil ) then
 			-- fail if not inside a vehicle
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
-			entity:CancelSubpipe( data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+			AI.CancelSubpipe(entity.id, data.iValue );
 			return;
 		end
 
@@ -781,7 +781,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		entity.AI.theVehicle:LeaveVehicle( entity.id );
 		entity.AI.theVehicle = nil;
 
-		entity:InsertSubpipe( AIGOALPIPE_HIGHPRIORITY, "action_exit", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_HIGHPRIORITY, "action_exit", nil, data.iValue );
 	end,
 
 	---------------------------------------------
@@ -797,10 +797,10 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 			AI.PushGoal( "action_animEx", "+branch", 0, "FAILED", IF_LASTOP_FAILED );
 			AI.PushGoal( "action_animEx", "branch", 0, "END", BRANCH_ALWAYS );
 			AI.PushLabel( "action_animEx", "FAILED" );
-			AI.PushGoal( "action_animEx", "script", 1,"System.Log(\"ACT_ANIMEX: Failed on the approach for entity " .. entity:GetName() .. "\");entity:CancelSubpipe(" .. data.iValue .. ");");
+			AI.PushGoal( "action_animEx", "script", 1,"System.Log(\"ACT_ANIMEX: Failed on the approach for entity " .. entity:GetName() .. "\");AI.CancelSubpipe(entity.id, " .. data.iValue .. ");");
 			AI.PushLabel( "action_animEx", "END" );
 
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_animEx", nil, data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_animEx", nil, data.iValue );
 		end
 	end,
 
@@ -815,8 +815,8 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 
 	---------------------------------------------
 	DO_NOTHING = function(self,entity,sender)
-			entity:SelectPipe(0,"standingthere");
-			entity:SelectPipe(0,"do_nothing");			
+			AI.SelectPipe(entity.id, 0,"standingthere");
+			AI.SelectPipe(entity.id, 0,"do_nothing");			
 	end,
 
 	---------------------------------------------
@@ -853,9 +853,9 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 	NEW_SPAWN = function(self,entity,sender)
 	
 			if(entity.AI.reinfPoint) then
-				entity:SelectPipe(0,"goto_point",entity.AI.reinfPoint);
+				AI.SelectPipe(entity.id, 0,"goto_point",entity.AI.reinfPoint);
 			else
-				entity:SelectPipe(0,"goto_point",g_SignalData.ObjectName);
+				AI.SelectPipe(entity.id, 0,"goto_point",g_SignalData.ObjectName);
 			end
 	end,
 
@@ -881,7 +881,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 		AI.PushGoal("STUMBLE_RECOVER","backoff",1,offset,0,AILASTOPRES_USE + AI_MOVE_FORWARD);
 		AI.PushGoal("STUMBLE_RECOVER","signal",0,1,"OnFinishedStumbling",SIGNALFILTER_SENDER);
 		
-		entity:InsertSubpipe(AIGOALPIPE_HIGHPRIORITY + AIGOALPIPE_KEEP_ON_TOP, "STUMBLE_RECOVER", nil, data.iValue);
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_HIGHPRIORITY + AIGOALPIPE_KEEP_ON_TOP, "STUMBLE_RECOVER", nil, data.iValue);
 		AI.SetRefPointPosition(entity.id, vRecoverPos);
 	
 	end,
@@ -932,7 +932,7 @@ local Behavior = CreateAIBehavior("DEFAULT", {
 			end
 			
 			if (blackboard.stumbleGoalPipeId) then
-				entity:CancelSubpipe(blackboard.stumbleGoalPipeId);
+				AI.CancelSubpipe(entity.id, blackboard.stumbleGoalPipeId);
 			end
 			
 			blackboard.stumble_lastRefPoint = nil;

@@ -1152,13 +1152,13 @@ end
 function Human_x:MountedWeaponTargetChange()
 	local targetType = AI.GetTargetType(self.id);
 	if (targetType == AITARGET_ENEMY) then
-		self:SelectPipe(0, "FireMountedWeapon");
+		AI.SelectPipe(self.id, 0, "FireMountedWeapon");
 	else
-		self:SelectPipe(0, "LookAroundInMountedWeapon");
+		AI.SelectPipe(self.id, 0, "LookAroundInMountedWeapon");
 
 		-- Vehicles should fire their secondary weapon if possible
 		if (self.AI.theVehicle) then
-			self:InsertSubpipe(AIGOALPIPE_NOTDUPLICATE, "FireSecondaryMountedWeapon");
+			AI.InsertSubpipe(self.id, AIGOALPIPE_NOTDUPLICATE, "FireSecondaryMountedWeapon");
 		end
 	end
 end

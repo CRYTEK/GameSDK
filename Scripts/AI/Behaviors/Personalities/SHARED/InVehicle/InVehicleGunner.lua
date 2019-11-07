@@ -76,7 +76,7 @@ AI.LogEvent( "puppet -------------------------------- exited_vehicle " );
 --		entity:SelectPipe(0,"standingthere");		
 		
 		AI.SetIgnorant(entity.id,0);
-		entity:SelectPipe(0,"b_user_getout", entity:GetName().."_land");
+		AI.SelectPipe(entity.id, 0,"b_user_getout", entity:GetName().."_land");
 		
 --		Previous();
 	end,
@@ -96,15 +96,15 @@ AI.LogEvent( "puppet -------------------------------- exited_vehicle " );
 		local targetType = AI.GetTargetType(entity.id);
 		local targetfound = false;
 		if(targetType ==AITARGET_ENEMY or targetType ==AITARGET_SOUND or targetType ==AITARGET_MEMORY) then
-			entity:SelectPipe(0,"vehicle_gunner_cover_fire");
+			AI.SelectPipe(entity.id, 0,"vehicle_gunner_cover_fire");
 		else
 			local groupTarget = AI.GetGroupTarget(entity.id,true);
 			if(groupTarget) then
-				entity:SelectPipe(0,"vehicle_gunner_cover_fire");
+				AI.SelectPipe(entity.id, 0,"vehicle_gunner_cover_fire");
 				if(groupTarget.id) then 
-					entity:InsertSubpipe(0,"acquire_target",groupTarget.id);
+					AI.InsertSubpipe(entity.id, 0,"acquire_target",groupTarget.id);
 				else
-					entity:InsertSubpipe(0,"acquire_target",groupTarget);
+					AI.InsertSubpipe(entity.id, 0,"acquire_target",groupTarget);
 				end
 			else				
 				self:EXIT_VEHICLE_DONE(entity,sender);

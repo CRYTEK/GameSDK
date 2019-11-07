@@ -72,7 +72,7 @@ function BasicAIEvent:Event_Disable(params)
 	--hide does enable/disable physics as well
 	self:Hide(1)
 	--self:EnablePhysics(0);
-	self:TriggerEvent(AIEVENT_DISABLE);
+	AI.TriggerEvent(self.id, AIEVENT_DISABLE);
 	--AI.LogEvent(" >>> BasicAI:Event_Disable  "..self:GetName());
 	
 	self._enabled=false;

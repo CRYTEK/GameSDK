@@ -1071,6 +1071,6 @@ MakeKillable(DestroyableLight);
 
 function DestroyableLight:Event_Dead()
 	self:Die();
-	self:TriggerEvent(AIEVENT_DISABLE);
+	AI.TriggerEvent(self.id, AIEVENT_DISABLE);
 	BroadcastEvent(self, "Dead");
 end

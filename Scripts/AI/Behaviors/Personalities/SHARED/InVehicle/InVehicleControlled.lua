@@ -15,7 +15,7 @@ local Behavior = CreateAIBehavior("InVehicleControlled", "InVehicle",
 		AI.PushGoal("Invehicle_controltimer","signal",0,1,"INVEHICLE_REQUEST_START_FIRE",SIGNALFILTER_SENDER);
 		AI.PushGoal("Invehicle_controltimer","timeout",1,random(6,12));
 		AI.PushGoal("Invehicle_controltimer","signal",0,1,"INVEHICLE_REQUEST_STOP_FIRE",SIGNALFILTER_SENDER);
-		entity:InsertSubpipe(0,"Invehicle_controltimer");
+		AI.InsertSubpipe(entity.id, 0,"Invehicle_controltimer");
 	end,
 
 	INVEHICLE_REQUEST_START_FIRE = function( self, entity )

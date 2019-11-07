@@ -833,7 +833,7 @@ function BasicActor:Kill(hit)
 		end
 	end
 	-- Notify AI system about this
-	self:TriggerEvent(AIEVENT_AGENTDIED, shooterId or NULL_ENTITY)
+	AI.TriggerEvent(self.id, AIEVENT_AGENTDIED, shooterId or NULL_ENTITY)
 	if (BasicAI) then
 		Script.SetTimerForFunction( 1000 , "BasicAI.OnDeath", self );
 	end;

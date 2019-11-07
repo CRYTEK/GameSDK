@@ -13,7 +13,7 @@ local Behavior = CreateAIBehavior("Job_StandIdle",
 		end
 		
 		entity:InitAIRelaxed();
-		entity:SelectPipe(0, "DoNothing");
+		AI.SelectPipe(entity.id, 0, "DoNothing");
 	end,
 
 	Destructor = function(self, entity)

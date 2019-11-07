@@ -133,7 +133,7 @@ AIBase =
 --------------------------------------------------
 
 function AIBase:StartOrRestartPipe(goalPipeName)
-	self:SelectPipe(0, goalPipeName, 0, 0, 1)
+	AI.SelectPipe(self.id, 0, goalPipeName, 0, 0, 1)
 end
 
 function AIBase:IsUsingSecondaryWeapon()
@@ -488,7 +488,7 @@ end
 
 function AIBase:DropBeacon()
 
-	self:TriggerEvent(AIEVENT_DROPBEACON);
+	AI.TriggerEvent(self.id, AIEVENT_DROPBEACON);
 
 end
 
@@ -582,8 +582,8 @@ end
 function AIBase:PerformBulletReaction()
 
 	if (not AI.IsTakingCover(self.id, 7.5)) then
-		if (not self:IsUsingPipe("BulletReaction")) then -- avoid performing it twice
-			self:InsertSubpipe(0, "BulletReaction");
+		if (not AI.IsUsingPipe(self.id, "BulletReaction")) then -- avoid performing it twice
+			AI.InsertSubpipe(self.id, 0, "BulletReaction");
 		end
 	end
 

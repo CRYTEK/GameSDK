@@ -5,8 +5,8 @@ local Behavior = CreateAIBehavior("InVehicle", "Dumb",
 	end,
 	
 	Destructor = function( self, entity )	
-		entity:SelectPipe(0,"do_nothing");
-		entity:InsertSubpipe(AIGOALPIPE_NOTDUPLICATE,"clear_all");
+		AI.SelectPipe(entity.id, 0,"do_nothing");
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_NOTDUPLICATE,"clear_all");
 	end,
 	
  	OnQueryUseObject = function ( self, entity, sender, extraData )
@@ -24,7 +24,7 @@ local Behavior = CreateAIBehavior("InVehicle", "Dumb",
 		else
 			AI.Warning("Wrong signal type in START_VEHICLE - aborting starting vehicle");
 		end
-		entity:SelectPipe(0,"do_nothing");
+		AI.SelectPipe(entity.id, 0,"do_nothing");
 	end,
 	
 	--------------------------------------------------
@@ -76,7 +76,7 @@ AI.LogEvent( "puppet -------------------------------- exited_vehicle " );
 --		entity:SelectPipe(0,"standingthere");		
 		
 		AI.SetIgnorant(entity.id,0);
-		entity:SelectPipe(0,"b_user_getout", entity:GetName().."_land");
+		AI.SelectPipe(entity.id, 0,"b_user_getout", entity:GetName().."_land");
 		
 --		Previous();
 	end,
@@ -92,7 +92,7 @@ AI.LogEvent( "puppet -------------------------------- exited_vehicle " );
 		AI.CreateGoalPipe("exitvehiclestandpre");
 		AI.PushGoal("exitvehiclestandpre","timeout",1,data.fValue+0.1);
 		AI.PushGoal("exitvehiclestandpre","signal",1,1,"EXIT_VEHICLE_STAND",SIGNALFILTER_SENDER);
-		entity:SelectPipe(0,"exitvehiclestandpre");
+		AI.SelectPipe(entity.id, 0,"exitvehiclestandpre");
 
 	end,
 

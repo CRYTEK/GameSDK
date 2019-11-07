@@ -120,7 +120,7 @@ function VehicleBaseAI:AIDriver( enable )
 	if( enable == 0 ) then
 	AI.LogEvent(" >>>> VehicleBaseAI:AIDriver disabling "..self:GetName());	
 		self:ChangeFaction();
-		self:TriggerEvent(AIEVENT_DRIVER_OUT);
+		AI.TriggerEvent(self.id, AIEVENT_DRIVER_OUT);
 		self.State.aiDriver = nil;
 		self:EnableMountedWeapons(true);
 	else
@@ -129,7 +129,7 @@ function VehicleBaseAI:AIDriver( enable )
 			return
 		end;
 	AI.LogEvent(" >>>> VehicleBaseAI:AIDriver enabling "..self:GetName());			
-		self:TriggerEvent(AIEVENT_DRIVER_IN);
+		AI.TriggerEvent(self.id, AIEVENT_DRIVER_IN);
 		if(self.Behavior and self.Behavior.Constructor) then 
 			self.Behavior:Constructor(self);
 		end
@@ -147,7 +147,7 @@ function VehicleBaseAI:InitAI()
 	self.AI = {
 	}
 	--create AI object of the vehicle
-	CryAction.RegisterWithAI(self.id, self.AIType, self.Properties, self.PropertiesInstance, self.AIMovementAbility);
+	AI.RegisterWithAI(self.id, self.AIType, self.Properties, self.PropertiesInstance, self.AIMovementAbility);
 
 	AI.ChangeParameter(self.id,AIPARAM_FORGETTIME_TARGET,self.forgetTimeTarget);
 	AI.ChangeParameter(self.id,AIPARAM_FORGETTIME_SEEK,self.forgetTimeSeek);
@@ -290,7 +290,7 @@ function VehicleBaseAI:OnVehicleDestroyedAI()
 		end
 	end
 
-	self:TriggerEvent(AIEVENT_AGENTDIED);
+	AI.TriggerEvent(self.id, AIEVENT_AGENTDIED);
 	
 	if (self.AI.MaybeNextLevel) then
 		--Log(" - VehicleDamages:OnVehicleDestroyed() will call MaybeNextLevel");

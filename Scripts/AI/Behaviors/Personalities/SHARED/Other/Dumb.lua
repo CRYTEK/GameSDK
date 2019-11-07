@@ -6,7 +6,7 @@ local Behavior = CreateAIBehavior("Dumb",
 
 			AI.Signal(SIGNALFILTER_LEADER,0,"OnDisableFire",entity.id);
 			AI.Signal(SIGNALFILTER_SENDER, 0,"just_constructed",entity.id);	
-			entity:SelectPipe(0,"do_nothing");
+			AI.SelectPipe(entity.id, 0,"do_nothing");
 			entity.bBombPlanted = nil;
 			local orientationTarget = System.GetEntityByName(entity:GetName().."_dir");
 			if(orientationTarget) then

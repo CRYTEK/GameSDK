@@ -116,16 +116,16 @@ function BasicAI:RegisterAI(bForce)
 	-- (KEVIN) Don't re-register if already has an AI and not forced
 	-- This is so an entity container reused doesn't create a new AI object
 	if (not bForce or bForce == false) then
-		if (CryAction.HasAI(self.id)) then
+		if (AI.HasAI(self.id)) then
 			return;
 		end
 	end
 
 	if (self ~= g_localActor) then
 		if ( self.AIType == nil ) then
-			CryAction.RegisterWithAI(self.id, AIOBJECT_ACTOR, self.Properties, self.PropertiesInstance, self.AIMovementAbility,self.melee);
+			AI.RegisterWithAI(self.id, AIOBJECT_ACTOR, self.Properties, self.PropertiesInstance, self.AIMovementAbility,self.melee);
 		else
-			CryAction.RegisterWithAI(self.id, self.AIType, self.Properties, self.PropertiesInstance, self.AIMovementAbility,self.melee);
+			AI.RegisterWithAI(self.id, self.AIType, self.Properties, self.PropertiesInstance, self.AIMovementAbility,self.melee);
 		end
 		AI.ChangeParameter(self.id,AIPARAM_COMBATCLASS,AICombatClasses.Infantry);
 		AI.ChangeParameter(self.id,AIPARAM_FORGETTIME_TARGET,self.forgetTimeTarget);
@@ -137,7 +137,7 @@ function BasicAI:RegisterAI(bForce)
 		-- If the entity is hidden during
 		if (self:IsHidden()) then
 			AI.LogEvent(self:GetName()..": The entity is hidden during init -> disable AI.");
-			self:TriggerEvent(AIEVENT_DISABLE);
+			AI.TriggerEvent(self.id, AIEVENT_DISABLE);
 			self._enabled=false;
 		end
 	end
@@ -151,7 +151,7 @@ function BasicAI:ResetAIParameters(bFromInit, bIsReload)
 
 		if (self:IsHidden()) then
 			AI.LogEvent(self:GetName()..": The entity is hidden during init -> disable AI.")
-			self:TriggerEvent(AIEVENT_DISABLE)
+			AI.TriggerEvent(self.id, AIEVENT_DISABLE)
 			self._enabled = false
 		end
 	end
@@ -365,7 +365,7 @@ end
 function BasicAI.Client:ClAIDisable()
 	if (not CryAction.IsServer()) then
 		self:Hide(1)
-		self:TriggerEvent(AIEVENT_DISABLE);
+		AI.TriggerEvent(self.id, AIEVENT_DISABLE);
 	end
 end
 
@@ -396,7 +396,7 @@ function BasicAI:MakeIdle( holsterWeapon )
 	--self:InsertSubpipe(0,"setup_idle");
 	--self:InsertSubpipe(0,"clear_all"); -- to allow receive again onplayerseen
 
-	self:SelectPipe(0,"do_nothing");
+	AI.SelectPipe(self.id, 0, "do_nothing");
 
 	if (holsterWeapon) then
 		self.actor:HolsterItem(true);

@@ -2,7 +2,7 @@ local Behavior = CreateAIBehavior("HeliFireRockets",
 {
 	Constructor = function (self, entity)
 		entity:SelectPrimaryWeapon()
-		entity:SelectPipe(0, "do_nothing")
+		AI.SelectPipe(entity.id, 0, "do_nothing")
 		
 		local postures = 
 		{

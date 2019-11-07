@@ -124,7 +124,7 @@ function MakeTargetableByAI( entity )
 
 	function entity:RegisterWithAI()
 		if (self.Properties.esFaction ~= "") then
-			CryAction.RegisterWithAI(self.id, AIOBJECT_TARGET);
+			AI.RegisterWithAI(self.id, AIOBJECT_TARGET);
 			AI.ChangeParameter(self.id, AIPARAM_FACTION, self.Properties.esFaction);
 		end
 	end
@@ -341,7 +341,7 @@ function MakeKillable( entity )
 	end
 
 	function entity:Event_Dead()
-		self:TriggerEvent(AIEVENT_DISABLE);
+		AI.TriggerEvent(self.id, AIEVENT_DISABLE);
 
 		BroadcastEvent(self, "Dead");
 	end

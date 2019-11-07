@@ -21,7 +21,7 @@ end
 
 function SoundSupressor:OnReset()
 
-	CryAction.RegisterWithAI(self.id, AIOBJECT_SNDSUPRESSOR, self.Properties);
+	AI.RegisterWithAI(self.id, AIOBJECT_SNDSUPRESSOR, self.Properties);
 
 end;
 
@@ -35,11 +35,11 @@ end;
 ------------------------------------Events----------------------------------------
 ----------------------------------------------------------------------------------
 function SoundSupressor:Event_TurnOn()
-	self:TriggerEvent(AIEVENT_DISABLE);
+	AI.TriggerEvent(self.id, AIEVENT_DISABLE);
 end;
 
 function SoundSupressor:Event_TurnOff()
-	self:TriggerEvent(AIEVENT_ENABLE);
+	AI.TriggerEvent(self.id, AIEVENT_ENABLE);
 end;
 
 

@@ -13,7 +13,7 @@ local Behavior = CreateAIBehavior("HeliRelocate", "HeliIdle",
 
 		AI.GetAttentionTargetPosition(entity.id, targetPos)
 		AI.SetRefPointPosition(entity.id, targetPos)
-		entity:SelectPipe(0, "HeliFlyBy")
+		AI.SelectPipe(entity.id, 0, "HeliFlyBy")
 	end,
 	
 	GoodLocationReached = function(self, entity, sender, data)
@@ -25,7 +25,7 @@ local Behavior = CreateAIBehavior("HeliRelocate", "HeliIdle",
 	end,
 
 	OnDestinationReached = function(self, entity)
-		entity:SelectPipe(0, "HeliHovering")
+		AI.SelectPipe(entity.id, 0, "HeliHovering")
 		--self:AnalyzeSituation(entity)
 	end,
 

@@ -14,8 +14,8 @@ local Behavior = CreateAIBehavior("VehicleAct",
 	
 		-- fail if there's no ai driver inside
 		if (entity.State.aiDriver ~= 1) then
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
-			entity:CancelSubpipe( data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_dummy", nil, data.iValue );
+			AI.CancelSubpipe(entity.id, data.iValue );
 			
 			-- disable vehicle's AI once again since it was enabled by the FG node to process this signal only
 			entity:AIDriver(0);
@@ -40,7 +40,7 @@ local Behavior = CreateAIBehavior("VehicleAct",
 			
 
 			entity.gotoSubpipeID = data.iValue; -- Store the goal pipe ID here so we can cancel it correctly later /Jonas			
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, g_StringTemp1, nil, data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, g_StringTemp1, nil, data.iValue );
 		end
 		
 	end,
@@ -75,7 +75,7 @@ local Behavior = CreateAIBehavior("VehicleAct",
     AI.PushGoal(g_StringTemp1, "followpath", 1, pathfind, reverse, startNearest, loops, 0.1, false, controlSpeed, speed);
 		AI.PushGoal(g_StringTemp1, "signal", 1, 1, "END_ACT_FOLLOWPATH",0);
     
-    entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, g_StringTemp1, nil, data.iValue );
+    AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, g_StringTemp1, nil, data.iValue );
 	end,
 
 	---------------------------------------------
@@ -89,7 +89,7 @@ local Behavior = CreateAIBehavior("VehicleAct",
 		AI.CreateGoalPipe("vehicle_stickpath");
 		AI.PushGoal("vehicle_stickpath", "stickpath", 1, finishInRange, data.point.y, data.point.x, canReverse);
 
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "vehicle_stickpath", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "vehicle_stickpath", nil, data.iValue );
 
 	end,
 
@@ -130,8 +130,8 @@ local Behavior = CreateAIBehavior("VehicleAct",
 	ACT_UNLOAD = function( self,entity,sender,data )
 		local numSeats = count( entity.Seats );
 		entity.AI.unloadCount = 1; -- counter increased by one to wait for DO_UNLOAD signal to be processed
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "check_driver" );
-		entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_unload", nil, data.iValue );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "check_driver" );
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_unload", nil, data.iValue );
 		if ( data.fValue == 0 ) then
 			-- exit all
 			while ( numSeats > 0 ) do
@@ -154,7 +154,7 @@ local Behavior = CreateAIBehavior("VehicleAct",
 		else
 			-- exit one specified passenger
 			if ( not self:UnloadSeat(entity, data.fValue) ) then
-				entity:CancelSubpipe( data.iValue );
+				AI.CancelSubpipe(entity.id, data.iValue );
 				return;
 			end
 		end
@@ -195,7 +195,7 @@ local Behavior = CreateAIBehavior("VehicleAct",
 			AI.PushGoal("action_shoot_at", "+timeout",1,3.0);
 			AI.PushGoal("action_shoot_at", "firecmd",0,0);
 			AI.SetRefPointPosition( entity.id, data.point );
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_shoot_at", nil, data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_shoot_at", nil, data.iValue );
 		else
 			-- for tank/AAA/warrior/
 			AI.CreateGoalPipe("action_shoot_at");
@@ -204,7 +204,7 @@ local Behavior = CreateAIBehavior("VehicleAct",
 			AI.PushGoal("action_shoot_at", "+timeout",1,data.fValue);
 			AI.PushGoal("action_shoot_at", "firecmd",0,0);
 			AI.SetRefPointPosition( entity.id, data.point );
-			entity:InsertSubpipe( AIGOALPIPE_SAMEPRIORITY, "action_shoot_at", nil, data.iValue );
+			AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "action_shoot_at", nil, data.iValue );
 
 		end
 

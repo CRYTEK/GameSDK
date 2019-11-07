@@ -8,7 +8,7 @@ local Behavior = CreateAIBehavior("HeliIdle",
 	end,
 	
 	AnalyzeSituation = function(self, entity, sender, data)
-		entity:SelectPipe(0, "HeliIdle")
+		AI.SelectPipe(entity.id, 0, "HeliIdle")
 	end,
 
 	OnEnemySeen = function(self, entity, distance)
@@ -36,18 +36,18 @@ local Behavior = CreateAIBehavior("HeliIdle",
 		local target = System.GetEntity(data.id)
 		if (target) then
 			local data1 = { {name = "concurrent", value="HeliShootTest", id=data.iValue}, { name = "target", value=data.id,}, {name="useSecondary",  value=data.iValue2,}, { name="fireDuration", value=data.fValue,}, };
-			entity:PassParamsToPipe(data1);
+			AI.PassParamsToPipe(entity.id, data1);
 		else
 			AI.SetRefPointPosition(entity.id, data.point)
 			local data1 = { {name = "concurrent", value="HeliShootTest", id=data.iValue}, {name="useSecondary", value=data.iValue2,}, { name="fireDuration", value=data.fValue,}, };
-			entity:PassParamsToPipe(data1);
+			AI.PassParamsToPipe(entity.id, data1);
 		end
 
 	end,
 
 	OnShootAtDone = function( self, entity, sender, data )
 
-		entity:PassParamsToPipe(data1);
+		AI.PassParamsToPipe(entity.id, data1);
 	end,
 
 	ACT_AIMAT = function( self, entity, sender, data )
@@ -55,11 +55,11 @@ local Behavior = CreateAIBehavior("HeliIdle",
 		local target = System.GetEntity(data.id)
 		if (target) then
 			local data1 = {{name = "concurrent", value="HeliShootTest", id=data.iValue}, { name = "target", value=data.id,}, {name="onlyLookAt", value=true,}, {name="useSecondary", value=data.iValue2,}, { name="fireDuration", value=data.fValue,}, };
-			entity:PassParamsToPipe(data1);
+			AI.PassParamsToPipe(entity.id, data1);
 		else
 			AI.SetRefPointPosition(entity.id, data.point);
 			local data1 = {{name = "concurrent", value="HeliShootTest", id=data.iValue}, {name="onlyLookAt", value=true,}, {name="useSecondary", value=data.iValue2,}, { name="fireDuration", value=data.fValue,}, };
-			entity:PassParamsToPipe(data1);
+			AI.PassParamsToPipe(entity.id, data1);
 		end
 
 	end,
@@ -88,7 +88,7 @@ local Behavior = CreateAIBehavior("HeliIdle",
 		tbl[3].name = "distanceMax"
 		tbl[3].value = data.point.y
 
-		entity:SelectPipe(0, "HeliChaseTarget", 0, 0, 1, tbl)
+		AI.SelectPipe(entity.id, 0, "HeliChaseTarget", 0, 0, 1, tbl)
 	end,
 
 	---------------------------------------------
@@ -106,7 +106,7 @@ local Behavior = CreateAIBehavior("HeliIdle",
 
 
 		local data1 = {{ name = "desiredSpeed", value=data.fValue,}, {name="continuous", value=data.iValue2,}, { name="targetEntity", value=data.id,}, {name="minDistance", value=data.point.x,}, {name="maxDistance", value=data.point.y,}, }
-		entity:SelectPipe(0, "HeliFollowPath", 0, 0, 1, data1)
+		AI.SelectPipe(entity.id, 0, "HeliFollowPath", 0, 0, 1, data1)
 
 	end,
 

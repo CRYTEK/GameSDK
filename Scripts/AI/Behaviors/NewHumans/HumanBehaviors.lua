@@ -40,7 +40,7 @@ CreateAIBehavior("HumanDefendAreaInCover", "HumanBaseBehavior",
 	LeaveCoverOnStart = false,
 
 	Constructor = function(behavior, entity)
-		entity:SelectPipe(0, "HumanFireInCover")
+		AI.SelectPipe(entity.id, 0, "HumanFireInCover")
 	end,
 
 	OnCoverCompromised = function (behavior, entity, sender, data)
@@ -82,7 +82,7 @@ CreateAIBehavior("HumanMoveToDefendArea", "HumanBaseBehavior",
 
 	OnNoPathFound = function(behavior, entity, sender, data)
 		entity:OnError("Could not find a path to the defend area")
-		entity:SelectPipe(0, "HumanStandAndShoot");
+		AI.SelectPipe(entity.id, 0, "HumanStandAndShoot");
 		entity.fallbackTimer = Script.SetTimer(random(2500, 5000), function() behavior:AnalyzeSituation(entity); end)
 	end,
 
@@ -106,9 +106,9 @@ CreateAIBehavior("HumanHoldPosition", "HumanBaseBehavior",
 		if (HoldPositionAssignment:IsAtHoldPosition(entity)) then
 			if(AI.GetAttentionTargetAIType(entity.id) ~= AIOBJECT_NONE and not entity.AI.holdPosition.skipCover) then
 				AI.SetRefPointPosition(entity.id, entity.AI.holdPosition.position)
-				entity:SelectPipe(0, "HumanHoldPositionStandAndCheckForCloseCover")
+				AI.SelectPipe(entity.id, 0, "HumanHoldPositionStandAndCheckForCloseCover")
 			else
-				entity:SelectPipe(0, "Empty")
+				AI.SelectPipe(entity.id, 0, "Empty")
 			end
 		else
 			AI.SetBehaviorVariable(entity.id, "AtHoldPosition", false)
@@ -137,7 +137,7 @@ CreateAIBehavior("HumanHoldPositionInCover", "HumanBaseBehavior",
 	LeaveCoverOnStart = false,
 
 	Constructor = function(behavior, entity)
-		entity:SelectPipe(0, "HumanFireInCover")
+		AI.SelectPipe(entity.id, 0, "HumanFireInCover")
 	end,
 
 	OnCoverCompromised = function (behavior, entity, sender, data)
@@ -180,7 +180,7 @@ CreateAIBehavior("HumanMoveToHoldPosition", "HumanBaseBehavior",
 
 	OnNoPathFound = function(behavior, entity, sender, data)
 		entity:OnError("Could not find a path to the hold position")
-		entity:SelectPipe(0, "HumanStandAndShoot");
+		AI.SelectPipe(entity.id, 0, "HumanStandAndShoot");
 		entity.fallbackTimer = Script.SetTimer(random(2500, 5000), function() behavior:AnalyzeSituation(entity); end)
 	end,
 
@@ -254,7 +254,7 @@ CreateAIBehavior("HumanCombatMove", "HumanBaseBehavior",
 
 	OnNoPathFound = function(behavior, entity, sender, data)
 		entity:OnError("Could not find a path to the hold position")
-		entity:SelectPipe(0, "StandAndShoot");
+		AI.SelectPipe(entity.id, 0, "StandAndShoot");
 		entity.fallbackTimer = SetTimerForBehaviorFunction(random(2500, 5000), behavior.Move, behavior, entity)
 	end,
 
@@ -272,7 +272,7 @@ CreateAIBehavior("HumanCombatMoveInCover", "HumanBaseBehavior",
 	LeaveCoverOnStart = false,
 
 	Constructor = function(behavior, entity)
-		entity:SelectPipe(0, "HumanBriefShootFromCover")
+		AI.SelectPipe(entity.id, 0, "HumanBriefShootFromCover")
 	end,
 
 	OnCoverCompromised = function (behavior, entity, sender, data)

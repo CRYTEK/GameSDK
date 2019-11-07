@@ -1,7 +1,7 @@
 local Behavior = CreateAIBehavior("HumanBaseBehavior", "AIBaseBehavior",
 {
 	Constructor = function (self, entity)
-		entity:SelectPipe(0, "do_nothing");
+		AI.SelectPipe(entity.id, 0, "do_nothing");
 	end,
 
 	Destructor = function(self, entity)
@@ -318,13 +318,13 @@ local Behavior = CreateAIBehavior("HumanBaseBehavior", "AIBaseBehavior",
 
 	ReachedMountedWeapon = function(self, entity, sender, data)
 		entity:Log("Reached mounted weapon");
-		entity:SelectPipe(0, "Empty")
+		AI.SelectPipe(entity.id, 0, "Empty")
 		AI.Signal(SIGNALFILTER_SENDER, 1, "UseMountedWeapon", entity.id);
 	end,
 
 	FailedToReachMountedWeapon = function(self, entity, sender, data)
 		entity:Log("Failed to reached mounted weapon");
-		entity:SelectPipe(0, "Empty")
+		AI.SelectPipe(entity.id, 0, "Empty")
 	end,
 
 	TurnOnMountedWeaponCheck = function(behavior, entity)
@@ -366,9 +366,9 @@ local Behavior = CreateAIBehavior("HumanBaseBehavior", "AIBaseBehavior",
 	DoSideStep = function(behavior, entity, sideStep)
 		entity.lastSideStepTime = _time
 		if (sideStep == SIDESTEP_LEFT) then
-			entity:SelectPipe(0, "SideStepLeft")
+			AI.SelectPipe(entity.id, 0, "SideStepLeft")
 		else
-			entity:SelectPipe(0, "SideStepRight")
+			AI.SelectPipe(entity.id, 0, "SideStepRight")
 		end
 	end,
 	

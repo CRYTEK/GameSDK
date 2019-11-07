@@ -5,7 +5,7 @@ local Behavior = CreateAIBehavior("InVehicleControlledGunner", "InVehicleGunner"
 
 	Constructor = function( self, entity, sender, data )
 		if ( data==nil ) then
-			entity:SelectPipe(0,"vehicle_gunner_shoot");
+			AI.SelectPipe(entity.id, 0,"vehicle_gunner_shoot");
 			return;
 		end
 
@@ -50,8 +50,8 @@ local Behavior = CreateAIBehavior("InVehicleControlledGunner", "InVehicleGunner"
 		AI.ChangeParameter(entity.id, AIPARAM_AIM_TURNSPEED, entity.AI.oldAimTurnSpeed);
 		AI.ChangeParameter(entity.id, AIPARAM_FIRE_TURNSPEED, entity.AI.oldFireTurnSpeed);
 
-		entity:SelectPipe(0,"do_nothing");
-		entity:InsertSubpipe(AIGOALPIPE_NOTDUPLICATE,"clear_all");
+		AI.SelectPipe(entity.id, 0,"do_nothing");
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_NOTDUPLICATE,"clear_all");
 
 	end,
  
@@ -83,11 +83,11 @@ local Behavior = CreateAIBehavior("InVehicleControlledGunner", "InVehicleGunner"
 			if (sender.id==entity.id) then
 				entity.AI.bGunnerActive = true;
 				entity.AI.GunnerAimCount = 0;
-				entity:SelectPipe(0,"do_nothing");
+				AI.SelectPipe(entity.id, 0,"do_nothing");
 				AI.CreateGoalPipe("invehiclegunner_request_shoot");
 				AI.PushGoal("invehiclegunner_request_shoot","devalue",1,0,1);
 				AI.PushGoal("invehiclegunner_request_shoot","signal",0,1,"INVEHICLEGUNNER_SHOOT_NEXT",SIGNALFILTER_SENDER);
-				entity:SelectPipe(0,"invehiclegunner_request_shoot");
+				AI.SelectPipe(entity.id, 0,"invehiclegunner_request_shoot");
 			end
 		end
 		
@@ -122,12 +122,12 @@ local Behavior = CreateAIBehavior("InVehicleControlledGunner", "InVehicleGunner"
 				AI.PushGoal("invehiclegunner_shoot_next","firecmd",0,FIREMODE_OFF);
 				AI.PushGoal("invehiclegunner_shoot_next","timeout",1,0.2,0.5);
 				AI.PushGoal("invehiclegunner_shoot_next","signal",0,1,"INVEHICLEGUNNER_SHOOT_END",SIGNALFILTER_SENDER);
-			entity:SelectPipe(0,"invehiclegunner_shoot_next");
+			AI.SelectPipe(entity.id, 0,"invehiclegunner_shoot_next");
 
 			return;
 		else
 			entity.AI.bGunnerActive = false;
-			entity:SelectPipe(0,"do_nothing");
+			AI.SelectPipe(entity.id, 0,"do_nothing");
 		end
 	
 	end,
@@ -143,10 +143,10 @@ local Behavior = CreateAIBehavior("InVehicleControlledGunner", "InVehicleGunner"
 			--AI.PushGoal("invehiclegunner_shoot_end","devalue",0,1);
 			--AI.PushGoal("invehiclegunner_shoot_end","timeout",1,0.1);
 			AI.PushGoal("invehiclegunner_shoot_end","signal",0,1,"INVEHICLEGUNNER_SHOOT_NEXT",SIGNALFILTER_SENDER);
-			entity:SelectPipe(0,"invehiclegunner_shoot_end");
+			AI.SelectPipe(entity.id, 0,"invehiclegunner_shoot_end");
 		else
 			entity.AI.bGunnerActive = false;
-			entity:SelectPipe(0,"do_nothing");
+			AI.SelectPipe(entity.id, 0,"do_nothing");
 		end
 
 	end,
@@ -216,7 +216,7 @@ local Behavior = CreateAIBehavior("InVehicleControlledGunner", "InVehicleGunner"
 			AI.PushGoal("invehiclegunner_shoot2_start","timeout",1,0.2);
 			AI.PushGoal("invehiclegunner_shoot2_start","signal",0,1,"INVEHICLEGUNNER_SHOOT2_START",SIGNALFILTER_SENDER);
 			AI.PushGoal("invehiclegunner_shoot2_start","branch",0,-2,BRANCH_ALWAYS);
-			entity:SelectPipe(0,"invehiclegunner_shoot2_start");
+			AI.SelectPipe(entity.id, 0,"invehiclegunner_shoot2_start");
 
 		end
 		
@@ -273,7 +273,7 @@ local Behavior = CreateAIBehavior("InVehicleControlledGunner", "InVehicleGunner"
 				if ( AI.GetTypeOf( targetEntity.id ) == AIOBJECT_VEHICLE and AI.GetSubTypeOf( targetEntity.id ) == AIOBJECT_CAR ) then
 					local	vehicle = System.GetEntity( targetEntity.id );
 					if ( vehicle.AIMovementAbility.pathType ~= AIPATH_TANK ) then
-						entity:InsertSubpipe(0,"heliMG_stopfire");
+						AI.InsertSubpipe(entity.id, 0,"heliMG_stopfire");
 						entity.AI.GunnerAimCount = 0;
 						return;
 					end
@@ -292,10 +292,10 @@ local Behavior = CreateAIBehavior("InVehicleControlledGunner", "InVehicleGunner"
 							if ( targetType ~= AITARGET_MEMORY and targetType ~= AITARGET_SOUND ) then
 								if ( entity.AI.ShootingLimit ) then
 									if ( DistanceVectors( entity:GetPos(), targetEntity:GetPos() ) < entity.AI.ShootingLimit ) then
-										entity:InsertSubpipe(0,"heliMG_startfire");
+										AI.InsertSubpipe(entity.id, 0,"heliMG_startfire");
 									end
 								else
-									entity:InsertSubpipe(0,"heliMG_startfire");
+									AI.InsertSubpipe(entity.id, 0,"heliMG_startfire");
 								end
 								--System.Log("Boat attack ");
 							else
@@ -307,10 +307,10 @@ local Behavior = CreateAIBehavior("InVehicleControlledGunner", "InVehicleGunner"
 								if ( targetType ~= AITARGET_SOUND ) then
 									if ( entity.AI.ShootingLimit ) then
 										if ( DistanceVectors( entity:GetPos(), targetEntity:GetPos() ) < entity.AI.ShootingLimit ) then
-											entity:InsertSubpipe(0,"heliMG_startfire");
+											AI.InsertSubpipe(entity.id, 0,"heliMG_startfire");
 										end
 									else
-											entity:InsertSubpipe(0,"heliMG_startfire");
+											AI.InsertSubpipe(entity.id, 0,"heliMG_startfire");
 									end
 								end
 							end
@@ -318,7 +318,7 @@ local Behavior = CreateAIBehavior("InVehicleControlledGunner", "InVehicleGunner"
 					end
 				end
 			elseif ( entity.AI.GunnerAimCount == maxTime ) then
-				entity:InsertSubpipe(0,"heliMG_stopfire");
+				AI.InsertSubpipe(entity.id, 0,"heliMG_stopfire");
 			elseif ( entity.AI.GunnerAimCount > maxTime2 ) then
 				entity.AI.GunnerAimCount = 0;
 				return;
@@ -330,14 +330,14 @@ local Behavior = CreateAIBehavior("InVehicleControlledGunner", "InVehicleGunner"
 		else
 			if ( entity.AI.GunnerAimCount > 0 ) then
 				entity.AI.GunnerAimCount =0;
-				entity:InsertSubpipe(0,"heliMG_stopfire");
+				AI.InsertSubpipe(entity.id, 0,"heliMG_stopfire");
 			end
 		end
 
 	end,
 
 	INVEHICLEGUNNER_REQUEST_STOP_SHOOT = function( self, entity )
-		entity:SelectPipe(0,"do_nothing");
+		AI.SelectPipe(entity.id, 0,"do_nothing");
 		entity:InsertSubpipe(0,"heliMG_stopfire");
 		entity.AI.bGunnerActive=false;
 	end,

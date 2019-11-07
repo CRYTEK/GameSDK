@@ -26,9 +26,9 @@ end
 function AIAnchor:OnReset()
 	self.bNowEnabled = self.Properties.bEnabled;
 	if (self.Properties.bEnabled == 0) then
-		self:TriggerEvent(AIEVENT_DISABLE);
+		AI.TriggerEvent(self.id, AIEVENT_DISABLE);
 	else
-		self:TriggerEvent(AIEVENT_ENABLE);
+		AI.TriggerEvent(self.id, AIEVENT_ENABLE);
 	end
 end
 
@@ -45,7 +45,7 @@ function AIAnchor:Register()
 		if(AIAnchorTable[self.Properties.aianchor_AnchorType] == nil) then
 			System.Log("AIAnchor["..self:GetName().."]:  undefined type ["..self.Properties.aianchor_AnchorType.."] Cant register with [AISYSTEM]");
 		else
-			CryAction.RegisterWithAI( self.id, AIAnchorTable[self.Properties.aianchor_AnchorType], self.Properties );
+			AI.RegisterWithAI( self.id, AIAnchorTable[self.Properties.aianchor_AnchorType], self.Properties );
 		
 			-- since sending properties to RegisterWithAI has no effect group id will be set with ChangeParameter
 			AI.ChangeParameter( self.id, AIPARAM_GROUPID, self.Properties.groupid );
@@ -64,14 +64,14 @@ end
 
 -------------------------------------------------------
 function AIAnchor:Event_Enable()
-	self:TriggerEvent(AIEVENT_ENABLE);
+	AI.TriggerEvent(self.id, AIEVENT_ENABLE);
 	self.bNowEnabled = 1;
 	BroadcastEvent(self, "Enable");
 end
 
 -------------------------------------------------------
 function AIAnchor:Event_Disable()
-	self:TriggerEvent(AIEVENT_DISABLE);
+	AI.TriggerEvent(self.id, AIEVENT_DISABLE);
 	self.bNowEnabled = 0;
 	BroadcastEvent(self, "Disable");
 end

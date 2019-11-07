@@ -1,6 +1,6 @@
 local Behavior = CreateAIBehavior("Dummy",
 {
 	Constructor = function(behavior, entity)
-		entity:SelectPipe(0, "Empty")
+		AI.SelectPipe(entity.id, 0, "Empty")
 	end,
 })

@@ -576,7 +576,7 @@ function VehicleBase:OnActorSitDown(seatId, passengerId)
 	passenger.vehicleId = self.id;
 	passenger.AI.theVehicle = self; -- fix for behaviors
 
-	if (CryAction.HasAI(passengerId)) then
+	if (AI.HasAI(passengerId)) then
 		if (seat.isDriver) then 
 			self.State.aiDriver = 1;
 			if (self.AIDriver) then

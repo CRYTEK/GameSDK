@@ -177,7 +177,7 @@ local Behavior = CreateAIBehavior("EnteringVehicle", "Dumb",{
 	
 	--------------------------------------------
 	desable_me = function( self,entity, sender )
-		entity:TriggerEvent(AIEVENT_DISABLE);
+		AI.TriggerEvent(entity.id, AIEVENT_DISABLE);
 	end,
 
 	--------------------------------------------
@@ -193,7 +193,7 @@ local Behavior = CreateAIBehavior("EnteringVehicle", "Dumb",{
 
 	REFPOINT_REACHED = function(self,entity,sender)
 --		entity.AI.theVehicle:EnterVehicle(entity.id,entity.AI.mySeat,true);
-		entity:SelectPipe(0,"do_nothing");
+		AI.SelectPipe(entity.id, 0,"do_nothing");
 	end,
 
  	---------------------------------------------
@@ -214,7 +214,7 @@ local Behavior = CreateAIBehavior("EnteringVehicle", "Dumb",{
 
 	---------------------------------------------
 	CANCEL_CURRENT = function(self,entity,sender)
-		entity:CancelSubpipe();
+		AI.CancelSubpipe(entity.id);
 		entity.AI.theVehicle.vehicle:ExitVehicle(entity.id);
 		entity.AI.theVehicle = nil;
 		AI.Signal(SIGNALFILTER_SENDER,1,"do_exit_vehicle",entity.id);

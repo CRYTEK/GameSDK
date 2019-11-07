@@ -122,7 +122,7 @@ CreateAIBehavior("GruntIdle", "GruntBase",
 
 	Constructor = function (behavior, entity)
 		behavior:CheckStance(entity)
-		entity:SelectPipe(0, "Empty")
+		AI.SelectPipe(entity.id, 0, "Empty")
 	end,
 
 	CheckStance = function(behavior, entity)
@@ -137,11 +137,11 @@ CreateAIBehavior("GruntSniperEngage", "GruntBase",
 	Alertness = 2,
 
 	Constructor = function(behavior, entity)
-		entity:SelectPipe(0, "GruntSniperFindAndMoveToSniperSpot")
+		AI.SelectPipe(entity.id, 0, "GruntSniperFindAndMoveToSniperSpot")
 	end,
 
 	SniperSpotReached = function(behavior, entity)
-		entity:SelectPipe(0, "GruntSniperEngageFromSniperSpot")
+		AI.SelectPipe(entity.id, 0, "GruntSniperEngageFromSniperSpot")
 	end,
 
 	MoveSniperSpotFailed = function(behavior, entity)
@@ -169,7 +169,7 @@ CreateAIBehavior("GruntSniperMoveToCover", "GruntBase",
 	Constructor = function(behavior, entity)
 		AI.SetFireMode(entity.id, FIREMODE_OFF)
 		AI.SetStance(entity.id, STANCE_STAND)
-		entity:SelectPipe(0, "GruntSniperFindAndMoveToCover")
+		AI.SelectPipe(entity.id, 0, "GruntSniperFindAndMoveToCover")
 	end,
 
 	OnCoverCompromised = function(behavior, entity)
@@ -188,7 +188,7 @@ CreateAIBehavior("GruntSniperHideInCover", "GruntBase",
 	LeaveCoverOnStart = false,
 
 	Constructor = function(behavior, entity)
-		entity:SelectPipe(0, "GruntSniperHideInCover")
+		AI.SelectPipe(entity.id, 0, "GruntSniperHideInCover")
 	end,
 
 	OnCoverCompromised = function(behavior, entity)
@@ -215,7 +215,7 @@ CreateAIBehavior("GruntAssault", "GruntBase",
 	Constructor = function(behavior, entity)
 		AI.SetFireMode(entity.id, FIREMODE_BURST_WHILE_MOVING)
 		AI.SetStance(entity.id, STANCE_STAND)
-		entity:SelectPipe(0, "GruntAssaultEngageFromOpenArea")
+		AI.SelectPipe(entity.id, 0, "GruntAssaultEngageFromOpenArea")
 	end,
 })
 
@@ -263,7 +263,7 @@ CreateAIBehavior("GruntDefendAreaInCover", "GruntBase",
 	LeaveCoverOnStart = false,
 
 	Constructor = function(behavior, entity)
-		entity:SelectPipe(0, "GruntFireInCover")
+		AI.SelectPipe(entity.id, 0, "GruntFireInCover")
 	end,
 
 	OnCoverCompromised = function (behavior, entity, sender, data)
@@ -305,7 +305,7 @@ CreateAIBehavior("GruntMoveToDefendArea", "GruntBase",
 
 	OnNoPathFound = function(behavior, entity, sender, data)
 		entity:OnError("Could not find a path to the defend area")
-		entity:SelectPipe(0, "StandAndShoot");
+		AI.SelectPipe(entity.id, 0, "StandAndShoot");
 		entity.fallbackTimer = Script.SetTimer(random(2500, 5000), function() behavior:AnalyzeSituation(entity); end)
 	end,
 
@@ -329,9 +329,9 @@ CreateAIBehavior("GruntHoldPosition", "GruntBase",
 		if (HoldPositionAssignment:IsAtHoldPosition(entity)) then
 			if(AI.GetAttentionTargetAIType(entity.id) ~= AIOBJECT_NONE and not entity.AI.holdPosition.skipCover) then
 				AI.SetRefPointPosition(entity.id, entity.AI.holdPosition.position)
-				entity:SelectPipe(0, "HoldPositionStandAndCheckForCloseCover")
+				AI.SelectPipe(entity.id, 0, "HoldPositionStandAndCheckForCloseCover")
 			else
-				entity:SelectPipe(0, "Empty")
+				AI.SelectPipe(entity.id, 0, "Empty")
 			end
 		else
 			AI.SetBehaviorVariable(entity.id, "AtHoldPosition", false)
@@ -360,7 +360,7 @@ CreateAIBehavior("GruntHoldPositionInCover", "GruntBase",
 	LeaveCoverOnStart = false,
 
 	Constructor = function(behavior, entity)
-		entity:SelectPipe(0, "GruntFireInCover")
+		AI.SelectPipe(entity.id, 0, "GruntFireInCover")
 	end,
 
 	OnCoverCompromised = function (behavior, entity, sender, data)
@@ -403,7 +403,7 @@ CreateAIBehavior("GruntMoveToHoldPosition", "GruntBase",
 
 	OnNoPathFound = function(behavior, entity, sender, data)
 		entity:OnError("Could not find a path to the hold position")
-		entity:SelectPipe(0, "StandAndShoot");
+		AI.SelectPipe(entity.id, 0, "StandAndShoot");
 		entity.fallbackTimer = Script.SetTimer(random(2500, 5000), function() behavior:AnalyzeSituation(entity); end)
 	end,
 
@@ -477,7 +477,7 @@ CreateAIBehavior("GruntCombatMove", "GruntBase",
 
 	OnNoPathFound = function(behavior, entity, sender, data)
 		entity:OnError("Could not find a path to the hold position")
-		entity:SelectPipe(0, "StandAndShoot");
+		AI.SelectPipe(entity.id, 0, "StandAndShoot");
 		entity.fallbackTimer = SetTimerForBehaviorFunction(random(2500, 5000), behavior.Move, behavior, entity)
 	end,
 
@@ -495,7 +495,7 @@ CreateAIBehavior("GruntCombatMoveInCover", "GruntBase",
 	LeaveCoverOnStart = false,
 
 	Constructor = function(behavior, entity)
-		entity:SelectPipe(0, "GruntBriefShootFromCover")
+		AI.SelectPipe(entity.id, 0, "GruntBriefShootFromCover")
 	end,
 
 	OnCoverCompromised = function (behavior, entity, sender, data)

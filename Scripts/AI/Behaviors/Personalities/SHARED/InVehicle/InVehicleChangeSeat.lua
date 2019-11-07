@@ -22,7 +22,7 @@ local Behavior = CreateAIBehavior("InVehicleChangeSeat", "InVehicle",
 
 		AI.CreateGoalPipe("InVehicleChangeSeat");
 		AI.PushGoal("InVehicleChangeSeat","waitsignal", 1, "ChangeSeatEnd", nil, 1000.0 );
-		entity:InsertSubpipe(AIGOALPIPE_SAMEPRIORITY,"InVehicleChangeSeat",nil,data.iValue);
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY,"InVehicleChangeSeat",nil,data.iValue);
 
 		entity.AI.changeSeatTimer= 1;
 		Script.SetTimerForFunction( 500, "AIBehavior.InVehicleChangeSeat.INVEHICLE_CHANGESEAT_SUB", entity );
@@ -64,7 +64,7 @@ local Behavior = CreateAIBehavior("InVehicleChangeSeat", "InVehicle",
 				entity.AI.theVehicle.vehicle:ChangeSeat( entity.id, 1, false );
 				AI.Signal(SIGNALFILTER_SENDER, 1, "ChangeSeatEnd", entity.id);
 			else
-				entity:CancelSubpipe();
+				AI.CancelSubpipe(entity.id);
 			end
 
 		else

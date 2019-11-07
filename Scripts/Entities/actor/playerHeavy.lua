@@ -292,7 +292,7 @@ function PlayerHeavy.Server:OnInit(bIsReload)
 
 	if AI then
 		--AI related: create ai representation for the player
-		CryAction.RegisterWithAI(self.id, AIOBJECT_PLAYER, self.Properties,self.PropertiesInstance);
+		AI.RegisterWithAI(self.id, AIOBJECT_PLAYER, self.Properties,self.PropertiesInstance);
 
 		--AI related: player is leader of squad-mates always
 		--AI.SetLeader(self.id);
@@ -361,7 +361,7 @@ end
 function PlayerHeavy:OnInit(bIsReload)
 
 --	AI.RegisterWithAI(self.id, AIOBJECT_PLAYER, self.Properties);
-	self:SetAIName(self:GetName());
+	AI.SetAIName(self.id, self:GetName());
 	----------------------------------------
 
 --	self:InitSounds();

@@ -28,28 +28,28 @@ end
 function AIAlertness:OnReset()
 	self.bNowEnabled = self.Properties.bEnabled;
 	if (self.Properties.bEnabled == 0) then
-		self:TriggerEvent(AIEVENT_DISABLE);
+		AI.TriggerEvent(self.id, AIEVENT_DISABLE);
 	else
-		self:TriggerEvent(AIEVENT_ENABLE);
+		AI.TriggerEvent(self.id, AIEVENT_ENABLE);
 	end
 end
 
 -------------------------------------------------------
 function AIAlertness:Register()
-	CryAction.RegisterWithAI( self.id, AIOBJECT_GLOBALALERTNESS );	
+	AI.RegisterWithAI( self.id, AIOBJECT_GLOBALALERTNESS );	
 	self:OnReset();
 end
 
 -------------------------------------------------------
 function AIAlertness:Event_Enable()
-	self:TriggerEvent(AIEVENT_ENABLE);
+	AI.TriggerEvent(self.id, AIEVENT_ENABLE);
 	self.bNowEnabled = 1;
 	BroadcastEvent(self, "Enable");
 end
 
 -------------------------------------------------------
 function AIAlertness:Event_Disable()
-	self:TriggerEvent(AIEVENT_DISABLE);
+	AI.TriggerEvent(self.id, AIEVENT_DISABLE);
 	self.bNowEnabled = 0;
 	BroadcastEvent(self, "Disable");
 end

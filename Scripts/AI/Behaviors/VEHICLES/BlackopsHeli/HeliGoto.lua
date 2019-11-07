@@ -12,7 +12,7 @@ local Behavior = CreateAIBehavior("HeliGotoCrysis2", "HeliIdle",
 		local targetPos = g_Vectors.temp_v1
 
 		AI.SetRefPointPosition(entity.id, entity.AI.GoToData.Position)
-		entity:SelectPipe(0, "HeliRelocate", 0, 0, 1)
+		AI.SelectPipe(entity.id, 0, "HeliRelocate", 0, 0, 1)
 	end,
 	
 	GoodLocationReached = function(self, entity, sender, data)
@@ -47,7 +47,7 @@ local Behavior = CreateAIBehavior("HeliGotoCrysis2", "HeliIdle",
 		AI.CreateGoalPipe("fly_shoot");
 		AI.PushGoal("fly_shoot", "fireWeapons", 0, AI_REG_NONE, data.fValue, data.fValue, true, 0)
 
-		entity:InsertSubpipe(AIGOALPIPE_SAMEPRIORITY, "fly_shoot");
+		AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "fly_shoot");
 	end,
 
 

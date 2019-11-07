@@ -126,7 +126,7 @@ end
 function AI:OnEditorMoveSimulation(entity, goalId, pos)
 
 	AI.SetRefPointPosition(entity.id, pos)
-	entity:InsertSubpipe(AIGOALPIPE_SAMEPRIORITY, "MoveToMiddleClickPositionInEditor", nil, goalId)
+	AI.InsertSubpipe(entity.id, AIGOALPIPE_SAMEPRIORITY, "MoveToMiddleClickPositionInEditor", nil, goalId)
 
 end
 
