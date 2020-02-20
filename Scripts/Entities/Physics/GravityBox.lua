@@ -46,13 +46,10 @@ end
 -- OnPropertyChange called only by the editor.
 ------------------------------------------------------------------------------------------------------
 function GravityBox:OnPropertyChange()
-	if (self.bActive ~= self.Properties.bActive) then
-		self.bActive = self.Properties.bActive;
-		if (self.bActive == 1) then
-			self:PhysicalizeThis();
-		else
-			self:DestroyPhysics();
-		end
+	self:DestroyPhysics();
+	self.bActive = self.Properties.bActive;
+	if (self.bActive ~= 0) then
+		self:PhysicalizeThis();
 	end
 end
 
