@@ -14,6 +14,21 @@ AnimAudioEventHandling =
 	Server = {},
 }
 
+-- Computes the position of a bone in the reference frame of the entity.
+function AnimAudioEventHandling:GetBonePosInEntitySpace(boneName)
+	local position = {}
+
+	SubVectors(position, self:GetBonePos(boneName), self:GetPos());
+
+	-- This transforms the position vector from world space to entity space.
+	-- Lua bindings and math facilities are fairly limited, so we're using three GetDirectionVector() calls to extract
+	-- colums of the entity's world rotation matrix, then implicitly transposing it by multiplying them as if they were rows.
+	return {
+	      x = dotproduct3d(self:GetDirectionVector(0), position),
+	      y = dotproduct3d(self:GetDirectionVector(1), position),
+	      z = dotproduct3d(self:GetDirectionVector(2), position)
+	}
+end
 
 -- Retrives auxiliary audio proxy ID for a bone with the given name. Returns nil on failure.
 function AnimAudioEventHandling:GetAuxAudioProxyIDForBone(boneName)
@@ -26,8 +41,7 @@ function AnimAudioEventHandling:GetAuxAudioProxyIDForBone(boneName)
 	if (not state.proxies[boneName]) then
 		state.proxies[boneName] = self:CreateAuxAudioProxy()
 		
-		local offset = {}
-		SubVectors(offset, self:GetBonePos(boneName), self:GetPos())
+		local offset = self:GetBonePosInEntitySpace(boneName)
 		self:SetAudioProxyOffset(offset, state.proxies[boneName])
 		
 		--System.Log("AnimAudioEventHandling: created audio proxy for '" .. self:GetName() .. "' -> " .. boneName)
@@ -73,11 +87,10 @@ function AnimAudioEventHandling.Client:OnUpdate(dt)
 		state.updateCounter = self.perBoneAudioProxyUpdateInterval
 
 		for boneName, proxy in pairs(state.proxies) do
-	local offset = {}
-	SubVectors(offset, self:GetBonePos(boneName), self:GetPos());
-	self:SetAudioProxyOffset(offset, proxy);
-	 
-	--System.Log("AnimAudioEventHandling: updated audio proxy offset for '" .. self:GetName() .. "' -> " .. boneName .. " (ProxyID: " .. tostring(proxy) .. ")" .. " [" .. offset.x .. ", " .. offset.y .. ", " .. offset.z .. "]")
+			local offset = self:GetBonePosInEntitySpace(boneName);
+			self:SetAudioProxyOffset(offset, proxy);
+			
+			--System.Log("AnimAudioEventHandling: updated audio proxy offset for '" .. self:GetName() .. "' -> " .. boneName .. " (ProxyID: " .. tostring(proxy) .. ")" .. " [" .. offset.x .. ", " .. offset.y .. ", " .. offset.z .. "]")
 		end
 	end
 end
