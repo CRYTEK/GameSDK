@@ -69,7 +69,6 @@
 	<Entity Name="Fan" Script="Scripts/Entities/Others/Fan.lua"/>
 	<Entity Name="Fish" Script="Scripts/Entities/Boids/Fish.lua"/>
 	<Entity Name="Flash" Script="Scripts/Entities/Render/Flash.lua"/>
-	<Entity Name="FogVolume" Script="Scripts/Entities/Render/FogVolume.lua"/>
 	<Entity Name="ForbiddenArea" Script="Scripts/Entities/Multiplayer/ForbiddenArea.lua"/>
 	<Entity Name="Frogs" Script="Scripts/Entities/Boids/Frogs.lua"/>
 
