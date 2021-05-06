@@ -52,7 +52,6 @@
 	<Entity Name="CTFBase" Script="Scripts/Entities/Multiplayer/CTFBase.lua"/>
 
 	<Entity Name="DeadBody" Script="Scripts/Entities/Physics/DeadBody.lua"/>
-	<Entity Name="DecalPlacer" Script="Scripts/Entities/Others/DecalPlacer.lua"/>
 	<Entity Name="DestroyableLight" Script="Scripts/Entities/Lights/DestroyableLight.lua"/>
 	<Entity Name="DestroyableObject" Script="Scripts/Entities/Physics/DestroyableObject.lua"/>
 	<Entity Name="DestroyedVehicle" Script="Scripts/Entities/Vehicles/DestroyedVehicle.lua"/>
