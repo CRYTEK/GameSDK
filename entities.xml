@@ -128,7 +128,6 @@
 	<Entity Name="Turtles" Script="Scripts/Entities/Boids/Turtles.lua"/>
 
 	<Entity Name="UIEntity" Script="Scripts/Entities/Others/UIEntity.lua"/>
-	<Entity Name="ViewDist" Script="Scripts/Entities/Render/ViewDist.lua"/>
 	<Entity Name="VTOLSpawnPoint" Script="Scripts/Entities/Multiplayer/VTOLSpawnPoint.lua" Invisible="1"/>
 	<Entity Name="Wind" Script="Scripts/Entities/Physics/Wind.lua"/>
 	<Entity Name="WindArea" Script="Scripts/Entities/Physics/WindArea.lua"/>
