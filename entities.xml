@@ -52,7 +52,6 @@
 	<Entity Name="CTFBase" Script="Scripts/Entities/Multiplayer/CTFBase.lua"/>
 
 	<Entity Name="DeadBody" Script="Scripts/Entities/Physics/DeadBody.lua"/>
-	<Entity Name="DestroyableLight" Script="Scripts/Entities/Lights/DestroyableLight.lua"/>
 	<Entity Name="DestroyableObject" Script="Scripts/Entities/Physics/DestroyableObject.lua"/>
 	<Entity Name="DestroyedVehicle" Script="Scripts/Entities/Vehicles/DestroyedVehicle.lua"/>
 	<Entity Name="Door" Script="Scripts/Entities/Doors/Door.lua"/>
@@ -60,7 +59,6 @@
 	<Entity Name="Elevator" Script="Scripts/Entities/Elevators/Elevator.lua"/>
 	<Entity Name="ElevatorSwitch" Script="Scripts/Entities/Elevators/ElevatorSwitch.lua"/>
 	<Entity Name="EntityFlashTag" Script="Scripts/Entities/Others/EntityFlashTag.lua"/>
-	<Entity Name="EnvironmentLight" Script="Scripts/Entities/Lights/EnvironmentLight.lua" Invisible="1"/>
 	<Entity Name="Explosion" Script="Scripts/Entities/Physics/Explosion.lua"/>
 	<Entity Name="ExtractionPoint" Script="Scripts/Entities/Multiplayer/ExtractionPoint.lua"/>
 	<Entity Name="ExtractionWeaponSpawn" Script="Scripts/Entities/Multiplayer/ExtractionWeaponSpawn.lua"/>
@@ -85,7 +83,6 @@
 	<Entity Name="InteractiveEntity" Script="Scripts/Entities/Others/InteractiveEntity.lua"/>
 	<Entity Name="JointGen" Script="Scripts/Entities/Physics/JointGen.lua"/>
 	<Entity Name="Ladder" Script="Scripts/Entities/Others/Ladder.lua"/>
-	<Entity Name="Light" Script="Scripts/Entities/Lights/Light.lua"/>
 	<Entity Name="Lightning" Script="Scripts/Entities/Render/Lightning.lua"/>
 	<Entity Name="MapIconEntity" Script="Scripts/Entities/HUD/MapIconEntity.lua"/>
 	<Entity Name="Mine" Script="Scripts/Entities/Others/Mine.lua"/>
@@ -105,7 +102,6 @@
 	<Entity Name="RaisingWater" Script="Scripts/Entities/Others/RaisingWater.lua" Invisible="1"/>
 	<Entity Name="RigidBody" Script="Scripts/Entities/Others/RigidBody.lua" Invisible="1"/>
 	<Entity Name="RigidBodyEx" Script="Scripts/Entities/Physics/RigidBodyEx.lua"/>
-	<Entity Name="RigidBodyLight" Script="Scripts/Entities/Lights/RigidBodyLight.lua"/>
 	<Entity Name="Rope" Script="Scripts/Entities/Physics/Rope.lua" Invisible="0"/>
 	<Entity Name="RopeEntity" Script="Scripts/Entities/Default/RopeEntity.lua" Invisible="0"/>
 
