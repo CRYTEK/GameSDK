@@ -77,6 +77,7 @@
 		<Helper name="passenger_enter_01" position="-0.5,0,0" direction="-1,0,0" part="hull"/>
 		<Helper name="passenger_seat_01" position="0,0,0" direction="0,0,0" part="hull"/>
 		<Helper name="passenger_seat_02" position="0,0,0" direction="0,0,0" part="hull"/>
+		<Helper name="boost_origin" position="0,-1.3,0.42" direction="0,1,0" part="hull"/>
 	</Helpers>
 	<Actions>
 		<Action class="Enter">

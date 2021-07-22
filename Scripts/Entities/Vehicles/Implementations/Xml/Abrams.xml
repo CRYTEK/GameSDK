@@ -338,6 +338,7 @@
 		<Helper name="cannonOut" position="0,5.8,1.9" direction="0,1,0" part="cannon"/>
 		<Helper name="coaxOut" position="0.315,2.4,2.035" direction="0,1,0" part="cannon"/>
 		<Helper name="turretPos" position="-0.0013,0.1204,1.584" direction="0,1,0" part="turret"/>
+		<Helper name="boost_origin" position="0,-4.4,0.08" direction="0,1,0" part="body"/>
 	</Helpers>
 	<Actions>
 		<Action class="Enter">

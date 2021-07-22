@@ -364,6 +364,7 @@
 		<Helper name="rearLightRight" position="0.87,-2.5,1.475" direction="0,-1,0" part="body"/>
 		<Helper name="reverseLightLeft" position="-0.87,-2.5,1.435" direction="0,-1,0" part="body"/>
 		<Helper name="reverseLightRight" position="0.87,-2.5,1.435" direction="0,-1,0" part="body"/>
+		<Helper name="boost_origin" position="0,-2.65,0" direction="0,1,0" part="body"/>
 	</Helpers>
 	<Actions>
 		<Action class="Enter">
